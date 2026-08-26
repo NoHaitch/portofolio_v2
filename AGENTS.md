@@ -26,21 +26,31 @@ Heed deprecation notices.
 
 ## 1) What the project is about
 
-This is a personal portfolio website for showcasing professional work, writing, and projects.
+This is a personal portfolio website for showcasing professional work, writing, research, and projects.
 
 It should feel fast, clean, accessible, and polished.
 
-The site will eventually include:
+The site will include:
 
 - a homepage,
 - project pages,
-- a blog,
+- a blog or content archive,
+- timeline views for education and professional experience,
+- a research or papers section,
 - a contact or social links section,
 - and optional future features like views, newsletter, and analytics.
 
-The blog should be a first-class part of the site, not an afterthought.
+The content system should support more than simple blog posts.
 
-## 2) Stack and layout
+## 2) Project context
+
+Read `docs/context.md` for identity, background, naming, tone, and portfolio goals.
+
+Use that file when writing bio text, homepage copy, section labels, social links, or content that depends on personal identity.
+
+Do not duplicate personal context inside `AGENTS.md` unless it affects engineering workflow.
+
+## 3) Stack and layout
 
 Use the following stack:
 
@@ -56,7 +66,7 @@ Use this layout approach:
 - `app/` for routes and pages.
 - `components/` for reusable UI.
 - `components/ui/` for shadcn/ui primitives.
-- `content/` for MDX blog posts and content sources.
+- `content/` for MDX content and structured content files.
 - `lib/` for utilities and shared helpers.
 - `public/` for static assets.
 - `src/config/` or `config/` for site metadata and navigation.
@@ -67,15 +77,52 @@ Keep client components small and isolated.
 Minimize client-side JavaScript.
 Prefer static generation where possible.
 
-## 3) Content and architecture
+## 4) Content and architecture
+
+The site should treat content as structured data, not just pages.
+
+Suggested content types:
+
+- Projects.
+- Professional experience.
+- Education timeline entries.
+- Research papers and theses.
+- Activities such as competitions, webinars, and events.
+- Blog posts or stories.
+
+Use a consistent content schema that supports:
+
+- title,
+- date,
+- category,
+- secondary tags,
+- summary,
+- rich content body,
+- links,
+- and optional featured image or attachments.
+
+Primary category should identify the content type.
+
+Secondary tags should represent technologies, skills, tools, or themes.
+
+For example:
+
+- Primary category: `project`.
+- Secondary tags: `Next.js`, `Firebase`, `TypeScript`.
+
+For timeline views:
+
+- Education entries should sort chronologically.
+- Experience entries should sort chronologically.
+- Timeline views should be easy to scan on desktop and mobile.
 
 Blog content should start as MDX files stored in the repository.
 
-For now, static files in the repo are acceptable for blog posts and images if they keep the implementation simple and fast.
+For now, static files in the repo are acceptable for content and images if they keep the implementation simple and fast.
 
 Use AWS for CDN or media delivery later if needed, but do not add that complexity until the site actually needs it.
 
-If the requirement is to edit blogs from inside the site, do not assume that means a full CMS is required immediately.
+If the requirement is to edit content from inside the site, do not assume that means a full CMS is required immediately.
 Prefer the simplest maintainable editing workflow first.
 
 Possible evolution path:
@@ -84,9 +131,9 @@ Possible evolution path:
 - Phase 2: add an admin editing flow if needed.
 - Phase 3: move only the parts that truly need a backend into a database or CMS.
 
-If blog editing becomes necessary inside the site, use Firebase only for the parts that genuinely need persistence and authenticated access, such as:
+If editing inside the site becomes necessary, use Firebase only for the parts that genuinely need persistence and authenticated access, such as:
 
-- blog metadata,
+- content metadata,
 - draft state,
 - user accounts,
 - admin-only records,
@@ -95,7 +142,7 @@ If blog editing becomes necessary inside the site, use Firebase only for the par
 Do not use Firebase just to replace static content if the content does not need to be dynamic.
 Keep the default architecture static-first.
 
-## 4) Core Web Vitals
+## 5) Core Web Vitals
 
 Treat Core Web Vitals as a design constraint, not a later cleanup task.
 
@@ -125,7 +172,7 @@ When adding features, consider their impact on:
 
 If a change harms performance noticeably, prefer the simpler implementation.
 
-## 5) Testing rules
+## 6) Testing rules
 
 Use a lightweight but meaningful testing setup.
 
@@ -142,7 +189,8 @@ Test priorities:
 - reusable UI components,
 - route behavior for important pages,
 - blog rendering,
-- navigation and contact flow,
+- archive filtering,
+- timeline rendering,
 - and any admin workflow if one is added later.
 
 Testing rules:
@@ -163,7 +211,7 @@ Minimum checks before merging:
 - relevant unit tests,
 - relevant E2E tests for changed flows.
 
-## 6) Tooling and workflow
+## 7) Tooling and workflow
 
 Use Prettier as the formatter.
 Use ESLint for code quality and correctness checks.
@@ -179,7 +227,7 @@ When making changes:
 - inspect the relevant code before changing it,
 - and update docs if the workflow changes.
 
-## 7) Notes for agents
+## 8) Notes for agents
 
 Read this file before making changes.
 
@@ -189,7 +237,7 @@ Prefer maintainable solutions over clever ones.
 Prefer explicit code over hidden magic.
 Prefer stable public APIs over experimental ones unless there is a clear reason not to.
 
-## 8) Future features
+## 9) Future features
 
 Planned future features may include:
 
