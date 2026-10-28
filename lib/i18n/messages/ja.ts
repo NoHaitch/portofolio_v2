@@ -1,0 +1,271 @@
+import type { Messages } from '@/lib/i18n/types'
+
+const ja = {
+  metadataDescription:
+    'セキュリティ、システム、AI、実用的なプロダクト開発に取り組むソフトウェアエンジニア、Francisco Triantoのポートフォリオです。',
+  navigation: {
+    label: 'メインナビゲーション',
+    home: 'ホーム',
+    education: '学歴',
+    experience: '職歴',
+    contact: 'お問い合わせ',
+  },
+  languageLabel: '言語を選択',
+  switchToLight: 'ライトモードに切り替え',
+  switchToDark: 'ダークモードに切り替え',
+  footer: {
+    copyright: '© 2026 Francisco Trianto',
+  },
+  home: {
+    eyebrow: 'ソフトウェアエンジニア · インドネシア',
+    roles: ['システムエンジニアリング', 'AI・データサイエンス', 'サイバーセキュリティ'],
+    introduction:
+      'バンドン工科大学で情報工学を学び、セキュリティ、信頼性の高いシステム、有用なデータを大切にした実践的なソフトウェアを開発しています。',
+    portraitAlt: '卒業式のFrancisco Trianto',
+    projects: 'プロジェクトを見る',
+    contact: 'お問い合わせ',
+  },
+  education: {
+    eyebrow: 'プロフィール',
+    title: '学歴',
+    introduction: 'ソフトウェア、システム、セキュリティへの関心を育んだ学びの歩みです。',
+    universityDegree: '情報学／コンピュータサイエンス理学士',
+    universityPeriod: '2022年7月 - 2026年8月',
+    universityGrade: 'GPA：3.57 / 4.00 · 優等卒業',
+    universityDetailsLabel: '学業の実績',
+    universityDetails: [
+      '144単位の修了要件を上回る151単位を取得し、優等で卒業。',
+      'サイバーセキュリティとシステムソフトウェア工学の選択専門科目群を修了。',
+      '主な履修科目：人工知能、ディープラーニング、サイバーセキュリティ、システムソフトウェア工学、分散システム、データ構造とアルゴリズム。',
+    ],
+    universityActivitiesLabel: '課外活動・所属団体',
+    universityActivities: [
+      'バンドン工科大学 情報学科学生会（HMIF）',
+      'Computational Science & Engineering Lab アシスタント',
+      '授業アシスタント',
+      'Character Development Training（CDT）トレーナー',
+      'バンドン工科大学バレーボール部（UBV）',
+    ],
+    skillsLabel: '主なスキル',
+    universitySkills: [
+      '機械学習',
+      'コンピュータサイエンス',
+      'サイバーセキュリティ',
+      'システム工学',
+      '分散システム',
+      'ディープラーニング',
+    ],
+    highSchoolDegree: '高校卒業 · 自然科学（STEM）コース',
+    highSchoolPeriod: '2019年7月 - 2022年7月',
+    highSchoolActivitiesLabel: '課外活動・所属団体',
+    highSchoolActivities: ['Five Cyber Community（FCC）', 'バンドン市レベルの数学OSKに2回参加'],
+    highSchoolHonorsLabel: '学業表彰',
+    highSchoolHonors: ['優等生。クラス1位、学校全体で上位3位以内。'],
+    certificate: '学位証明書を見る',
+    certificateLabel: '大学の学位証明書を見る（新しいタブで開きます）',
+  },
+  experience: {
+    eyebrow: 'キャリアログ',
+    title: '職務経験',
+    introduction: 'ソフトウェア開発、教育、学生組織での活動を時系列でまとめています。',
+    tabsLabel: '職務分野',
+    parallelNote: '職歴は古い順に並んでいます。分野を選ぶと、その分野に絞って表示できます。',
+    branches: {
+      engineering: 'ソフトウェア開発',
+      academic: '教育・アカデミア',
+      leadership: '学生組織・コミュニティ',
+    },
+    entries: [
+      {
+        id: 'sinerdigi',
+        branch: 'engineering',
+        title: 'フルスタック開発者（フリーランス）',
+        organization: 'PT Sinerdigi Teknologi Indonesia',
+        period: '2025年4月 - 2026年3月',
+        arrangement: 'リモート',
+        summary:
+          '5つのコンポーネントからなる分散型待ち行列管理システムを構築し、窓口端末と表示端末間のリアルタイム更新を実現しました。',
+      },
+      {
+        id: 'akhdani',
+        branch: 'engineering',
+        title: 'ソフトウェアエンジニアインターン',
+        organization: 'PT Akhdani Reka Solusi',
+        period: '2025年6月 - 2025年9月',
+        arrangement: '出社',
+        summary:
+          '.NETデスクトップシェルとLaravel・Vue.jsアプリを連携し、決済やルームキー機器をシミュレートする多言語ホテルチェックイン端末を試作しました。',
+      },
+      {
+        id: 'hmif-election',
+        branch: 'engineering',
+        title: 'フロントエンド開発者',
+        organization: 'Pemilu HMIF 2025',
+        period: '2024年10月 - 2025年2月',
+        arrangement: '出社',
+        summary:
+          '700人以上の学生が利用するレスポンシブな選挙プラットフォームを開発し、3人の後輩開発者とUIパターンやレビュー手法を整えました。',
+      },
+      {
+        id: 'hima-ilkom-election',
+        branch: 'engineering',
+        title: 'フルスタック開発者（フリーランス）',
+        organization: 'Pemilu HIMA ILKOM 2021',
+        period: '2021年10月 - 2021年12月',
+        arrangement: 'リモート',
+        summary:
+          '1,000件以上の有効票を処理するオンライン投票システムを共同開発し、3日間の選挙期間中に100%の稼働率を達成しました。',
+      },
+      {
+        id: 'cse-lab',
+        branch: 'academic',
+        title: '計算科学・工学研究室アシスタント',
+        organization: 'STEI ITB',
+        period: '2024年8月 - 2026年8月',
+        arrangement: '出社',
+        summary:
+          '研究室運営と授業を支援し、新しいアシスタントの採用・評価にも携わりました。50人以上の応募者から選ばれた12人の一人です。',
+      },
+      {
+        id: 'if2224',
+        branch: 'academic',
+        title: 'IF2224形式言語とオートマトン理論 ティーチングアシスタント',
+        organization: 'STEI ITB',
+        period: '2025年8月 - 2026年7月',
+        arrangement: '出社',
+        summary:
+          '4段階のコンパイラ・インタプリタ最終課題を設計し、技術資料の作成、コードレビュー、デバッグ支援を行いました。',
+      },
+      {
+        id: 'if2211',
+        branch: 'academic',
+        title: 'IF2211アルゴリズム戦略 ティーチングアシスタント',
+        organization: 'STEI ITB',
+        period: '2025年1月 - 2025年7月',
+        arrangement: '出社',
+        summary:
+          'アルゴリズム戦略に関する6つの課題を作成し、効率性、計算量、境界ケースを評価しました。',
+      },
+      {
+        id: 'if1220',
+        branch: 'academic',
+        title: 'IF1220離散数学 コーディネーター／主任アシスタント',
+        organization: 'STEI ITB',
+        period: '2024年8月 - 2025年1月',
+        arrangement: '出社',
+        summary:
+          '5人のティーチングアシスタントを率い、3クラス172人の学生向けに試験問題と解答の資料を整備しました。',
+      },
+      {
+        id: 'character-trainer',
+        branch: 'academic',
+        title: '人間形成プログラムトレーナー',
+        organization: 'Institut Teknologi Bandung',
+        period: '2023年7月 - 2024年3月',
+        arrangement: '出社',
+        summary:
+          '4日間のイベントを通じて、50人の新入生向けに人間形成ワークショップと振り返りの場を進行しました。',
+      },
+      {
+        id: 'hmif-academic',
+        branch: 'leadership',
+        title: '学術部門スタッフ',
+        organization: 'HMIF ITB',
+        period: '2024年7月 - 2025年6月',
+        arrangement: '出社',
+        summary:
+          '700人以上の学生コミュニティ向けに講義資料を整理し、試験対策ガイドと学習シートを作成しました。',
+      },
+      {
+        id: 'arka-vidia',
+        branch: 'leadership',
+        title: 'コンテンツストラテジスト',
+        organization: 'ARKA VIDIA 9.0',
+        period: '2024年11月 - 2025年5月',
+        arrangement: '出社',
+        summary:
+          '全国規模のテクノロジーイベントに向けたプロモーション企画とライブ報道を、デザイン・マーケティングチームと連携して行いました。',
+      },
+      {
+        id: 'sparta-hmif',
+        branch: 'leadership',
+        title: 'SPARTA 企画・運営スタッフ',
+        organization: 'HMIF ITB',
+        period: '2024年6月 - 2024年9月',
+        arrangement: '出社',
+        summary:
+          '300人以上の入会希望者向けにオリエンテーションやワークショップを企画し、候補者の評価も行いました。',
+      },
+      {
+        id: 'wisokto',
+        branch: 'leadership',
+        title: 'Wisokto 人事スタッフ',
+        organization: 'HMIF ITB',
+        period: '2023年9月 - 2023年11月',
+        arrangement: 'ハイブリッド',
+        summary:
+          '卒業式イベントを担当する8人のチームを調整し、委員会メンバー183人の人員データを管理しました。',
+      },
+      {
+        id: 'pab-ubv',
+        branch: 'leadership',
+        title: 'PAB 企画・運営スタッフ',
+        organization: 'UBV ITB',
+        period: '2023年8月 - 2024年5月',
+        arrangement: '出社',
+        summary:
+          'バレーボールクラブに入る100人以上の新入生向けに、人間形成とオリエンテーション活動を企画しました。',
+      },
+      {
+        id: 'regeneration-ubv',
+        branch: 'leadership',
+        title: '世代交代部門スタッフ',
+        organization: 'UBV ITB',
+        period: '2023年5月 - 2024年5月',
+        arrangement: '出社',
+        summary:
+          '候補者の選考や面接を通じてリーダー継承を支援し、年次メンバー受け入れの運営を見守りました。',
+      },
+      {
+        id: 'tpb-cup',
+        branch: 'leadership',
+        title: 'TPB CUP セキュリティ部門スタッフ',
+        organization: 'TPB CUP V Oli UBV ITB 2023',
+        period: '2023年1月 - 2023年3月',
+        arrangement: '出社',
+        summary:
+          '学部対抗バレーボール大会で安全管理、観客の誘導、関係者エリアの入場管理を担当しました。',
+      },
+      {
+        id: 'gathering-stei',
+        branch: 'leadership',
+        title: 'Gathering STEI 2.0 記録スタッフ',
+        organization: 'STEI ITB',
+        period: '2022年8月 - 2022年9月',
+        arrangement: '出社',
+        summary:
+          'オリエンテーションや式典を撮影し、共有メディア資料を整理してイベントのダイジェスト動画を制作しました。',
+      },
+      {
+        id: 'fcc-programming',
+        branch: 'leadership',
+        title: 'プログラミング部門代表',
+        organization: 'FCC SMAN 5 Bandung',
+        period: '2019年8月 - 2022年6月',
+        arrangement: '出社',
+        summary:
+          '2年間のプログラミングカリキュラムを率い、20人以上の生徒を指導し、入部選考に向けた実践課題を作成しました。',
+      },
+    ],
+  },
+  contact: {
+    eyebrow: 'お問い合わせ',
+    title: 'お気軽にご連絡ください。',
+    introduction:
+      'ソフトウェア開発、セキュリティ、データ、または興味深いプロジェクトについてご連絡ください。',
+    professional: '仕事関連',
+    community: '執筆・コミュニティ',
+  },
+} satisfies Messages
+
+export default ja

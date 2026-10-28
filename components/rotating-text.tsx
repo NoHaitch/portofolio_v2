@@ -13,16 +13,22 @@ export default function RotatingText({
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
+    if (words.length < 2) return
+
+    let transitionTimeout: ReturnType<typeof setTimeout>
     const tick = () => {
       setVisible(false)
-      setTimeout(() => {
+      transitionTimeout = setTimeout(() => {
         setIndex((i) => (i + 1) % words.length)
         setVisible(true)
       }, 400)
     }
 
     const id = setInterval(tick, interval)
-    return () => clearInterval(id)
+    return () => {
+      clearInterval(id)
+      clearTimeout(transitionTimeout)
+    }
   }, [interval, words.length])
 
   return (
@@ -30,9 +36,9 @@ export default function RotatingText({
       <span
         role="text"
         aria-live="polite"
-        className={`block transition-opacity duration-500 ${visible ? 'opacity-100' : 'opacity-0'}`}
+        className={`block transition-opacity duration-500 motion-reduce:transition-none ${visible ? 'opacity-100' : 'opacity-0'}`}
       >
-        {words[index]}
+        {words.length > 0 ? words[index] : ''}
       </span>
     </div>
   )
