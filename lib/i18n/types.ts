@@ -2,7 +2,7 @@ export const locales = ['en', 'id', 'ja', 'zh'] as const
 
 export type Locale = (typeof locales)[number]
 
-export type ExperienceBranch = 'engineering' | 'academic' | 'leadership'
+export type ExperienceBranch = 'engineering' | 'academic' | 'leadership' | 'aiData'
 
 export type ExperienceEntry = {
   id: string
@@ -10,8 +10,10 @@ export type ExperienceEntry = {
   title: string
   organization: string
   period: string
+  startDate: string
   arrangement: string
   summary: string
+  proofUrl?: string
 }
 
 export type Messages = {
@@ -31,11 +33,18 @@ export type Messages = {
   }
   home: {
     eyebrow: string
-    roles: [string, string, string]
+    roles: [string, string, string, string]
     introduction: string
     portraitAlt: string
     projects: string
     contact: string
+    scrollHint: string
+    philosophyQuote: string
+    expertiseLabel: string
+    expertiseAreas: {
+      title: string
+      description: string
+    }[]
   }
   education: {
     eyebrow: string
@@ -65,6 +74,9 @@ export type Messages = {
     introduction: string
     tabsLabel: string
     parallelNote: string
+    sortOldestFirst: string
+    sortNewestFirst: string
+    certificateLinkLabel: string
     branches: Record<ExperienceBranch, string>
     entries: ExperienceEntry[]
   }

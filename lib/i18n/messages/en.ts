@@ -7,7 +7,7 @@ const en = {
     label: 'Main navigation',
     home: 'Home',
     education: 'Education',
-    experience: 'Work',
+    experience: 'Experience',
     contact: 'Contact',
   },
   languageLabel: 'Choose language',
@@ -18,12 +18,48 @@ const en = {
   },
   home: {
     eyebrow: 'Software engineer · Indonesia',
-    roles: ['Systems engineering', 'AI & data science', 'Cyber security'],
+    roles: ['Systems engineering', 'AI & Data Science', 'Cyber security', 'Software Engineer'],
     introduction:
       'An Informatics Engineering graduate from ITB who builds practical software with care for security, dependable systems, and useful data.',
     portraitAlt: 'Francisco Trianto at his graduation',
     projects: 'View projects',
     contact: 'Get in touch',
+    scrollHint: 'Scroll to explore',
+    philosophyQuote:
+      'Jack of all trades, master of none, but oftentimes better than master of one.',
+    expertiseLabel: 'Areas of expertise',
+    expertiseAreas: [
+      {
+        title: 'Software engineering',
+        description:
+          'I build end-to-end software, from user-facing features and APIs to maintainable application architecture.',
+      },
+      {
+        title: 'AI & Data Science',
+        description:
+          'I use Python and Machine Learning fundamentals to explore data, build models, and assess how well they perform.',
+      },
+      {
+        title: 'Cybersecurity',
+        description:
+          'I bring a security-minded approach to software by identifying risks, understanding trust boundaries, and considering how systems can fail.',
+      },
+      {
+        title: 'Systems engineering',
+        description:
+          'I think across the whole stack, from Linux and networking to distributed services and the ways they stay reliable together.',
+      },
+      {
+        title: 'Operations & DevOps',
+        description:
+          'I learned DevOps fundamentals alongside systems engineering, including deployment, automation, and keeping software dependable in operation.',
+      },
+      {
+        title: 'Agentic coding',
+        description:
+          'I keep up with agentic coding tools and use them to explore unfamiliar code, accelerate implementation, and handle bounded tasks while reviewing their output.',
+      },
+    ],
   },
   education: {
     eyebrow: 'Background',
@@ -65,27 +101,56 @@ const en = {
     highSchoolHonorsLabel: 'Academic honors',
     highSchoolHonors: ['Honor student; ranked 1st in class and in the top 3 school-wide.'],
     certificate: 'View degree certificate',
-    certificateLabel: 'View official degree certificate (opens in a new tab)',
+    certificateLabel: 'View official degree certificate',
   },
   experience: {
-    eyebrow: 'Career log',
-    title: 'Work experience',
+    eyebrow: 'Professional background',
+    title: 'Professional Experience',
     introduction:
-      'A chronological view of my work across software engineering, teaching, and campus leadership.',
+      'A selection of professional, academic, and community experience across software engineering, AI and Data Science, teaching, and leadership.',
     tabsLabel: 'Experience areas',
-    parallelNote: 'Roles run from earliest to latest. Select a track to focus on one area.',
+    parallelNote: 'Select a track to focus on one area.',
+    sortOldestFirst: 'Show oldest first',
+    sortNewestFirst: 'Show newest first',
+    certificateLinkLabel: 'View completion certificate',
     branches: {
       engineering: 'Software engineering',
       academic: 'Teaching & academia',
       leadership: 'Campus & community',
+      aiData: 'AI & Data Science',
     },
     entries: [
+      {
+        id: 'gci-world-training',
+        branch: 'aiData',
+        title: 'AI & Data Science Trainee',
+        organization: 'GCI World, Matsuo Lab, The University of Tokyo',
+        period: 'Apr - Aug 2026',
+        startDate: '2026-04',
+        arrangement: 'Professional training',
+        summary:
+          'Completed 14 weekly lessons covering Python fundamentals and core Machine Learning for Data Science. Applied the material in a Data Science competition and a final project developing a data-driven business proposal from a given scenario and dataset.',
+        proofUrl:
+          '/certificates/GCI%20World%20April%20MatsuoLab%20TokyoU%20-%20Raden%20Francisco%20Trianto%20Bratadiningrat.pdf',
+      },
+      {
+        id: 'data-annotation',
+        branch: 'aiData',
+        title: 'AI Annotation',
+        organization: 'Data annotation platform',
+        period: 'Sep 2026',
+        startDate: '2026-09',
+        arrangement: 'Freelance',
+        summary:
+          'Annotated model prompts and outputs, compared and evaluated two models, created prompts and evaluation rubrics, and used Harbor and OpenCode to run and task agentic models in a medium-sized codebase.',
+      },
       {
         id: 'sinerdigi',
         branch: 'engineering',
         title: 'Full-Stack Developer (Freelance)',
         organization: 'PT Sinerdigi Teknologi Indonesia',
         period: 'Apr 2025 - Mar 2026',
+        startDate: '2025-04',
         arrangement: 'Remote',
         summary:
           'Built a distributed queue-management system spanning five components, with real-time updates between teller and display clients.',
@@ -96,6 +161,7 @@ const en = {
         title: 'Software Engineer Intern',
         organization: 'PT Akhdani Reka Solusi',
         period: 'Jun 2025 - Sep 2025',
+        startDate: '2025-06',
         arrangement: 'Onsite',
         summary:
           'Prototyped a multilingual hotel check-in kiosk by connecting a .NET desktop shell to a Laravel and Vue.js application, including simulated payment and room-key devices.',
@@ -106,6 +172,7 @@ const en = {
         title: 'Frontend Developer',
         organization: 'Pemilu HMIF 2025',
         period: 'Oct 2024 - Feb 2025',
+        startDate: '2024-10',
         arrangement: 'Onsite',
         summary:
           'Built a responsive election platform for more than 700 student voters and helped three junior developers follow shared UI and review practices.',
@@ -116,6 +183,7 @@ const en = {
         title: 'Full-Stack Developer (Freelance)',
         organization: 'Pemilu HIMA ILKOM 2021',
         period: 'Oct 2021 - Dec 2021',
+        startDate: '2021-10',
         arrangement: 'Remote',
         summary:
           'Co-built a digital voting platform that processed over 1,000 validated votes and maintained 100% uptime throughout the three-day election.',
@@ -126,6 +194,7 @@ const en = {
         title: 'Computational Science and Engineering Laboratory Assistant',
         organization: 'STEI ITB',
         period: 'Aug 2024 - Aug 2026',
+        startDate: '2024-08',
         arrangement: 'Onsite',
         summary:
           'Supported lab operations and course delivery, and helped recruit and evaluate new assistant cohorts. Selected as one of 12 assistants from more than 50 applicants.',
@@ -136,6 +205,7 @@ const en = {
         title: 'Course Assistant, IF2224 Formal Language and Automata Theory',
         organization: 'STEI ITB',
         period: 'Aug 2025 - Jul 2026',
+        startDate: '2025-08',
         arrangement: 'Onsite',
         summary:
           'Designed a four-milestone compiler and interpreter capstone, wrote technical guides, and supported students with code reviews and debugging.',
@@ -146,6 +216,7 @@ const en = {
         title: 'Course Assistant, IF2211 Algorithm Strategies',
         organization: 'STEI ITB',
         period: 'Jan 2025 - Jul 2025',
+        startDate: '2025-01',
         arrangement: 'Onsite',
         summary:
           'Developed six course projects around core algorithmic strategies and evaluated implementations for efficiency, complexity, and edge cases.',
@@ -156,6 +227,7 @@ const en = {
         title: 'Coordinator / Head Assistant, IF1220 Discrete Mathematics',
         organization: 'STEI ITB',
         period: 'Aug 2024 - Jan 2025',
+        startDate: '2024-08',
         arrangement: 'Onsite',
         summary:
           'Led five teaching assistants and prepared exam question and solution banks for 172 students across three lecture classes.',
@@ -166,6 +238,7 @@ const en = {
         title: 'Character Development Trainer',
         organization: 'Institut Teknologi Bandung',
         period: 'Jul 2023 - Mar 2024',
+        startDate: '2023-07',
         arrangement: 'Onsite',
         summary:
           'Facilitated character-building workshops and reflection sessions for 50 first-year students across four event days.',
@@ -176,6 +249,7 @@ const en = {
         title: 'Academic Division Staff',
         organization: 'HMIF ITB',
         period: 'Jul 2024 - Jun 2025',
+        startDate: '2024-07',
         arrangement: 'Onsite',
         summary:
           'Organized course archives and created exam revision guides and modular study sheets for a student community of more than 700 members.',
@@ -186,6 +260,7 @@ const en = {
         title: 'Content Strategist',
         organization: 'ARKA VIDIA 9.0',
         period: 'Nov 2024 - May 2025',
+        startDate: '2024-11',
         arrangement: 'Onsite',
         summary:
           'Planned promotional campaigns and live coverage for a national technology event, coordinating content with design and marketing teams.',
@@ -196,6 +271,7 @@ const en = {
         title: 'Materials & Methods Staff, SPARTA',
         organization: 'HMIF ITB',
         period: 'Jun 2024 - Sep 2024',
+        startDate: '2024-06',
         arrangement: 'Onsite',
         summary:
           'Designed orientation activities and workshops for more than 300 prospective members, with structured candidate assessment.',
@@ -206,6 +282,7 @@ const en = {
         title: 'Human Resources Staff, Wisokto',
         organization: 'HMIF ITB',
         period: 'Sep 2023 - Nov 2023',
+        startDate: '2023-09',
         arrangement: 'Hybrid',
         summary:
           'Coordinated an eight-person team for graduation events and maintained personnel records for 183 committee members.',
@@ -216,6 +293,7 @@ const en = {
         title: 'Materials & Methods Staff, PAB',
         organization: 'UBV ITB',
         period: 'Aug 2023 - May 2024',
+        startDate: '2023-08',
         arrangement: 'Onsite',
         summary:
           'Created character-building and onboarding activities for more than 100 incoming volleyball club members.',
@@ -226,6 +304,7 @@ const en = {
         title: 'Regeneration Division Staff',
         organization: 'UBV ITB',
         period: 'May 2023 - May 2024',
+        startDate: '2023-05',
         arrangement: 'Onsite',
         summary:
           'Supported leadership succession through candidate screening and interviews, and observed the annual member induction process.',
@@ -236,6 +315,7 @@ const en = {
         title: 'Security Division Staff',
         organization: 'TPB CUP V Oli UBV ITB 2023',
         period: 'Jan 2023 - Mar 2023',
+        startDate: '2023-01',
         arrangement: 'Onsite',
         summary:
           'Managed event safety, spectator flow, and controlled access during an inter-faculty volleyball tournament.',
@@ -246,6 +326,7 @@ const en = {
         title: 'Documentation Staff, Gathering STEI 2.0',
         organization: 'STEI ITB',
         period: 'Aug 2022 - Sep 2022',
+        startDate: '2022-08',
         arrangement: 'Onsite',
         summary:
           'Documented key orientation sessions and ceremonies, organized a shared media archive, and produced a recap video.',
@@ -256,6 +337,7 @@ const en = {
         title: 'Head of Programming',
         organization: 'FCC SMAN 5 Bandung',
         period: 'Aug 2019 - Jun 2022',
+        startDate: '2019-08',
         arrangement: 'Onsite',
         summary:
           'Led a two-year programming curriculum, trained more than 20 students, and built practical projects to prepare members for club admission.',

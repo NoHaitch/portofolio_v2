@@ -1,32 +1,23 @@
 'use client'
 
+import { ArrowDownWideNarrow, ArrowUpWideNarrow, ExternalLink } from 'lucide-react'
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button-variants'
 import { Card, CardContent } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import type { ExperienceBranch, ExperienceEntry } from '@/lib/i18n/types'
 
-const branches: ExperienceBranch[] = ['engineering', 'academic', 'leadership']
-
-const entryOrder: Record<ExperienceBranch, string[]> = {
-  engineering: ['hima-ilkom-election', 'hmif-election', 'sinerdigi', 'akhdani'],
-  academic: ['character-trainer', 'if1220', 'cse-lab', 'if2211', 'if2224'],
-  leadership: [
-    'fcc-programming',
-    'gathering-stei',
-    'tpb-cup',
-    'regeneration-ubv',
-    'pab-ubv',
-    'wisokto',
-    'sparta-hmif',
-    'hmif-academic',
-    'arka-vidia',
-  ],
-}
+const branches: ExperienceBranch[] = ['engineering', 'academic', 'leadership', 'aiData']
 
 type ExperienceTimelineProps = {
   entries: ExperienceEntry[]
   branchLabels: Record<ExperienceBranch, string>
   tabsLabel: string
   selectionHint: string
+  sortOldestFirst: string
+  sortNewestFirst: string
+  certificateLinkLabel: string
 }
 
 export function ExperienceTimeline({
@@ -34,10 +25,18 @@ export function ExperienceTimeline({
   branchLabels,
   tabsLabel,
   selectionHint,
+  sortOldestFirst,
+  sortNewestFirst,
+  certificateLinkLabel,
 }: ExperienceTimelineProps) {
+  const [newestFirst, setNewestFirst] = useState(true)
+
   return (
     <Tabs defaultValue={branches[0]} className="experience-timeline gap-4">
-      <TabsList aria-label={tabsLabel} className="bg-muted grid w-full grid-cols-3 rounded-xl p-1">
+      <TabsList
+        aria-label={tabsLabel}
+        className="bg-muted grid w-full grid-cols-2 rounded-xl p-1 sm:grid-cols-4"
+      >
         {branches.map((branch) => {
           return (
             <TabsTrigger
@@ -55,13 +54,31 @@ export function ExperienceTimeline({
         })}
       </TabsList>
 
-      <p className="text-muted-foreground -mt-1 text-sm">{selectionHint}</p>
+      <div className="-mt-1 flex items-center justify-between gap-3">
+        <p className="text-muted-foreground text-sm">{selectionHint}</p>
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          aria-label={newestFirst ? sortOldestFirst : sortNewestFirst}
+          title={newestFirst ? sortOldestFirst : sortNewestFirst}
+          onClick={() => setNewestFirst((current) => !current)}
+        >
+          {newestFirst ? (
+            <ArrowDownWideNarrow aria-hidden="true" className="size-4" />
+          ) : (
+            <ArrowUpWideNarrow aria-hidden="true" className="size-4" />
+          )}
+        </Button>
+      </div>
 
       {branches.map((branch) => {
-        const order = entryOrder[branch]
         const branchEntries = entries
           .filter((entry) => entry.branch === branch)
-          .sort((left, right) => order.indexOf(left.id) - order.indexOf(right.id))
+          .sort((left, right) => {
+            const dateOrder = left.startDate.localeCompare(right.startDate)
+            return newestFirst ? -dateOrder : dateOrder
+          })
 
         return (
           <TabsContent key={branch} value={branch} data-branch={branch} className="mt-0">
@@ -96,6 +113,21 @@ export function ExperienceTimeline({
                       <p className="text-muted-foreground mt-2 text-sm leading-5">
                         {entry.summary}
                       </p>
+                      {entry.proofUrl && (
+                        <a
+                          href={entry.proofUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={buttonVariants({
+                            variant: 'outline',
+                            size: 'sm',
+                            className: 'mt-3',
+                          })}
+                        >
+                          {certificateLinkLabel}
+                          <ExternalLink aria-hidden="true" className="size-4" />
+                        </a>
+                      )}
                     </CardContent>
                   </Card>
                 </li>

@@ -20,6 +20,9 @@ export default async function ExperiencePage({ params }: { params: Promise<{ loc
         branchLabels={messages.branches}
         tabsLabel={messages.tabsLabel}
         selectionHint={messages.parallelNote}
+        sortOldestFirst={messages.sortOldestFirst}
+        sortNewestFirst={messages.sortNewestFirst}
+        certificateLinkLabel={messages.certificateLinkLabel}
       />
     </main>
   )

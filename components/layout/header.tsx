@@ -81,7 +81,7 @@ export default function Header({ locale }: { locale: Locale }) {
           >
             <SelectTrigger
               aria-label={messages.languageLabel}
-              className="border-border bg-background hover:bg-accent h-9 w-[84px] rounded-full px-2 text-xs data-[size=default]:h-9 sm:text-sm"
+              className="border-border bg-background hover:bg-accent h-9 w-[84px] rounded-full px-2 text-xs data-[size=default]:h-9 max-[400px]:w-[76px] sm:text-sm"
             >
               <SelectValue>
                 {(value: string | null) => {

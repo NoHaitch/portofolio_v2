@@ -7,7 +7,7 @@ const ja = {
     label: 'メインナビゲーション',
     home: 'ホーム',
     education: '学歴',
-    experience: '職歴',
+    experience: '専門経験',
     contact: 'お問い合わせ',
   },
   languageLabel: '言語を選択',
@@ -18,12 +18,48 @@ const ja = {
   },
   home: {
     eyebrow: 'ソフトウェアエンジニア · インドネシア',
-    roles: ['システムエンジニアリング', 'AI・データサイエンス', 'サイバーセキュリティ'],
+    roles: ['Systems engineering', 'AI & Data Science', 'Cyber security', 'Software Engineer'],
     introduction:
       'バンドン工科大学で情報工学を学び、セキュリティ、信頼性の高いシステム、有用なデータを大切にした実践的なソフトウェアを開発しています。',
     portraitAlt: '卒業式のFrancisco Trianto',
     projects: 'プロジェクトを見る',
     contact: 'お問い合わせ',
+    scrollHint: 'スクロールして詳しく見る',
+    philosophyQuote:
+      'Jack of all trades, master of none, but oftentimes better than master of one.',
+    expertiseLabel: '専門分野',
+    expertiseAreas: [
+      {
+        title: 'ソフトウェアエンジニアリング',
+        description:
+          'ユーザー向け機能やAPIから、保守しやすいアプリケーション設計まで、ソフトウェアを一貫して構築します。',
+      },
+      {
+        title: 'AI・データサイエンス',
+        description:
+          'Pythonと機械学習の基礎を活用してデータを分析し、モデルを構築して性能を評価します。',
+      },
+      {
+        title: 'サイバーセキュリティ',
+        description:
+          'リスクや信頼境界を把握し、システムの障害や悪用の可能性を考慮しながら、安全性を意識して開発します。',
+      },
+      {
+        title: 'システムエンジニアリング',
+        description:
+          'Linuxやネットワークから分散サービスまで、システム全体の連携と信頼性を考えて設計します。',
+      },
+      {
+        title: 'Operations & DevOps',
+        description:
+          'システム工学とあわせてDevOpsの基礎も学び、デプロイ、自動化、運用時の信頼性について理解を深めました。',
+      },
+      {
+        title: 'Agentic coding',
+        description:
+          'Agentic codingツールの動向を追い、未知のコードの把握や実装の効率化、範囲を定めたタスクに活用しつつ、出力を確認します。',
+      },
+    ],
   },
   education: {
     eyebrow: 'プロフィール',
@@ -62,26 +98,56 @@ const ja = {
     highSchoolHonorsLabel: '学業表彰',
     highSchoolHonors: ['優等生。クラス1位、学校全体で上位3位以内。'],
     certificate: '学位証明書を見る',
-    certificateLabel: '大学の学位証明書を見る（新しいタブで開きます）',
+    certificateLabel: '大学の学位証明書を見る',
   },
   experience: {
-    eyebrow: 'キャリアログ',
-    title: '職務経験',
-    introduction: 'ソフトウェア開発、教育、学生組織での活動を時系列でまとめています。',
-    tabsLabel: '職務分野',
-    parallelNote: '職歴は古い順に並んでいます。分野を選ぶと、その分野に絞って表示できます。',
+    eyebrow: '専門分野と活動',
+    title: '職務・専門経験',
+    introduction:
+      'ソフトウェア開発、AI・データサイエンス、教育、リーダーシップに関する職務・学業・コミュニティ活動を紹介します。',
+    tabsLabel: '経験分野',
+    parallelNote: '分野を選ぶと、その分野に絞って表示できます。',
+    sortOldestFirst: '古い順に表示',
+    sortNewestFirst: '新しい順に表示',
+    certificateLinkLabel: '修了証を見る',
     branches: {
       engineering: 'ソフトウェア開発',
       academic: '教育・アカデミア',
       leadership: '学生組織・コミュニティ',
+      aiData: 'AI・データサイエンス',
     },
     entries: [
+      {
+        id: 'gci-world-training',
+        branch: 'aiData',
+        title: 'AI・データサイエンス研修',
+        organization: 'GCI World、東京大学 松尾研究室',
+        period: '2026年4月 - 8月',
+        startDate: '2026-04',
+        arrangement: '専門研修',
+        summary:
+          'Pythonの基礎とData Scienceにおける主要なMachine Learningを学ぶ全14回の週次講義を修了しました。Data Scienceコンペティションに参加し、提示されたシナリオとデータをもとにデータ活用型の事業提案を作成する最終課題に取り組みました。',
+        proofUrl:
+          '/certificates/GCI%20World%20April%20MatsuoLab%20TokyoU%20-%20Raden%20Francisco%20Trianto%20Bratadiningrat.pdf',
+      },
+      {
+        id: 'data-annotation',
+        branch: 'aiData',
+        title: 'AIアノテーション',
+        organization: 'データアノテーションプラットフォーム',
+        period: '2026年9月',
+        startDate: '2026-09',
+        arrangement: 'フリーランス',
+        summary:
+          'AIモデルのプロンプトと出力をアノテーションし、2つのモデルを比較・評価しました。また、プロンプトと評価ルーブリックを作成し、中規模のコードベースでHarborとOpenCodeを使ってエージェント型モデルを実行・指示しました。',
+      },
       {
         id: 'sinerdigi',
         branch: 'engineering',
         title: 'フルスタック開発者（フリーランス）',
         organization: 'PT Sinerdigi Teknologi Indonesia',
         period: '2025年4月 - 2026年3月',
+        startDate: '2025-04',
         arrangement: 'リモート',
         summary:
           '5つのコンポーネントからなる分散型待ち行列管理システムを構築し、窓口端末と表示端末間のリアルタイム更新を実現しました。',
@@ -92,6 +158,7 @@ const ja = {
         title: 'ソフトウェアエンジニアインターン',
         organization: 'PT Akhdani Reka Solusi',
         period: '2025年6月 - 2025年9月',
+        startDate: '2025-06',
         arrangement: '出社',
         summary:
           '.NETデスクトップシェルとLaravel・Vue.jsアプリを連携し、決済やルームキー機器をシミュレートする多言語ホテルチェックイン端末を試作しました。',
@@ -102,6 +169,7 @@ const ja = {
         title: 'フロントエンド開発者',
         organization: 'Pemilu HMIF 2025',
         period: '2024年10月 - 2025年2月',
+        startDate: '2024-10',
         arrangement: '出社',
         summary:
           '700人以上の学生が利用するレスポンシブな選挙プラットフォームを開発し、3人の後輩開発者とUIパターンやレビュー手法を整えました。',
@@ -112,6 +180,7 @@ const ja = {
         title: 'フルスタック開発者（フリーランス）',
         organization: 'Pemilu HIMA ILKOM 2021',
         period: '2021年10月 - 2021年12月',
+        startDate: '2021-10',
         arrangement: 'リモート',
         summary:
           '1,000件以上の有効票を処理するオンライン投票システムを共同開発し、3日間の選挙期間中に100%の稼働率を達成しました。',
@@ -122,6 +191,7 @@ const ja = {
         title: '計算科学・工学研究室アシスタント',
         organization: 'STEI ITB',
         period: '2024年8月 - 2026年8月',
+        startDate: '2024-08',
         arrangement: '出社',
         summary:
           '研究室運営と授業を支援し、新しいアシスタントの採用・評価にも携わりました。50人以上の応募者から選ばれた12人の一人です。',
@@ -132,6 +202,7 @@ const ja = {
         title: 'IF2224形式言語とオートマトン理論 ティーチングアシスタント',
         organization: 'STEI ITB',
         period: '2025年8月 - 2026年7月',
+        startDate: '2025-08',
         arrangement: '出社',
         summary:
           '4段階のコンパイラ・インタプリタ最終課題を設計し、技術資料の作成、コードレビュー、デバッグ支援を行いました。',
@@ -142,6 +213,7 @@ const ja = {
         title: 'IF2211アルゴリズム戦略 ティーチングアシスタント',
         organization: 'STEI ITB',
         period: '2025年1月 - 2025年7月',
+        startDate: '2025-01',
         arrangement: '出社',
         summary:
           'アルゴリズム戦略に関する6つの課題を作成し、効率性、計算量、境界ケースを評価しました。',
@@ -152,6 +224,7 @@ const ja = {
         title: 'IF1220離散数学 コーディネーター／主任アシスタント',
         organization: 'STEI ITB',
         period: '2024年8月 - 2025年1月',
+        startDate: '2024-08',
         arrangement: '出社',
         summary:
           '5人のティーチングアシスタントを率い、3クラス172人の学生向けに試験問題と解答の資料を整備しました。',
@@ -162,6 +235,7 @@ const ja = {
         title: '人間形成プログラムトレーナー',
         organization: 'Institut Teknologi Bandung',
         period: '2023年7月 - 2024年3月',
+        startDate: '2023-07',
         arrangement: '出社',
         summary:
           '4日間のイベントを通じて、50人の新入生向けに人間形成ワークショップと振り返りの場を進行しました。',
@@ -172,6 +246,7 @@ const ja = {
         title: '学術部門スタッフ',
         organization: 'HMIF ITB',
         period: '2024年7月 - 2025年6月',
+        startDate: '2024-07',
         arrangement: '出社',
         summary:
           '700人以上の学生コミュニティ向けに講義資料を整理し、試験対策ガイドと学習シートを作成しました。',
@@ -182,6 +257,7 @@ const ja = {
         title: 'コンテンツストラテジスト',
         organization: 'ARKA VIDIA 9.0',
         period: '2024年11月 - 2025年5月',
+        startDate: '2024-11',
         arrangement: '出社',
         summary:
           '全国規模のテクノロジーイベントに向けたプロモーション企画とライブ報道を、デザイン・マーケティングチームと連携して行いました。',
@@ -192,6 +268,7 @@ const ja = {
         title: 'SPARTA 企画・運営スタッフ',
         organization: 'HMIF ITB',
         period: '2024年6月 - 2024年9月',
+        startDate: '2024-06',
         arrangement: '出社',
         summary:
           '300人以上の入会希望者向けにオリエンテーションやワークショップを企画し、候補者の評価も行いました。',
@@ -202,6 +279,7 @@ const ja = {
         title: 'Wisokto 人事スタッフ',
         organization: 'HMIF ITB',
         period: '2023年9月 - 2023年11月',
+        startDate: '2023-09',
         arrangement: 'ハイブリッド',
         summary:
           '卒業式イベントを担当する8人のチームを調整し、委員会メンバー183人の人員データを管理しました。',
@@ -212,6 +290,7 @@ const ja = {
         title: 'PAB 企画・運営スタッフ',
         organization: 'UBV ITB',
         period: '2023年8月 - 2024年5月',
+        startDate: '2023-08',
         arrangement: '出社',
         summary:
           'バレーボールクラブに入る100人以上の新入生向けに、人間形成とオリエンテーション活動を企画しました。',
@@ -222,6 +301,7 @@ const ja = {
         title: '世代交代部門スタッフ',
         organization: 'UBV ITB',
         period: '2023年5月 - 2024年5月',
+        startDate: '2023-05',
         arrangement: '出社',
         summary:
           '候補者の選考や面接を通じてリーダー継承を支援し、年次メンバー受け入れの運営を見守りました。',
@@ -232,6 +312,7 @@ const ja = {
         title: 'TPB CUP セキュリティ部門スタッフ',
         organization: 'TPB CUP V Oli UBV ITB 2023',
         period: '2023年1月 - 2023年3月',
+        startDate: '2023-01',
         arrangement: '出社',
         summary:
           '学部対抗バレーボール大会で安全管理、観客の誘導、関係者エリアの入場管理を担当しました。',
@@ -242,6 +323,7 @@ const ja = {
         title: 'Gathering STEI 2.0 記録スタッフ',
         organization: 'STEI ITB',
         period: '2022年8月 - 2022年9月',
+        startDate: '2022-08',
         arrangement: '出社',
         summary:
           'オリエンテーションや式典を撮影し、共有メディア資料を整理してイベントのダイジェスト動画を制作しました。',
@@ -252,6 +334,7 @@ const ja = {
         title: 'プログラミング部門代表',
         organization: 'FCC SMAN 5 Bandung',
         period: '2019年8月 - 2022年6月',
+        startDate: '2019-08',
         arrangement: '出社',
         summary:
           '2年間のプログラミングカリキュラムを率い、20人以上の生徒を指導し、入部選考に向けた実践課題を作成しました。',

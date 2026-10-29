@@ -35,7 +35,13 @@ The repository's ESLint command currently encounters an ESLint 10 and React plug
 
 The homepage is implemented in [app/[locale]/page.tsx](../app/%5Blocale%5D/page.tsx).
 
-It presents Francisco's name, location and role, rotating interest labels, a short introduction, a graduation portrait, and calls to view projects or contact.
+It presents Francisco's name, location and role, rotating interest labels, a short introduction, a graduation portrait, calls to view projects or contact, and a scroll cue.
+
+The hero fills the viewport below the site header.
+
+The quote and rotating role labels stay in English across all locales to preserve their original phrasing.
+
+The quote introduces his generalist approach, followed by cards for software engineering, AI and Data Science, cybersecurity, systems engineering, Operations & DevOps, and agentic coding with a concise description of his foundations in each area.
 
 The projects action currently points to `/projects`, which does not yet have a route.
 
@@ -57,7 +63,11 @@ The work history timeline is implemented in [app/[locale]/experience/page.tsx](.
 
 It groups software engineering, teaching and academic support, and campus and community work into selectable tabs.
 
-Each tab presents its roles in chronological order along one timeline, with cards alternating around a shared center line on larger screens.
+Each tab presents its roles along one timeline, with cards alternating around a shared center line on larger screens.
+
+Roles are sorted by their ISO-formatted `startDate` (`YYYY-MM`), newest first by default.
+
+The sort button lets visitors switch between newest-first and oldest-first order without changing the localized display period.
 
 The entries and their localized summaries are stored in the locale dictionaries.
 
