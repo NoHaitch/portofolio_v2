@@ -5,6 +5,7 @@ const ja = {
     'セキュリティ、システム、AI、実用的なプロダクト開発に取り組むソフトウェアエンジニア、Francisco Triantoのポートフォリオです。',
   navigation: {
     label: 'メインナビゲーション',
+    projects: 'プロジェクト',
     home: 'ホーム',
     education: '学歴',
     experience: '専門経験',
@@ -15,6 +16,55 @@ const ja = {
   switchToDark: 'ダークモードに切り替え',
   footer: {
     copyright: '© 2026 Francisco Trianto',
+    tagline: 'セキュリティ、システム、AIに取り組むソフトウェアエンジニア。インドネシア在住。',
+    quickLinks: 'クイックリンク',
+    connect: 'つながる',
+    backToTop: 'ページの先頭へ',
+    aboutSite: 'このサイトについて',
+  },
+  aboutSite: {
+    eyebrow: 'このサイトについて',
+    title: '眺めるだけでなく、読んでもらうためのポートフォリオ。',
+    introduction:
+      'このサイトはウェブ上の私の拠点です。作品、経験、学歴を、高速でアクセシブルな形で一か所にまとめ、4言語で提供しています。',
+    purposeHeading: '目的',
+    purposeItems: [
+      'ソフトウェア開発からAI、サイバーセキュリティまで、私が何者で何ができるかを伝えること。',
+      'プロジェクト、経験、学歴を構造化して記録すること。',
+      '採用担当者や協力者、チームメイトが気軽に連絡できるようにすること。',
+    ],
+    principlesHeading: '作り方の方針',
+    principles: [
+      {
+        title: '静的生成を優先',
+        description:
+          'リポジトリ内の構造化されたコンテンツから事前にページを生成するため、バックエンドなしで素早く表示されます。',
+      },
+      {
+        title: '標準でアクセシブル',
+        description:
+          'ナビゲーションは常に表示され、フォーカス表示も明確で、ライトとダークの両テーマで十分なコントラストを保ちます。',
+      },
+      {
+        title: '4つの言語',
+        description:
+          '英語、インドネシア語、日本語、簡体字中国語が同じ構成を共有し、引用文と役割名は英語のままにしています。',
+      },
+      {
+        title: 'JavaScriptは最小限',
+        description:
+          '処理の多くはサーバーコンポーネントで行い、クライアント側はテーマ、言語、役割表示のアニメーションに限っています。',
+      },
+    ],
+    stackHeading: '技術スタックとツール',
+    stack: [
+      { label: 'フレームワーク', items: ['Next.js', 'React', 'TypeScript'] },
+      { label: 'スタイルとUI', items: ['Tailwind CSS', 'shadcn/ui', 'Base UI', 'Lucide'] },
+      { label: 'ツール', items: ['Bun', 'Prettier', 'ESLint'] },
+    ],
+    sourceHeading: 'ソースコード',
+    sourceDescription: 'このサイトのコードはすべて公開しています。ぜひご覧ください。',
+    sourceLink: 'GitHubで見る',
   },
   home: {
     eyebrow: 'ソフトウェアエンジニア · インドネシア',
@@ -60,6 +110,71 @@ const ja = {
           'Agentic codingツールの動向を追い、未知のコードの把握や実装の効率化、範囲を定めたタスクに活用しつつ、出力を確認します。',
       },
     ],
+  },
+  projects: {
+    eyebrow: '制作物と活動',
+    title: 'プロジェクト・活動',
+    introduction:
+      'これまでに作ったものや、学びを得たコミュニティを、少しカジュアルな視点で紹介します。',
+    projectsHeading: '主なプロジェクト',
+    activitiesHeading: '活動・ハイライト',
+    activitiesIntroduction:
+      '仕事の詳細な経歴とは重複しないように、ソフトウェア開発以外の印象的な経験をまとめました。',
+    projects: [
+      {
+        title: '分散型キュー管理システム',
+        category: '業務プロジェクト',
+        period: '2025年4月 - 2026年3月',
+        summary:
+          '5つのコンポーネントからなるキュー管理基盤を構築し、窓口端末と表示端末間のリアルタイム更新を実現しました。',
+        tags: ['分散システム', 'リアルタイム更新', 'キュー管理'],
+      },
+      {
+        title: '多言語ホテルチェックイン端末',
+        category: 'インターンプロジェクト',
+        period: '2025年6月 - 2025年9月',
+        summary:
+          '.NETデスクトップシェルとLaravel・Vue.jsアプリを連携し、決済とルームキー機器の操作を試作しました。',
+        tags: ['.NET', 'Laravel', 'Vue.js', '機器連携'],
+      },
+      {
+        title: 'HMIF学生選挙システム',
+        category: '学内プロジェクト',
+        period: '2024年10月 - 2025年2月',
+        summary:
+          '700人以上の学生が利用するレスポンシブな選挙プラットフォームを開発し、後輩開発者とUIやレビュー手法を整えました。',
+        tags: ['フロントエンド', '選挙プラットフォーム', '700人以上'],
+      },
+      {
+        title: 'HIMA ILKOMオンライン投票',
+        category: 'フリーランスプロジェクト',
+        period: '2021年10月 - 2021年12月',
+        summary:
+          '1,000件以上の有効票を処理し、3日間の選挙期間中に100%の稼働率を達成した投票システムを共同開発しました。',
+        tags: ['フルスタック', 'デジタル投票', '信頼性'],
+      },
+    ],
+    activityHighlights: [
+      {
+        title: '人間形成ワークショップ',
+        description:
+          '4日間のイベントを通じて、50人の新入生向けにワークショップと振り返りの場を進行しました。',
+        relatedRoute: 'experience',
+      },
+      {
+        title: '学内・バレーボールコミュニティ',
+        description:
+          'バンドン工科大学バレーボール部に参加し、100人以上の新入部員向け活動の企画に携わりました。',
+        relatedRoute: 'experience',
+      },
+      {
+        title: '高校数学競技',
+        description: 'バンドン市レベルの数学OSKに2回参加し、優等生として卒業しました。',
+        relatedRoute: 'education',
+      },
+    ],
+    viewExperience: '職務経験を見る',
+    viewEducation: '学歴を見る',
   },
   education: {
     eyebrow: 'プロフィール',

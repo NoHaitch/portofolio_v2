@@ -86,3 +86,9 @@ Use a small mono eyebrow to identify the page context, followed by one clear pag
 Keep the homepage portrait as the primary visual signature, framed by a restrained accent surface.
 
 Use the same page spacing, type hierarchy, and card treatment across routes.
+
+The header keeps all navigation links visible instead of using a menu, and wraps them to a second row on small screens.
+
+The footer repeats the navigation as quick links, adds social links, and ends with the copyright and a back-to-top link.
+
+Footer headings use the mono eyebrow style in the primary color.

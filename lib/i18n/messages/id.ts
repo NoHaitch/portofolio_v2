@@ -5,6 +5,7 @@ const id = {
     'Portofolio Francisco Trianto, software engineer yang berfokus pada keamanan, sistem, AI, dan pengembangan produk yang praktis.',
   navigation: {
     label: 'Navigasi utama',
+    projects: 'Proyek',
     home: 'Beranda',
     education: 'Pendidikan',
     experience: 'Pengalaman',
@@ -15,6 +16,55 @@ const id = {
   switchToDark: 'Beralih ke mode gelap',
   footer: {
     copyright: '© 2026 Francisco Trianto',
+    tagline: 'Software engineer dengan fokus pada keamanan, sistem, dan AI. Berbasis di Indonesia.',
+    quickLinks: 'Tautan cepat',
+    connect: 'Terhubung',
+    backToTop: 'Kembali ke atas',
+    aboutSite: 'Tentang situs ini',
+  },
+  aboutSite: {
+    eyebrow: 'Tentang situs ini',
+    title: 'Portofolio yang dibuat untuk dibaca, bukan sekadar dilihat.',
+    introduction:
+      'Situs ini adalah rumah saya di web. Isinya karya, pengalaman, dan pendidikan saya dalam satu tempat yang cepat, mudah diakses, dan tersedia dalam empat bahasa.',
+    purposeHeading: 'Untuk apa situs ini',
+    purposeItems: [
+      'Menunjukkan siapa saya dan apa yang bisa saya lakukan, dari rekayasa perangkat lunak hingga AI dan keamanan siber.',
+      'Menyimpan catatan terstruktur tentang proyek, pengalaman, dan pendidikan saya.',
+      'Memudahkan rekruter, kolaborator, dan rekan untuk menghubungi saya.',
+    ],
+    principlesHeading: 'Cara situs ini dibuat',
+    principles: [
+      {
+        title: 'Statis lebih dulu',
+        description:
+          'Halaman dibuat lebih awal dari konten terstruktur di repositori, sehingga cepat dimuat tanpa backend.',
+      },
+      {
+        title: 'Mudah diakses sejak awal',
+        description:
+          'Navigasi selalu terlihat, status fokus jelas, dan warna tetap kontras di tema terang maupun gelap.',
+      },
+      {
+        title: 'Empat bahasa',
+        description:
+          'Bahasa Inggris, Indonesia, Jepang, dan Mandarin Sederhana berbagi satu struktur, dengan kutipan dan nama peran tetap dalam bahasa Inggris.',
+      },
+      {
+        title: 'Ringan JavaScript',
+        description:
+          'Server component mengerjakan sebagian besar tugas, dan kode klien dibatasi untuk tema, bahasa, dan animasi peran.',
+      },
+    ],
+    stackHeading: 'Teknologi dan alat',
+    stack: [
+      { label: 'Framework', items: ['Next.js', 'React', 'TypeScript'] },
+      { label: 'Gaya dan UI', items: ['Tailwind CSS', 'shadcn/ui', 'Base UI', 'Lucide'] },
+      { label: 'Perkakas', items: ['Bun', 'Prettier', 'ESLint'] },
+    ],
+    sourceHeading: 'Kode sumber',
+    sourceDescription: 'Seluruh situs ini bersifat open source. Silakan lihat-lihat.',
+    sourceLink: 'Lihat di GitHub',
   },
   home: {
     eyebrow: 'Software engineer · Indonesia',
@@ -60,6 +110,72 @@ const id = {
           'Saya mengikuti perkembangan alat agentic coding dan menggunakannya untuk memahami kode yang belum familiar, mempercepat implementasi, serta menangani tugas terarah sambil meninjau hasilnya.',
       },
     ],
+  },
+  projects: {
+    eyebrow: 'Karya pilihan & lainnya',
+    title: 'Proyek dan aktivitas',
+    introduction:
+      'Sekilas lebih dekat pada hal-hal yang saya bangun dan komunitas tempat saya belajar.',
+    projectsHeading: 'Proyek pilihan',
+    activitiesHeading: 'Aktivitas & sorotan',
+    activitiesIntroduction:
+      'Beberapa pengalaman bermakna di luar pembuatan perangkat lunak, tanpa mengulang seluruh linimasa pekerjaan.',
+    projects: [
+      {
+        title: 'Sistem Antrean Terdistribusi',
+        category: 'Proyek profesional',
+        period: 'Apr 2025 - Mar 2026',
+        summary:
+          'Membangun platform manajemen antrean dengan lima komponen dan pembaruan real-time antara klien loket dan layar.',
+        tags: ['Sistem terdistribusi', 'Pembaruan real-time', 'Manajemen antrean'],
+      },
+      {
+        title: 'Kios Check-in Hotel Multibahasa',
+        category: 'Proyek magang',
+        period: 'Jun 2025 - Sep 2025',
+        summary:
+          'Menghubungkan aplikasi desktop .NET dengan aplikasi Laravel dan Vue.js, sekaligus membuat prototipe interaksi perangkat pembayaran dan kartu kamar.',
+        tags: ['.NET', 'Laravel', 'Vue.js', 'Integrasi perangkat'],
+      },
+      {
+        title: 'Pemilu Mahasiswa HMIF',
+        category: 'Proyek kampus',
+        period: 'Okt 2024 - Feb 2025',
+        summary:
+          'Membangun platform pemilu responsif untuk lebih dari 700 pemilih mahasiswa dan membantu pengembang junior menerapkan pola UI serta code review.',
+        tags: ['Frontend', 'Platform pemilu', '700+ pemilih'],
+      },
+      {
+        title: 'Pemungutan Suara Digital HIMA ILKOM',
+        category: 'Proyek freelance',
+        period: 'Okt 2021 - Des 2021',
+        summary:
+          'Bersama tim membangun platform pemungutan suara digital yang memproses lebih dari 1.000 suara tervalidasi dengan uptime 100% selama pemilihan tiga hari.',
+        tags: ['Full-stack', 'Pemungutan suara digital', 'Keandalan'],
+      },
+    ],
+    activityHighlights: [
+      {
+        title: 'Lokakarya pengembangan karakter',
+        description:
+          'Memfasilitasi lokakarya dan sesi refleksi untuk 50 mahasiswa baru dalam empat hari kegiatan.',
+        relatedRoute: 'experience',
+      },
+      {
+        title: 'Komunitas kampus dan bola voli',
+        description:
+          'Berkontribusi di Unit Bola Voli ITB dan membantu menyusun kegiatan orientasi untuk lebih dari 100 anggota baru.',
+        relatedRoute: 'experience',
+      },
+      {
+        title: 'Kompetisi matematika SMA',
+        description:
+          'Dua kali mengikuti OSK Matematika tingkat Kota Bandung dan lulus sebagai siswa berprestasi.',
+        relatedRoute: 'education',
+      },
+    ],
+    viewExperience: 'Lihat pengalaman',
+    viewEducation: 'Lihat pendidikan',
   },
   education: {
     eyebrow: 'Latar belakang',

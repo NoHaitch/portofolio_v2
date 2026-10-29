@@ -50,7 +50,7 @@ export default async function RootLayout({
       lang={locale}
       className={cn('h-full', 'antialiased', geistMono.variable, figtree.variable)}
     >
-      <body className="flex min-h-screen flex-col">
+      <body id="top" className="flex min-h-screen flex-col">
         <ThemeProvider>
           <Header locale={locale} />
 

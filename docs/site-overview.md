@@ -43,7 +43,19 @@ The quote and rotating role labels stay in English across all locales to preserv
 
 The quote introduces his generalist approach, followed by cards for software engineering, AI and Data Science, cybersecurity, systems engineering, Operations & DevOps, and agentic coding with a concise description of his foundations in each area.
 
-The projects action currently points to `/projects`, which does not yet have a route.
+The projects action links to the localized `/projects` route.
+
+### `/projects` and localized project routes
+
+The projects page is implemented in [app/[locale]/projects/page.tsx](../app/%5Blocale%5D/projects/page.tsx).
+
+It presents a curated set of selected software projects followed by a concise Activities & Highlights section.
+
+Project and activity copy is stored in the locale dictionaries.
+
+Keep the page selective and more visual than the formal Experience route, while grounding claims in verified portfolio content.
+
+Do not add project detail pages, external links, or separate activity routes until there is enough content to support them.
 
 ### `/education` and localized education routes
 
@@ -77,9 +89,17 @@ The contact page is implemented in [app/[locale]/contact/page.tsx](../app/%5Bloc
 
 It groups email, LinkedIn, and GitHub under Professional, and Instagram, X, Medium, LeetCode, and Kaggle under Writing & community.
 
+### `/about-site` and localized about routes
+
+The page is implemented in [app/[locale]/about-site/page.tsx](../app/%5Blocale%5D/about-site/page.tsx).
+
+It explains what the site is for, the principles it is built on, the stack and tools, and links to the GitHub repository.
+
+It is linked from the footer rather than the header navigation.
+
 ### Other route state
 
-There are no project, blog, or research routes yet.
+There are no blog or research routes yet.
 
 The App Router also includes [app/robots.txt](../app/robots.txt), which should be updated from its placeholder sitemap host before deployment.
 
@@ -90,6 +110,9 @@ The App Router also includes [app/robots.txt](../app/robots.txt), which should b
 The shared page shell renders [components/layout/header.tsx](../components/layout/header.tsx), route content, [components/layout/footer.tsx](../components/layout/footer.tsx), and the Sonner toaster.
 
 The header contains primary navigation, a flag-bearing shadcn Select for language switching, and a light/dark theme control.
+Navigation links (Home, Projects, Experience, Education, Contact) are always visible for accessibility.
+On small screens they move to a second full-width row below the logo and controls.
+The footer holds a brand tagline, quick links to every route including About this site, social links, the copyright, and a back-to-top link that targets the `top` id on the body.
 
 The [components/theme-provider.tsx](../components/theme-provider.tsx) persists the selected theme and follows the system preference when no preference has been saved.
 
@@ -159,9 +182,9 @@ Locale dictionaries are typed by [lib/i18n/types.ts](../lib/i18n/types.ts) and l
 
 The header language selector preserves the current route when switching languages.
 
-The homepage, education page, experience page, contact page, shared navigation, theme control labels, and metadata are translated.
+The homepage, projects, education, experience, contact, and about pages, shared navigation, footer, theme control labels, and metadata are translated.
 
-All 16 combinations of the four current pages and four locales are statically generated from the locale route segment.
+All 24 combinations of the six pages and four locales are statically generated from the locale route segment.
 
 When adding a route, add its translations to every locale dictionary and verify its navigation and metadata for each locale.
 
@@ -171,7 +194,8 @@ Keep the shared page structure and visual system consistent across languages.
 
 ## Future content areas
 
-The intended long-term portfolio can add projects, professional experience, writing, research, and activities.
+The intended long-term portfolio can add writing, research, and a fuller about section on the homepage.
+Projects and activities already have a curated route.
 
 Prefer structured content with consistent titles, dates, categories, tags, summaries, links, and optional media.
 

@@ -16,11 +16,26 @@ export type ExperienceEntry = {
   proofUrl?: string
 }
 
+export type PortfolioProject = {
+  title: string
+  category: string
+  period: string
+  summary: string
+  tags: string[]
+}
+
+export type ActivityHighlight = {
+  title: string
+  description: string
+  relatedRoute: 'experience' | 'education'
+}
+
 export type Messages = {
   metadataDescription: string
   navigation: {
     label: string
     home: string
+    projects: string
     education: string
     experience: string
     contact: string
@@ -30,6 +45,25 @@ export type Messages = {
   switchToDark: string
   footer: {
     copyright: string
+    tagline: string
+    quickLinks: string
+    connect: string
+    backToTop: string
+    aboutSite: string
+  }
+  aboutSite: {
+    eyebrow: string
+    title: string
+    introduction: string
+    purposeHeading: string
+    purposeItems: string[]
+    principlesHeading: string
+    principles: { title: string; description: string }[]
+    stackHeading: string
+    stack: { label: string; items: string[] }[]
+    sourceHeading: string
+    sourceDescription: string
+    sourceLink: string
   }
   home: {
     eyebrow: string
@@ -45,6 +79,18 @@ export type Messages = {
       title: string
       description: string
     }[]
+  }
+  projects: {
+    eyebrow: string
+    title: string
+    introduction: string
+    projectsHeading: string
+    activitiesHeading: string
+    activitiesIntroduction: string
+    projects: PortfolioProject[]
+    activityHighlights: ActivityHighlight[]
+    viewExperience: string
+    viewEducation: string
   }
   education: {
     eyebrow: string

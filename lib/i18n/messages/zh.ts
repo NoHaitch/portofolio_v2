@@ -5,6 +5,7 @@ const zh = {
     'Francisco Trianto 的个人作品集，专注于软件工程、安全、系统、人工智能与实践型产品开发。',
   navigation: {
     label: '主导航',
+    projects: '项目',
     home: '首页',
     education: '教育经历',
     experience: '专业经历',
@@ -15,6 +16,51 @@ const zh = {
   switchToDark: '切换到深色模式',
   footer: {
     copyright: '© 2026 Francisco Trianto',
+    tagline: '专注于安全、系统与人工智能的软件工程师，现居印度尼西亚。',
+    quickLinks: '快速链接',
+    connect: '联系方式',
+    backToTop: '回到顶部',
+    aboutSite: '关于本站',
+  },
+  aboutSite: {
+    eyebrow: '关于本站',
+    title: '一个值得细读，而不只是浏览的作品集。',
+    introduction:
+      '这个网站是我在网络上的家。它把我的作品、经历和教育背景集中在一处，速度快、易于访问，并提供四种语言。',
+    purposeHeading: '网站用途',
+    purposeItems: [
+      '展示我是谁、我能做什么，涵盖软件工程、人工智能和网络安全。',
+      '以结构化的方式记录我的项目、经历和教育背景。',
+      '让招聘者、合作者和同行可以方便地联系我。',
+    ],
+    principlesHeading: '构建方式',
+    principles: [
+      {
+        title: '静态优先',
+        description: '页面根据仓库中的结构化内容预先生成，无需后端即可快速加载。',
+      },
+      {
+        title: '默认可访问',
+        description: '导航始终可见，焦点状态清晰，并在浅色和深色主题下都保持足够的对比度。',
+      },
+      {
+        title: '四种语言',
+        description: '英语、印尼语、日语和简体中文共用同一结构，引文和职位名称保留英文。',
+      },
+      {
+        title: '精简 JavaScript',
+        description: '大部分工作由服务器组件完成，客户端代码仅用于主题、语言和职位文字动画。',
+      },
+    ],
+    stackHeading: '技术栈与工具',
+    stack: [
+      { label: '框架', items: ['Next.js', 'React', 'TypeScript'] },
+      { label: '样式与界面', items: ['Tailwind CSS', 'shadcn/ui', 'Base UI', 'Lucide'] },
+      { label: '工具', items: ['Bun', 'Prettier', 'ESLint'] },
+    ],
+    sourceHeading: '源代码',
+    sourceDescription: '整个网站都是开源的，欢迎随意查看。',
+    sourceLink: '在 GitHub 上查看',
   },
   home: {
     eyebrow: '软件工程师 · 印度尼西亚',
@@ -56,6 +102,65 @@ const zh = {
           '我持续关注 Agentic coding 工具，并用它们理解陌生代码、加快实现和处理范围明确的任务，同时审查生成结果。',
       },
     ],
+  },
+  projects: {
+    eyebrow: '精选作品与活动',
+    title: '项目与活动',
+    introduction: '通过轻松一些的方式，看看我参与构建的项目和带给我成长的社群。',
+    projectsHeading: '精选项目',
+    activitiesHeading: '活动与亮点',
+    activitiesIntroduction: '精选几段软件开发之外的经历，不重复展示完整的工作时间线。',
+    projects: [
+      {
+        title: '分布式排队管理系统',
+        category: '专业项目',
+        period: '2025年4月 - 2026年3月',
+        summary: '构建由五个组件组成的排队管理平台，实现柜台客户端与显示客户端之间的实时更新。',
+        tags: ['分布式系统', '实时更新', '排队管理'],
+      },
+      {
+        title: '多语言酒店自助入住终端',
+        category: '实习项目',
+        period: '2025年6月 - 2025年9月',
+        summary: '将 .NET 桌面外壳与 Laravel、Vue.js 应用连接，并制作支付和房卡设备交互原型。',
+        tags: ['.NET', 'Laravel', 'Vue.js', '设备集成'],
+      },
+      {
+        title: 'HMIF 学生选举平台',
+        category: '校园项目',
+        period: '2024年10月 - 2025年2月',
+        summary:
+          '为 700 多名学生选民构建响应式选举平台，并协助初级开发者采用统一的 UI 模式和代码审查实践。',
+        tags: ['前端', '选举平台', '700 多名选民'],
+      },
+      {
+        title: 'HIMA ILKOM 数字投票平台',
+        category: '自由职业项目',
+        period: '2021年10月 - 2021年12月',
+        summary:
+          '共同开发数字投票平台，处理 1,000 多张有效选票，并在三天选举期间保持 100% 可用性。',
+        tags: ['全栈', '数字投票', '可靠性'],
+      },
+    ],
+    activityHighlights: [
+      {
+        title: '品格发展工作坊',
+        description: '在四天活动中，为 50 名新生组织品格发展工作坊和反思讨论。',
+        relatedRoute: 'experience',
+      },
+      {
+        title: '校园与排球社群',
+        description: '参与万隆理工学院排球社，并协助为 100 多名新成员设计入门活动。',
+        relatedRoute: 'experience',
+      },
+      {
+        title: '高中数学竞赛',
+        description: '两次参加万隆市级数学 OSK，并以优秀学生身份毕业。',
+        relatedRoute: 'education',
+      },
+    ],
+    viewExperience: '查看经历',
+    viewEducation: '查看教育经历',
   },
   education: {
     eyebrow: '个人背景',

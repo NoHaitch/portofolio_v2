@@ -5,6 +5,7 @@ const en = {
     'Portfolio of Francisco Trianto, a software engineer focused on security, systems, AI, and practical product delivery.',
   navigation: {
     label: 'Main navigation',
+    projects: 'Projects',
     home: 'Home',
     education: 'Education',
     experience: 'Experience',
@@ -15,6 +16,55 @@ const en = {
   switchToDark: 'Switch to dark mode',
   footer: {
     copyright: '© 2026 Francisco Trianto',
+    tagline: 'Software engineer focused on security, systems, and AI. Based in Indonesia.',
+    quickLinks: 'Quick links',
+    connect: 'Connect',
+    backToTop: 'Back to top',
+    aboutSite: 'About this site',
+  },
+  aboutSite: {
+    eyebrow: 'About this site',
+    title: 'A portfolio built to be read, not just looked at.',
+    introduction:
+      'This site is my home on the web. It collects my work, experience, and education in one place that is fast, accessible, and available in four languages.',
+    purposeHeading: 'What it is for',
+    purposeItems: [
+      'Showing who I am and what I can do, from software engineering to AI and cybersecurity.',
+      'Keeping a structured record of my projects, experience, and education.',
+      'Giving recruiters, collaborators, and teammates an easy way to get in touch.',
+    ],
+    principlesHeading: 'How it is built',
+    principles: [
+      {
+        title: 'Static first',
+        description:
+          'Pages are generated ahead of time from structured content in the repository, so they load quickly without a backend.',
+      },
+      {
+        title: 'Accessible by default',
+        description:
+          'Navigation is always visible, focus states are clear, and colors keep strong contrast in light and dark themes.',
+      },
+      {
+        title: 'Four languages',
+        description:
+          'English, Indonesian, Japanese, and Simplified Chinese share one structure, with the quote and role names kept in English.',
+      },
+      {
+        title: 'Light on JavaScript',
+        description:
+          'Server components do most of the work, and client code is limited to the theme, language, and role animation controls.',
+      },
+    ],
+    stackHeading: 'Stack and tools',
+    stack: [
+      { label: 'Framework', items: ['Next.js', 'React', 'TypeScript'] },
+      { label: 'Styling and UI', items: ['Tailwind CSS', 'shadcn/ui', 'Base UI', 'Lucide'] },
+      { label: 'Tooling', items: ['Bun', 'Prettier', 'ESLint'] },
+    ],
+    sourceHeading: 'Source code',
+    sourceDescription: 'The whole site is open source. Feel free to look around.',
+    sourceLink: 'View on GitHub',
   },
   home: {
     eyebrow: 'Software engineer · Indonesia',
@@ -60,6 +110,72 @@ const en = {
           'I keep up with agentic coding tools and use them to explore unfamiliar code, accelerate implementation, and handle bounded tasks while reviewing their output.',
       },
     ],
+  },
+  projects: {
+    eyebrow: 'Selected work & beyond',
+    title: 'Projects and activities',
+    introduction:
+      'A more hands-on look at the things I have built and the communities I have learned with.',
+    projectsHeading: 'Selected projects',
+    activitiesHeading: 'Activities & highlights',
+    activitiesIntroduction:
+      'A few meaningful experiences beyond building software, collected here without repeating the full work timeline.',
+    projects: [
+      {
+        title: 'Distributed Queue Management',
+        category: 'Professional project',
+        period: 'Apr 2025 - Mar 2026',
+        summary:
+          'Built a queue-management platform across five components, with real-time updates between teller and display clients.',
+        tags: ['Distributed systems', 'Real-time updates', 'Queue management'],
+      },
+      {
+        title: 'Multilingual Hotel Check-in Kiosk',
+        category: 'Internship project',
+        period: 'Jun 2025 - Sep 2025',
+        summary:
+          'Connected a .NET desktop shell to a Laravel and Vue.js application, prototyping payment and room-key device interactions.',
+        tags: ['.NET', 'Laravel', 'Vue.js', 'Device integration'],
+      },
+      {
+        title: 'HMIF Student Election',
+        category: 'Campus project',
+        period: 'Oct 2024 - Feb 2025',
+        summary:
+          'Built a responsive election platform for more than 700 student voters and helped junior developers follow shared UI and review practices.',
+        tags: ['Frontend', 'Election platform', '700+ voters'],
+      },
+      {
+        title: 'HIMA ILKOM Digital Voting',
+        category: 'Freelance project',
+        period: 'Oct 2021 - Dec 2021',
+        summary:
+          'Co-built a digital voting platform that processed over 1,000 validated votes and maintained 100% uptime during the three-day election.',
+        tags: ['Full-stack', 'Digital voting', 'Reliability'],
+      },
+    ],
+    activityHighlights: [
+      {
+        title: 'Character development workshops',
+        description:
+          'Facilitated workshops and reflection sessions for 50 first-year students across four event days.',
+        relatedRoute: 'experience',
+      },
+      {
+        title: 'Campus and volleyball community',
+        description:
+          'Contributed to ITB Volleyball Club and helped create onboarding activities for more than 100 incoming members.',
+        relatedRoute: 'experience',
+      },
+      {
+        title: 'High-school mathematics competitions',
+        description:
+          'Participated twice in the Bandung city-level Mathematics OSK and graduated as an honor student.',
+        relatedRoute: 'education',
+      },
+    ],
+    viewExperience: 'Explore experience',
+    viewEducation: 'Explore education',
   },
   education: {
     eyebrow: 'Background',

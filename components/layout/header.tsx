@@ -27,6 +27,7 @@ export default function Header({ locale }: { locale: Locale }) {
   const messages = getMessages(locale)
   const navItems = [
     { href: '/', label: messages.navigation.home },
+    { href: '/projects', label: messages.navigation.projects },
     { href: '/experience', label: messages.navigation.experience },
     { href: '/education', label: messages.navigation.education },
     { href: '/contact', label: messages.navigation.contact },
@@ -42,7 +43,7 @@ export default function Header({ locale }: { locale: Locale }) {
     <header className="border-border bg-background/90 sticky top-0 z-10 border-b backdrop-blur">
       <nav
         aria-label={messages.navigation.label}
-        className="mx-auto flex max-w-6xl items-center justify-between gap-1 px-3 py-4 sm:gap-5 sm:px-8"
+        className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-2 px-3 py-3 sm:gap-x-5 sm:px-8 md:py-4"
       >
         <Link
           href={getLocalePath(locale, '/')}
@@ -52,26 +53,25 @@ export default function Header({ locale }: { locale: Locale }) {
             <AvatarImage src="/Avatar512.jpg" alt="Francisco Trianto avatar" />
             <AvatarFallback>FT</AvatarFallback>
           </Avatar>
-          <span className="max-[479px]:hidden sm:hidden">Francisco</span>
-          <span className="hidden sm:inline">Francisco Trianto</span>
+          <span>Francisco Trianto</span>
         </Link>
-        <div className="flex items-center gap-0.5 text-xs sm:gap-1 sm:text-sm">
-          <div className="flex items-center gap-0.5 sm:gap-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={getLocalePath(locale, item.href)}
-                aria-current={currentPath === item.href ? 'page' : undefined}
-                className={`hover:bg-accent hover:text-accent-foreground rounded-full px-2 py-2 transition-colors max-[479px]:px-1 max-[400px]:text-[0.68rem] sm:px-3 sm:text-sm ${
-                  currentPath === item.href
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+        <div className="order-3 flex w-full items-center justify-between gap-1 text-sm md:order-2 md:ml-auto md:w-auto md:justify-start">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={getLocalePath(locale, item.href)}
+              aria-current={currentPath === item.href ? 'page' : undefined}
+              className={`hover:bg-accent hover:text-accent-foreground rounded-full px-3 py-2 text-center transition-colors max-md:flex-1 ${
+                currentPath === item.href
+                  ? 'bg-accent text-accent-foreground'
+                  : 'text-muted-foreground'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+        <div className="order-2 ml-auto flex items-center gap-1 md:order-3 md:ml-0">
           <Select
             value={locale}
             onValueChange={(value) => {
@@ -81,7 +81,7 @@ export default function Header({ locale }: { locale: Locale }) {
           >
             <SelectTrigger
               aria-label={messages.languageLabel}
-              className="border-border bg-background hover:bg-accent h-9 w-[84px] rounded-full px-2 text-xs data-[size=default]:h-9 max-[400px]:w-[76px] sm:text-sm"
+              className="border-border bg-background hover:bg-accent h-9 w-[84px] rounded-full px-2 text-xs data-[size=default]:h-9 sm:text-sm"
             >
               <SelectValue>
                 {(value: string | null) => {
@@ -125,7 +125,7 @@ export default function Header({ locale }: { locale: Locale }) {
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
             variant="ghost"
             size="icon"
-            className="size-9 max-[400px]:size-8 sm:size-10"
+            className="size-9 sm:size-10"
             aria-label={isDark ? messages.switchToLight : messages.switchToDark}
           >
             {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
