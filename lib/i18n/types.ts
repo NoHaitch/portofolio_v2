@@ -57,8 +57,9 @@ export type Messages = {
     introduction: string
     purposeHeading: string
     purposeItems: string[]
-    principlesHeading: string
-    principles: { title: string; description: string }[]
+    workflowHeading: string
+    workflowIntroduction: string
+    workflowSteps: { title: string; description: string }[]
     stackHeading: string
     stack: { label: string; items: string[] }[]
     sourceHeading: string
@@ -113,6 +114,7 @@ export type Messages = {
     highSchoolHonors: string[]
     certificate: string
     certificateLabel: string
+    photoAlt: string
   }
   experience: {
     eyebrow: string

@@ -33,27 +33,39 @@ const id = {
       'Menyimpan catatan terstruktur tentang proyek, pengalaman, dan pendidikan saya.',
       'Memudahkan rekruter, kolaborator, dan rekan untuk menghubungi saya.',
     ],
-    principlesHeading: 'Cara situs ini dibuat',
-    principles: [
+    workflowHeading: 'Cara situs ini dibuat',
+    workflowIntroduction:
+      'Situs ini dibuat dengan alur agentic coding, dengan keputusan manusia pada bagian yang paling penting dan penyempurnaan manual pada hal-hal yang sering terlewat oleh agen.',
+    workflowSteps: [
       {
-        title: 'Statis lebih dulu',
+        title: 'Penyiapan proyek secara manual',
         description:
-          'Halaman dibuat lebih awal dari konten terstruktur di repositori, sehingga cepat dimuat tanpa backend.',
+          'Saya menyiapkan fondasinya sendiri: Next.js, Bun, Tailwind CSS, shadcn/ui, Prettier, dan ESLint, sehingga setiap perubahan berikutnya dibangun di atas pilihan yang saya buat dengan sengaja.',
       },
       {
-        title: 'Mudah diakses sejak awal',
+        title: 'Menyiapkan agen',
         description:
-          'Navigasi selalu terlihat, status fokus jelas, dan warna tetap kontras di tema terang maupun gelap.',
+          'Saya menambahkan skill untuk agen, berkas konteks tertulis tentang saya, dan aturan proyek yang mencakup stack, model konten, pengujian, dan gaya penulisan.',
       },
       {
-        title: 'Empat bahasa',
+        title: 'Gambaran awal',
         description:
-          'Bahasa Inggris, Indonesia, Jepang, dan Mandarin Sederhana berbagi satu struktur, dengan kutipan dan nama peran tetap dalam bahasa Inggris.',
+          'Sebelum menghasilkan apa pun, saya menentukan tampilan dan isi situs: halaman, nada, bahasa, dan kesan keseluruhan.',
       },
       {
-        title: 'Ringan JavaScript',
+        title: 'Agentic coding dalam langkah kecil',
         description:
-          'Server component mengerjakan sebagian besar tugas, dan kode klien dibatasi untuk tema, bahasa, dan animasi peran.',
+          'Agen membangun sebagian besar halaman, komponen, dan terjemahan lewat satu permintaan terarah pada satu waktu, berdasarkan konteks dan aturan di atas.',
+      },
+      {
+        title: 'Verifikasi dan tinjauan',
+        description:
+          'Setiap perubahan diperiksa dengan build, pemeriksaan tipe, dan pengujian di browser sungguhan, lalu saya meninjau hasilnya sebelum lanjut.',
+      },
+      {
+        title: 'Penyempurnaan dan dokumentasi',
+        description:
+          'Saya memperbaiki hal yang terlewat oleh agen, seperti aksesibilitas, jarak, pilihan kata, dan interaksi kecil, lalu mencatat konvensinya agar perubahan berikutnya tetap konsisten.',
       },
     ],
     stackHeading: 'Teknologi dan alat',
@@ -67,11 +79,11 @@ const id = {
     sourceLink: 'Lihat di GitHub',
   },
   home: {
-    eyebrow: 'Software engineer · Indonesia',
+    eyebrow: 'Informatics · Indonesia',
     roles: ['Systems engineering', 'AI & Data Science', 'Cyber security', 'Software Engineer'],
     introduction:
       'Lulusan Informatika ITB yang membangun perangkat lunak praktis dengan perhatian pada keamanan, sistem yang andal, dan data yang bermanfaat.',
-    portraitAlt: 'Francisco Trianto saat wisuda',
+    portraitAlt: 'Potret Francisco Trianto dengan blazer biru tua',
     projects: 'Lihat proyek',
     contact: 'Hubungi saya',
     scrollHint: 'Gulir untuk menjelajah',
@@ -82,32 +94,47 @@ const id = {
       {
         title: 'Rekayasa perangkat lunak',
         description:
-          'Saya membangun perangkat lunak secara menyeluruh, mulai dari fitur pengguna dan API hingga arsitektur aplikasi yang mudah dirawat.',
-      },
-      {
-        title: 'AI & Data Science',
-        description:
-          'Saya menggunakan Python dan dasar-dasar Machine Learning untuk mengeksplorasi data, membangun model, dan mengevaluasi kinerjanya.',
+          'Saya dapat membangun perangkat lunak secara menyeluruh atau mengembangkan sistem yang ada. Saya terbiasa dengan Agile dan Waterfall, serta memakai coding berbantuan AI untuk umpan balik lebih cepat.',
       },
       {
         title: 'Keamanan siber',
         description:
-          'Saya menerapkan pola pikir yang mengutamakan keamanan dengan mengidentifikasi risiko, memahami batas kepercayaan, dan mempertimbangkan cara sistem dapat gagal.',
+          'Saya memahami lanskap ancaman, dari kerentanan klasik hingga yang baru seperti prompt injection. Saya juga melihat AI kini ikut mendorong serangan, bukan hanya pertahanan.',
       },
       {
         title: 'Rekayasa sistem',
         description:
-          'Saya melihat sistem secara menyeluruh, mulai dari Linux dan jaringan hingga layanan terdistribusi dan cara menjaga keandalannya.',
+          'Saya memahami sistem secara luas sehingga dapat menimbang kelebihan dan kekurangan setiap desain, dari monolit sederhana hingga microservices berlapis, lalu memilih yang tepat untuk masalahnya.',
+      },
+      {
+        title: 'Sistem tertanam',
+        description:
+          'Saya tertarik pada perkembangan sistem tertanam, terutama Edge AI yang berjalan di perangkat keras dan masa depan robotika yang lebih mampu dan cerdas.',
       },
       {
         title: 'Operations & DevOps',
         description:
-          'Saya mempelajari dasar-dasar DevOps bersama rekayasa sistem, termasuk deployment, otomatisasi, dan menjaga keandalan perangkat lunak saat beroperasi.',
+          'Operasi adalah inti dari layanan yang hebat, dari pipeline hingga otomatisasi. Saya menjaga monitoring dan observabilitas tetap kuat di data, sistem, dan AI, termasuk pipeline model yang baru.',
       },
       {
         title: 'Agentic coding',
         description:
-          'Saya mengikuti perkembangan alat agentic coding dan menggunakannya untuk memahami kode yang belum familiar, mempercepat implementasi, serta menangani tugas terarah sambil meninjau hasilnya.',
+          'Model agentik adalah alat andalan era ini karena tugas rutin selesai lebih cepat. Saya memakai agen berbasis terminal dan IDE, serta mengikuti model terbaru beserta skill dan konteksnya.',
+      },
+      {
+        title: 'AI & Data Science',
+        description:
+          'AI telah mengubah keputusan bisnis dari tebakan kasar menjadi rencana yang matang. Saya memakai prediksi dan analisis berbasis data untuk menemukan apa yang membuat rencana berhasil.',
+      },
+      {
+        title: 'Machine Learning',
+        description:
+          'Saya telah mengerjakan sisi model dari AI, dari ML klasik hingga Deep Learning di NLP dan Vision. Saya mengikuti RAG dan MCP, serta pernah merancang evaluasi untuk membandingkan model.',
+      },
+      {
+        title: 'Ilmu komputer & riset',
+        description:
+          'Saya antusias dengan terobosan baru di dunia komputasi, dari AI dan ML hingga bidang lain, dan selalu memikirkan ide yang mungkin membentuk masa depan.',
       },
     ],
   },
@@ -221,6 +248,7 @@ const id = {
     ],
     certificate: 'Lihat ijazah',
     certificateLabel: 'Lihat ijazah resmi',
+    photoAlt: 'Francisco Trianto saat wisuda',
   },
   experience: {
     eyebrow: 'Latar belakang profesional',

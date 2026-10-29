@@ -33,23 +33,37 @@ const zh = {
       '以结构化的方式记录我的项目、经历和教育背景。',
       '让招聘者、合作者和同行可以方便地联系我。',
     ],
-    principlesHeading: '构建方式',
-    principles: [
+    workflowHeading: '构建方式',
+    workflowIntroduction:
+      '本站采用智能体式编程（agentic coding）流程构建，关键环节由人来决策，并对智能体容易遗漏的部分进行手动打磨。',
+    workflowSteps: [
       {
-        title: '静态优先',
-        description: '页面根据仓库中的结构化内容预先生成，无需后端即可快速加载。',
+        title: '手动搭建项目',
+        description:
+          '我亲自搭建基础：Next.js、Bun、Tailwind CSS、shadcn/ui、Prettier 和 ESLint，让之后的每次改动都建立在我有意做出的选择之上。',
       },
       {
-        title: '默认可访问',
-        description: '导航始终可见，焦点状态清晰，并在浅色和深色主题下都保持足够的对比度。',
+        title: '为智能体做准备',
+        description:
+          '我添加了智能体技能、关于我的文字背景文件，以及涵盖技术栈、内容模型、测试和写作风格的项目规则。',
       },
       {
-        title: '四种语言',
-        description: '英语、印尼语、日语和简体中文共用同一结构，引文和职位名称保留英文。',
+        title: '确立基本构想',
+        description: '在生成任何内容之前，我先确定网站的外观和内容：页面、语气、语言和整体风格。',
       },
       {
-        title: '精简 JavaScript',
-        description: '大部分工作由服务器组件完成，客户端代码仅用于主题、语言和职位文字动画。',
+        title: '小步迭代的智能体编程',
+        description:
+          '智能体根据上述背景和规则，每次处理一个范围明确的请求，构建大部分页面、组件和翻译。',
+      },
+      {
+        title: '验证与审查',
+        description: '每次改动都通过构建、类型检查和真实浏览器测试来验证，我审查结果后再继续。',
+      },
+      {
+        title: '精细调整与文档记录',
+        description:
+          '我修正智能体遗漏的部分，例如无障碍、间距、措辞和细小的交互，并记录规范，让后续改动保持一致。',
       },
     ],
     stackHeading: '技术栈与工具',
@@ -63,11 +77,11 @@ const zh = {
     sourceLink: '在 GitHub 上查看',
   },
   home: {
-    eyebrow: '软件工程师 · 印度尼西亚',
+    eyebrow: 'Informatics · 印度尼西亚',
     roles: ['Systems engineering', 'AI & Data Science', 'Cyber security', 'Software Engineer'],
     introduction:
       '毕业于万隆理工学院信息工程专业，致力于构建注重安全、系统可靠性和数据实用价值的软件。',
-    portraitAlt: 'Francisco Trianto 毕业时的照片',
+    portraitAlt: 'Francisco Trianto 身穿深蓝色西装的肖像',
     projects: '查看项目',
     contact: '联系我',
     scrollHint: '向下滚动，了解更多',
@@ -77,29 +91,48 @@ const zh = {
     expertiseAreas: [
       {
         title: '软件工程',
-        description: '我能够端到端构建软件，从用户功能和 API 到易于维护的应用架构。',
-      },
-      {
-        title: '人工智能与数据科学',
-        description: '我运用 Python 和 Machine Learning 基础探索数据、构建模型并评估模型表现。',
+        description:
+          '我既能端到端构建软件，也能扩展现有系统。我熟悉 Agile 和 Waterfall，并借助 AI 辅助编程获得更快的反馈。',
       },
       {
         title: '网络安全',
-        description: '我以安全为先，识别风险、理解信任边界，并考虑系统可能出现的故障与风险。',
+        description:
+          '我了解威胁态势，从传统漏洞到提示词注入等新型漏洞。我也看到 AI 如今不仅用于防御，也在推动攻击。',
       },
       {
         title: '系统工程',
-        description: '我从整体看待系统，涵盖 Linux、网络、分布式服务及其协同可靠运行的方式。',
+        description:
+          '我对系统有广泛的理解，能权衡每种设计的优缺点，从简单的单体架构到多层微服务，并为问题选出合适的方案。',
+      },
+      {
+        title: '嵌入式系统',
+        description:
+          '我对嵌入式系统的发展很着迷，尤其是在硬件上运行的边缘 AI，以及能力更强、更智能的机器人技术的未来。',
       },
       {
         title: 'Operations & DevOps',
         description:
-          '我在学习系统工程时也学习了 DevOps 基础，包括部署、自动化和保障软件运行可靠性。',
+          '运维是优秀服务的核心，从流水线到自动化。我在数据、系统和 AI 领域保持强大的监控与可观测性，包括新的模型流水线。',
       },
       {
         title: 'Agentic coding',
         description:
-          '我持续关注 Agentic coding 工具，并用它们理解陌生代码、加快实现和处理范围明确的任务，同时审查生成结果。',
+          '智能体模型是这个时代的代表性工具，能更快完成日常任务。我同时使用终端和 IDE 中的智能体，并持续关注最新模型及其技能和上下文。',
+      },
+      {
+        title: '人工智能与数据科学',
+        description:
+          'AI 让商业决策从粗略的猜测变为有依据的规划。我用数据驱动的预测和分析，找出让方案成功的关键因素。',
+      },
+      {
+        title: 'Machine Learning',
+        description:
+          '我从事过 AI 的模型层面工作，从传统机器学习到 NLP 和视觉领域的深度学习。我关注 RAG 和 MCP，也设计过用于比较模型的评测。',
+      },
+      {
+        title: '计算机科学与研究',
+        description:
+          '我热衷于计算机领域的新突破，无论是 AI、ML 还是其他方向，并时常思考有朝一日可能成为未来的新想法。',
       },
     ],
   },
@@ -193,6 +226,7 @@ const zh = {
     highSchoolHonors: ['优秀学生；班级排名第一，校级排名前三。'],
     certificate: '查看学位证书',
     certificateLabel: '查看大学正式学位证书',
+    photoAlt: 'Francisco Trianto 毕业时的照片',
   },
   experience: {
     eyebrow: '专业背景',

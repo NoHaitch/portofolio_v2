@@ -39,26 +39,37 @@ export default async function AboutSitePage({ params }: { params: Promise<{ loca
         </section>
 
         <section
-          aria-labelledby="principles-heading"
+          aria-labelledby="workflow-heading"
           className="border-border mt-16 border-t pt-10 sm:mt-20 sm:pt-12"
         >
-          <h2 id="principles-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            {messages.principlesHeading}
+          <h2 id="workflow-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            {messages.workflowHeading}
           </h2>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5">
-            {messages.principles.map((principle) => (
-              <li key={principle.title}>
+          <p className="text-muted-foreground mt-3 max-w-2xl leading-7">
+            {messages.workflowIntroduction}
+          </p>
+          <ol className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            {messages.workflowSteps.map((step, index) => (
+              <li key={step.title}>
                 <Card className="border-border/80 bg-card/80 h-full rounded-2xl py-0 shadow-none">
                   <CardContent className="p-5 sm:p-6">
-                    <h3 className="text-lg font-semibold tracking-tight">{principle.title}</h3>
-                    <p className="text-muted-foreground mt-2 text-sm leading-6 sm:text-base sm:leading-7">
-                      {principle.description}
+                    <span
+                      aria-hidden="true"
+                      className="bg-accent text-accent-foreground flex size-9 items-center justify-center rounded-full font-mono text-sm font-medium"
+                    >
+                      {index + 1}
+                    </span>
+                    <h3 className="mt-4 text-lg leading-snug font-semibold tracking-tight">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground mt-2 text-sm leading-6">
+                      {step.description}
                     </p>
                   </CardContent>
                 </Card>
               </li>
             ))}
-          </ul>
+          </ol>
         </section>
 
         <section

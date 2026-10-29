@@ -33,27 +33,39 @@ const en = {
       'Keeping a structured record of my projects, experience, and education.',
       'Giving recruiters, collaborators, and teammates an easy way to get in touch.',
     ],
-    principlesHeading: 'How it is built',
-    principles: [
+    workflowHeading: 'How it is built',
+    workflowIntroduction:
+      'The site was built with an agentic coding workflow, with human decisions at the parts that matter most and hands-on fine tuning for what the agent tends to miss.',
+    workflowSteps: [
       {
-        title: 'Static first',
+        title: 'Manual project setup',
         description:
-          'Pages are generated ahead of time from structured content in the repository, so they load quickly without a backend.',
+          'I set up the foundation myself: Next.js, Bun, Tailwind CSS, shadcn/ui, Prettier, and ESLint, so every later change builds on choices I made on purpose.',
       },
       {
-        title: 'Accessible by default',
+        title: 'Preparing the agent',
         description:
-          'Navigation is always visible, focus states are clear, and colors keep strong contrast in light and dark themes.',
+          'I added agent skills, a written context file about me, and project rules covering the stack, content model, testing, and writing style.',
       },
       {
-        title: 'Four languages',
+        title: 'A baseline idea',
         description:
-          'English, Indonesian, Japanese, and Simplified Chinese share one structure, with the quote and role names kept in English.',
+          'Before generating anything, I decided what the site should look like and contain: the pages, the tone, the languages, and the overall feel.',
       },
       {
-        title: 'Light on JavaScript',
+        title: 'Agentic coding in small steps',
         description:
-          'Server components do most of the work, and client code is limited to the theme, language, and role animation controls.',
+          'The agent builds most of the pages, components, and translations one scoped request at a time, working from the context and rules above.',
+      },
+      {
+        title: 'Verify and review',
+        description:
+          'Every change is checked with builds, type checks, and real browser testing, and I review the result before moving on.',
+      },
+      {
+        title: 'Fine tuning and documenting',
+        description:
+          'I fix what the agent overlooked, such as accessibility, spacing, wording, and small interactions, then record the conventions so the next change stays consistent.',
       },
     ],
     stackHeading: 'Stack and tools',
@@ -67,11 +79,11 @@ const en = {
     sourceLink: 'View on GitHub',
   },
   home: {
-    eyebrow: 'Software engineer · Indonesia',
+    eyebrow: 'Informatics · Indonesia',
     roles: ['Systems engineering', 'AI & Data Science', 'Cyber security', 'Software Engineer'],
     introduction:
       'An Informatics Engineering graduate from ITB who builds practical software with care for security, dependable systems, and useful data.',
-    portraitAlt: 'Francisco Trianto at his graduation',
+    portraitAlt: 'Portrait of Francisco Trianto in a navy blazer',
     projects: 'View projects',
     contact: 'Get in touch',
     scrollHint: 'Scroll to explore',
@@ -82,32 +94,47 @@ const en = {
       {
         title: 'Software engineering',
         description:
-          'I build end-to-end software, from user-facing features and APIs to maintainable application architecture.',
-      },
-      {
-        title: 'AI & Data Science',
-        description:
-          'I use Python and Machine Learning fundamentals to explore data, build models, and assess how well they perform.',
+          'I can build software end to end or extend existing systems. I am comfortable with Agile and Waterfall, and use AI-assisted coding for faster feedback.',
       },
       {
         title: 'Cybersecurity',
         description:
-          'I bring a security-minded approach to software by identifying risks, understanding trust boundaries, and considering how systems can fail.',
+          'I know the threat landscape, from classic vulnerabilities to newer ones like prompt injection. I also see how AI is now driving attacks, not just defense.',
       },
       {
         title: 'Systems engineering',
         description:
-          'I think across the whole stack, from Linux and networking to distributed services and the ways they stay reliable together.',
+          'I understand systems broadly enough to weigh the trade-offs of each design, from simple monoliths to layered microservices, and pick the right one for the problem.',
+      },
+      {
+        title: 'Embedded systems',
+        description:
+          'I am fascinated by how embedded systems have evolved, especially Edge AI running on hardware and the future of more capable, intelligent robotics.',
       },
       {
         title: 'Operations & DevOps',
         description:
-          'I learned DevOps fundamentals alongside systems engineering, including deployment, automation, and keeping software dependable in operation.',
+          'Operations is the core of a great service, from pipelines to automation. I keep monitoring and observability strong across data, systems, and AI, including new model pipelines.',
       },
       {
         title: 'Agentic coding',
         description:
-          'I keep up with agentic coding tools and use them to explore unfamiliar code, accelerate implementation, and handle bounded tasks while reviewing their output.',
+          'Agentic models are the tool of this era, handling routine tasks faster. I use both terminal and IDE agents and keep up with the latest models, skills, and context.',
+      },
+      {
+        title: 'AI & Data Science',
+        description:
+          'AI has turned business decisions from rough guesses into informed plans. I use data-driven prediction and analysis to find what makes a plan succeed.',
+      },
+      {
+        title: 'Machine Learning',
+        description:
+          'I have worked on the model side of AI, from classic ML to Deep Learning in NLP and Vision. I follow RAG and MCP, and have designed evaluations to compare models.',
+      },
+      {
+        title: 'Computer science & research',
+        description:
+          'I am enthusiastic about new breakthroughs across computing, from AI and ML to other fields, and I am always thinking about ideas that could shape the future.',
       },
     ],
   },
@@ -218,6 +245,7 @@ const en = {
     highSchoolHonors: ['Honor student; ranked 1st in class and in the top 3 school-wide.'],
     certificate: 'View degree certificate',
     certificateLabel: 'View official degree certificate',
+    photoAlt: 'Francisco Trianto at his graduation',
   },
   experience: {
     eyebrow: 'Professional background',

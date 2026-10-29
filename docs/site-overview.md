@@ -35,13 +35,18 @@ The repository's ESLint command currently encounters an ESLint 10 and React plug
 
 The homepage is implemented in [app/[locale]/page.tsx](../app/%5Blocale%5D/page.tsx).
 
-It presents Francisco's name, location and role, rotating interest labels, a short introduction, a graduation portrait, calls to view projects or contact, and a scroll cue.
+It presents Francisco's name, location and role, rotating interest labels, a short introduction, a portrait photo, calls to view projects or contact, and a scroll cue.
+
+The hero shows the nickname "a.k.a. NoHaitch" in a small mono line under the name, kept in English in all locales like the quote and roles.
 
 The hero fills the viewport below the site header.
 
+The whole scroll cue (text and arrow) bobs gently, and the page uses a single CSS scroll snap point (`proximity`, so free scrolling is never blocked) on the divider line above the quote.
+Both effects are plain CSS in [app/globals.css](../app/globals.css) with no animation library, and the bobbing is disabled when the visitor prefers reduced motion.
+
 The quote and rotating role labels stay in English across all locales to preserve their original phrasing.
 
-The quote introduces his generalist approach, followed by cards for software engineering, AI and Data Science, cybersecurity, systems engineering, Operations & DevOps, and agentic coding with a concise description of his foundations in each area.
+The quote introduces his generalist approach, followed by nine cards ordered so related areas sit together: software engineering, cybersecurity, systems engineering, embedded systems, Operations & DevOps, agentic coding, AI & Data Science (framed around business decisions), Machine Learning (the model side, including Deep Learning, RAG, MCP, and model evaluation), and computer science & research, each with a concise description of his foundations.
 
 The projects action links to the localized `/projects` route.
 
@@ -93,7 +98,7 @@ It groups email, LinkedIn, and GitHub under Professional, and Instagram, X, Medi
 
 The page is implemented in [app/[locale]/about-site/page.tsx](../app/%5Blocale%5D/about-site/page.tsx).
 
-It explains what the site is for, the principles it is built on, the stack and tools, and links to the GitHub repository.
+It explains what the site is for, the agentic coding workflow used to build it (manual setup, agent preparation, a baseline design idea, agent coding in small steps, verification and review, then fine tuning and documenting) shown as a three-column grid of six steps on large screens, the stack and tools, and links to the GitHub repository.
 
 It is linked from the footer rather than the header navigation.
 
@@ -150,7 +155,7 @@ The homepage portrait is the primary visual signature.
 
 The education logos and official degree PDF are stored in `public/education/`.
 
-The homepage portrait and header avatar are stored in `public/home/` and `public/`, respectively.
+The homepage portrait is stored in `public/self/`, alongside other personal photos, and the header avatar is stored in `public/`.
 
 User-provided CV references are stored in `public/CV/`, and additional PDF certificates are stored in `public/certificates/`.
 

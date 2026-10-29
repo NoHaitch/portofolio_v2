@@ -11,14 +11,14 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   const messages = getMessages(locale).home
 
   return (
-    <main className="flex-1">
+    <main className="home-snap flex-1">
       <section className="mx-auto flex min-h-[calc(100svh-4.25rem)] w-full max-w-6xl flex-col px-5 sm:min-h-[calc(100svh-4.5rem)] sm:px-8">
         <div className="grid flex-1 items-center gap-10 py-12 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:py-20">
           <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
             <div className="bg-accent absolute -inset-3 -z-10 rounded-[2rem]" />
             <div className="border-border bg-card shadow-foreground/5 overflow-hidden rounded-[1.5rem] border p-2 shadow-xl">
               <Image
-                src="/home/landing.jpg"
+                src="/self/casual.JPG"
                 alt={messages.portraitAlt}
                 width={600}
                 height={800}
@@ -36,6 +36,9 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               Francisco
               <span className="text-muted-foreground block">Trianto</span>
             </h1>
+            <p className="text-muted-foreground -mt-2 font-mono text-sm tracking-wide">
+              a.k.a. <span className="text-foreground">NoHaitch</span>
+            </p>
 
             <div className="text-primary text-xl font-medium sm:text-2xl">
               <RotatingText words={messages.roles} interval={3000} />
@@ -65,7 +68,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
         <a
           href="#expertise"
-          className="text-muted-foreground hover:text-foreground focus-visible:ring-ring/40 mx-auto mb-5 inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none sm:mb-7"
+          className="scroll-hint text-muted-foreground hover:text-foreground focus-visible:ring-ring/40 mx-auto mb-5 inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none sm:mb-7"
         >
           <span>{messages.scrollHint}</span>
           <ArrowDown aria-hidden="true" className="size-4" />
@@ -76,11 +79,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         aria-label={messages.expertiseLabel}
         className="mx-auto w-full max-w-6xl scroll-mt-24 px-5 pb-16 sm:px-8 sm:pb-24"
       >
-        <div className="border-primary/30 border-t pt-12 sm:pt-16">
-          <h2
-            id="expertise"
-            className="mx-auto max-w-5xl text-center text-4xl leading-[1.08] font-semibold tracking-tight sm:text-5xl lg:text-6xl"
-          >
+        <div id="expertise" className="home-snap-line border-primary/30 border-t pt-12 sm:pt-16">
+          <h2 className="mx-auto max-w-5xl text-center text-4xl leading-[1.08] font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span className="text-primary" aria-hidden="true">
               “
             </span>

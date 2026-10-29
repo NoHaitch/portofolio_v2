@@ -40,7 +40,7 @@ export default function Header({ locale }: { locale: Locale }) {
   }, [])
 
   return (
-    <header className="border-border bg-background/90 sticky top-0 z-10 border-b backdrop-blur">
+    <header className="border-border bg-background/90 sticky top-0 z-10 border-b backdrop-blur select-none [&_a]:[-webkit-user-drag:none] [&_img]:[-webkit-user-drag:none]">
       <nav
         aria-label={messages.navigation.label}
         className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-2 px-3 py-3 sm:gap-x-5 sm:px-8 md:py-4"

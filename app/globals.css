@@ -159,6 +159,42 @@
   color: var(--experience-track-color);
 }
 
+html:has(.home-snap) {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.home-snap) {
+    scroll-behavior: smooth;
+  }
+}
+
+.home-snap-line {
+  scroll-snap-align: start;
+}
+
+@keyframes scroll-hint-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-hint {
+    animation: scroll-hint-bob 1.6s ease-in-out infinite;
+  }
+
+  .scroll-hint:hover,
+  .scroll-hint:focus-visible {
+    animation-duration: 0.9s;
+  }
+}
+
 .experience-timeline [role='tab'][data-active] {
   background-color: color-mix(in srgb, var(--experience-track-color) 12%, var(--background));
   color: var(--experience-track-color);
