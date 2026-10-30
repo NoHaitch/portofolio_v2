@@ -75,7 +75,9 @@ Use semantic theme classes for hover and focus states, including visible keyboar
 
 Keep hover motion restrained and respect reduced-motion preferences.
 
-Prefer plain CSS keyframes and native features such as scroll snap over animation libraries, and wrap looping motion in `prefers-reduced-motion: no-preference`.
+Prefer plain CSS keyframes and small, native-API helpers over animation libraries, and wrap looping motion in `prefers-reduced-motion: no-preference`.
+Avoid CSS scroll snap for gentle nudges, because browsers hold the wheel near snap points.
+Use a debounced snap instead.
 
 Use accessible names for icon-only controls and meaningful alt text for content images.
 

@@ -160,7 +160,6 @@
 }
 
 html:has(.home-snap) {
-  scroll-snap-type: y proximity;
   scroll-padding-top: 4.5rem;
 }
 
@@ -168,10 +167,6 @@ html:has(.home-snap) {
   html:has(.home-snap) {
     scroll-behavior: smooth;
   }
-}
-
-.home-snap-line {
-  scroll-snap-align: start;
 }
 
 @keyframes scroll-hint-bob {

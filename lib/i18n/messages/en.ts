@@ -9,6 +9,7 @@ const en = {
     home: 'Home',
     education: 'Education',
     experience: 'Experience',
+    about: 'About',
     contact: 'Contact',
   },
   languageLabel: 'Choose language',
@@ -21,6 +22,53 @@ const en = {
     connect: 'Connect',
     backToTop: 'Back to top',
     aboutSite: 'About this site',
+  },
+  about: {
+    eyebrow: 'About me',
+    title: 'Quiet by default, curious by nature.',
+    introduction:
+      'I am Francisco, a recent Informatics Engineering graduate from Bandung, Indonesia. I like building things that are secure, clear, and made to last.',
+    story: [
+      'I graduated from Institut Teknologi Bandung in 2026 with a cum laude degree in Informatics Engineering. Along the way I became drawn to security, systems, and AI, and to the space where they meet.',
+      'I prefer clean, structured, and logical thinking, and I like a problem best when I can break it down until it is simple. I am also happy to follow my intuition when it fits, especially in creative areas like music.',
+      'I am an ambivert with a slight lean toward introversion. Quiet at first, more talkative with people I know well.',
+    ],
+    shibuyaPhotoAlt: 'Francisco Trianto leaning on the Hachiko statue in Shibuya, Tokyo',
+    nameHeading: 'What to call me',
+    names: [
+      { name: 'Francisco', note: 'My first name, and the one I use professionally.' },
+      { name: 'Ciko', note: 'My short name.' },
+      {
+        name: 'NoHaitch',
+        note: 'My handle online. People often write Chiko with an H, so I dropped the H.',
+      },
+    ],
+    hobbiesHeading: 'Outside of work',
+    hobbies: [
+      {
+        title: 'Music',
+        description: 'Jazz is my favorite. I play the piano and enjoy going to jazz festivals.',
+      },
+      {
+        title: 'Sports',
+        description: 'Volleyball is my main sport, and I used to play football.',
+      },
+      { title: 'Gaming', description: 'A good way to switch off.' },
+    ],
+    singaporePhotoAlt: 'Francisco Trianto by the waterfront with the Singapore skyline behind him',
+    interestsHeading: 'What I am into',
+    interests: [
+      'Cyber security',
+      'AI and data science',
+      'System software engineering',
+      'Web development',
+      'Distributed systems',
+      'DevOps',
+      'Secure and scalable system design',
+    ],
+    contactHeading: 'Let us talk',
+    contactDescription: 'If any of this sounds interesting, I would be glad to hear from you.',
+    contactLink: 'Get in touch',
   },
   aboutSite: {
     eyebrow: 'About this site',

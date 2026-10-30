@@ -9,6 +9,7 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 | Route         | Purpose                                                         |
 | ------------- | --------------------------------------------------------------- |
 | `/`           | Hero, generalist quote, and areas of expertise                  |
+| `/about`      | Personal story, names, interests, hobbies, and photos           |
 | `/projects`   | Selected projects and activity highlights                       |
 | `/experience` | Sortable timeline of engineering, teaching, and campus roles    |
 | `/education`  | Education timeline with coursework, honors, and certificates    |

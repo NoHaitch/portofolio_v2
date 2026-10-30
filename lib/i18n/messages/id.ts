@@ -9,6 +9,7 @@ const id = {
     home: 'Beranda',
     education: 'Pendidikan',
     experience: 'Pengalaman',
+    about: 'Tentang',
     contact: 'Kontak',
   },
   languageLabel: 'Pilih bahasa',
@@ -21,6 +22,54 @@ const id = {
     connect: 'Terhubung',
     backToTop: 'Kembali ke atas',
     aboutSite: 'Tentang situs ini',
+  },
+  about: {
+    eyebrow: 'Tentang saya',
+    title: 'Pendiam di awal, penuh rasa ingin tahu.',
+    introduction:
+      'Saya Francisco, lulusan baru Teknik Informatika dari Bandung, Indonesia. Saya suka membuat sesuatu yang aman, jelas, dan tahan lama.',
+    story: [
+      'Saya lulus dari Institut Teknologi Bandung pada 2026 dengan gelar Teknik Informatika dan predikat cum laude. Di sepanjang jalan, saya tertarik pada keamanan, sistem, dan AI, serta pada titik temu di antara ketiganya.',
+      'Saya lebih suka berpikir yang rapi, terstruktur, dan logis, dan paling menikmati masalah yang bisa dipecah sampai menjadi sederhana. Saya juga nyaman mengikuti intuisi bila cocok, terutama dalam hal kreatif seperti musik.',
+      'Saya seorang ambivert yang sedikit condong ke introvert. Pendiam di awal, lebih banyak bicara dengan orang yang sudah dekat.',
+    ],
+    shibuyaPhotoAlt: 'Francisco Trianto bersandar pada patung Hachiko di Shibuya, Tokyo',
+    nameHeading: 'Cara memanggil saya',
+    names: [
+      { name: 'Francisco', note: 'Nama depan saya, dan yang saya pakai secara profesional.' },
+      { name: 'Ciko', note: 'Nama pendek saya.' },
+      {
+        name: 'NoHaitch',
+        note: 'Nama panggilan saya di dunia maya. Orang sering menulis Chiko dengan H, jadi saya buang H-nya.',
+      },
+    ],
+    hobbiesHeading: 'Di luar pekerjaan',
+    hobbies: [
+      {
+        title: 'Musik',
+        description:
+          'Jazz adalah favorit saya. Saya bermain piano dan suka datang ke festival jazz.',
+      },
+      {
+        title: 'Olahraga',
+        description: 'Voli adalah olahraga utama saya, dan dulu saya juga bermain sepak bola.',
+      },
+      { title: 'Gaming', description: 'Cara yang enak untuk melepas penat.' },
+    ],
+    singaporePhotoAlt: 'Francisco Trianto di tepi pantai dengan latar cakrawala gedung Singapura',
+    interestsHeading: 'Hal yang saya minati',
+    interests: [
+      'Keamanan siber',
+      'AI dan ilmu data',
+      'Rekayasa perangkat lunak sistem',
+      'Pengembangan web',
+      'Sistem terdistribusi',
+      'DevOps',
+      'Desain sistem yang aman dan skalabel',
+    ],
+    contactHeading: 'Mari ngobrol',
+    contactDescription: 'Kalau ada yang menarik bagi Anda, saya senang mendengar kabar dari Anda.',
+    contactLink: 'Hubungi saya',
   },
   aboutSite: {
     eyebrow: 'Tentang situs ini',

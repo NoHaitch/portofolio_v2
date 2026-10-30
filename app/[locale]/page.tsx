@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowDown } from 'lucide-react'
 import RotatingText from '@/components/rotating-text'
+import { ScrollSnap } from '@/components/scroll-snap'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { getMessages, type Locale } from '@/lib/i18n'
@@ -12,6 +13,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   return (
     <main className="home-snap flex-1">
+      <ScrollSnap targetId="expertise" />
       <section className="mx-auto flex min-h-[calc(100svh-4.25rem)] w-full max-w-6xl flex-col px-5 sm:min-h-[calc(100svh-4.5rem)] sm:px-8">
         <div className="grid flex-1 items-center gap-10 py-12 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:py-20">
           <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
@@ -79,7 +81,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         aria-label={messages.expertiseLabel}
         className="mx-auto w-full max-w-6xl scroll-mt-24 px-5 pb-16 sm:px-8 sm:pb-24"
       >
-        <div id="expertise" className="home-snap-line border-primary/30 border-t pt-12 sm:pt-16">
+        <div id="expertise" className="border-primary/30 border-t pt-12 sm:pt-16">
           <h2 className="mx-auto max-w-5xl text-center text-4xl leading-[1.08] font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             <span className="text-primary" aria-hidden="true">
               “

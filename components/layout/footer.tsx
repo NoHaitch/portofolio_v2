@@ -15,6 +15,7 @@ export default function Footer({ locale }: { locale: Locale }) {
   const messages = getMessages(locale)
   const quickLinks = [
     { href: '/', label: messages.navigation.home },
+    { href: '/about', label: messages.navigation.about },
     { href: '/projects', label: messages.navigation.projects },
     { href: '/experience', label: messages.navigation.experience },
     { href: '/education', label: messages.navigation.education },

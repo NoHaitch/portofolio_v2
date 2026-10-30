@@ -9,6 +9,7 @@ const ja = {
     home: 'ホーム',
     education: '学歴',
     experience: '専門経験',
+    about: '私について',
     contact: 'お問い合わせ',
   },
   languageLabel: '言語を選択',
@@ -21,6 +22,53 @@ const ja = {
     connect: 'つながる',
     backToTop: 'ページの先頭へ',
     aboutSite: 'このサイトについて',
+  },
+  about: {
+    eyebrow: '私について',
+    title: '普段は静か、でも好奇心は旺盛。',
+    introduction:
+      'インドネシア・バンドン出身で、情報工学を修めた新卒エンジニアのFranciscoです。安全で、分かりやすく、長く使えるものづくりが好きです。',
+    story: [
+      '2026年にバンドン工科大学を情報工学で優等(cum laude)卒業しました。学ぶなかで、セキュリティ、システム、AI、そしてそれらが交わる領域に惹かれていきました。',
+      '整理された論理的な思考を好み、問題を単純になるまで分解していく過程が好きです。一方で、音楽のような創造的な分野では直感に従うことも大切にしています。',
+      '内向的寄りのアンビバートで、最初は物静かですが、親しい人の前では話し好きです。',
+    ],
+    shibuyaPhotoAlt: '東京・渋谷のハチ公像にもたれるFrancisco Trianto',
+    nameHeading: '呼び名について',
+    names: [
+      { name: 'Francisco', note: '名前であり、仕事で使っている呼び名です。' },
+      { name: 'Ciko', note: 'ショートネームです。' },
+      {
+        name: 'NoHaitch',
+        note: 'オンラインでのハンドルネームです。Chikoと「H」付きで書かれることが多いため、Hを外しました。',
+      },
+    ],
+    hobbiesHeading: '仕事以外では',
+    hobbies: [
+      {
+        title: '音楽',
+        description: 'ジャズが一番好きです。ピアノを弾き、ジャズフェスティバルにも足を運びます。',
+      },
+      {
+        title: 'スポーツ',
+        description: 'バレーボールが中心で、以前はサッカーもしていました。',
+      },
+      { title: 'ゲーム', description: '気分転換にちょうど良い趣味です。' },
+    ],
+    singaporePhotoAlt: 'シンガポールのスカイラインを背に水辺に立つFrancisco Trianto',
+    interestsHeading: '関心のある分野',
+    interests: [
+      'サイバーセキュリティ',
+      'AI・データサイエンス',
+      'システムソフトウェア開発',
+      'ウェブ開発',
+      '分散システム',
+      'DevOps',
+      '安全でスケーラブルなシステム設計',
+    ],
+    contactHeading: 'お話ししましょう',
+    contactDescription: '気になることがあれば、ぜひご連絡ください。',
+    contactLink: 'お問い合わせ',
   },
   aboutSite: {
     eyebrow: 'このサイトについて',

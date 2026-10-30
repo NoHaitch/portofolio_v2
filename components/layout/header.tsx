@@ -27,11 +27,12 @@ export default function Header({ locale }: { locale: Locale }) {
   const messages = getMessages(locale)
   const navItems = [
     { href: '/', label: messages.navigation.home },
+    { href: '/about', label: messages.navigation.about, desktopOnly: true },
     { href: '/projects', label: messages.navigation.projects },
     { href: '/experience', label: messages.navigation.experience },
     { href: '/education', label: messages.navigation.education },
     { href: '/contact', label: messages.navigation.contact },
-  ]
+  ] as { href: string; label: string; desktopOnly?: boolean }[]
   const currentPath = pathname.replace(/^\/(en|id|ja|zh)(?=\/|$)/, '') || '/'
   const isDark = mounted && theme === 'dark'
 
@@ -61,7 +62,9 @@ export default function Header({ locale }: { locale: Locale }) {
               key={item.href}
               href={getLocalePath(locale, item.href)}
               aria-current={currentPath === item.href ? 'page' : undefined}
-              className={`hover:bg-accent hover:text-accent-foreground rounded-full px-3 py-2 text-center transition-colors max-md:flex-1 ${
+              className={`hover:bg-accent hover:text-accent-foreground rounded-full px-3 py-2 text-center transition-colors max-md:flex-1 max-sm:px-1.5 max-sm:text-[13px] ${
+                item.desktopOnly ? 'max-md:hidden' : ''
+              } ${
                 currentPath === item.href
                   ? 'bg-accent text-accent-foreground'
                   : 'text-muted-foreground'

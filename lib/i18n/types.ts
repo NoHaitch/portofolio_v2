@@ -38,6 +38,7 @@ export type Messages = {
     projects: string
     education: string
     experience: string
+    about: string
     contact: string
   }
   languageLabel: string
@@ -50,6 +51,23 @@ export type Messages = {
     connect: string
     backToTop: string
     aboutSite: string
+  }
+  about: {
+    eyebrow: string
+    title: string
+    introduction: string
+    story: string[]
+    shibuyaPhotoAlt: string
+    nameHeading: string
+    names: { name: string; note: string }[]
+    hobbiesHeading: string
+    hobbies: { title: string; description: string }[]
+    singaporePhotoAlt: string
+    interestsHeading: string
+    interests: string[]
+    contactHeading: string
+    contactDescription: string
+    contactLink: string
   }
   aboutSite: {
     eyebrow: string

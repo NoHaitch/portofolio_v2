@@ -41,14 +41,25 @@ The hero shows the nickname "a.k.a. NoHaitch" in a small mono line under the nam
 
 The hero fills the viewport below the site header.
 
-The whole scroll cue (text and arrow) bobs gently, and the page uses a single CSS scroll snap point (`proximity`, so free scrolling is never blocked) on the divider line above the quote.
-Both effects are plain CSS in [app/globals.css](../app/globals.css) with no animation library, and the bobbing is disabled when the visitor prefers reduced motion.
+The whole scroll cue (text and arrow) bobs gently, and a small client component, [components/scroll-snap.tsx](../components/scroll-snap.tsx), snaps to the divider line above the quote.
+It waits until scrolling has been idle for 180ms and only moves when the line is within 96px, so continuous scrolling is never held back.
+The effects use no animation library, and both the bobbing and the snap are disabled when the visitor prefers reduced motion.
 
 The quote and rotating role labels stay in English across all locales to preserve their original phrasing.
 
 The quote introduces his generalist approach, followed by nine cards ordered so related areas sit together: software engineering, cybersecurity, systems engineering, embedded systems, Operations & DevOps, agentic coding, AI & Data Science (framed around business decisions), Machine Learning (the model side, including Deep Learning, RAG, MCP, and model evaluation), and computer science & research, each with a concise description of his foundations.
 
 The projects action links to the localized `/projects` route.
+
+### `/about` and localized about me routes
+
+The page is implemented in [app/[locale]/about/page.tsx](../app/%5Blocale%5D/about/page.tsx), with copy under the `about` key of the locale dictionaries.
+
+It opens with a short story beside a portrait, then covers what to call him (Francisco, Ciko, and NoHaitch), hobbies beside a second photo, interests as tags, and a link to the contact page.
+The photos are stored in `public/self/`.
+
+The header shows About from the `md` breakpoint up.
+On smaller screens it is hidden because six items do not fit one row in every language, so it stays reachable from the footer.
 
 ### `/projects` and localized project routes
 
