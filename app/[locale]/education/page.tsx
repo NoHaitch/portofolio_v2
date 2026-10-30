@@ -79,19 +79,18 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
           {items.map((item) => (
             <li key={item.id}>
               <Card className="bg-card flex-row items-start gap-0 rounded-2xl shadow-sm">
-                <CardContent className="flex w-full items-start gap-4 p-5 sm:gap-6 sm:p-6">
-                  <div className="border-border bg-background flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border p-2 sm:size-16">
-                    <Image
-                      src={item.logo}
-                      alt={`${item.title} logo`}
-                      width={56}
-                      height={56}
-                      className="size-full object-contain"
-                    />
-                  </div>
-
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                <CardContent className="w-full min-w-0 p-5 sm:p-6">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
+                    <div className="border-border bg-background flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border p-2 sm:size-16">
+                      <Image
+                        src={item.logo}
+                        alt={`${item.title} logo`}
+                        width={56}
+                        height={56}
+                        className="size-full object-contain"
+                      />
+                    </div>
+                    <div className="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                       <div>
                         <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
                           {item.title}
@@ -102,6 +101,9 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
                         {item.period}
                       </span>
                     </div>
+                  </div>
+
+                  <div className="min-w-0">
                     {item.grade && (
                       <p className="text-accent-foreground mt-3 text-sm font-medium">
                         {item.grade}
@@ -111,7 +113,7 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
                       {item.detailGroups.map((group) => (
                         <div key={group.label}>
                           <p className="text-foreground font-medium">{group.label}</p>
-                          <ul className="mt-1 list-inside list-disc space-y-1">
+                          <ul className="mt-1 list-outside list-disc space-y-1 pl-5">
                             {group.items.map((entry) => (
                               <li key={entry}>{entry}</li>
                             ))}
