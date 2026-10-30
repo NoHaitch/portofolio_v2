@@ -37,6 +37,14 @@ The work experience timeline uses three additional theme-aware accents to distin
 
 Keep each category's accent consistent across its tab indicator, timeline nodes, and card edge.
 
+### Page background
+
+The flat `--background` color is overlaid by a fixed `body::before` layer in `app/globals.css`.
+It paints two soft radial teal glows, one in the top-left and one in the bottom-right, using `--primary` mixed with transparent.
+`--glow-strength` controls the intensity (11% in light, 9% in dark).
+Keep the glow very subtle so text contrast and card surfaces are unaffected.
+The footer sits on the solid `bg-muted` surface so it reads as a separate band from the page content.
+
 ## Typography
 
 Figtree is the default reading and heading face, loaded through `next/font`.

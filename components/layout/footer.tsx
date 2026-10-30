@@ -24,18 +24,24 @@ export default function Footer({ locale }: { locale: Locale }) {
   ]
 
   return (
-    <footer className="border-border border-t">
+    <footer className="border-border bg-muted border-t">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-10 text-sm sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <p className="text-base font-semibold tracking-tight">Francisco Trianto</p>
           <p className="text-muted-foreground mt-3 max-w-sm leading-6">{messages.footer.tagline}</p>
+          <a
+            href="mailto:franciscotrianto@gmail.com"
+            className={`${linkClass} mt-3 inline-block break-all`}
+          >
+            franciscotrianto@gmail.com
+          </a>
         </div>
 
         <nav aria-label={messages.footer.quickLinks}>
           <h2 className="text-primary font-mono text-xs font-medium tracking-[0.16em] uppercase">
             {messages.footer.quickLinks}
           </h2>
-          <ul className="mt-4 space-y-2.5">
+          <ul className="mt-4 grid grid-flow-col grid-cols-2 grid-rows-4 gap-x-8 gap-y-2.5">
             {quickLinks.map((item) => (
               <li key={item.href}>
                 <Link href={getLocalePath(locale, item.href)} className={linkClass}>

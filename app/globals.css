@@ -51,6 +51,7 @@
 :root {
   color-scheme: light;
   --background: #f3f7f6;
+  --glow-strength: 11%;
   --foreground: #172729;
   --card: #ffffff;
   --card-foreground: #172729;
@@ -90,6 +91,7 @@
 .dark {
   color-scheme: dark;
   --background: #10191d;
+  --glow-strength: 9%;
   --foreground: #e8f0ef;
   --card: #172328;
   --card-foreground: #e8f0ef;
@@ -132,6 +134,25 @@
 
   body {
     @apply bg-background text-foreground min-h-screen;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        60rem 40rem at 0% 0%,
+        color-mix(in srgb, var(--primary) var(--glow-strength), transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        55rem 38rem at 100% 100%,
+        color-mix(in srgb, var(--primary) var(--glow-strength), transparent),
+        transparent 70%
+      );
   }
 
   html {
