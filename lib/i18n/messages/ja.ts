@@ -10,6 +10,8 @@ const ja = {
     education: '学歴',
     experience: '専門経験',
     about: '私について',
+    openMenu: 'メニューを開く',
+    closeMenu: 'メニューを閉じる',
     contact: 'お問い合わせ',
   },
   languageLabel: '言語を選択',

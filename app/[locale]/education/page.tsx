@@ -63,7 +63,7 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
         <p className="text-muted-foreground mt-4 leading-7">{messages.introduction}</p>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[20rem_minmax(0,1fr)] lg:items-start">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[20rem_minmax(0,1fr)] lg:items-start">
         <div className="mx-auto w-full max-w-xs lg:max-w-none">
           <Image
             src="/self/graduation.jpg"

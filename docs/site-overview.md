@@ -58,7 +58,7 @@ The page is implemented in [app/[locale]/about/page.tsx](../app/%5Blocale%5D/abo
 It opens with a short story beside a portrait, then covers what to call him (Francisco, Ciko, and NoHaitch), hobbies beside a second photo, interests as tags, and a link to the contact page.
 The photos are stored in `public/self/`.
 
-The header shows About from the `md` breakpoint up.
+About is part of the main navigation at every width.
 On smaller screens it is hidden because six items do not fit one row in every language, so it stays reachable from the footer.
 
 ### `/projects` and localized project routes
@@ -126,6 +126,8 @@ The App Router also includes [app/robots.txt](../app/robots.txt), which should b
 The shared page shell renders [components/layout/header.tsx](../components/layout/header.tsx), route content, [components/layout/footer.tsx](../components/layout/footer.tsx), and the Sonner toaster.
 
 The header contains primary navigation, a flag-bearing shadcn Select for language switching, and a light/dark theme control.
+Below the `lg` breakpoint the navigation and language select move into a burger menu panel.
+The panel closes on Escape, outside click, route change, and resize past `lg`.
 Navigation links (Home, Projects, Experience, Education, Contact) are always visible for accessibility.
 On small screens they move to a second full-width row below the logo and controls.
 The footer holds a brand tagline, quick links to every route including About this site, social links, the copyright, and a back-to-top link that targets the `top` id on the body.

@@ -91,7 +91,9 @@ Keep the homepage portrait as the primary visual signature, framed by a restrain
 
 Use the same page spacing, type hierarchy, and card treatment across routes.
 
-The header keeps all navigation links visible instead of using a menu, and wraps them to a second row on small screens.
+The header shows all navigation links from the `lg` breakpoint up.
+Below `lg` it shows the logo, theme toggle, and a burger button that opens a full-width panel with the links and language select.
+Grids that hold long text use `grid-cols-1` (or `minmax(0,1fr)`) so a single mobile column cannot grow past the viewport.
 
 The footer repeats the navigation as quick links, adds social links, and ends with the copyright and a back-to-top link.
 

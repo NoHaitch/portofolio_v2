@@ -10,6 +10,8 @@ const id = {
     education: 'Pendidikan',
     experience: 'Pengalaman',
     about: 'Tentang',
+    openMenu: 'Buka menu',
+    closeMenu: 'Tutup menu',
     contact: 'Kontak',
   },
   languageLabel: 'Pilih bahasa',

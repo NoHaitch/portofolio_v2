@@ -10,6 +10,8 @@ const en = {
     education: 'Education',
     experience: 'Experience',
     about: 'About',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
     contact: 'Contact',
   },
   languageLabel: 'Choose language',

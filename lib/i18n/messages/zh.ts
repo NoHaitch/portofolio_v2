@@ -10,6 +10,8 @@ const zh = {
     education: '教育经历',
     experience: '专业经历',
     about: '关于我',
+    openMenu: '打开菜单',
+    closeMenu: '关闭菜单',
     contact: '联系',
   },
   languageLabel: '选择语言',

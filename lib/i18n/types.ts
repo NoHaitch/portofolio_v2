@@ -39,6 +39,8 @@ export type Messages = {
     education: string
     experience: string
     about: string
+    openMenu: string
+    closeMenu: string
     contact: string
   }
   languageLabel: string
