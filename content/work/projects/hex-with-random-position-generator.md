@@ -1,0 +1,22 @@
+---
+title: Hex Game With Random Position Generator
+category: academic
+date: 2023-12-11
+summary: Implementation of 5x5 Hex Board Game With Random Position Generator in Python
+tags: [Python, CLI]
+cover: cover.png
+links:
+  - label: Repository
+    url: https://github.com/NoHaitch/Hex-With-Random-Position-Generator
+---
+
+Hex Game With Random Position Generator made using Python. This program is made to give a statistic to
+prove that going first in the game of Hex is more advantageous. This program can play Hex Game inside t
+he CLI and also simulate a random game of HEX.
+
+You can find the paper made at this link:
+[Application of Graph Theory on the Advantage of Going First in Hex](<https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2023-2024/Makalah2023/Makalah-Matdis-2023%20(91).pdf>)
+
+In the paper, I've proved that there a winner in Hex. Using analysis and theortical thinking, I've also
+shown that it is more advantageous to play the first move(start first). Using this program I've shown that
+even in using random probability of game state, We can see that the chance of winning by the player who starts first, is bigger.

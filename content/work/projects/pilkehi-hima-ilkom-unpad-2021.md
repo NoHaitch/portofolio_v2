@@ -1,0 +1,31 @@
+---
+title: Pilkehi Hima Ilkom Unpad 2021
+category: freelance
+date: 2021-12-01
+summary: A website for the Election of Students Association Chairman of Hima Ilkom Unpad. (Paid)
+tags: [Sass, CSS, PHP, JavaScript, HTML, XAMPP, Figma, Bootstrap, Web, MariaDB]
+cover: cover.png
+links:
+  - label: Repository
+    url: https://github.com/NoHaitch/Pilkehi_Hima_Ilkom_Unpad_2021
+---
+
+[Figma Project Link](https://www.figma.com/design/YXNH2FMNOZHYpYalorRE3F/Pemilihan-Ketua-Himpunan-Ilmu-Komunikasi-Unpad?node-id=6-2&t=NOVeSXnag3hlKxNn-1)
+
+## Project Offer
+
+In my senior high school days, I was offered to make a website for the Election of Students Association Chairman of
+Hima Ilkom Unpad by one of my ex-seniors. Since it was my first chance to do something I like to do and get paid to
+do it, I was very thrilled. Of course, I accepted it.
+
+## First Project
+
+To make the website, we initially offered other people from our club, FCC(Five Cyber Community), to join in and help
+us do it. But in the end..., well it was only the two of us (my good friend Belati Jagad). Both of us have learned the
+web independently for our hobbies, so making something that will be used was a new challenge.
+
+## Conclusion
+
+In the end, this was the web that resulted from this project. I was able to make it public since we didn't have any
+contract, and it wasn't going to get used again anyway. Plus, if I am honest, now(December 2024) that I looked at it
+again, it was kinda bad.

@@ -1,0 +1,18 @@
+---
+title: Shape Side Matching for Rectangular Shape Origin
+category: academic
+date: 2024-06-12
+summary: Shape Side Matching using string matching and similarity.
+tags: [Python, NumPy]
+cover: cover.png
+links:
+  - label: Repository
+    url: https://github.com/NoHaitch/Shape-Side-Matching-for-rectangular-shape-origin
+---
+
+Shape Side Matching using string matching and similarity.
+
+This program uses Knuth Morris Pratt (KMP) Algorithm and Boyer Moore (BM) Algorithm for string matching. It also uses Levenshtein Distance for string similarity.
+
+You can find the paper on this link: [Application of String Matching and String Similarity
+for Shape Side Matching](<https://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2023-2024/Makalah/Makalah-IF2211-Stima-2024%20(87).pdf>)

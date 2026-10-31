@@ -1,0 +1,45 @@
+---
+title: HTML Checker using Push Down Automata (PDA)
+category: academic
+date: 2023-11-27
+summary: Using Push Down Automata to check HTML syntax in Python.
+tags: [Python, CLI]
+cover: cover.webp
+team: Otax Error
+links:
+  - label: Repository
+    url: https://github.com/NoHaitch/HTML-Checker-using-Pushdown-Automata
+---
+
+Using Push Down Automata to check HTML syntax in Python.
+
+## Push Down Automata (PDA)
+
+In learning formal language and automata, We were tasked to apply PDA concept to actualy problems. In which we were told to make a HTML checker.
+We used Python to read a txt file containing the PDA definition as well as the PDA for the actual HTML checker.
+
+## HTML Checker
+
+Here are the elements that is checked in this program
+
+#### 1. List of tag checked:
+
+html, head, body, title, link, script, h1, h2, h3, h4, h5, h6, p, br, hr, div, a, img, button, form, input, table, tr, td, th
+
+#### 2. Tag with nested
+
+html, body, head, div, form, table
+
+#### 3. Formating element tag
+
+em, b, abbr, strong, small
+
+The resulted PDA diagram for the HTML checker can be found below.
+
+PDA Diagram for HTML Checker: [https://drive.google.com/file/d/1CbVagQ2CuBhSvng2pcsUx9kJYFlHLXqB/view?usp=sharing](https://drive.google.com/file/d/1CbVagQ2CuBhSvng2pcsUx9kJYFlHLXqB/view?usp=sharing)
+
+By Otax Error:
+
+- 13522070 Marzuli Suhada M
+- 13522071 Bagas Sambega Rosyada
+- 13522091 Raden Francisco Trianto Bratadiningrat

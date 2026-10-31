@@ -5,7 +5,7 @@ const id = {
     'Portofolio Francisco Trianto, software engineer yang berfokus pada keamanan, sistem, AI, dan pengembangan produk yang praktis.',
   navigation: {
     label: 'Navigasi utama',
-    projects: 'Proyek',
+    work: 'Karya',
     home: 'Beranda',
     education: 'Pendidikan',
     experience: 'Pengalaman',
@@ -53,8 +53,13 @@ const id = {
           'Jazz adalah favorit saya. Saya bermain piano dan suka datang ke festival jazz.',
       },
       {
+        title: 'Traveling',
+        description:
+          'Saya suka menjelajahi tempat baru. Sejauh ini saya sudah ke Singapura, Jepang, Hong Kong, Malaysia, dan Bali.',
+      },
+      {
         title: 'Olahraga',
-        description: 'Voli adalah olahraga utama saya, dan dulu saya juga bermain sepak bola.',
+        description: 'Saya suka bermain sepak bola dan voli.',
       },
       { title: 'Gaming', description: 'Cara yang enak untuk melepas penat.' },
     ],
@@ -135,7 +140,7 @@ const id = {
     introduction:
       'Lulusan Informatika ITB yang membangun perangkat lunak praktis dengan perhatian pada keamanan, sistem yang andal, dan data yang bermanfaat.',
     portraitAlt: 'Potret Francisco Trianto dengan blazer biru tua',
-    projects: 'Lihat proyek',
+    work: 'Lihat karya saya',
     contact: 'Hubungi saya',
     scrollHint: 'Gulir untuk menjelajah',
     philosophyQuote:
@@ -189,71 +194,53 @@ const id = {
       },
     ],
   },
-  projects: {
+  work: {
     eyebrow: 'Karya pilihan & lainnya',
     title: 'Proyek dan aktivitas',
     introduction:
-      'Sekilas lebih dekat pada hal-hal yang saya bangun dan komunitas tempat saya belajar.',
-    projectsHeading: 'Proyek pilihan',
-    activitiesHeading: 'Aktivitas & sorotan',
-    activitiesIntroduction:
-      'Beberapa pengalaman bermakna di luar pembuatan perangkat lunak, tanpa mengulang seluruh linimasa pekerjaan.',
-    projects: [
-      {
-        title: 'Sistem Antrean Terdistribusi',
-        category: 'Proyek profesional',
-        period: 'Apr 2025 - Mar 2026',
-        summary:
-          'Membangun platform manajemen antrean dengan lima komponen dan pembaruan real-time antara klien loket dan layar.',
-        tags: ['Sistem terdistribusi', 'Pembaruan real-time', 'Manajemen antrean'],
-      },
-      {
-        title: 'Kios Check-in Hotel Multibahasa',
-        category: 'Proyek magang',
-        period: 'Jun 2025 - Sep 2025',
-        summary:
-          'Menghubungkan aplikasi desktop .NET dengan aplikasi Laravel dan Vue.js, sekaligus membuat prototipe interaksi perangkat pembayaran dan kartu kamar.',
-        tags: ['.NET', 'Laravel', 'Vue.js', 'Integrasi perangkat'],
-      },
-      {
-        title: 'Pemilu Mahasiswa HMIF',
-        category: 'Proyek kampus',
-        period: 'Okt 2024 - Feb 2025',
-        summary:
-          'Membangun platform pemilu responsif untuk lebih dari 700 pemilih mahasiswa dan membantu pengembang junior menerapkan pola UI serta code review.',
-        tags: ['Frontend', 'Platform pemilu', '700+ pemilih'],
-      },
-      {
-        title: 'Pemungutan Suara Digital HIMA ILKOM',
-        category: 'Proyek freelance',
-        period: 'Okt 2021 - Des 2021',
-        summary:
-          'Bersama tim membangun platform pemungutan suara digital yang memproses lebih dari 1.000 suara tervalidasi dengan uptime 100% selama pemilihan tiga hari.',
-        tags: ['Full-stack', 'Pemungutan suara digital', 'Keandalan'],
-      },
-    ],
-    activityHighlights: [
-      {
-        title: 'Lokakarya pengembangan karakter',
-        description:
-          'Memfasilitasi lokakarya dan sesi refleksi untuk 50 mahasiswa baru dalam empat hari kegiatan.',
-        relatedRoute: 'experience',
-      },
-      {
-        title: 'Komunitas kampus dan bola voli',
-        description:
-          'Berkontribusi di Unit Bola Voli ITB dan membantu menyusun kegiatan orientasi untuk lebih dari 100 anggota baru.',
-        relatedRoute: 'experience',
-      },
-      {
-        title: 'Kompetisi matematika SMA',
-        description:
-          'Dua kali mengikuti OSK Matematika tingkat Kota Bandung dan lulus sebagai siswa berprestasi.',
-        relatedRoute: 'education',
-      },
-    ],
-    viewExperience: 'Lihat pengalaman',
-    viewEducation: 'Lihat pendidikan',
+      'Sekilas lebih dekat pada hal-hal yang saya bangun serta kompetisi, webinar, dan acara tempat saya belajar.',
+    featuredHeading: 'Proyek unggulan',
+    featuredIntroduction: 'Pilihan proyek yang paling saya banggakan.',
+    viewAllProjects: 'Lihat semua proyek',
+    recentHeading: 'Aktivitas terbaru',
+    recentIntroduction: 'Kompetisi, webinar, lokakarya, dan acara terbaru yang saya ikuti.',
+    viewAllActivities: 'Lihat semua aktivitas',
+    projectsPage: {
+      eyebrow: 'Proyek',
+      title: 'Semua proyek',
+      introduction:
+        'Semua yang pernah saya bangun, dari proyek kuliah hingga pekerjaan lepas dan eksperimen pribadi. Cari berdasarkan nama, teknologi, atau kategori.',
+      searchLabel: 'Cari proyek',
+      searchPlaceholder: 'Cari nama, tag, atau kata kunci',
+      backLabel: 'Kembali ke semua proyek',
+    },
+    activitiesPage: {
+      eyebrow: 'Aktivitas',
+      title: 'Semua aktivitas',
+      introduction:
+        'Kepanitiaan, olahraga, acara, dan pencapaian di luar pembuatan perangkat lunak. Cari berdasarkan nama, topik, atau kategori.',
+      searchLabel: 'Cari aktivitas',
+      searchPlaceholder: 'Cari nama, tag, atau kata kunci',
+      backLabel: 'Kembali ke semua aktivitas',
+    },
+    allCategories: 'Semua',
+    categoryFilterLabel: 'Filter berdasarkan kategori',
+    resultCount: 'Menampilkan {count} dari {total}',
+    noResults: 'Belum ada yang cocok dengan pencarian Anda.',
+    clearFilters: 'Hapus filter',
+    viewDetails: 'Lihat detail',
+    linksHeading: 'Tautan',
+    teamLabel: 'Tim',
+    categories: {
+      academic: 'Akademik',
+      personal: 'Pribadi',
+      organization: 'Organisasi',
+      freelance: 'Freelance',
+      committee: 'Kepanitiaan',
+      sports: 'Olahraga',
+      event: 'Acara',
+      milestone: 'Pencapaian',
+    },
   },
   education: {
     eyebrow: 'Latar belakang',

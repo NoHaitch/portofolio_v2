@@ -27,7 +27,7 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
       ],
       skillsLabel: messages.skillsLabel,
       skills: messages.universitySkills,
-      logo: '/education/Logo%20ITB_COLOR_2026@2x.png',
+      logo: '/education/logo-itb.png',
       certificate: '/education/Ijazah%20ITB.pdf',
     },
     {

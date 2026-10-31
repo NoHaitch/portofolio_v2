@@ -5,7 +5,7 @@ const ja = {
     'セキュリティ、システム、AI、実用的なプロダクト開発に取り組むソフトウェアエンジニア、Francisco Triantoのポートフォリオです。',
   navigation: {
     label: 'メインナビゲーション',
-    projects: 'プロジェクト',
+    work: '実績',
     home: 'ホーム',
     education: '学歴',
     experience: '専門経験',
@@ -52,8 +52,13 @@ const ja = {
         description: 'ジャズが一番好きです。ピアノを弾き、ジャズフェスティバルにも足を運びます。',
       },
       {
+        title: '旅行',
+        description:
+          '新しい場所を訪れるのが好きです。これまでにシンガポール、日本、香港、マレーシア、バリを訪れました。',
+      },
+      {
         title: 'スポーツ',
-        description: 'バレーボールが中心で、以前はサッカーもしていました。',
+        description: 'サッカーとバレーボールを楽しんでいます。',
       },
       { title: 'ゲーム', description: '気分転換にちょうど良い趣味です。' },
     ],
@@ -134,7 +139,7 @@ const ja = {
     introduction:
       'バンドン工科大学で情報工学を学び、セキュリティ、信頼性の高いシステム、有用なデータを大切にした実践的なソフトウェアを開発しています。',
     portraitAlt: '紺のブレザーを着たFrancisco Triantoのポートレート',
-    projects: 'プロジェクトを見る',
+    work: '実績を見る',
     contact: 'お問い合わせ',
     scrollHint: 'スクロールして詳しく見る',
     philosophyQuote:
@@ -188,70 +193,52 @@ const ja = {
       },
     ],
   },
-  projects: {
+  work: {
     eyebrow: '制作物と活動',
     title: 'プロジェクト・活動',
-    introduction:
-      'これまでに作ったものや、学びを得たコミュニティを、少しカジュアルな視点で紹介します。',
-    projectsHeading: '主なプロジェクト',
-    activitiesHeading: '活動・ハイライト',
-    activitiesIntroduction:
-      '仕事の詳細な経歴とは重複しないように、ソフトウェア開発以外の印象的な経験をまとめました。',
-    projects: [
-      {
-        title: '分散型キュー管理システム',
-        category: '業務プロジェクト',
-        period: '2025年4月 - 2026年3月',
-        summary:
-          '5つのコンポーネントからなるキュー管理基盤を構築し、窓口端末と表示端末間のリアルタイム更新を実現しました。',
-        tags: ['分散システム', 'リアルタイム更新', 'キュー管理'],
-      },
-      {
-        title: '多言語ホテルチェックイン端末',
-        category: 'インターンプロジェクト',
-        period: '2025年6月 - 2025年9月',
-        summary:
-          '.NETデスクトップシェルとLaravel・Vue.jsアプリを連携し、決済とルームキー機器の操作を試作しました。',
-        tags: ['.NET', 'Laravel', 'Vue.js', '機器連携'],
-      },
-      {
-        title: 'HMIF学生選挙システム',
-        category: '学内プロジェクト',
-        period: '2024年10月 - 2025年2月',
-        summary:
-          '700人以上の学生が利用するレスポンシブな選挙プラットフォームを開発し、後輩開発者とUIやレビュー手法を整えました。',
-        tags: ['フロントエンド', '選挙プラットフォーム', '700人以上'],
-      },
-      {
-        title: 'HIMA ILKOMオンライン投票',
-        category: 'フリーランスプロジェクト',
-        period: '2021年10月 - 2021年12月',
-        summary:
-          '1,000件以上の有効票を処理し、3日間の選挙期間中に100%の稼働率を達成した投票システムを共同開発しました。',
-        tags: ['フルスタック', 'デジタル投票', '信頼性'],
-      },
-    ],
-    activityHighlights: [
-      {
-        title: '人間形成ワークショップ',
-        description:
-          '4日間のイベントを通じて、50人の新入生向けにワークショップと振り返りの場を進行しました。',
-        relatedRoute: 'experience',
-      },
-      {
-        title: '学内・バレーボールコミュニティ',
-        description:
-          'バンドン工科大学バレーボール部に参加し、100人以上の新入部員向け活動の企画に携わりました。',
-        relatedRoute: 'experience',
-      },
-      {
-        title: '高校数学競技',
-        description: 'バンドン市レベルの数学OSKに2回参加し、優等生として卒業しました。',
-        relatedRoute: 'education',
-      },
-    ],
-    viewExperience: '職務経験を見る',
-    viewEducation: '学歴を見る',
+    introduction: 'これまでに作ったものや、学びを得たコンペ、ウェビナー、イベントを紹介します。',
+    featuredHeading: '注目のプロジェクト',
+    featuredIntroduction: '特に思い入れのあるプロジェクトを厳選しました。',
+    viewAllProjects: 'すべてのプロジェクトを見る',
+    recentHeading: '最近の活動',
+    recentIntroduction: '最近参加したコンペ、ウェビナー、ワークショップ、イベントです。',
+    viewAllActivities: 'すべての活動を見る',
+    projectsPage: {
+      eyebrow: 'プロジェクト',
+      title: 'すべてのプロジェクト',
+      introduction:
+        '授業の課題からフリーランスの仕事、個人の実験まで、これまでに作ったものすべてです。名前、技術、カテゴリで検索できます。',
+      searchLabel: 'プロジェクトを検索',
+      searchPlaceholder: '名前、タグ、キーワードで検索',
+      backLabel: 'プロジェクト一覧に戻る',
+    },
+    activitiesPage: {
+      eyebrow: '活動',
+      title: 'すべての活動',
+      introduction:
+        'ソフトウェア開発以外の委員会活動、スポーツ、イベント、節目の出来事です。名前、テーマ、カテゴリで検索できます。',
+      searchLabel: '活動を検索',
+      searchPlaceholder: '名前、タグ、キーワードで検索',
+      backLabel: '活動一覧に戻る',
+    },
+    allCategories: 'すべて',
+    categoryFilterLabel: 'カテゴリで絞り込む',
+    resultCount: '{total}件中{count}件を表示',
+    noResults: '検索に一致する項目はまだありません。',
+    clearFilters: '絞り込みを解除',
+    viewDetails: '詳細を見る',
+    linksHeading: 'リンク',
+    teamLabel: 'チーム',
+    categories: {
+      academic: '学術',
+      personal: '個人',
+      organization: '団体',
+      freelance: 'フリーランス',
+      committee: '委員会',
+      sports: 'スポーツ',
+      event: 'イベント',
+      milestone: '節目',
+    },
   },
   education: {
     eyebrow: 'プロフィール',

@@ -1,0 +1,14 @@
+---
+title: HMIF Volleyball team for OlimKM ITB 2024
+category: sports
+date: 2024-11-19
+summary: My experience to represent HMIF for OlimKM ITB tournament.
+cover: cover.jpg
+---
+
+My experience to represent HMIF for OlimKM ITB tournament.
+
+We trained at least once every week, we even spared with many other teams. We were commited to winning. But not all things comes to a good end.
+
+It was a nice try, but in the we lost. It was a very hard defeat in our hearts. We trained and prepare so much but lost still lost.
+We all known that losing and winning is just the way of life. You cannot win everthing, yet still it very well hurt badly.

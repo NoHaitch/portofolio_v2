@@ -5,7 +5,7 @@ import RotatingText from '@/components/rotating-text'
 import { ScrollSnap } from '@/components/scroll-snap'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { getMessages, type Locale } from '@/lib/i18n'
+import { getLocalePath, getMessages, type Locale } from '@/lib/i18n'
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
@@ -16,7 +16,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <ScrollSnap targetId="expertise" />
       <section className="mx-auto flex min-h-[calc(100svh-4.25rem)] w-full max-w-6xl flex-col px-5 sm:min-h-[calc(100svh-4.5rem)] sm:px-8">
         <div className="grid flex-1 items-center gap-10 py-12 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:py-20">
-          <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+          <div className="relative order-2 mx-auto w-full max-w-xs sm:max-w-sm lg:order-1 lg:max-w-none">
             <div className="bg-accent absolute -inset-3 -z-10 rounded-[2rem]" />
             <div className="border-border bg-card shadow-foreground/5 overflow-hidden rounded-[1.5rem] border p-2 shadow-xl">
               <Image
@@ -25,12 +25,13 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                 width={600}
                 height={800}
                 className="aspect-[4/5] w-full rounded-[1.1rem] object-cover"
+                sizes="(min-width: 1024px) 480px, (min-width: 640px) 384px, 320px"
                 priority
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-start gap-5">
+          <div className="order-1 flex flex-col items-start gap-5 lg:order-2">
             <p className="text-primary font-mono text-xs font-medium tracking-[0.18em] uppercase">
               {messages.eyebrow}
             </p>
@@ -51,11 +52,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
             </p>
 
             <div className="mt-1 flex flex-wrap gap-3">
-              <Button
-                render={<Link href={locale === 'en' ? '/projects' : `/${locale}/projects`} />}
-                nativeButton={false}
-              >
-                {messages.projects}
+              <Button render={<Link href={getLocalePath(locale, '/work')} />} nativeButton={false}>
+                {messages.work}
               </Button>
               <Button
                 render={<Link href={locale === 'en' ? '/contact' : `/${locale}/contact`} />}

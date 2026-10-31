@@ -80,12 +80,16 @@ export default function Header({ locale }: { locale: Locale }) {
   const navItems = [
     { href: '/', label: messages.navigation.home },
     { href: '/about', label: messages.navigation.about },
-    { href: '/projects', label: messages.navigation.projects },
+    { href: '/work', label: messages.navigation.work },
     { href: '/experience', label: messages.navigation.experience },
     { href: '/education', label: messages.navigation.education },
     { href: '/contact', label: messages.navigation.contact },
   ]
   const currentPath = pathname.replace(/^\/(en|id|ja|zh)(?=\/|$)/, '') || '/'
+  const isActive = (href: string) =>
+    currentPath === href || (href !== '/' && currentPath.startsWith(`${href}/`))
+  const ariaCurrent = (href: string) =>
+    currentPath === href ? ('page' as const) : isActive(href) ? ('true' as const) : undefined
   const isDark = mounted && theme === 'dark'
   const menuOpen = openFor === pathname
 
@@ -143,11 +147,9 @@ export default function Header({ locale }: { locale: Locale }) {
             <li key={item.href}>
               <Link
                 href={getLocalePath(locale, item.href)}
-                aria-current={currentPath === item.href ? 'page' : undefined}
+                aria-current={ariaCurrent(item.href)}
                 className={`hover:bg-accent hover:text-accent-foreground block rounded-full px-3 py-2 transition-colors ${
-                  currentPath === item.href
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground'
+                  isActive(item.href) ? 'bg-accent text-accent-foreground' : 'text-muted-foreground'
                 }`}
               >
                 {item.label}
@@ -194,9 +196,9 @@ export default function Header({ locale }: { locale: Locale }) {
               <Link
                 key={item.href}
                 href={getLocalePath(locale, item.href)}
-                aria-current={currentPath === item.href ? 'page' : undefined}
+                aria-current={ariaCurrent(item.href)}
                 className={`hover:bg-accent hover:text-accent-foreground flex min-h-12 items-center rounded-xl px-4 text-base transition-colors ${
-                  currentPath === item.href
+                  isActive(item.href)
                     ? 'bg-accent text-accent-foreground font-medium'
                     : 'text-foreground'
                 }`}

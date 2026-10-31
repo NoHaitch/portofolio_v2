@@ -104,9 +104,9 @@ export function ExperienceTimeline({
                         </p>
                         <span className="text-muted-foreground text-xs">{entry.arrangement}</span>
                       </div>
-                      <h3 className="mt-2 text-sm leading-5 font-semibold tracking-tight">
+                      <h2 className="mt-2 text-sm leading-5 font-semibold tracking-tight">
                         {entry.title}
-                      </h3>
+                      </h2>
                       <p className="mt-0.5 text-xs font-medium text-[var(--experience-track-color)]">
                         {entry.organization}
                       </p>

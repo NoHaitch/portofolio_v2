@@ -16,7 +16,7 @@ export default function Footer({ locale }: { locale: Locale }) {
   const quickLinks = [
     { href: '/', label: messages.navigation.home },
     { href: '/about', label: messages.navigation.about },
-    { href: '/projects', label: messages.navigation.projects },
+    { href: '/work', label: messages.navigation.work },
     { href: '/experience', label: messages.navigation.experience },
     { href: '/education', label: messages.navigation.education },
     { href: '/contact', label: messages.navigation.contact },

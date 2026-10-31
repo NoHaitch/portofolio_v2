@@ -6,15 +6,16 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 
 ## Pages
 
-| Route         | Purpose                                                         |
-| ------------- | --------------------------------------------------------------- |
-| `/`           | Hero, generalist quote, and areas of expertise                  |
-| `/about`      | Personal story, names, interests, hobbies, and photos           |
-| `/projects`   | Selected projects and activity highlights                       |
-| `/experience` | Sortable timeline of engineering, teaching, and campus roles    |
-| `/education`  | Education timeline with coursework, honors, and certificates    |
-| `/contact`    | Professional and community links                                |
-| `/about-site` | What the site is for, how it is built, and the source code link |
+| Route                                | Purpose                                                           |
+| ------------------------------------ | ----------------------------------------------------------------- |
+| `/`                                  | Hero, generalist quote, and areas of expertise                    |
+| `/about`                             | Personal story, names, interests, hobbies, and photos             |
+| `/work`                              | Featured projects and recent activities, with links to full lists |
+| `/work/projects`, `/work/activities` | Searchable lists, each item opens `/work/<kind>/<slug>`           |
+| `/experience`                        | Sortable timeline of engineering, teaching, and campus roles      |
+| `/education`                         | Education timeline with coursework, honors, and certificates      |
+| `/contact`                           | Professional and community links                                  |
+| `/about-site`                        | What the site is for, how it is built, and the source code link   |
 
 English uses unprefixed URLs.
 Other languages use the `/id`, `/ja`, and `/zh` prefixes.
@@ -47,8 +48,13 @@ Open [http://localhost:3000](http://localhost:3000).
 | `bun run format`       | Format the project with Prettier    |
 | `bun run format:check` | Check formatting                    |
 | `bun run lint`         | Run ESLint                          |
+| `bun run typecheck`    | Type check with `tsc --noEmit`      |
+| `bun run test`         | Run the Vitest unit tests           |
+| `bun run test:e2e`     | Run the Playwright end-to-end tests |
+| `bun run test:audit`   | Run the Lighthouse audit            |
+| `bun run test:all`     | Typecheck, format check, and tests  |
 
-There is no automated test suite yet.
+See [docs/testing.md](./docs/testing.md) for setup and what the tests cover.
 The ESLint command currently fails to load because of an ESLint 10 and React plugin incompatibility.
 
 ## Project structure
@@ -62,7 +68,9 @@ The ESLint command currently fails to load because of an ESLint 10 and React plu
 ## Documentation
 
 - [docs/site-overview.md](./docs/site-overview.md) describes the current routes, structure, localization, and content.
+- [docs/adding-content.md](./docs/adding-content.md) explains how to add a project or activity.
 - [docs/design-system.md](./docs/design-system.md) is the visual style guide.
+- [docs/testing.md](./docs/testing.md) explains the unit and end-to-end tests.
 - [docs/context.md](./docs/context.md) holds personal context, tone, and public profiles.
 
 ## Adding a route

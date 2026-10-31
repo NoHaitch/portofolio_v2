@@ -1,5 +1,10 @@
 .next
+.agents
+.next-e2e
 node_modules
 coverage
 dist
 build
+reports
+test-results
+playwright-report

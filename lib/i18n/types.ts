@@ -1,3 +1,5 @@
+import type { WorkCategory } from '@/lib/work-schema'
+
 export const locales = ['en', 'id', 'ja', 'zh'] as const
 
 export type Locale = (typeof locales)[number]
@@ -16,18 +18,13 @@ export type ExperienceEntry = {
   proofUrl?: string
 }
 
-export type PortfolioProject = {
+export type WorkListMessages = {
+  eyebrow: string
   title: string
-  category: string
-  period: string
-  summary: string
-  tags: string[]
-}
-
-export type ActivityHighlight = {
-  title: string
-  description: string
-  relatedRoute: 'experience' | 'education'
+  introduction: string
+  searchLabel: string
+  searchPlaceholder: string
+  backLabel: string
 }
 
 export type Messages = {
@@ -35,7 +32,7 @@ export type Messages = {
   navigation: {
     label: string
     home: string
-    projects: string
+    work: string
     education: string
     experience: string
     about: string
@@ -91,7 +88,7 @@ export type Messages = {
     roles: [string, string, string, string]
     introduction: string
     portraitAlt: string
-    projects: string
+    work: string
     contact: string
     scrollHint: string
     philosophyQuote: string
@@ -101,17 +98,27 @@ export type Messages = {
       description: string
     }[]
   }
-  projects: {
+  work: {
     eyebrow: string
     title: string
     introduction: string
-    projectsHeading: string
-    activitiesHeading: string
-    activitiesIntroduction: string
-    projects: PortfolioProject[]
-    activityHighlights: ActivityHighlight[]
-    viewExperience: string
-    viewEducation: string
+    featuredHeading: string
+    featuredIntroduction: string
+    viewAllProjects: string
+    recentHeading: string
+    recentIntroduction: string
+    viewAllActivities: string
+    projectsPage: WorkListMessages
+    activitiesPage: WorkListMessages
+    allCategories: string
+    categoryFilterLabel: string
+    resultCount: string
+    noResults: string
+    clearFilters: string
+    viewDetails: string
+    linksHeading: string
+    teamLabel: string
+    categories: Record<WorkCategory, string>
   }
   education: {
     eyebrow: string

@@ -23,9 +23,9 @@ Use Francisco as the public name and use NoHaitch as a handle where appropriate.
 - `next/image` for the homepage portrait and education logos.
 - Bun is used for project scripts and dependency management.
 
-The package scripts currently provide development, production build, production start, formatting, formatting checks, and linting.
+The package scripts provide development, production build, production start, formatting, formatting checks, linting, type checking, and unit and end-to-end tests.
 
-There is no configured automated test suite or separate type-check script at this time.
+Testing is documented in [testing.md](./testing.md).
 
 The repository's ESLint command currently encounters an ESLint 10 and React plugin compatibility error while loading `react/display-name`.
 
@@ -49,7 +49,7 @@ The quote and rotating role labels stay in English across all locales to preserv
 
 The quote introduces his generalist approach, followed by nine cards ordered so related areas sit together: software engineering, cybersecurity, systems engineering, embedded systems, Operations & DevOps, agentic coding, AI & Data Science (framed around business decisions), Machine Learning (the model side, including Deep Learning, RAG, MCP, and model evaluation), and computer science & research, each with a concise description of his foundations.
 
-The projects action links to the localized `/projects` route.
+The work action links to the localized `/work` route.
 
 ### `/about` and localized about me routes
 
@@ -61,17 +61,26 @@ The photos are stored in `public/self/`.
 About is part of the main navigation at every width.
 On smaller screens it is hidden because six items do not fit one row in every language, so it stays reachable from the footer.
 
-### `/projects` and localized project routes
+### `/work` and localized work routes
 
-The projects page is implemented in [app/[locale]/projects/page.tsx](../app/%5Blocale%5D/projects/page.tsx).
+The Work section replaces the old Projects page, and the navigation label is "Work" (Karya, 実績, 作品).
 
-It presents a curated set of selected software projects followed by a concise Activities & Highlights section.
+| Route                     | Implementation                                                                 |
+| ------------------------- | ------------------------------------------------------------------------------ |
+| `/work`                   | [app/[locale]/work/page.tsx](../app/%5Blocale%5D/work/page.tsx)                |
+| `/work/projects`          | List with search and category filter, via `components/work/work-list-page.tsx` |
+| `/work/projects/[slug]`   | Detail page, via `components/work/work-detail-page.tsx`                        |
+| `/work/activities`        | Same list page for activities                                                  |
+| `/work/activities/[slug]` | Same detail page for activities                                                |
 
-Project and activity copy is stored in the locale dictionaries.
+The hub shows a hand-picked list of featured projects and the most recent activities, each with a button to its full list.
+Every card is a link to its detail page, and the Work navigation item stays highlighted on nested routes.
 
-Keep the page selective and more visual than the formal Experience route, while grounding claims in verified portfolio content.
+Item content is English-only markdown, one file per item, documented in [adding-content.md](./adding-content.md).
+Only the interface text is localized, in the `work` key of the locale dictionaries.
+To change what the hub shows, edit `featuredProjectSlugs` and `recentActivityCount` in [content/work/featured.ts](../content/work/featured.ts).
 
-Do not add project detail pages, external links, or separate activity routes until there is enough content to support them.
+Search and filtering live in `lib/work-filter.ts`, which has no content imports so the client explorer does not bundle the full dataset.
 
 ### `/education` and localized education routes
 
@@ -128,7 +137,7 @@ The shared page shell renders [components/layout/header.tsx](../components/layou
 The header contains primary navigation, a flag-bearing shadcn Select for language switching, and a light/dark theme control.
 Below the `lg` breakpoint the navigation and language select move into a burger menu panel.
 The panel closes on Escape, outside click, route change, and resize past `lg`.
-Navigation links (Home, Projects, Experience, Education, Contact) are always visible for accessibility.
+Navigation links (Home, Work, Experience, Education, Contact) are always visible for accessibility.
 On small screens they move to a second full-width row below the logo and controls.
 The footer holds a brand tagline, quick links to every route including About this site, social links, the copyright, and a back-to-top link that targets the `top` id on the body.
 
@@ -213,7 +222,7 @@ Keep the shared page structure and visual system consistent across languages.
 ## Future content areas
 
 The intended long-term portfolio can add writing, research, and a fuller about section on the homepage.
-Projects and activities already have a curated route.
+Projects and activities live under the `/work` routes, imported from the previous portfolio.
 
 Prefer structured content with consistent titles, dates, categories, tags, summaries, links, and optional media.
 

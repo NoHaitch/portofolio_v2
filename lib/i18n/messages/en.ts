@@ -5,7 +5,7 @@ const en = {
     'Portfolio of Francisco Trianto, a software engineer focused on security, systems, AI, and practical product delivery.',
   navigation: {
     label: 'Main navigation',
-    projects: 'Projects',
+    work: 'Work',
     home: 'Home',
     education: 'Education',
     experience: 'Experience',
@@ -52,8 +52,13 @@ const en = {
         description: 'Jazz is my favorite. I play the piano and enjoy going to jazz festivals.',
       },
       {
+        title: 'Travel',
+        description:
+          'I love exploring new places. So far I have been to Singapore, Japan, Hong Kong, Malaysia, and Bali.',
+      },
+      {
         title: 'Sports',
-        description: 'Volleyball is my main sport, and I used to play football.',
+        description: 'I enjoy playing football and volleyball.',
       },
       { title: 'Gaming', description: 'A good way to switch off.' },
     ],
@@ -134,7 +139,7 @@ const en = {
     introduction:
       'An Informatics Engineering graduate from ITB who builds practical software with care for security, dependable systems, and useful data.',
     portraitAlt: 'Portrait of Francisco Trianto in a navy blazer',
-    projects: 'View projects',
+    work: 'See my work',
     contact: 'Get in touch',
     scrollHint: 'Scroll to explore',
     philosophyQuote:
@@ -188,71 +193,53 @@ const en = {
       },
     ],
   },
-  projects: {
+  work: {
     eyebrow: 'Selected work & beyond',
     title: 'Projects and activities',
     introduction:
-      'A more hands-on look at the things I have built and the communities I have learned with.',
-    projectsHeading: 'Selected projects',
-    activitiesHeading: 'Activities & highlights',
-    activitiesIntroduction:
-      'A few meaningful experiences beyond building software, collected here without repeating the full work timeline.',
-    projects: [
-      {
-        title: 'Distributed Queue Management',
-        category: 'Professional project',
-        period: 'Apr 2025 - Mar 2026',
-        summary:
-          'Built a queue-management platform across five components, with real-time updates between teller and display clients.',
-        tags: ['Distributed systems', 'Real-time updates', 'Queue management'],
-      },
-      {
-        title: 'Multilingual Hotel Check-in Kiosk',
-        category: 'Internship project',
-        period: 'Jun 2025 - Sep 2025',
-        summary:
-          'Connected a .NET desktop shell to a Laravel and Vue.js application, prototyping payment and room-key device interactions.',
-        tags: ['.NET', 'Laravel', 'Vue.js', 'Device integration'],
-      },
-      {
-        title: 'HMIF Student Election',
-        category: 'Campus project',
-        period: 'Oct 2024 - Feb 2025',
-        summary:
-          'Built a responsive election platform for more than 700 student voters and helped junior developers follow shared UI and review practices.',
-        tags: ['Frontend', 'Election platform', '700+ voters'],
-      },
-      {
-        title: 'HIMA ILKOM Digital Voting',
-        category: 'Freelance project',
-        period: 'Oct 2021 - Dec 2021',
-        summary:
-          'Co-built a digital voting platform that processed over 1,000 validated votes and maintained 100% uptime during the three-day election.',
-        tags: ['Full-stack', 'Digital voting', 'Reliability'],
-      },
-    ],
-    activityHighlights: [
-      {
-        title: 'Character development workshops',
-        description:
-          'Facilitated workshops and reflection sessions for 50 first-year students across four event days.',
-        relatedRoute: 'experience',
-      },
-      {
-        title: 'Campus and volleyball community',
-        description:
-          'Contributed to ITB Volleyball Club and helped create onboarding activities for more than 100 incoming members.',
-        relatedRoute: 'experience',
-      },
-      {
-        title: 'High-school mathematics competitions',
-        description:
-          'Participated twice in the Bandung city-level Mathematics OSK and graduated as an honor student.',
-        relatedRoute: 'education',
-      },
-    ],
-    viewExperience: 'Explore experience',
-    viewEducation: 'Explore education',
+      'A hands-on look at the things I have built and the competitions, webinars, and events I have learned from.',
+    featuredHeading: 'Featured projects',
+    featuredIntroduction: 'A hand-picked selection of the projects I am proudest of.',
+    viewAllProjects: 'View all projects',
+    recentHeading: 'Recent activities',
+    recentIntroduction: 'The latest competitions, webinars, workshops, and events I took part in.',
+    viewAllActivities: 'View all activities',
+    projectsPage: {
+      eyebrow: 'Projects',
+      title: 'All projects',
+      introduction:
+        'Everything I have built, from course projects to freelance work and personal experiments. Search by name, technology, or category.',
+      searchLabel: 'Search projects',
+      searchPlaceholder: 'Search by name, tag, or keyword',
+      backLabel: 'Back to all projects',
+    },
+    activitiesPage: {
+      eyebrow: 'Activities',
+      title: 'All activities',
+      introduction:
+        'Committees, sports, events, and milestones beyond building software. Search by name, topic, or category.',
+      searchLabel: 'Search activities',
+      searchPlaceholder: 'Search by name, tag, or keyword',
+      backLabel: 'Back to all activities',
+    },
+    allCategories: 'All',
+    categoryFilterLabel: 'Filter by category',
+    resultCount: 'Showing {count} of {total}',
+    noResults: 'Nothing matches your search yet.',
+    clearFilters: 'Clear filters',
+    viewDetails: 'View details',
+    linksHeading: 'Links',
+    teamLabel: 'Team',
+    categories: {
+      academic: 'Academic',
+      personal: 'Personal',
+      organization: 'Organization',
+      freelance: 'Freelance',
+      committee: 'Committee',
+      sports: 'Sports',
+      event: 'Event',
+      milestone: 'Milestone',
+    },
   },
   education: {
     eyebrow: 'Background',

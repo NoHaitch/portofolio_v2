@@ -5,7 +5,7 @@ const zh = {
     'Francisco Trianto 的个人作品集，专注于软件工程、安全、系统、人工智能与实践型产品开发。',
   navigation: {
     label: '主导航',
-    projects: '项目',
+    work: '作品',
     home: '首页',
     education: '教育经历',
     experience: '专业经历',
@@ -48,7 +48,11 @@ const zh = {
     hobbiesHeading: '工作之外',
     hobbies: [
       { title: '音乐', description: '爵士是我的最爱。我会弹钢琴，也喜欢去爵士音乐节。' },
-      { title: '运动', description: '排球是我的主要运动，我以前也踢足球。' },
+      {
+        title: '旅行',
+        description: '我喜欢探索新的地方。目前去过新加坡、日本、香港、马来西亚和巴厘岛。',
+      },
+      { title: '运动', description: '我喜欢踢足球和打排球。' },
       { title: '游戏', description: '放松身心的好方式。' },
     ],
     singaporePhotoAlt: 'Francisco Trianto 站在水边，身后是新加坡的城市天际线',
@@ -126,7 +130,7 @@ const zh = {
     introduction:
       '毕业于万隆理工学院信息工程专业，致力于构建注重安全、系统可靠性和数据实用价值的软件。',
     portraitAlt: 'Francisco Trianto 身穿深蓝色西装的肖像',
-    projects: '查看项目',
+    work: '查看我的作品',
     contact: '联系我',
     scrollHint: '向下滚动，了解更多',
     philosophyQuote:
@@ -180,64 +184,51 @@ const zh = {
       },
     ],
   },
-  projects: {
+  work: {
     eyebrow: '精选作品与活动',
     title: '项目与活动',
-    introduction: '通过轻松一些的方式，看看我参与构建的项目和带给我成长的社群。',
-    projectsHeading: '精选项目',
-    activitiesHeading: '活动与亮点',
-    activitiesIntroduction: '精选几段软件开发之外的经历，不重复展示完整的工作时间线。',
-    projects: [
-      {
-        title: '分布式排队管理系统',
-        category: '专业项目',
-        period: '2025年4月 - 2026年3月',
-        summary: '构建由五个组件组成的排队管理平台，实现柜台客户端与显示客户端之间的实时更新。',
-        tags: ['分布式系统', '实时更新', '排队管理'],
-      },
-      {
-        title: '多语言酒店自助入住终端',
-        category: '实习项目',
-        period: '2025年6月 - 2025年9月',
-        summary: '将 .NET 桌面外壳与 Laravel、Vue.js 应用连接，并制作支付和房卡设备交互原型。',
-        tags: ['.NET', 'Laravel', 'Vue.js', '设备集成'],
-      },
-      {
-        title: 'HMIF 学生选举平台',
-        category: '校园项目',
-        period: '2024年10月 - 2025年2月',
-        summary:
-          '为 700 多名学生选民构建响应式选举平台，并协助初级开发者采用统一的 UI 模式和代码审查实践。',
-        tags: ['前端', '选举平台', '700 多名选民'],
-      },
-      {
-        title: 'HIMA ILKOM 数字投票平台',
-        category: '自由职业项目',
-        period: '2021年10月 - 2021年12月',
-        summary:
-          '共同开发数字投票平台，处理 1,000 多张有效选票，并在三天选举期间保持 100% 可用性。',
-        tags: ['全栈', '数字投票', '可靠性'],
-      },
-    ],
-    activityHighlights: [
-      {
-        title: '品格发展工作坊',
-        description: '在四天活动中，为 50 名新生组织品格发展工作坊和反思讨论。',
-        relatedRoute: 'experience',
-      },
-      {
-        title: '校园与排球社群',
-        description: '参与万隆理工学院排球社，并协助为 100 多名新成员设计入门活动。',
-        relatedRoute: 'experience',
-      },
-      {
-        title: '高中数学竞赛',
-        description: '两次参加万隆市级数学 OSK，并以优秀学生身份毕业。',
-        relatedRoute: 'education',
-      },
-    ],
-    viewExperience: '查看经历',
-    viewEducation: '查看教育经历',
+    introduction: '看看我构建过的项目，以及让我学到许多的竞赛、网络研讨会和活动。',
+    featuredHeading: '精选项目',
+    featuredIntroduction: '我最引以为傲的项目精选。',
+    viewAllProjects: '查看全部项目',
+    recentHeading: '近期活动',
+    recentIntroduction: '我最近参加的竞赛、网络研讨会、工作坊和活动。',
+    viewAllActivities: '查看全部活动',
+    projectsPage: {
+      eyebrow: '项目',
+      title: '全部项目',
+      introduction:
+        '从课程作业到自由职业工作和个人实验，我构建过的所有项目。可按名称、技术或类别搜索。',
+      searchLabel: '搜索项目',
+      searchPlaceholder: '按名称、标签或关键词搜索',
+      backLabel: '返回全部项目',
+    },
+    activitiesPage: {
+      eyebrow: '活动',
+      title: '全部活动',
+      introduction: '软件开发之外的委员会工作、体育、活动和里程碑。可按名称、主题或类别搜索。',
+      searchLabel: '搜索活动',
+      searchPlaceholder: '按名称、标签或关键词搜索',
+      backLabel: '返回全部活动',
+    },
+    allCategories: '全部',
+    categoryFilterLabel: '按类别筛选',
+    resultCount: '显示 {count} / {total} 项',
+    noResults: '暂时没有符合搜索条件的内容。',
+    clearFilters: '清除筛选',
+    viewDetails: '查看详情',
+    linksHeading: '链接',
+    teamLabel: '团队',
+    categories: {
+      academic: '学术',
+      personal: '个人',
+      organization: '组织',
+      freelance: '自由职业',
+      committee: '委员会',
+      sports: '体育',
+      event: '活动',
+      milestone: '里程碑',
+    },
   },
   education: {
     eyebrow: '个人背景',

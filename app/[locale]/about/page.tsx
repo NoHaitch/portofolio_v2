@@ -11,7 +11,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <main className="flex-1">
       <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
           <header>
             <p className="text-primary mb-3 font-mono text-xs font-medium tracking-[0.18em] uppercase">
               {messages.eyebrow}
@@ -32,9 +32,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             alt={messages.shibuyaPhotoAlt}
             width={960}
             height={1280}
-            sizes="320px"
+            sizes="(min-width: 1024px) 400px, 320px"
             priority
-            className="border-border mx-auto aspect-[3/4] w-full max-w-xs rounded-2xl border object-cover shadow-sm lg:max-w-none"
+            className="border-border mx-auto aspect-[4/5] w-full max-w-xs rounded-2xl border object-cover object-top shadow-sm lg:ml-auto lg:max-w-sm"
           />
         </div>
 
@@ -45,10 +45,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <h2 id="names-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">
             {messages.nameHeading}
           </h2>
-          <ul className="mt-6 grid gap-6 sm:grid-cols-3 sm:gap-8">
+          <ul className="mt-6 grid gap-4 sm:grid-cols-3 sm:gap-5">
             {messages.names.map((item) => (
-              <li key={item.name} className="border-border border-t pt-5">
-                <p className="text-lg font-semibold tracking-tight">{item.name}</p>
+              <li key={item.name} className="border-border bg-card rounded-2xl border p-5">
+                <p className="text-primary text-lg font-semibold tracking-tight">{item.name}</p>
                 <p className="text-muted-foreground mt-2 leading-7">{item.note}</p>
               </li>
             ))}
@@ -59,31 +59,26 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           aria-labelledby="hobbies-heading"
           className="border-border mt-16 border-t pt-10 sm:mt-20 sm:pt-12"
         >
-          <div className="grid items-center gap-10 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-16">
+          <h2 id="hobbies-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            {messages.hobbiesHeading}
+          </h2>
+          <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10">
             <Image
               src="/self/singapore.jpg"
               alt={messages.singaporePhotoAlt}
               width={1280}
               height={1280}
-              sizes="320px"
-              className="border-border mx-auto aspect-square w-full max-w-xs rounded-2xl border object-cover shadow-sm lg:max-w-none"
+              sizes="(min-width: 1024px) 400px, 320px"
+              className="border-border mx-auto aspect-square w-full max-w-xs rounded-2xl border object-cover shadow-sm lg:aspect-auto lg:h-full lg:max-w-none"
             />
-            <div>
-              <h2
-                id="hobbies-heading"
-                className="text-2xl font-semibold tracking-tight sm:text-3xl"
-              >
-                {messages.hobbiesHeading}
-              </h2>
-              <ul className="mt-6 space-y-5">
-                {messages.hobbies.map((hobby) => (
-                  <li key={hobby.title} className="border-border border-t pt-5">
-                    <p className="text-lg font-semibold tracking-tight">{hobby.title}</p>
-                    <p className="text-muted-foreground mt-2 leading-7">{hobby.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {messages.hobbies.map((hobby) => (
+                <li key={hobby.title} className="border-border bg-card rounded-2xl border p-5">
+                  <p className="text-primary text-lg font-semibold tracking-tight">{hobby.title}</p>
+                  <p className="text-muted-foreground mt-2 leading-7">{hobby.description}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -108,17 +103,19 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
         <section
           aria-labelledby="contact-heading"
-          className="border-border mt-16 border-t pt-10 sm:mt-20 sm:pt-12"
+          className="bg-muted mt-16 flex flex-col gap-5 rounded-2xl p-6 sm:mt-20 sm:flex-row sm:items-center sm:justify-between sm:p-8"
         >
-          <h2 id="contact-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            {messages.contactHeading}
-          </h2>
-          <p className="text-muted-foreground mt-3 max-w-2xl leading-7">
-            {messages.contactDescription}
-          </p>
+          <div>
+            <h2 id="contact-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">
+              {messages.contactHeading}
+            </h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl leading-7">
+              {messages.contactDescription}
+            </p>
+          </div>
           <Link
             href={getLocalePath(locale, '/contact')}
-            className={`${buttonVariants({ variant: 'outline' })} mt-6`}
+            className={`${buttonVariants({ variant: 'outline' })} shrink-0 self-start sm:self-auto`}
           >
             {messages.contactLink}
             <ArrowUpRight aria-hidden="true" />
