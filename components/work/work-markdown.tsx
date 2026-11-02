@@ -13,7 +13,17 @@ function createComponents(assetBase: string): Components {
       <h2 className="mt-10 text-2xl font-semibold tracking-tight">{children}</h2>
     ),
     h3: ({ children }) => <h3 className="mt-8 text-xl font-semibold tracking-tight">{children}</h3>,
-    p: ({ children }) => <p className="mt-4 leading-7">{children}</p>,
+    p: ({ node, children }) => {
+      const isCaption =
+        node?.children.length === 1 &&
+        node.children[0]?.type === 'element' &&
+        node.children[0].tagName === 'em'
+      return isCaption ? (
+        <p className="text-muted-foreground mt-2 text-center text-sm">{children}</p>
+      ) : (
+        <p className="mt-4 leading-7">{children}</p>
+      )
+    },
     ul: ({ children }) => (
       <ul className="marker:text-primary mt-4 list-disc space-y-1 pl-5 leading-7">{children}</ul>
     ),
@@ -44,6 +54,18 @@ function createComponents(assetBase: string): Components {
     img: async ({ src, alt }) => {
       if (typeof src !== 'string') return null
       const resolved = src.startsWith('./') ? `${assetBase}/${src.slice(2)}` : src
+      if (/\.(mp4|webm)$/i.test(resolved)) {
+        return (
+          <video
+            src={`${resolved}#t=0.1`}
+            controls
+            playsInline
+            preload="metadata"
+            aria-label={alt || undefined}
+            className="border-border mt-6 aspect-video w-full rounded-xl border bg-black object-contain"
+          />
+        )
+      }
       const { width, height } = await getPublicImageSize(resolved)
 
       return (
@@ -52,8 +74,10 @@ function createComponents(assetBase: string): Components {
           alt={alt ?? ''}
           width={width}
           height={height}
-          sizes={sizes}
-          className="border-border mt-6 h-auto w-full rounded-xl border"
+          sizes={height > width ? '(min-width: 640px) 384px, 100vw' : sizes}
+          className={`border-border mt-6 block h-auto w-full rounded-xl border ${
+            height > width ? 'mx-auto max-w-sm' : ''
+          }`}
         />
       )
     },

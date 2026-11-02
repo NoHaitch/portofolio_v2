@@ -2,51 +2,47 @@
 title: Character Development Training (CDT) Trainer 2023
 category: committee
 date: 2023-08-27
-summary: My experience as a trainer for Character Development(CDT) ITB 2023.
+summary: My experience as a trainer for Character Development Training (CDT) ITB 2023.
 cover: cover.jpg
 ---
 
-My Experience being a trainer for Character Development Training Institut Teknologi Bandung (CDT ITB) 2023.
+In August 2023 I served as a trainer for Character Development Training Institut Teknologi Bandung (CDT ITB).
+It was my first time on an official event committee.
 
-## CDT ITB
+## What is CDT?
 
-CDT, Character Development Training, is a training done by ITB for all freshmen. It's an event that must be taken by all
-the freshmen. CDT itself trains the students about the basic characteristics needed to survive the harsh environment of
-being a university student. So if you skip the event or have a bad final score, you must partake in next year's CDT.
+CDT is a training that ITB requires every freshman to complete.
+It teaches the basic character traits needed to survive the demanding environment of university life.
+A freshman who skips the event or finishes with a poor final score must retake it the following year.
 
-In CDT the freshmen are called the trainees and the teachers are called trainers. Trainers are senior students who first
-must go through many selections and special training before being selected as a Trainer, including myself.
+Freshmen are called trainees, and the people who teach them are called trainers.
+Trainers are senior students who go through several selection rounds and special training before they are chosen, and I was one of them.
 
-![cdt-itb](./cdt-itb.png)
-_First Day of CDT ITB 2023_
+![Trainees and trainers gathered on the first day of CDT ITB 2023](./cdt-itb.png)
 
-## Materials Taught
+_First day of CDT ITB 2023_
 
-CDT taught the students about AIR ITB, which is the core characteristic ITB wants the students to have. AIR itself stands
-for Adapatif (Adapativity), Integritas(Integrity), and Rendah hati(Humility).
+## Materials taught
 
-1. A -- Adaptability  
-   Adaptability is the ability to adapt to the surrounding environment. Each student needs to be able to adapt, and each
-   student comes from all kinds of environments. Without this ability, the student will struggle in daily university life
-   which could affect academic performance.
+CDT teaches AIR ITB, the core character ITB wants every student to have.
+AIR stands for Adaptif (Adaptability), Integritas (Integrity), and Rendah hati (Humility).
 
-2. I -- Integrity  
-   Integrity is the quality of being honest and showing a consistent and uncompromising adherence to strong moral and ethical
-   principles and values. For example, students should hold a high value on honesty and not fall short of cheating in exams or
-   tests. This also means that students must always be ethical in the real world and not continue the bad culture like nepotism,
-   corruption, etc.
+1. **Adaptability** is the ability to adjust to the surrounding environment.
+   Every student comes from a different background, and without this ability they struggle in daily university life, which can hurt their academic performance.
 
-3. R -- Humility  
-   Humility is the act of being modest. It's the act of knowing the bounds where one does not brag or think they are better
-   than someone else. This problem is caused by the students in ITB, mostly the best out of the best students. This usually
-   causes many of the students to brag or feel like they are better than most people out there. Thus making it a must to teach
-   the students to be modest about themself.
+2. **Integrity** means being honest and holding firmly to strong moral and ethical principles.
+   For example, students should never cheat in exams or tests.
+   It also means refusing to continue bad cultures such as nepotism and corruption once they leave campus.
+
+3. **Humility** means being modest and knowing the limits of one's own abilities.
+   It matters at ITB because many students are among the best in their schools, and that can make them boastful or dismissive of others.
+   Teaching students to stay modest is part of the training.
 
 ## Closing
 
-It was my first time participating in an official event committee, and it was full of amazing problems and journeys.
-Overall, this is a new experience. Although I wouldn't do this again, I gained so much just by participating in this event,
-and in the end, this was a memorable experience.
+This was a new experience full of challenges and learning.
+Although I would not do it again, I gained a lot from taking part, and it remains a memorable one.
 
-![STEI Trainers](./stei-trainers.jpg)
-_CDT ITB Trainers from STEI ITB faculty_
+![The STEI trainers posing together](./stei-trainers.jpg)
+
+_CDT ITB trainers from the STEI faculty_

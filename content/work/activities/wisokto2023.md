@@ -2,37 +2,49 @@
 title: Wisokto HMIF 2023
 category: committee
 date: 2023-10-09
-summary: My experience as a part of the Wisuda Oktober HMIF ITB 2023.
+summary: My experience on the Human Resource team for Wisuda Oktober HMIF ITB 2023.
 cover: cover.jpg
 ---
 
-My experience as part of the Wisuda Oktober HMIF ITB 2023 was my first contribution to HMIF ITB (Informatics Student's Association at Bandung Institute of Technology).
+Wisokto HMIF 2023 was my first contribution to HMIF ITB, the Informatics Student Association at Institut Teknologi Bandung.
+Soon after joining the association, I became a committee member for this event.
 
-## Wisokto (Wisuda Oktober 2023)
+## What is Wisokto?
 
-After recently joining the Informatics Student Association, HMIF, I was given a way to contribute by being part of the committee for Wisokto 2023. Wisokto is a celebration
-event that symbolizes the last signoff for the graduating students. Student associations participate as a celebratory gift to all members graduating and represent a sign of
-respect, honor, and thanks for all the members have done for the associations. This celebratory event peaked at the arak-arakan, where the current active members lead the
-graduating students while singing the association hyme and marching through the whole Institute.
+Wisokto, short for Wisuda Oktober (October Graduation), is a celebration for the graduating students.
+It is the last sign-off before they leave, and each student association takes part as a gift to its graduating members.
+It shows respect, honor, and thanks for everything those members did for the association.
 
-## Staff for the MSDM(Human Resource) Division
+The event peaks with the arak-arakan, where the active members lead the graduates in a march across the whole institute while singing the association hymn.
 
-In the Wisokto HMIF 2023 committee, I become a part of the Human Resource Division. In this division, our task is to oversee the whole committee and help if there are problems
-in management. I was the one who oversaw the Operation Division, which takes care of the stuff needed for the events. The Operation Division consists of 8 people, whom I helped
-with many problems regarding human management problems like who does which job and so on.
+![The arak-arakan march of HMIF graduates through the ITB campus](./arak-arakan.mp4)
 
-Another task of being a staff of MSDM is that I need to organize and maintain data for 183 other committee members. This data is collected and will be transferred to the
-association to keep track of the contribution each member has made.
+_The arak-arakan_
 
-The last task of being a staff of MDSM is to score whether the staff at the division that we were in charge of is doing their job properly or not. This is so we can choose
-the best staff from each division, and in my case, I will be the one choosing the best staff for the Operation Division.
+## My role: MSDM (Human Resource) staff
+
+I was a staff member of the Human Resource division, called MSDM in Indonesian.
+The division oversees the whole committee and helps whenever management problems come up.
+
+My responsibilities were:
+
+- **Supporting the Operation division.**
+  I looked after the 8 members who handle everything the event needs, and helped with people problems such as who takes which job.
+- **Keeping committee data.**
+  I organized and maintained records for the other 183 committee members.
+  The records are handed to the association so it can track each member's contribution.
+- **Evaluating staff.**
+  We scored whether the staff in our assigned division were doing their jobs well, so the best staff of each division could be chosen.
+  For the Operation division, I was the one choosing.
 
 ## Closing
 
-Wisokto 2023 was one of my best experiences by being part of the Informatics Student Association, HMIF ITB. The arak-arakan was such a thrill-filled with emotions like the sense of belonging.
+Wisokto 2023 was one of my best experiences in HMIF ITB.
+The arak-arakan was thrilling and full of emotion, with a real sense of belonging.
+If I had been one of the graduating students, I would have been sad to say goodbye to such a beloved association.
 
-If I was one of the graduation students, I would be full of sadness to say goodbye to our beloved association.
+Here is my participation certificate as proof of taking part in Wisokto HMIF 2023.
 
-As proof of being part of Wisokto HMIF 2023, here is the participation certificate.
+![Participation certificate for Wisokto HMIF 2023](./certificate.jpg)
 
-![certificate](./certificate.jpg)
+_Participation certificate_

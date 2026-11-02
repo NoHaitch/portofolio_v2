@@ -100,7 +100,9 @@ function parseItem(kind: WorkKind, fileName: string): WorkItem {
 }
 
 export function getItems(kind: WorkKind): WorkItem[] {
-  const cached = cache.get(kind)
+  // Skip the cache in dev so edited markdown shows up without restarting the server.
+  const useCache = process.env.NODE_ENV === 'production'
+  const cached = useCache ? cache.get(kind) : undefined
   if (cached) return cached
 
   const items = sortByDateDesc(
@@ -132,9 +134,10 @@ export function getRecentActivities(count = recentActivityCount) {
   return getItems('activities').slice(0, count)
 }
 
-export function formatWorkDate(date: string, locale: Locale) {
+export function formatWorkDate(date: string, locale: Locale, withDay = false) {
   return new Intl.DateTimeFormat(locale, {
-    month: 'short',
+    ...(withDay ? { day: 'numeric' } : {}),
+    month: withDay ? 'long' : 'short',
     year: 'numeric',
     timeZone: 'UTC',
   }).format(new Date(`${date}T00:00:00Z`))

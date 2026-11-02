@@ -2,26 +2,38 @@
 title: Volleyball Winner for HMIF Hometour
 category: sports
 date: 2024-04-21
-summary: My experience as the winner Volleyball team for HMIF home tournament.
+summary: Playing in the middle position for the IF'22 Ganesha team that won the volleyball tournament at HMIF Home Tournament 2024.
 cover: cover.jpg
 ---
 
-My experience as the winner Volleyball team for HMIF home tournament.
+In April 2024, my class team won first place in the volleyball competition of the HMIF Home Tournament.
+I mostly played in the middle position.
 
-## HMIF Home tournament
+## The tournament
 
-HMIF (Himpunan Mahasiswa Informatika ITB) held a tournament event for all it's members.
-Its a tournament held for fun and enjoyment while we were in our long holidays.
+HMIF (Himpunan Mahasiswa Informatika ITB) is the Informatics Student Association at Institut Teknologi Bandung.
+During the long holidays it held a Home Tournament for all of its members, played purely for fun and enjoyment.
+Several sports were contested, and each class or batch entered its own team.
+The volleyball matches took place on 20 and 21 April 2024.
 
-There are many sports held, and I participated as the team for IF'22 Ganesha.
+I played for IF'22 Ganesha, the Informatics class of 2022 at the Ganesha campus.
+Our team was Me, Sutha, Ihsan, Juan, Mesach, Ben, WG, and Emery.
 
-The IF'22 Ganesha team consists of: Me, Sutha, Ihsan, Juan, Mesach, Ben, WG, and Emery.
+## Volleyball and my role
 
-## Volleyball Winner
+Volleyball is a team sport where two sides, separated by a net, try to send the ball to the other side's court and make it hit the floor.
+Each team gets at most three touches to return the ball, and every player has a position.
 
-Although it was just for fun, we still had our competitiveness high trhough the roof.
-We were not going to just sit still and not be competitive. It was very fun, but in the end ... We Won!!!!
+I mostly played in the middle position, at the center of the net.
 
-Here were the result for the Volleyball sports:
+## The result
 
-![HMIF hometour volleyball results](./results.jpg)
+Although it was just for fun, our competitiveness was sky high.
+We were not going to sit still, and it was a lot of fun, but in the end we won.
+
+IF'22-G took first place and the gold medals.
+STI-J finished second, and STI'20 took third.
+
+![Results of the HMIF Home Tournament Phase 2 volleyball competition, with IF'22-G in first place](./results.jpg)
+
+_Final results of the volleyball competition_
