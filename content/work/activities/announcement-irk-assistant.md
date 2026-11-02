@@ -2,17 +2,16 @@
 title: Announcement - Computational Science and Engineering Laboratory Assistant
 category: milestone
 date: 2024-09-07
-summary: I am happy to announce my new position as a Computational Science and Engineering Laboratory Assistant.
+summary: I joined ITB's Computational Science and Engineering Laboratory as a laboratory assistant after completing a challenging selection process.
 cover: cover.png
 ---
 
-Announcement - Computational Science and Engineering Laboratory Assistant
-I am happy to announce my new position as a Computational Science and Engineering Laboratory Assistant. It wasn't easy, and I endured many hardships.
+I am happy to share that I became a laboratory assistant for the Computational Science and Engineering Laboratory at Institut Teknologi Bandung.
+The selection process was demanding, and reaching this point took persistence and a lot of learning.
 
-## IRK (Ilmu dan Rekayasa Komputer)
+## About IRK
 
-IRK (Ilmu dan Rekayasa Komputer), Computational Science and Engineering Laboratory is a lab that handles many Informatic courses.
-The courses that are handled are:
+IRK (Ilmu dan Rekayasa Komputer), or Computational Science and Engineering, supports several Informatics courses, including:
 
 - Discrete Mathematics
 - Geometric and Linear Algebra
@@ -20,17 +19,23 @@ The courses that are handled are:
 - Algorithm Strategies
 - Probability and Statistics
 
-## Selection Process
+## The selection process
 
-The selection is done in around two months. To describe the selection process, I would say that it's like a Competitive Programming
-A contest where each participant competes to get the most points. Instead of programming language problems, we use tasks with each task
-having a score component of normal points, bonus points, and a multiplier. For the first person to submit a task they will get a multiplier
-of 1.00x. For the second person, it will go down to 0.95x, for the third person is 0.90x, and for the rest, the multiplier will be 0.80x.
+The selection lasted around two months and was structured like a competitive points-based challenge.
+There were 11 tasks, each with its own problem and solution, drawing on topics from IRK courses.
 
-## Closing
+Each task could award regular points and bonus points, with the final points affected by a multiplier based on submission order.
+The first submission received a 1.00x multiplier, the second 0.95x, the third 0.90x, and later submissions 0.80x.
+This made both solving the tasks and submitting promptly important.
 
-In total, there were 11 tasks, and all of them had their unique problems and solutions using all the knowledge we gained from IRK courses.
-It was very useful since all the tasks forced us to do personal research to learn many new things.
+The process also pushed me to do independent research and learn beyond what we had already covered in class.
+I found that especially useful: every task brought a different problem and required a fresh approach.
 
-![First Meet](./first-meet.jpg)
-_First Laboratory Assistant Meeting_
+## A new beginning
+
+After the selection, I joined the laboratory assistant team.
+I am grateful for the opportunity and excited to contribute to the courses that first helped me build this foundation.
+
+![The first meeting of the Computational Science and Engineering Laboratory assistants](./first-meet.jpg)
+
+_First laboratory assistant meeting_

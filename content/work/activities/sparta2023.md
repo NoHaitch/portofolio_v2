@@ -2,25 +2,43 @@
 title: 'Materials & Methods - SPARTA HMIF 2023'
 category: committee
 date: 2024-09-21
-summary: My experience as a core division in SPARTA HMIF 2023.
+summary: My experience in the Materials and Methods division for SPARTA HMIF 2023, HMIF's organization training for prospective members.
 cover: cover.jpg
 ---
 
-My experience as a core division, Materials & Methods in SPARTA HMIF 2023.
+I was part of the Materials and Methods division for SPARTA HMIF 2023, a training program for prospective members of HMIF ITB.
+The experience gave me a chance to contribute to the program and take part in the activities alongside its participants.
 
-## SPARTA HMIF 2023
+## What is SPARTA?
 
-SPARTA (Simulasi dan Pelatihan Keorganisasian Untuk Anggota), which stands for Simulation and Organization
-Training for Members, is an event held by HMIF ITB for all their members candidates.
+SPARTA stands for Simulasi dan Pelatihan Keorganisasian Untuk Anggota, or Simulation and Organization Training for Members.
+HMIF ITB (the Informatics Student Association at Institut Teknologi Bandung) holds it for students preparing to join the association.
 
-![day 7 - pengondisian](./day7.jpg)
+## Memories from the program
 
-![day 7 - forum santai](./day7-forum-santai.jpg)
+The program included a mix of activities, from group conversations to the final inauguration.
+These moments with the participants and committee are what I remember most from SPARTA.
 
-![MAMET](./mamet.jpg)
+![Participants during the Day 7 conditioning activity](./day7.jpg)
 
-![day 9](./day9.jpg)
+_Day 7: conditioning_
 
-![cipher23](./cipher23.jpg)
+![Participants taking part in an informal discussion on Day 7](./day7-forum-santai.jpg)
 
-![lantik](./lantik.jpg)
+_Day 7: informal forum_
+
+![A SPARTA activity led by the Materials and Methods division](./mamet.jpg)
+
+_Materials and Methods activity_
+
+![Participants during the Day 9 activity](./day9.jpg)
+
+_Day 9_
+
+![Participants taking part in Cipher 23](./cipher23.jpg)
+
+_Cipher 23_
+
+![The SPARTA HMIF 2023 inauguration](./lantik.jpg)
+
+_Inauguration_

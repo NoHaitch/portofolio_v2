@@ -73,6 +73,14 @@ Use `##` and `###` for headings, because the page title is already the `h1`.
 Write descriptive link text, not "here".
 Raw HTML is ignored.
 
+Embed a timestamped YouTube video with image syntax, using the video's watch URL:
+
+```md
+![Graduation ceremony at 02:22:53](https://www.youtube.com/watch?v=fEb7weuHhh0&t=2h22m53s)
+```
+
+The renderer turns timestamped YouTube watch URLs into a privacy-enhanced embed that starts at that time.
+
 ## Featured projects
 
 Edit `featuredProjectSlugs` in `content/work/featured.ts`.

@@ -145,6 +145,10 @@ const ja = {
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: '専門分野',
+    recentProjectsHeading: '最近のプロジェクト',
+    recentActivitiesHeading: '最近の活動',
+    viewAllProjects: 'すべてのプロジェクトを見る',
+    viewAllActivities: '活動をもっと見る',
     expertiseAreas: [
       {
         title: 'ソフトウェアエンジニアリング',
@@ -202,7 +206,7 @@ const ja = {
     viewAllProjects: 'すべてのプロジェクトを見る',
     recentHeading: '最近の活動',
     recentIntroduction: '最近参加したコンペ、ウェビナー、ワークショップ、イベントです。',
-    viewAllActivities: 'すべての活動を見る',
+    viewAllActivities: '活動の一部を見る',
     projectsPage: {
       eyebrow: 'プロジェクト',
       title: 'すべてのプロジェクト',
@@ -213,13 +217,13 @@ const ja = {
       backLabel: 'プロジェクト一覧に戻る',
     },
     activitiesPage: {
-      eyebrow: '活動',
-      title: 'すべての活動',
+      eyebrow: '最近の主な活動',
+      title: '最近の活動の一部',
       introduction:
-        'ソフトウェア開発以外の委員会活動、スポーツ、イベント、節目の出来事です。名前、テーマ、カテゴリで検索できます。',
+        'ソフトウェア開発以外で最近参加した委員会活動、スポーツ、イベント、節目の一部を紹介します。すべての活動を網羅した一覧ではありません。名前、テーマ、カテゴリで検索できます。',
       searchLabel: '活動を検索',
       searchPlaceholder: '名前、タグ、キーワードで検索',
-      backLabel: '活動一覧に戻る',
+      backLabel: '活動に戻る',
     },
     allCategories: 'すべて',
     categoryFilterLabel: 'カテゴリで絞り込む',

@@ -2,49 +2,51 @@
 title: HMIF Goes Out - Company Visit Lintasarta
 category: event
 date: 2024-09-03
-summary: My experience participating in a company visit to Lintasarta with HMIF goes out.
+summary: A day in Jakarta with HMIF Goes Out to learn about Lintasarta, its work, and its people.
 cover: cover.jpg
 ---
 
-My experience participating in a company visit to Lintasarta with HMIF Goes Out. On this trip, I got a new experience while learning insightful knowledge about the
-company and its core values.
+On September 3, 2024, I joined HMIF Goes Out for a company visit to Lintasarta in Jakarta.
+It was my first time learning about the company, and the visit gave me a closer look at its work and the people behind it.
 
-![HMIF Goes Out](./hmif-goes-out.jpg)
-_Group Photo at ITB - HMIF Goes Out Company Visit Lintasarta_
+![HMIF members on the company visit to Lintasarta](./hmif-goes-out.jpg)
 
-## HMIF Goes Out
+_The HMIF Goes Out group_
 
-On September 3rd, 2024, I had the opportunity to participate in a company visit to Lintasarta in Jakarta. It was one of the events from my Informatics Student Association,
-HMIF Goes Out, where members can participate in rare events like company visits to big tech companies, like Tiket.com and SeaBank.
+## What is HMIF Goes Out?
 
-HMIF Goes Out is an event where many of the members go out on a group trip. Most of them have costs handled by the association. It may just be a simple trip to a local
-mall or even a long trip like a company visit to another region.
+HMIF Goes Out is an activity organized by HMIF, the Informatics Student Association at Institut Teknologi Bandung.
+Members travel together for events outside campus, from local outings to visits in other cities.
+This time, the group travelled to Jakarta to visit Lintasarta.
 
-![Company Visit](./employee-sharing-session.jpg)
-_Group Photo at Lintasarta Office - HMIF Goes Out Company Visit Lintasarta_
+## The company visit
 
-## Company Visit
+A company visit gives students the chance to see a workplace and hear directly from people working there.
+At Lintasarta, we took part in a sharing session with employees and learned about the company's work, values, and experiences.
+It was a useful way to connect what we learn as students with how technology and organizations operate in practice.
 
-Company Visits are events where a group of students get a chance to visit the company workplace. In these events, the company usually gives the students an explanation
-and shares worker's experiences at the company. The students get real-life ideas, problems, and solutions while the company can have a chance to promote their ideas in
-hopes that in the future, one of the students come back to take an internship or even work at the company.
+![HMIF members attending an employee sharing session at Lintasarta](./employee-sharing-session.jpg)
 
-## Lintasarta
+_Sharing session at the Lintasarta office_
 
-Lintasarta is a leading company in the Information and Communication tech industry. It's been around for more than 35+ years and is still growing strong. Recently,
-Lintasarta was renowned for working with NVidia on the breakthrough as the first Cloud AI Service Provider for Indonesia.
+## Getting to know Lintasarta
 
-Lintasarta is driven by its noble purpose of Empowering Indonesia. Empower Indonesia to accelerate unleashing the nation's digital potential. Currently, Lintasarta
-uses the value I CARE, which stands for Innovative, Collaboration, Agility, Resilience, and Ethics. Lintasarta has a long history. Lintasarta started by being building
-an application for the bank to become the company that runs multi-bank ATMs and to the current state of business with many child companies.
+Lintasarta works in the information and communication technology industry.
+During the visit, we learned about its history and how its business has developed, including its work supporting banking services and its more recent focus on cloud and AI services.
 
-![Collaboration between HMIF and Lintasarta](./hmif-chairman-and-lintasarta-chief-cloud-officer.jpg)
-_HMIF Chairman and Chief Cloud Officer of Lintasarta_
+The company shared its values through the acronym I CARE: Innovative, Collaboration, Agility, Resilience, and Ethics.
+Hearing how the company describes its purpose and values made the visit more than just a tour of an office.
 
-## Closing
+![The HMIF chairman with Lintasarta's Chief Cloud Officer](./hmif-chairman-and-lintasarta-chief-cloud-officer.jpg)
 
-The company visit was a wonderful, fun, and insightful experience. Before going on the trip, I have never heard of Lintasarta and its work. However, after the visit,
-I was super interested and intrigued by Lintasarta and its world. The company visit was a rare opportunity to get a new experience. It makes me even want to join the next HMIF Goes Out events!
+_HMIF's chairman with Lintasarta's Chief Cloud Officer_
 
-![Journey](./journey.jpg)
-_Journey Home - Writer is on the left_
+## Looking back
+
+Before the visit, I had not heard much about Lintasarta.
+I left with a better understanding of the company and a new interest in its work.
+It was a rare opportunity to learn outside the classroom, spend time with HMIF members, and share the trip together.
+
+![A fellow HMIF member and me on the journey home](./journey.jpg)
+
+_On the journey home_

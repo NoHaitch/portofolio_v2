@@ -8,7 +8,7 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 
 | Route                                | Purpose                                                           |
 | ------------------------------------ | ----------------------------------------------------------------- |
-| `/`                                  | Hero, generalist quote, and areas of expertise                    |
+| `/`                                  | Hero, areas of expertise, and five recent projects and activities |
 | `/about`                             | Personal story, names, interests, hobbies, and photos             |
 | `/work`                              | Featured projects and recent activities, with links to full lists |
 | `/work/projects`, `/work/activities` | Searchable lists, each item opens `/work/<kind>/<slug>`           |
@@ -19,6 +19,9 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 
 English uses unprefixed URLs.
 Other languages use the `/id`, `/ja`, and `/zh` prefixes.
+
+The homepage shows the five most recent projects and five most recent activities in side-by-side lists below the expertise section.
+The activities collection is a curated selection, not a complete record of every activity.
 
 ## Stack
 
@@ -64,6 +67,7 @@ The ESLint command currently fails to load because of an ESLint 10 and React plu
 - `lib/i18n/` holds locale helpers, message types, and the dictionaries in `messages/`.
 - `proxy.ts` rewrites unprefixed URLs to the internal English routes.
 - `public/` holds static assets such as the portrait, education logos, and documents.
+- `content/work/` holds one Markdown file per project or activity, with item media stored under `public/work/`.
 
 ## Documentation
 

@@ -145,6 +145,10 @@ const en = {
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: 'Areas of expertise',
+    recentProjectsHeading: 'Recent projects',
+    recentActivitiesHeading: 'Recent activities',
+    viewAllProjects: 'View all projects',
+    viewAllActivities: 'View all activities',
     expertiseAreas: [
       {
         title: 'Software engineering',
@@ -203,7 +207,7 @@ const en = {
     viewAllProjects: 'View all projects',
     recentHeading: 'Recent activities',
     recentIntroduction: 'The latest competitions, webinars, workshops, and events I took part in.',
-    viewAllActivities: 'View all activities',
+    viewAllActivities: 'View selected activities',
     projectsPage: {
       eyebrow: 'Projects',
       title: 'All projects',
@@ -214,13 +218,13 @@ const en = {
       backLabel: 'Back to all projects',
     },
     activitiesPage: {
-      eyebrow: 'Activities',
-      title: 'All activities',
+      eyebrow: 'Selected activities',
+      title: 'Some recent activities',
       introduction:
-        'Committees, sports, events, and milestones beyond building software. Search by name, topic, or category.',
+        'A selection of recent committees, sports, events, and milestones beyond building software, not a complete record of everything I do. Search by name, topic, or category.',
       searchLabel: 'Search activities',
       searchPlaceholder: 'Search by name, tag, or keyword',
-      backLabel: 'Back to all activities',
+      backLabel: 'Back to activities',
     },
     allCategories: 'All',
     categoryFilterLabel: 'Filter by category',

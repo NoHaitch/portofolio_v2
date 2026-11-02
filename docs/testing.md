@@ -55,6 +55,7 @@ Current coverage:
 - `navigation.spec.ts` also covers header navigation, the footer email link, language switching keeping the current route, the theme toggle, and the experience tabs.
 - `responsive.spec.ts` checks that no page has horizontal overflow at 320, 375, 768, and 1024 px.
 - `responsive.spec.ts` also covers the burger menu (open, Escape to close, navigate, language select inside the menu) and that the desktop nav shows no burger.
+- `work.spec.ts` checks that the homepage shows five recent projects and activities, and verifies the selected activity detail pages and timestamped graduation video embed.
 
 Reports and traces are written to `playwright-report/` and `test-results/`.
 Both are git-ignored.

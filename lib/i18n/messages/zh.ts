@@ -136,6 +136,10 @@ const zh = {
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: '专业领域',
+    recentProjectsHeading: '近期项目',
+    recentActivitiesHeading: '近期活动',
+    viewAllProjects: '查看所有项目',
+    viewAllActivities: '查看更多活动',
     expertiseAreas: [
       {
         title: '软件工程',
@@ -193,7 +197,7 @@ const zh = {
     viewAllProjects: '查看全部项目',
     recentHeading: '近期活动',
     recentIntroduction: '我最近参加的竞赛、网络研讨会、工作坊和活动。',
-    viewAllActivities: '查看全部活动',
+    viewAllActivities: '查看精选活动',
     projectsPage: {
       eyebrow: '项目',
       title: '全部项目',
@@ -204,12 +208,13 @@ const zh = {
       backLabel: '返回全部项目',
     },
     activitiesPage: {
-      eyebrow: '活动',
-      title: '全部活动',
-      introduction: '软件开发之外的委员会工作、体育、活动和里程碑。可按名称、主题或类别搜索。',
+      eyebrow: '精选活动',
+      title: '近期活动选录',
+      introduction:
+        '这里选录了我近期参与的部分委员会工作、体育、活动和重要经历，并非完整记录。可按名称、主题或类别搜索。',
       searchLabel: '搜索活动',
       searchPlaceholder: '按名称、标签或关键词搜索',
-      backLabel: '返回全部活动',
+      backLabel: '返回活动列表',
     },
     allCategories: '全部',
     categoryFilterLabel: '按类别筛选',

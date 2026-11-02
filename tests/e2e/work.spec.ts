@@ -1,6 +1,47 @@
 import { expect, test } from '@playwright/test'
 
 test.describe('work section', () => {
+  test('homepage shows five recent projects and activities in separate columns', async ({
+    page,
+  }) => {
+    await page.goto('/')
+
+    for (const heading of ['Recent projects', 'Recent activities']) {
+      const section = page
+        .getByRole('heading', { name: heading, exact: true })
+        .locator('xpath=ancestor::section[1]')
+      const href = heading === 'Recent projects' ? '/work/projects' : '/work/activities'
+      await expect(section.locator(`a[href="${href}"]`)).toBeVisible()
+      await expect(section.locator('ul > li')).toHaveCount(5)
+    }
+  })
+
+  test('recent activity detail pages render with their content', async ({ page }) => {
+    const activities = [
+      [
+        'announcement-irk-assistant',
+        'Announcement - Computational Science and Engineering Laboratory Assistant',
+      ],
+      ['comvis2024-lintasarta', 'HMIF Goes Out - Company Visit Lintasarta'],
+      ['olimkm-itb-2024', 'HMIF Volleyball Team for OlimKM ITB 2024'],
+      ['sparta2023', 'Materials & Methods - SPARTA HMIF 2023'],
+      ['thesis-defence', 'Thesis Defence - Anonymity in Open Scientific Publishing'],
+      ['itb-graduation-2026', 'Graduating from Institut Teknologi Bandung'],
+    ]
+
+    for (const [slug, title] of activities) {
+      const response = await page.goto(`/work/activities/${slug}`)
+      expect(response?.status(), slug).toBe(200)
+      await expect(page.getByRole('heading', { level: 1 }), slug).toHaveText(title)
+    }
+
+    await page.goto('/work/activities/itb-graduation-2026')
+    await expect(page.locator('iframe')).toHaveAttribute(
+      'src',
+      'https://www.youtube-nocookie.com/embed/fEb7weuHhh0?start=8573',
+    )
+  })
+
   test('hub shows featured projects and recent activities', async ({ page }) => {
     await page.goto('/work')
     await expect(page.getByRole('link', { name: /DBMS from scratch/ })).toBeVisible()
@@ -14,11 +55,11 @@ test.describe('work section', () => {
 
   test('view all buttons lead to the list pages', async ({ page }) => {
     await page.goto('/work')
-    await page.getByRole('link', { name: /View all projects/i }).click()
+    await page.locator('a[href="/work/projects"]').last().click()
     await expect(page).toHaveURL(/\/work\/projects$/)
 
     await page.goto('/work')
-    await page.getByRole('link', { name: /View all activities/i }).click()
+    await page.locator('a[href="/work/activities"]').last().click()
     await expect(page).toHaveURL(/\/work\/activities$/)
   })
 

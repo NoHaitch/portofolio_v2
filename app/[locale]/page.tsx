@@ -6,10 +6,22 @@ import { ScrollSnap } from '@/components/scroll-snap'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { getLocalePath, getMessages, type Locale } from '@/lib/i18n'
+import { formatWorkDate, getRecentActivities, getRecentProjects } from '@/lib/work'
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
-  const messages = getMessages(locale).home
+  const allMessages = getMessages(locale)
+  const messages = allMessages.home
+  const recentProjects = getRecentProjects().map((item) => ({
+    ...item,
+    href: getLocalePath(locale, `/work/projects/${item.slug}`),
+    dateLabel: formatWorkDate(item.date, locale),
+  }))
+  const recentActivities = getRecentActivities(5).map((item) => ({
+    ...item,
+    href: getLocalePath(locale, `/work/activities/${item.slug}`),
+    dateLabel: formatWorkDate(item.date, locale),
+  }))
 
   return (
     <main className="home-snap flex-1">
@@ -105,6 +117,66 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section
+        aria-label={`${messages.recentProjectsHeading} and ${messages.recentActivitiesHeading}`}
+        className="mx-auto w-full max-w-6xl px-5 pb-20 sm:px-8 sm:pb-28"
+      >
+        <div className="border-primary/30 grid gap-10 border-t pt-10 sm:gap-12 sm:pt-14 lg:grid-cols-2 lg:gap-14">
+          {[
+            {
+              title: messages.recentProjectsHeading,
+              href: getLocalePath(locale, '/work/projects'),
+              linkLabel: messages.viewAllProjects,
+              items: recentProjects,
+            },
+            {
+              title: messages.recentActivitiesHeading,
+              href: getLocalePath(locale, '/work/activities'),
+              linkLabel: messages.viewAllActivities,
+              items: recentActivities,
+            },
+          ].map((column) => (
+            <section key={column.title} aria-labelledby={`recent-${column.title}`}>
+              <div className="mb-5 flex items-baseline justify-between gap-4">
+                <h2
+                  id={`recent-${column.title}`}
+                  className="text-2xl font-semibold tracking-tight sm:text-3xl"
+                >
+                  {column.title}
+                </h2>
+                <Link
+                  href={column.href}
+                  className="text-primary focus-visible:ring-ring/40 shrink-0 rounded-sm text-sm font-medium underline underline-offset-4 hover:no-underline focus-visible:ring-2 focus-visible:outline-none"
+                >
+                  {column.linkLabel}
+                </Link>
+              </div>
+
+              <ul className="border-border border-t">
+                {column.items.map((item) => (
+                  <li key={item.slug} className="border-border border-b">
+                    <Link
+                      href={item.href}
+                      className="group focus-visible:ring-ring/40 flex items-start justify-between gap-4 py-4 focus-visible:ring-2 focus-visible:outline-none"
+                    >
+                      <span className="text-base leading-snug font-medium tracking-tight group-hover:underline sm:text-lg">
+                        {item.title}
+                      </span>
+                      <time
+                        dateTime={item.date}
+                        className="text-muted-foreground shrink-0 pt-1 font-mono text-xs"
+                      >
+                        {item.dateLabel}
+                      </time>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
         </div>
       </section>
     </main>

@@ -97,6 +97,10 @@ export type Messages = {
       title: string
       description: string
     }[]
+    recentProjectsHeading: string
+    recentActivitiesHeading: string
+    viewAllProjects: string
+    viewAllActivities: string
   }
   work: {
     eyebrow: string

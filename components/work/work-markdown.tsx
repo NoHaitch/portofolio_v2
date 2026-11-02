@@ -66,6 +66,20 @@ function createComponents(assetBase: string): Components {
           />
         )
       }
+      const youtube = parseYouTubeVideo(resolved)
+      if (youtube) {
+        return (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtube.id}?start=${youtube.start}`}
+            title={alt || 'Embedded YouTube video'}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="border-border mt-6 aspect-video w-full rounded-xl border"
+          />
+        )
+      }
       const { width, height } = await getPublicImageSize(resolved)
 
       return (
@@ -82,6 +96,27 @@ function createComponents(assetBase: string): Components {
       )
     },
   }
+}
+
+function parseYouTubeVideo(src: string) {
+  let url: URL
+  try {
+    url = new URL(src)
+  } catch {
+    return null
+  }
+
+  if (url.hostname !== 'www.youtube.com' && url.hostname !== 'youtube.com') return null
+  const id = url.searchParams.get('v')
+  if (!id || !/^[\w-]{11}$/.test(id)) return null
+
+  const timestamp = url.searchParams.get('t') ?? '0'
+  const match = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/.exec(timestamp)
+  const start = match
+    ? Number(match[1] ?? 0) * 3600 + Number(match[2] ?? 0) * 60 + Number(match[3] ?? 0)
+    : Number(timestamp)
+
+  return { id, start: Number.isSafeInteger(start) && start >= 0 ? start : 0 }
 }
 
 export function WorkMarkdown({ source, assetBase }: { source: string; assetBase: string }) {

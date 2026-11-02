@@ -134,6 +134,14 @@ export function getRecentActivities(count = recentActivityCount) {
   return getItems('activities').slice(0, count)
 }
 
+export function getRecentProjects(count = 5) {
+  return getItems('projects').slice(0, count)
+}
+
+export function getRecentWork(count = 5) {
+  return sortByDateDesc([...getItems('projects'), ...getItems('activities')]).slice(0, count)
+}
+
 export function formatWorkDate(date: string, locale: Locale, withDay = false) {
   return new Intl.DateTimeFormat(locale, {
     ...(withDay ? { day: 'numeric' } : {}),

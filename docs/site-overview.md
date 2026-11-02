@@ -51,6 +51,10 @@ The quote introduces his generalist approach, followed by nine cards ordered so 
 
 The work action links to the localized `/work` route.
 
+Below the expertise cards, the homepage displays the five most recent projects and five most recent activities in two columns.
+Each list links to item details and to its corresponding full list.
+The activities collection is intentionally a selection of recent activities, not an exhaustive archive.
+
 ### `/about` and localized about me routes
 
 The page is implemented in [app/[locale]/about/page.tsx](../app/%5Blocale%5D/about/page.tsx), with copy under the `about` key of the locale dictionaries.

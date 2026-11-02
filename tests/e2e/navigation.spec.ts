@@ -8,7 +8,7 @@ const pages = [
   { path: '/contact', heading: /connect/i },
   { path: '/work', heading: 'Projects and activities' },
   { path: '/work/projects', heading: 'All projects' },
-  { path: '/work/activities', heading: 'All activities' },
+  { path: '/work/activities', heading: 'Some recent activities' },
 ]
 
 test.describe('pages', () => {

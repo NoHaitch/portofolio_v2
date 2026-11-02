@@ -146,6 +146,10 @@ const id = {
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: 'Bidang keahlian',
+    recentProjectsHeading: 'Proyek terbaru',
+    recentActivitiesHeading: 'Aktivitas terbaru',
+    viewAllProjects: 'Lihat semua proyek',
+    viewAllActivities: 'Lihat semua aktivitas',
     expertiseAreas: [
       {
         title: 'Rekayasa perangkat lunak',
@@ -204,7 +208,7 @@ const id = {
     viewAllProjects: 'Lihat semua proyek',
     recentHeading: 'Aktivitas terbaru',
     recentIntroduction: 'Kompetisi, webinar, lokakarya, dan acara terbaru yang saya ikuti.',
-    viewAllActivities: 'Lihat semua aktivitas',
+    viewAllActivities: 'Lihat aktivitas pilihan',
     projectsPage: {
       eyebrow: 'Proyek',
       title: 'Semua proyek',
@@ -215,13 +219,13 @@ const id = {
       backLabel: 'Kembali ke semua proyek',
     },
     activitiesPage: {
-      eyebrow: 'Aktivitas',
-      title: 'Semua aktivitas',
+      eyebrow: 'Aktivitas pilihan',
+      title: 'Beberapa aktivitas terbaru',
       introduction:
-        'Kepanitiaan, olahraga, acara, dan pencapaian di luar pembuatan perangkat lunak. Cari berdasarkan nama, topik, atau kategori.',
+        'Pilihan kepanitiaan, olahraga, acara, dan pencapaian terbaru di luar pembuatan perangkat lunak, bukan catatan lengkap dari semua aktivitas saya. Cari berdasarkan nama, topik, atau kategori.',
       searchLabel: 'Cari aktivitas',
       searchPlaceholder: 'Cari nama, tag, atau kata kunci',
-      backLabel: 'Kembali ke semua aktivitas',
+      backLabel: 'Kembali ke aktivitas',
     },
     allCategories: 'Semua',
     categoryFilterLabel: 'Filter berdasarkan kategori',
