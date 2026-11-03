@@ -130,6 +130,10 @@ export function sortByDateDesc<T extends { date: string }>(items: T[]) {
   return [...items].sort((a, b) => b.date.localeCompare(a.date))
 }
 
+export function sortByDateAsc<T extends { date: string }>(items: T[]) {
+  return [...items].sort((a, b) => a.date.localeCompare(b.date))
+}
+
 export function getRecentActivities(count = recentActivityCount) {
   return getItems('activities').slice(0, count)
 }
@@ -155,6 +159,7 @@ export function toCardData(item: WorkItem, locale: Locale, messages: Messages): 
   return {
     slug: item.slug,
     href: getLocalePath(locale, `/work/${item.kind}/${item.slug}`),
+    date: item.date,
     title: item.title,
     category: item.category,
     categoryLabel: messages.work.categories[item.category],

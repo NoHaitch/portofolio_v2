@@ -17,6 +17,8 @@ export default function Footer({ locale }: { locale: Locale }) {
     { href: '/', label: messages.navigation.home },
     { href: '/about', label: messages.navigation.about },
     { href: '/work', label: messages.navigation.work },
+    { href: '/work/projects', label: messages.work.projectsPage.title },
+    { href: '/work/activities', label: messages.work.activitiesPage.title },
     { href: '/experience', label: messages.navigation.experience },
     { href: '/education', label: messages.navigation.education },
     { href: '/contact', label: messages.navigation.contact },
@@ -41,7 +43,7 @@ export default function Footer({ locale }: { locale: Locale }) {
           <h2 className="text-primary font-mono text-xs font-medium tracking-[0.16em] uppercase">
             {messages.footer.quickLinks}
           </h2>
-          <ul className="mt-4 grid grid-flow-col grid-cols-2 grid-rows-4 gap-x-8 gap-y-2.5">
+          <ul className="mt-4 grid grid-flow-col grid-cols-2 grid-rows-5 gap-x-8 gap-y-2.5">
             {quickLinks.map((item) => (
               <li key={item.href}>
                 <Link href={getLocalePath(locale, item.href)} className={linkClass}>

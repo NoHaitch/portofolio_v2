@@ -64,9 +64,20 @@ test.describe('navigation', () => {
 
   test('footer shows the contact email', async ({ page }) => {
     await page.goto('/')
-    await expect(
-      page.getByRole('contentinfo').getByRole('link', { name: 'franciscotrianto@gmail.com' }),
-    ).toHaveAttribute('href', 'mailto:franciscotrianto@gmail.com')
+    const footer = page.getByRole('contentinfo')
+    await expect(footer.getByRole('link', { name: 'franciscotrianto@gmail.com' })).toHaveAttribute(
+      'href',
+      'mailto:franciscotrianto@gmail.com',
+    )
+    const quickLinks = footer.getByRole('navigation', { name: 'Quick links' })
+    await expect(quickLinks.getByRole('link', { name: 'All projects' })).toHaveAttribute(
+      'href',
+      '/work/projects',
+    )
+    await expect(quickLinks.getByRole('link', { name: 'Some recent activities' })).toHaveAttribute(
+      'href',
+      '/work/activities',
+    )
   })
 })
 

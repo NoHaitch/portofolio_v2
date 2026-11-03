@@ -4,6 +4,7 @@ import type { WorkCategory } from '@/lib/work-schema'
 export type WorkCardData = {
   slug: string
   href: string
+  date: string
   title: string
   category: WorkCategory
   categoryLabel: string

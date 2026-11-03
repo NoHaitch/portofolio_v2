@@ -55,31 +55,99 @@ test.describe('work section', () => {
 
   test('view all buttons lead to the list pages', async ({ page }) => {
     await page.goto('/work')
-    await page.locator('a[href="/work/projects"]').last().click()
+    await page.getByRole('link', { name: 'View all projects', exact: true }).click()
     await expect(page).toHaveURL(/\/work\/projects$/)
 
     await page.goto('/work')
-    await page.locator('a[href="/work/activities"]').last().click()
+    await page.getByRole('link', { name: 'View selected activities', exact: true }).click()
     await expect(page).toHaveURL(/\/work\/activities$/)
+  })
+
+  test('project and activity lists show eight items per page', async ({ page }) => {
+    for (const { path, secondPageCount } of [
+      { path: '/work/projects', secondPageCount: 8 },
+      { path: '/work/activities', secondPageCount: 2 },
+    ]) {
+      await page.goto(path)
+
+      const resultCount = await page.getByText(/^Showing \d+-\d+ of \d+$/).textContent()
+      const total = Number((/of (\d+)/.exec(resultCount || '') || [])[1])
+      expect(total).toBeGreaterThan(8)
+      const cardList = page
+        .getByRole('list')
+        .filter({ has: page.getByRole('heading', { level: 2 }) })
+      await expect(cardList.locator(':scope > li')).toHaveCount(8)
+
+      await page.getByRole('link', { name: 'Page 2' }).click()
+      await expect(page).toHaveURL(/page=2/)
+      await expect(cardList.locator(':scope > li')).toHaveCount(secondPageCount)
+      await expect(page.getByRole('link', { name: 'Page 2' })).toHaveAttribute(
+        'aria-current',
+        'page',
+      )
+
+      if (path === '/work/projects') {
+        await page.getByRole('link', { name: 'Personal', exact: true }).click()
+        await expect(page).toHaveURL(/category=personal/)
+        await expect(page).not.toHaveURL(/page=/)
+        await expect(page.getByRole('link', { name: 'Personal', exact: true })).toHaveAttribute(
+          'aria-current',
+          'true',
+        )
+      }
+    }
+  })
+
+  test('sort toggles between oldest and newest dates and resets to page one', async ({ page }) => {
+    await page.goto('/work/projects?page=2')
+    const cardList = page.getByRole('list').filter({ has: page.getByRole('heading', { level: 2 }) })
+    const dates = cardList.locator('time')
+
+    const newestFirst = await dates.evaluateAll((elements) =>
+      elements.map((element) => element.getAttribute('datetime')),
+    )
+    expect(newestFirst).toEqual([...newestFirst].sort().reverse())
+
+    await page.getByRole('link', { name: 'Show oldest first' }).click()
+    await expect(page).toHaveURL(/sort=asc/)
+    await expect(page).not.toHaveURL(/page=/)
+
+    const oldestFirst = await dates.evaluateAll((elements) =>
+      elements.map((element) => element.getAttribute('datetime')),
+    )
+    expect(oldestFirst).toEqual([...oldestFirst].sort())
+
+    await page.getByRole('link', { name: 'Show newest first' }).click()
+    await expect(page).not.toHaveURL(/sort=/)
+    const newestFirstAgain = await dates.evaluateAll((elements) =>
+      elements.map((element) => element.getAttribute('datetime')),
+    )
+    expect(newestFirstAgain).toEqual([...newestFirstAgain].sort().reverse())
   })
 
   test('search filters the list and can be cleared', async ({ page }) => {
     await page.goto('/work/projects')
-    const count = await page.getByText(/^Showing \d+ of \d+/).textContent()
+    const count = await page.getByText(/^Showing \d+-\d+ of \d+$/).textContent()
     const total = Number((/of (\d+)/.exec(count || '') || [])[1])
     expect(total).toBeGreaterThan(8)
 
     await page.getByRole('searchbox').fill('Password Game')
-    await expect(page.getByText(`Showing 1 of ${total}`)).toBeVisible()
+    await page.getByRole('button', { name: 'Search' }).click()
+    await expect(page).toHaveURL(/q=Password(?:\+|%20)Game/)
+    await expect(page.getByText('Showing 1-1 of 1')).toBeVisible()
+    const cardList = page.getByRole('list').filter({ has: page.getByRole('heading', { level: 2 }) })
+    await expect(cardList.locator(':scope > li')).toHaveCount(1)
 
     await page.getByRole('searchbox').fill('zzzz-no-match')
-    await expect(page.getByText(`Showing 0 of ${total}`)).toBeVisible()
-    await page.getByRole('button', { name: /clear/i }).click()
-    await expect(page.getByText(`Showing ${total} of ${total}`)).toBeVisible()
+    await page.getByRole('button', { name: 'Search' }).click()
+    await expect(page.getByText('Showing 0-0 of 0')).toBeVisible()
+    await page.getByRole('link', { name: 'Clear filters' }).click()
+    await expect(page).toHaveURL(/\/work\/projects$/)
+    await expect(page.getByText(`Showing 1-8 of ${total}`)).toBeVisible()
   })
 
   test('a card opens its detail page and back link returns', async ({ page }) => {
-    await page.goto('/work/projects')
+    await page.goto('/work/projects?q=Password+Game')
     await page.getByRole('link', { name: /Password Game/ }).click()
     await expect(page).toHaveURL(/\/work\/projects\/password-game$/)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Password Game')

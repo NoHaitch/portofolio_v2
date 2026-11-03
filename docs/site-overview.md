@@ -69,13 +69,13 @@ On smaller screens it is hidden because six items do not fit one row in every la
 
 The Work section replaces the old Projects page, and the navigation label is "Work" (Karya, 実績, 作品).
 
-| Route                     | Implementation                                                                 |
-| ------------------------- | ------------------------------------------------------------------------------ |
-| `/work`                   | [app/[locale]/work/page.tsx](../app/%5Blocale%5D/work/page.tsx)                |
-| `/work/projects`          | List with search and category filter, via `components/work/work-list-page.tsx` |
-| `/work/projects/[slug]`   | Detail page, via `components/work/work-detail-page.tsx`                        |
-| `/work/activities`        | Same list page for activities                                                  |
-| `/work/activities/[slug]` | Same detail page for activities                                                |
+| Route                     | Implementation                                                                          |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `/work`                   | [app/[locale]/work/page.tsx](../app/%5Blocale%5D/work/page.tsx)                         |
+| `/work/projects`          | Searchable, category-filtered, paginated list, via `components/work/work-list-page.tsx` |
+| `/work/projects/[slug]`   | Detail page, via `components/work/work-detail-page.tsx`                                 |
+| `/work/activities`        | Same searchable, category-filtered, paginated list for activities                       |
+| `/work/activities/[slug]` | Same detail page for activities                                                         |
 
 The hub shows a hand-picked list of featured projects and the most recent activities, each with a button to its full list.
 Every card is a link to its detail page, and the Work navigation item stays highlighted on nested routes.
@@ -84,7 +84,9 @@ Item content is English-only markdown, one file per item, documented in [adding-
 Only the interface text is localized, in the `work` key of the locale dictionaries.
 To change what the hub shows, edit `featuredProjectSlugs` and `recentActivityCount` in [content/work/featured.ts](../content/work/featured.ts).
 
-Search and filtering live in `lib/work-filter.ts`, which has no content imports so the client explorer does not bundle the full dataset.
+Project and activity lists show eight cards per page and can be sorted oldest-first or newest-first by date.
+Search, category filters, sort order, and page selection are represented in the URL query string and rendered by the server, so the browser receives only the current page of cards.
+The footer quick links include direct links to both archives.
 
 ### `/education` and localized education routes
 

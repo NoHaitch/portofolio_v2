@@ -103,6 +103,6 @@ The header shows all navigation links from the `lg` breakpoint up.
 Below `lg` it shows the logo, theme toggle, and a burger button that opens a full-width panel with the links and language select.
 Grids that hold long text use `grid-cols-1` (or `minmax(0,1fr)`) so a single mobile column cannot grow past the viewport.
 
-The footer repeats the navigation as quick links, adds social links, and ends with the copyright and a back-to-top link.
+The footer provides quick links to the main routes and direct links to the project and activity archives, adds social links, and ends with the copyright and a back-to-top link.
 
 Footer headings use the mono eyebrow style in the primary color.

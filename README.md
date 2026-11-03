@@ -11,7 +11,7 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 | `/`                                  | Hero, areas of expertise, and five recent projects and activities |
 | `/about`                             | Personal story, names, interests, hobbies, and photos             |
 | `/work`                              | Featured projects and recent activities, with links to full lists |
-| `/work/projects`, `/work/activities` | Searchable lists, each item opens `/work/<kind>/<slug>`           |
+| `/work/projects`, `/work/activities` | Searchable, filterable, sortable lists with pagination            |
 | `/experience`                        | Sortable timeline of engineering, teaching, and campus roles      |
 | `/education`                         | Education timeline with coursework, honors, and certificates      |
 | `/contact`                           | Professional and community links                                  |
@@ -22,6 +22,8 @@ Other languages use the `/id`, `/ja`, and `/zh` prefixes.
 
 The homepage shows the five most recent projects and five most recent activities in side-by-side lists below the expertise section.
 The activities collection is a curated selection, not a complete record of every activity.
+Project and activity archives display eight entries per page and support search, category filters, and oldest-first or newest-first date sorting.
+The archive state is stored in the URL, and both archive pages are available from the footer quick links.
 
 ## Stack
 

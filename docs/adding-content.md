@@ -73,6 +73,10 @@ Use `##` and `###` for headings, because the page title is already the `h1`.
 Write descriptive link text, not "here".
 Raw HTML is ignored.
 
+For project pages, explain what the project is for, what you contributed, how it was implemented, and relevant technical decisions or lessons.
+Keep claims specific to the project and avoid presenting assumptions about why a technology was selected as fact.
+Links such as a repository or design file are optional and should only be included when they are available.
+
 Embed a timestamped YouTube video with image syntax, using the video's watch URL:
 
 ```md
@@ -85,6 +89,10 @@ The renderer turns timestamped YouTube watch URLs into a privacy-enhanced embed 
 
 Edit `featuredProjectSlugs` in `content/work/featured.ts`.
 The hub shows the newest `recentActivityCount` activities automatically.
+The project and activity archive pages show eight items per page and can be sorted by date in either direction.
+Search, category filters, sort order, and pagination are kept in the URL, so list links can be shared or bookmarked.
+The default sort order is newest first.
+Changing the sort order returns to the first page while preserving the current search and category filters.
 
 ## Validation
 

@@ -2,12 +2,21 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { featuredProjectSlugs } from '@/content/work/featured'
-import { getAssetBase, getFeaturedProjects, getItems, getRecentActivities } from '@/lib/work'
+import {
+  getAssetBase,
+  getFeaturedProjects,
+  getItems,
+  getRecentActivities,
+  sortByDateAsc,
+  sortByDateDesc,
+} from '@/lib/work'
 import { filterCards, type WorkCardData } from '@/lib/work-filter'
+import { paginateItems, parsePage } from '@/lib/work-pagination'
 
 const card = (overrides: Partial<WorkCardData>): WorkCardData => ({
   slug: 'a',
   href: '/work/projects/a',
+  date: '2025-01-01',
   title: 'Alpha',
   category: 'personal',
   categoryLabel: 'personal',
@@ -48,6 +57,21 @@ describe('work content', () => {
     const dates = getRecentActivities().map((item) => item.date)
     expect(dates).toEqual([...dates].sort().reverse())
   })
+
+  it('sorts projects and activities by date in either direction', () => {
+    const items = [{ date: '2024-03-01' }, { date: '2022-08-01' }, { date: '2025-05-01' }]
+
+    expect(sortByDateAsc(items).map((item) => item.date)).toEqual([
+      '2022-08-01',
+      '2024-03-01',
+      '2025-05-01',
+    ])
+    expect(sortByDateDesc(items).map((item) => item.date)).toEqual([
+      '2025-05-01',
+      '2024-03-01',
+      '2022-08-01',
+    ])
+  })
 })
 
 describe('filterCards', () => {
@@ -69,5 +93,36 @@ describe('filterCards', () => {
   it('combines query and category', () => {
     expect(filterCards(cards, 'beta', 'personal')).toHaveLength(0)
     expect(filterCards(cards, '', 'organization')).toHaveLength(1)
+  })
+})
+
+describe('work pagination', () => {
+  it('returns only the requested page and clamps pages to the available range', () => {
+    const items = Array.from({ length: 10 }, (_, index) => index + 1)
+
+    expect(paginateItems(items, 2, 8)).toEqual({
+      items: [9, 10],
+      page: 2,
+      pageCount: 2,
+      total: 10,
+      start: 9,
+      end: 10,
+    })
+    expect(paginateItems(items, 10, 8).page).toBe(2)
+    expect(paginateItems([], 1, 8)).toEqual({
+      items: [],
+      page: 1,
+      pageCount: 1,
+      total: 0,
+      start: 0,
+      end: 0,
+    })
+  })
+
+  it('parses only positive integer page numbers', () => {
+    expect(parsePage('3')).toBe(3)
+    expect(parsePage('0')).toBe(1)
+    expect(parsePage('2.5')).toBe(1)
+    expect(parsePage(['2', '3'])).toBe(1)
   })
 })

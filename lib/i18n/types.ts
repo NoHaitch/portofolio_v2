@@ -116,9 +116,14 @@ export type Messages = {
     activitiesPage: WorkListMessages
     allCategories: string
     categoryFilterLabel: string
+    searchButton: string
     resultCount: string
     noResults: string
     clearFilters: string
+    paginationLabel: string
+    previousPage: string
+    nextPage: string
+    pageNumberLabel: string
     viewDetails: string
     linksHeading: string
     teamLabel: string

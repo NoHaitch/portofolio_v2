@@ -37,7 +37,9 @@ export function WorkCard({
             <span className="text-primary font-mono text-xs font-medium tracking-wide uppercase">
               {card.categoryLabel}
             </span>
-            <span className="text-muted-foreground font-mono text-xs">{card.dateLabel}</span>
+            <time dateTime={card.date} className="text-muted-foreground font-mono text-xs">
+              {card.dateLabel}
+            </time>
           </div>
           <Heading className="mt-5 text-xl leading-snug font-semibold tracking-tight">
             {card.title}
