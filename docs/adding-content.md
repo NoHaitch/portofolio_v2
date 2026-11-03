@@ -34,6 +34,8 @@ title: Wikirace Solver
 category: academic
 date: 2024-04-27
 summary: One sentence shown on cards and under the title.
+applicationTypes: [CLI, Web interface]
+fields: [Computer Science, Software Engineering]
 tags: [Go, React, Docker]
 cover: cover.png
 team: Optional team name
@@ -43,21 +45,31 @@ links:
 ---
 ```
 
-| Key        | Required | Notes                                                      |
-| ---------- | -------- | ---------------------------------------------------------- |
-| `title`    | yes      | Plain text                                                 |
-| `category` | yes      | See the lists below                                        |
-| `date`     | yes      | `YYYY-MM-DD`, used for sorting                             |
-| `summary`  | yes      | One sentence                                               |
-| `tags`     | no       | Technologies or themes, all searchable, cards show up to 4 |
-| `cover`    | no       | File name inside the item's image folder                   |
-| `team`     | no       | Shown on the detail page                                   |
-| `links`    | no       | List of `label` and `url`                                  |
+| Key                | Required | Notes                                                                                |
+| ------------------ | -------- | ------------------------------------------------------------------------------------ |
+| `title`            | yes      | Plain text                                                                           |
+| `category`         | yes      | See the lists below                                                                  |
+| `date`             | yes      | `YYYY-MM-DD`, used for sorting                                                       |
+| `summary`          | yes      | One sentence                                                                         |
+| `applicationTypes` | projects | One or more interface or application types, such as `CLI`, `GUI`, or `Web interface` |
+| `fields`           | projects | One or more subject areas, such as `Computer Science` or `Game Development`          |
+| `tags`             | no       | Technologies or themes, all searchable; shown after project type and fields          |
+| `cover`            | no       | File name inside the item's image folder                                             |
+| `team`             | no       | Shown on the detail page                                                             |
+| `links`            | no       | List of `label` and `url`                                                            |
 
 Project categories: `academic`, `personal`, `organization`, `freelance`.
 Activity categories: `committee`, `sports`, `event`, `milestone`.
 Category labels are translated in `lib/i18n/messages`.
 Adding a new category means updating `lib/work-schema.ts`, `lib/i18n/types.ts`, and all four locale files.
+Application types and project fields are validated against the lists in `lib/work-schema.ts`.
+Each project must include at least one value for both `applicationTypes` and `fields`.
+Project cards and detail pages show a unified tag list ordered as application types, fields, then `tags`.
+Repeated values are shown only once.
+Project cards display up to four values from this ordered list, followed by a count for any remaining values.
+The project archive provides compact multi-select dropdown filters for application types and fields.
+Available options and their result counts update based on the other active filters.
+Options with no matching projects are hidden unless they are already selected, so an active selection can still be removed.
 
 ## Body
 
@@ -72,6 +84,19 @@ The renderer resolves it to `/work/<kind>/<slug>/class-diagram.png` and reads th
 Use `##` and `###` for headings, because the page title is already the `h1`.
 Write descriptive link text, not "here".
 Raw HTML is ignored.
+
+Use fenced code blocks with a language identifier when a short excerpt helps explain an implementation:
+
+````md
+```csharp
+if (moveIsAvailable)
+{
+    MakeMove();
+}
+```
+````
+
+Keep excerpts focused on the concept being discussed and verify them against the project source.
 
 For project pages, explain what the project is for, what you contributed, how it was implemented, and relevant technical decisions or lessons.
 Keep claims specific to the project and avoid presenting assumptions about why a technology was selected as fact.
@@ -90,7 +115,8 @@ The renderer turns timestamped YouTube watch URLs into a privacy-enhanced embed 
 Edit `featuredProjectSlugs` in `content/work/featured.ts`.
 The hub shows the newest `recentActivityCount` activities automatically.
 The project and activity archive pages show eight items per page and can be sorted by date in either direction.
-Search, category filters, sort order, and pagination are kept in the URL, so list links can be shared or bookmarked.
+Search, category filters, project facets, sort order, and pagination are kept in the URL, so list links can be shared or bookmarked.
+The project archive places search above a consistent filter row with category, application type, and field controls, plus Apply and Clear actions.
 The default sort order is newest first.
 Changing the sort order returns to the first page while preserving the current search and category filters.
 

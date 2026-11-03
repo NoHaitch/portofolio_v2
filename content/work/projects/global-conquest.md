@@ -3,6 +3,8 @@ title: 'Global Conquest: Battle for Supremacy'
 category: academic
 date: 2023-12-03
 summary: Game made using Prolog Language with GNU Prolog.
+applicationTypes: ['CLI']
+fields: ['Computer Science', 'Game Development']
 tags: [Prolog, CLI]
 cover: cover.png
 team: keturunan(X, Bagas)

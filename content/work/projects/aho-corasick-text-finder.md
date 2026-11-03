@@ -3,6 +3,8 @@ title: Aho-Corasick Text Finder
 category: academic
 date: 2024-08-12
 summary: Text finder using Aho-Corasick algorithm in Python with other additional features like text highlighting.
+applicationTypes: ['CLI']
+fields: ['Algorithms', 'Computer Science']
 tags: [Python]
 cover: cover.png
 links:

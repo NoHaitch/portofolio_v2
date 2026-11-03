@@ -3,6 +3,7 @@ import { ArrowDownWideNarrow, ArrowUpWideNarrow } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { buttonVariants } from '@/components/ui/button-variants'
 import { Input } from '@/components/ui/input'
+import { WorkFacetFilters } from '@/components/work/work-facet-filters'
 import type { WorkCategory } from '@/lib/work-schema'
 import type { WorkCardData } from '@/lib/work-filter'
 import type { WorkSortOrder } from '@/lib/work-pagination'
@@ -24,13 +25,22 @@ type Labels = {
   pageNumberLabel: string
   sortOldestFirst: string
   sortNewestFirst: string
+  applicationTypesLabel: string
+  fieldsLabel: string
+  applyFiltersButton: string
 }
+
+type FacetOption = { value: string; count: number }
 
 type Props = {
   action: string
   cards: WorkCardData[]
   categories: { value: WorkCategory; label: string }[]
   category: WorkCategory | null
+  applicationTypeOptions: FacetOption[]
+  applicationTypes: string[]
+  fieldOptions: FacetOption[]
+  fields: string[]
   page: number
   pageCount: number
   query: string
@@ -44,6 +54,10 @@ export function WorkExplorer({
   cards,
   categories,
   category,
+  applicationTypeOptions,
+  applicationTypes,
+  fieldOptions,
+  fields,
   page,
   pageCount,
   query,
@@ -60,6 +74,8 @@ export function WorkExplorer({
     const params = new URLSearchParams()
     if (nextQuery) params.set('q', nextQuery)
     if (nextCategory) params.set('category', nextCategory)
+    applicationTypes.forEach((applicationType) => params.append('applicationType', applicationType))
+    fields.forEach((field) => params.append('field', field))
     if (nextPage > 1) params.set('page', String(nextPage))
     if (nextSort === 'asc') params.set('sort', nextSort)
 
@@ -70,7 +86,8 @@ export function WorkExplorer({
     .replace('{start}', String(result.start))
     .replace('{end}', String(result.end))
     .replace('{total}', String(result.total))
-  const hasFilters = query !== '' || category !== null
+  const hasFilters =
+    query !== '' || category !== null || applicationTypes.length > 0 || fields.length > 0
 
   return (
     <div>
@@ -87,28 +104,40 @@ export function WorkExplorer({
             placeholder={labels.searchPlaceholder}
             className="h-11 rounded-full px-4"
           />
-          {category ? <input type="hidden" name="category" value={category} /> : null}
-          {sort === 'asc' ? <input type="hidden" name="sort" value={sort} /> : null}
           <Button type="submit" className="shrink-0 rounded-full">
             {labels.searchButton}
           </Button>
         </div>
 
-        <div role="group" aria-label={labels.categoryFilterLabel} className="flex flex-wrap gap-2">
-          {[{ value: null, label: labels.allCategories }, ...categories].map((option) => (
-            <Link
-              key={option.value ?? 'all'}
-              href={hrefFor(1, option.value)}
-              aria-current={category === option.value ? 'true' : undefined}
-              className={buttonVariants({
-                size: 'sm',
-                variant: category === option.value ? 'default' : 'outline',
-                className: 'rounded-full',
-              })}
-            >
-              {option.label}
-            </Link>
-          ))}
+        <div className="flex flex-wrap items-center gap-2">
+          <label htmlFor="work-category" className="sr-only">
+            {labels.categoryFilterLabel}
+          </label>
+          <select
+            id="work-category"
+            name="category"
+            defaultValue={category ?? ''}
+            className="border-input bg-background focus-visible:ring-ring/40 h-10 min-w-40 rounded-full border px-4 text-sm outline-none focus-visible:ring-2"
+          >
+            <option value="">{labels.allCategories}</option>
+            {categories.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          {sort === 'asc' ? <input type="hidden" name="sort" value={sort} /> : null}
+          <WorkFacetFilters
+            applicationTypeOptions={applicationTypeOptions}
+            applicationTypes={applicationTypes}
+            fieldOptions={fieldOptions}
+            fields={fields}
+            applicationTypesLabel={labels.applicationTypesLabel}
+            fieldsLabel={labels.fieldsLabel}
+          />
+          <Button type="submit" className="rounded-full">
+            {labels.applyFiltersButton}
+          </Button>
           {hasFilters ? (
             <Link
               href={action}
@@ -153,6 +182,14 @@ export function WorkExplorer({
       ) : (
         <div className="border-border mt-4 rounded-2xl border border-dashed p-8 text-center">
           <p className="text-muted-foreground">{labels.noResults}</p>
+          {hasFilters ? (
+            <Link
+              href={action}
+              className={buttonVariants({ variant: 'outline', size: 'sm', className: 'mt-4' })}
+            >
+              {labels.clearFilters}
+            </Link>
+          ) : null}
         </div>
       )}
 

@@ -22,6 +22,8 @@ const card = (overrides: Partial<WorkCardData>): WorkCardData => ({
   categoryLabel: 'personal',
   dateLabel: 'Jan 2025',
   summary: 'First thing',
+  applicationTypes: ['CLI'],
+  fields: ['Computer Science'],
   tags: ['React'],
   ...overrides,
 })
@@ -34,6 +36,12 @@ describe('work content', () => {
       const items = getItems(kind)
       expect(items.length).toBeGreaterThan(0)
       expect(new Set(items.map((item) => item.slug)).size).toBe(items.length)
+      if (kind === 'projects') {
+        for (const item of items) {
+          expect(item.applicationTypes.length, item.slug).toBeGreaterThan(0)
+          expect(item.fields.length, item.slug).toBeGreaterThan(0)
+        }
+      }
     }
   })
 
@@ -77,7 +85,15 @@ describe('work content', () => {
 describe('filterCards', () => {
   const cards = [
     card({}),
-    card({ slug: 'b', title: 'Beta', category: 'organization', tags: ['Go'], summary: 'Second' }),
+    card({
+      slug: 'b',
+      title: 'Beta',
+      category: 'organization',
+      tags: ['Go'],
+      summary: 'Second',
+      applicationTypes: ['GUI', 'Web interface'],
+      fields: ['Game Development', 'Software Engineering'],
+    }),
   ]
 
   it('returns everything for an empty query', () => {
@@ -93,6 +109,21 @@ describe('filterCards', () => {
   it('combines query and category', () => {
     expect(filterCards(cards, 'beta', 'personal')).toHaveLength(0)
     expect(filterCards(cards, '', 'organization')).toHaveLength(1)
+  })
+
+  it('matches multiple application types and fields with OR within each filter', () => {
+    expect(filterCards(cards, '', null, ['CLI', 'Web interface'])).toHaveLength(2)
+    expect(filterCards(cards, '', null, [], ['Computer Science', 'Game Development'])).toHaveLength(
+      2,
+    )
+    expect(
+      filterCards(cards, '', null, ['CLI', 'Web interface'], ['Game Development']),
+    ).toHaveLength(1)
+  })
+
+  it('includes application types and fields in text search', () => {
+    expect(filterCards(cards, 'web interface', null)).toHaveLength(1)
+    expect(filterCards(cards, 'computer science', null)).toHaveLength(1)
   })
 })
 

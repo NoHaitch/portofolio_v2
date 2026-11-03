@@ -3,6 +3,8 @@ title: Hex Game With Random Position Generator
 category: academic
 date: 2023-12-11
 summary: Implementation of 5x5 Hex Board Game With Random Position Generator in Python
+applicationTypes: ['CLI', 'Script']
+fields: ['Computer Science', 'Game Development', 'Statistics']
 tags: [Python, CLI]
 cover: cover.png
 links:

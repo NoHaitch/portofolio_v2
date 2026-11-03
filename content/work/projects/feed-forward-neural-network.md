@@ -3,6 +3,8 @@ title: Feed Forward Neural Network
 category: academic
 date: 2025-04-11
 summary: Implementation of Feed Forward Neural Network in Python from scratch.
+applicationTypes: ['Script']
+fields: ['Artificial Intelligence', 'Machine Learning']
 tags: [Python, Machine Learning, AI]
 cover: cover.jpg
 links:

@@ -3,6 +3,8 @@ title: Word Ladder Solver
 category: academic
 date: 2024-05-06
 summary: 'Word Ladder Solver Using UCS, Greedy Best First Search, and A*'
+applicationTypes: ['Desktop application', 'GUI']
+fields: ['Algorithms', 'Computer Science', 'Game Development']
 tags: [Java, GUI]
 cover: cover.png
 links:

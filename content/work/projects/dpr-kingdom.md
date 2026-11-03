@@ -3,6 +3,8 @@ title: DPR Kingdom
 category: academic
 date: 2024-04-16
 summary: DPR kingdom is a real life simulation of the kingdom of DPR using Object-Oriented Based C++ CLI Application
+applicationTypes: ['CLI']
+fields: ['Game Development', 'Software Engineering']
 tags: [C++, Make, CLI, OOP]
 cover: cover.jpg
 team: Nasi Cumi Hitam Madura Pak Bagas

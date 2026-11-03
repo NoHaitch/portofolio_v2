@@ -3,6 +3,8 @@ title: Cyberpunk 2077 Breach Protocol Solver
 category: academic
 date: 2024-02-22
 summary: Cyberpunk 2077 Breach Protocol Minigame Solver Using Brute Force Algorithm in c++.
+applicationTypes: ['CLI', 'Web interface']
+fields: ['Algorithms', 'Game Development', 'Software Engineering']
 tags: [Flask, Tailwind CSS, Web, Python, C++, Make, CLI]
 cover: cover.png
 links:

@@ -1,5 +1,42 @@
 export const projectCategories = ['academic', 'personal', 'organization', 'freelance'] as const
 export const activityCategories = ['committee', 'sports', 'event', 'milestone'] as const
+export const projectApplicationTypes = [
+  'API',
+  'CLI',
+  'Desktop application',
+  'GUI',
+  'Jupyter Notebook',
+  'Library',
+  'Mobile app',
+  'Operating system',
+  'Script',
+  'Web interface',
+] as const
+export const projectFields = [
+  'Algorithms',
+  'Artificial Intelligence',
+  'Computer Graphics',
+  'Computer Science',
+  'Computer Vision',
+  'Cybersecurity',
+  'Data Science',
+  'Database Systems',
+  'Distributed Systems',
+  'Formal Languages',
+  'Game Development',
+  'Machine Learning',
+  'Mathematics',
+  'Mobile Development',
+  'Operating Systems',
+  'Optimization',
+  'Parallel Computing',
+  'Recommendation Systems',
+  'Software Architecture',
+  'Software Engineering',
+  'Statistics',
+  'Systems Programming',
+  'Web Development',
+] as const
 
 export type ProjectCategory = (typeof projectCategories)[number]
 export type ActivityCategory = (typeof activityCategories)[number]
@@ -20,6 +57,8 @@ export const frontMatterKeys = [
   'category',
   'date',
   'summary',
+  'applicationTypes',
+  'fields',
   'tags',
   'cover',
   'team',

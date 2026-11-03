@@ -211,7 +211,7 @@ const ja = {
       eyebrow: 'プロジェクト',
       title: 'すべてのプロジェクト',
       introduction:
-        '授業の課題からフリーランスの仕事、個人の実験まで、これまでに作ったものすべてです。名前、技術、カテゴリで検索できます。',
+        '授業の課題からフリーランスの仕事、個人の実験まで、公開できるプロジェクトを紹介します。NDA（秘密保持契約）のため掲載できない仕事もあります。',
       searchLabel: 'プロジェクトを検索',
       searchPlaceholder: '名前、タグ、キーワードで検索',
       backLabel: 'プロジェクト一覧に戻る',
@@ -227,9 +227,14 @@ const ja = {
     },
     allCategories: 'すべて',
     categoryFilterLabel: 'カテゴリで絞り込む',
+    applicationTypesLabel: 'アプリケーションの種類',
+    fieldsLabel: '分野',
+    applyFiltersButton: '絞り込む',
     searchButton: '検索',
     resultCount: '{total}件中{start}～{end}件を表示',
     noResults: '検索に一致する項目はまだありません。',
+    noProjectsFound:
+      '選択した条件に一致するプロジェクトはありません。条件を変更するか解除してください。',
     clearFilters: '絞り込みを解除',
     paginationLabel: 'ページ移動',
     previousPage: '前へ',

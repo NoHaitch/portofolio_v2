@@ -3,6 +3,8 @@ title: HTML Checker using Push Down Automata (PDA)
 category: academic
 date: 2023-11-27
 summary: Using Push Down Automata to check HTML syntax in Python.
+applicationTypes: ['CLI']
+fields: ['Computer Science', 'Formal Languages']
 tags: [Python, CLI]
 cover: cover.webp
 team: Otax Error

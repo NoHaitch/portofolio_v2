@@ -212,7 +212,7 @@ const en = {
       eyebrow: 'Projects',
       title: 'All projects',
       introduction:
-        'Everything I have built, from course projects to freelance work and personal experiments. Search by name, technology, or category.',
+        'A selection of projects I can share publicly, from coursework to freelance work and personal experiments. Some of my work is under NDA and cannot be shown here.',
       searchLabel: 'Search projects',
       searchPlaceholder: 'Search by name, tag, or keyword',
       backLabel: 'Back to all projects',
@@ -228,9 +228,14 @@ const en = {
     },
     allCategories: 'All',
     categoryFilterLabel: 'Filter by category',
+    applicationTypesLabel: 'Application type',
+    fieldsLabel: 'Field',
+    applyFiltersButton: 'Apply filters',
     searchButton: 'Search',
     resultCount: 'Showing {start}-{end} of {total}',
     noResults: 'Nothing matches your search yet.',
+    noProjectsFound:
+      'No projects match the selected filters. Try changing or clearing your filters.',
     clearFilters: 'Clear filters',
     paginationLabel: 'Pagination',
     previousPage: 'Previous',

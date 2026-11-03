@@ -3,6 +3,8 @@ title: Raft Consensus Algorithm in Typescript using Express.js
 category: academic
 date: 2025-06-05
 summary: Implementation of Raft Consensus Algorithm for single cluster in Typescript using Express.js.
+applicationTypes: ['API']
+fields: ['Computer Science', 'Distributed Systems', 'Software Architecture']
 tags: [Express, TypeScript]
 cover: cover.webp
 links:

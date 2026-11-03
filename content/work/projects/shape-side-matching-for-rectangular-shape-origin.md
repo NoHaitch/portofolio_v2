@@ -3,6 +3,8 @@ title: Shape Side Matching for Rectangular Shape Origin
 category: academic
 date: 2024-06-12
 summary: Shape Side Matching using string matching and similarity.
+applicationTypes: ['Script']
+fields: ['Algorithms', 'Computer Science', 'Mathematics']
 tags: [Python, NumPy]
 cover: cover.png
 links:

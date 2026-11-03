@@ -3,6 +3,8 @@ title: Parallelization of Floyd-Warshall Algorithm
 category: academic
 date: 2025-04-21
 summary: Parallelization of Floyd-Warshall Algorithm using open-mpi, open-mp, avx2, and cuda.
+applicationTypes: ['Script']
+fields: ['Algorithms', 'Computer Science', 'Parallel Computing']
 tags: [C++]
 cover: cover.webp
 links:

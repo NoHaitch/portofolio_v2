@@ -3,6 +3,8 @@ title: DBMS from scratch
 category: academic
 date: 2024-12-13
 summary: Data Base Management System made from scratch using python
+applicationTypes: ['Library']
+fields: ['Computer Science', 'Database Systems', 'Software Engineering']
 tags: [Python, DBMS]
 cover: cover.png
 team: KawulaSQL

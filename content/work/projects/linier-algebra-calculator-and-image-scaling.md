@@ -3,6 +3,8 @@ title: Linier Algebra Calculator and Image Scaling
 category: academic
 date: 2023-10-23
 summary: Linier Algebra Calculator and Image Scaling using Java CLI.
+applicationTypes: ['CLI']
+fields: ['Computer Science', 'Mathematics']
 tags: [Java, CLI]
 cover: cover.png
 links:

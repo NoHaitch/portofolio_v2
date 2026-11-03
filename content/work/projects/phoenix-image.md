@@ -3,6 +3,8 @@ title: Phoenix Image
 category: academic
 date: 2023-11-19
 summary: Phoenix image is a Content-Based Image Retrieval System (CBIR)
+applicationTypes: ['API', 'Web interface']
+fields: ['Artificial Intelligence', 'Computer Vision', 'Software Engineering', 'Web Development']
 tags: [Node.js, Next.js, Tailwind CSS, TypeScript, Framer Motion, C++, Express, Web, Figma]
 cover: cover.png
 team: Team Bjir Anak Nopal

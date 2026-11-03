@@ -3,6 +3,8 @@ title: Fingerprint Biometric Detection
 category: academic
 date: 2024-06-09
 summary: Fingerprint biometric detection using patern patching algorithm.
+applicationTypes: ['Script']
+fields: ['Algorithms', 'Computer Vision']
 tags: [C#, Docker, MySQL]
 cover: cover.png
 team: Team Kunjat Gadab

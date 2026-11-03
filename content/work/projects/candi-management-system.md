@@ -3,6 +3,8 @@ title: Candi Management System CLI
 category: academic
 date: 2023-08-31
 summary: Candi Management System CLI using primitive python (most function are made from scratch).
+applicationTypes: ['CLI']
+fields: ['Software Engineering']
 tags: [Python, CLI]
 cover: cover.png
 links:

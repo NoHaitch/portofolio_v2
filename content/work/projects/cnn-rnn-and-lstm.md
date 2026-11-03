@@ -3,6 +3,8 @@ title: CNN, RNN, and LSTM Forward Propagation From Scratch
 category: academic
 date: 2025-05-30
 summary: Implementation of CNN, RNN, and LSTM Forward Propagation From Scratch.
+applicationTypes: ['Script']
+fields: ['Artificial Intelligence', 'Machine Learning']
 tags: [Python, Machine Learning, AI, Deep Learning, TensorFlow, scikit-learn, Matplotlib]
 cover: cover.jpg
 links:

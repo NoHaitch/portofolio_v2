@@ -64,6 +64,11 @@ test.describe('work section', () => {
   })
 
   test('project and activity lists show eight items per page', async ({ page }) => {
+    await page.goto('/work/projects')
+    await expect(
+      page.getByText(/Some of my work is under NDA and cannot be shown here\./),
+    ).toBeVisible()
+
     for (const { path, secondPageCount } of [
       { path: '/work/projects', secondPageCount: 8 },
       { path: '/work/activities', secondPageCount: 2 },
@@ -87,15 +92,79 @@ test.describe('work section', () => {
       )
 
       if (path === '/work/projects') {
-        await page.getByRole('link', { name: 'Personal', exact: true }).click()
+        await page.locator('#work-category').selectOption('personal')
+        await page.getByRole('button', { name: 'Apply filters' }).click()
         await expect(page).toHaveURL(/category=personal/)
         await expect(page).not.toHaveURL(/page=/)
-        await expect(page.getByRole('link', { name: 'Personal', exact: true })).toHaveAttribute(
-          'aria-current',
-          'true',
-        )
+        await expect(page.locator('#work-category')).toHaveValue('personal')
       }
     }
+  })
+
+  test('project filters support multiple application types and fields', async ({ page }) => {
+    await page.goto('/work/projects')
+
+    await page.getByRole('button', { name: 'Application type' }).click()
+    await page.getByRole('menuitemcheckbox', { name: 'CLI' }).click()
+    await page.getByRole('menuitemcheckbox', { name: 'GUI' }).click()
+    await page.getByRole('button', { name: 'Field' }).click()
+    await page.getByRole('menuitemcheckbox', { name: 'Computer Science' }).click()
+    await page.getByRole('menuitemcheckbox', { name: 'Game Development' }).click()
+    await page.getByRole('button', { name: 'Apply filters' }).click()
+
+    await expect(page).toHaveURL(/applicationType=CLI/)
+    await expect(page).toHaveURL(/applicationType=GUI/)
+    await expect(page).toHaveURL(/field=Computer(?:\+|%20)Science/)
+    await expect(page).toHaveURL(/field=Game(?:\+|%20)Development/)
+    await page.getByRole('button', { name: 'Application type (2)' }).click()
+    await expect(page.getByRole('menuitemcheckbox', { name: 'CLI' })).toHaveAttribute(
+      'aria-checked',
+      'true',
+    )
+    await expect(page.getByRole('menuitemcheckbox', { name: 'GUI' })).toHaveAttribute(
+      'aria-checked',
+      'true',
+    )
+    await expect(page.getByText(/^Showing [1-9]\d*-\d+ of [1-9]\d*$/)).toBeVisible()
+  })
+
+  test('project facets hide unavailable options and provide a clear empty state', async ({
+    page,
+  }) => {
+    await page.goto('/work/projects?q=Tic+Tac+Toe')
+
+    await page.getByRole('button', { name: 'Application type' }).click()
+    await expect(page.getByRole('menuitemcheckbox', { name: 'CLI' })).toBeVisible()
+    await expect(page.getByRole('menuitemcheckbox', { name: 'GUI' })).toHaveCount(0)
+
+    await page.getByRole('button', { name: 'Field' }).click()
+    await expect(page.getByRole('menuitemcheckbox', { name: 'Game Development' })).toBeVisible()
+    await expect(
+      page.getByRole('menuitemcheckbox', { name: 'Artificial Intelligence' }),
+    ).toHaveCount(0)
+
+    await page.goto('/work/projects?q=Tic+Tac+Toe&applicationType=GUI&field=Game+Development')
+    await expect(
+      page.getByText(
+        'No projects match the selected filters. Try changing or clearing your filters.',
+      ),
+    ).toBeVisible()
+    await expect(page.getByText('Showing 0-0 of 0')).toBeVisible()
+    await page.getByRole('link', { name: 'Clear filters' }).last().click()
+    await expect(page).toHaveURL(/\/work\/projects$/)
+    await expect(page.getByText(/^Showing 1-8 of \d+$/)).toBeVisible()
+  })
+
+  test('project cards show application type and field before other tags', async ({ page }) => {
+    await page.goto('/work/projects')
+    const firstCard = page
+      .getByRole('list')
+      .filter({ has: page.getByRole('heading', { level: 2 }) })
+      .locator(':scope > li')
+      .first()
+    const tags = firstCard.locator('ul').last().locator('li')
+    await expect(tags.nth(0)).toHaveText('API')
+    await expect(tags.nth(1)).toHaveText('Computer Science')
   })
 
   test('sort toggles between oldest and newest dates and resets to page one', async ({ page }) => {
@@ -141,7 +210,7 @@ test.describe('work section', () => {
     await page.getByRole('searchbox').fill('zzzz-no-match')
     await page.getByRole('button', { name: 'Search' }).click()
     await expect(page.getByText('Showing 0-0 of 0')).toBeVisible()
-    await page.getByRole('link', { name: 'Clear filters' }).click()
+    await page.getByRole('link', { name: 'Clear filters' }).last().click()
     await expect(page).toHaveURL(/\/work\/projects$/)
     await expect(page.getByText(`Showing 1-8 of ${total}`)).toBeVisible()
   })
@@ -154,6 +223,18 @@ test.describe('work section', () => {
 
     await page.getByRole('link', { name: 'Back to all projects' }).click()
     await expect(page).toHaveURL(/\/work\/projects$/)
+  })
+
+  test('Tic-Tac-Toe project renders its C# strategy excerpts', async ({ page }) => {
+    await page.goto('/work/projects/tic-tac-toe-in-cs')
+    await expect(page.getByRole('heading', { name: 'A strategy written as cases' })).toBeVisible()
+    const projectTags = page.locator('article header ul').first().locator('li')
+    await expect(projectTags.nth(0)).toHaveText('CLI')
+    await expect(projectTags.nth(1)).toHaveText('Algorithms')
+    await expect(projectTags.nth(2)).toHaveText('Game Development')
+    await expect(projectTags.filter({ hasText: /^CLI$/ })).toHaveCount(1)
+    await expect(page.locator('pre code').first()).toContainText('CariAksiKomputer')
+    await expect(page.locator('pre code').nth(1)).toContainText('CekMenang')
   })
 
   test('nav keeps Work highlighted on nested pages', async ({ page }) => {

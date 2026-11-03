@@ -22,6 +22,7 @@ export async function WorkDetailPage({
   const cover = item.cover ? await getPublicImageSize(item.cover) : null
   const messages = getMessages(locale)
   const page = kind === 'projects' ? messages.work.projectsPage : messages.work.activitiesPage
+  const tags = [...new Set([...item.applicationTypes, ...item.fields, ...item.tags])]
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-12 sm:px-8 sm:py-16">
@@ -49,7 +50,7 @@ export async function WorkDetailPage({
             </p>
           ) : null}
           <ul className="mt-5 flex flex-wrap gap-2">
-            {item.tags.map((tag) => (
+            {tags.map((tag) => (
               <li
                 key={tag}
                 className="bg-accent text-accent-foreground rounded-full px-3 py-1 text-xs"

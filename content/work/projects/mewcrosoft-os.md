@@ -3,6 +3,8 @@ title: Mewcrosoft OS
 category: academic
 date: 2024-05-20
 summary: Mewcrosoft is an Operating System made by the Gyattbelajar team from scratch.
+applicationTypes: ['Operating system']
+fields: ['Computer Science', 'Operating Systems', 'Systems Programming']
 tags: [C, Make, GNU, QEMU]
 cover: cover.png
 team: Team Gyattbelajar

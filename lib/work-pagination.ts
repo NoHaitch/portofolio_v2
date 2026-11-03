@@ -1,6 +1,8 @@
 export type WorkListSearchParams = {
   q?: string | string[]
   category?: string | string[]
+  applicationType?: string | string[]
+  field?: string | string[]
   page?: string | string[]
   sort?: string | string[]
 }
@@ -14,6 +16,14 @@ export function parsePage(value: string | string[] | undefined) {
 
   const page = Number(value)
   return Number.isSafeInteger(page) && page > 0 ? page : 1
+}
+
+export function parseSelectedValues(value: string | string[] | undefined, options: string[]) {
+  const selected = typeof value === 'string' ? [value] : value
+  if (!selected) return []
+
+  const allowed = new Set(options)
+  return [...new Set(selected.filter((item) => allowed.has(item)))]
 }
 
 export function paginateItems<T>(items: T[], requestedPage: number, pageSize = workPageSize) {

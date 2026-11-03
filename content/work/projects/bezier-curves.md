@@ -3,6 +3,8 @@ title: 'Bézier Curves using brute force and DnC'
 category: academic
 date: 2024-03-19
 summary: 'Building Bézier Curves with Brute Force & Divide and Conquer based Midpoint Algorithm'
+applicationTypes: ['GUI']
+fields: ['Algorithms', 'Computer Graphics', 'Mathematics']
 tags: [Python, GUI]
 cover: cover.png
 links:

@@ -3,6 +3,8 @@ title: Greedy Diamonds Bot
 category: academic
 date: 2024-03-09
 summary: Application of greedy algorithm in making a bot for Diamonds
+applicationTypes: ['Script']
+fields: ['Algorithms', 'Artificial Intelligence', 'Game Development']
 tags: [Python, Docker]
 cover: cover.png
 team: Team Sanss Kuy

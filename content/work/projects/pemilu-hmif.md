@@ -3,6 +3,8 @@ title: Web Pemilu HMIF 2025
 category: organization
 date: 2025-03-12
 summary: Web Pemilu HMIF using T3 stack.
+applicationTypes: ['Web interface']
+fields: ['Software Engineering', 'Web Development']
 tags: [Node.js, Next.js, Tailwind CSS, Prisma, TypeScript, React, tRPC, Drizzle]
 cover: cover.png
 links:

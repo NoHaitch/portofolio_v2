@@ -3,6 +3,8 @@ title: Cinemanager
 category: personal
 date: 2024-05-19
 summary: Film and Series Tracker using python flet.
+applicationTypes: ['Desktop application']
+fields: ['Recommendation Systems', 'Software Engineering']
 tags: [Python, Desktop, Flet]
 cover: cover.png
 links:

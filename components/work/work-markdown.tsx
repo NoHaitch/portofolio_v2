@@ -35,8 +35,19 @@ function createComponents(assetBase: string): Components {
         {children}
       </blockquote>
     ),
-    code: ({ children }) => (
-      <code className="bg-muted rounded px-1.5 py-0.5 font-mono text-sm">{children}</code>
+    pre: ({ children }) => (
+      <pre className="bg-muted mt-4 overflow-x-auto rounded-xl p-4 font-mono text-sm leading-6">
+        {children}
+      </pre>
+    ),
+    code: ({ className, children }) => (
+      <code
+        className={
+          className ? 'font-mono text-sm' : 'bg-muted rounded px-1.5 py-0.5 font-mono text-sm'
+        }
+      >
+        {children}
+      </code>
     ),
     a: ({ href, children }) => {
       const external = /^https?:\/\//.test(href ?? '')

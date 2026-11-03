@@ -3,6 +3,8 @@ title: Ecoxzystem Information System using Odoo
 category: organization
 date: 2025-05-28
 summary: Implemented Solution for Ecoxzystem Information System using Odoo.
+applicationTypes: ['Web interface']
+fields: ['Software Architecture', 'Software Engineering']
 tags: [Odoo, Python]
 cover: cover.png
 links:

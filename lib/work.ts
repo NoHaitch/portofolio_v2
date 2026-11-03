@@ -6,6 +6,8 @@ import { getLocalePath, type Locale, type Messages } from '@/lib/i18n'
 import {
   categoriesByKind,
   frontMatterKeys,
+  projectApplicationTypes,
+  projectFields,
   type WorkCategory,
   type WorkKind,
   type WorkLink,
@@ -21,6 +23,8 @@ export type WorkItem = {
   category: WorkCategory
   date: string
   summary: string
+  applicationTypes: string[]
+  fields: string[]
   tags: string[]
   team?: string
   // Public URL of the cover image, resolved from the `cover` file name.
@@ -48,6 +52,30 @@ function asString(file: string, key: string, value: unknown) {
   return value.trim()
 }
 
+function asStringList(
+  file: string,
+  key: string,
+  value: unknown,
+  allowedValues?: readonly string[],
+) {
+  if (
+    !Array.isArray(value) ||
+    value.length === 0 ||
+    value.some(
+      (item) =>
+        typeof item !== 'string' ||
+        item.trim() === '' ||
+        (allowedValues !== undefined && !allowedValues.includes(item)),
+    )
+  ) {
+    fail(
+      file,
+      `"${key}" must be a non-empty list of strings${allowedValues ? ` from ${allowedValues.join(', ')}` : ''}`,
+    )
+  }
+  return value as string[]
+}
+
 function parseItem(kind: WorkKind, fileName: string): WorkItem {
   const file = `content/work/${kind}/${fileName}`
   const slug = fileName.replace(/\.md$/, '')
@@ -68,6 +96,12 @@ function parseItem(kind: WorkKind, fileName: string): WorkItem {
   const rawDate = data.date instanceof Date ? data.date.toISOString().slice(0, 10) : data.date
   const date = asString(file, 'date', rawDate)
   if (!datePattern.test(date)) fail(file, '"date" must look like YYYY-MM-DD')
+
+  const applicationTypes =
+    kind === 'projects'
+      ? asStringList(file, 'applicationTypes', data.applicationTypes, projectApplicationTypes)
+      : []
+  const fields = kind === 'projects' ? asStringList(file, 'fields', data.fields, projectFields) : []
 
   const tags: unknown = data.tags ?? []
   if (!Array.isArray(tags) || tags.some((tag) => typeof tag !== 'string')) {
@@ -91,6 +125,8 @@ function parseItem(kind: WorkKind, fileName: string): WorkItem {
     category,
     date,
     summary: asString(file, 'summary', data.summary),
+    applicationTypes,
+    fields,
     tags: tags as string[],
     team: data.team === undefined ? undefined : asString(file, 'team', data.team),
     cover: cover ? `${getAssetBase(kind, slug)}/${cover}` : undefined,
@@ -165,6 +201,8 @@ export function toCardData(item: WorkItem, locale: Locale, messages: Messages): 
     categoryLabel: messages.work.categories[item.category],
     dateLabel: formatWorkDate(item.date, locale),
     summary: item.summary,
+    applicationTypes: item.applicationTypes,
+    fields: item.fields,
     tags: item.tags,
     cover: item.cover,
   }

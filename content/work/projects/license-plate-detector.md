@@ -3,6 +3,8 @@ title: License Plate Detector
 category: academic
 date: 2023-09-24
 summary: License Plate Detector using per-trained ML library(tesserac)
+applicationTypes: ['Script']
+fields: ['Artificial Intelligence', 'Computer Vision', 'Machine Learning']
 tags: [Python, OpenCV, Tesseract, imutils]
 cover: cover.webp
 links:

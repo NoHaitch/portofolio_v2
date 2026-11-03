@@ -3,6 +3,8 @@ title: BurBir (Blue Bird)
 category: academic
 date: 2023-11-24
 summary: Burbir is a Social Media replication based on CLI in C
+applicationTypes: ['CLI']
+fields: ['Algorithms', 'Computer Science', 'Software Engineering']
 tags: [C, CLI]
 cover: cover.jpg
 links:

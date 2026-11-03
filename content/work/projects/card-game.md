@@ -3,6 +3,8 @@ title: Card Game - Knee Grow
 category: academic
 date: 2024-05-25
 summary: Card Game based on OOP Java.
+applicationTypes: ['Desktop application', 'GUI']
+fields: ['Game Development', 'Software Engineering']
 tags: [Java, Maven, Java Swing, OOP, GUI]
 cover: cover.png
 links:

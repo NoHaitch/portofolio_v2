@@ -85,7 +85,11 @@ Only the interface text is localized, in the `work` key of the locale dictionari
 To change what the hub shows, edit `featuredProjectSlugs` and `recentActivityCount` in [content/work/featured.ts](../content/work/featured.ts).
 
 Project and activity lists show eight cards per page and can be sorted oldest-first or newest-first by date.
-Search, category filters, sort order, and page selection are represented in the URL query string and rendered by the server, so the browser receives only the current page of cards.
+Project cards and detail pages show application types, subject fields, and other tags together in that order, with duplicates removed.
+Cards show up to four tags before indicating any remaining count.
+The project archive has a unified filter row for category, application type, and subject field, with compact multi-select controls for the latter two.
+Facet options and result counts respond to active filters, and options with no matches are hidden unless selected.
+Search, category filters, project facets, sort order, and page selection are represented in the URL query string and rendered by the server, so the browser receives only the current page of cards.
 The footer quick links include direct links to both archives.
 
 ### `/education` and localized education routes

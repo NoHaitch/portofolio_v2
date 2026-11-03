@@ -3,6 +3,8 @@ title: Machine Learning Algorithms for Network Attack Detection
 category: academic
 date: 2024-12-15
 summary: Implementation of KNN, Naive Bayes and ID3 ML Algorithms on UNSW-NB15 Dataset to detect Network Attack.
+applicationTypes: ['Jupyter Notebook']
+fields: ['Cybersecurity', 'Data Science', 'Machine Learning']
 tags: [Python, NumPy, pandas, scikit-learn, Machine Learning, AI]
 cover: cover.png
 links:

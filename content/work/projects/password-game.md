@@ -3,6 +3,8 @@ title: Password Game
 category: personal
 date: 2024-09-03
 summary: Password Game Web Application using react tailwind and golang with firebase authentication.
+applicationTypes: ['API', 'Web interface']
+fields: ['Game Development', 'Software Engineering', 'Web Development']
 tags: [Node.js, React, Tailwind CSS, Go, Firebase, SQLite, JavaScript]
 cover: cover.png
 links:

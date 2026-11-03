@@ -3,6 +3,8 @@ title: Dot Connect Game
 category: personal
 date: 2024-08-21
 summary: Dot Connect Game Web Application with additional features like solver, random board generator, and global leaderboard.
+applicationTypes: ['Web interface', 'API']
+fields: ['Game Development', 'Software Engineering']
 tags: [Node.js, React, Tailwind CSS, Go, JavaScript]
 cover: cover.png
 links:

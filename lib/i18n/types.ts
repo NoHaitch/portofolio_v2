@@ -116,9 +116,13 @@ export type Messages = {
     activitiesPage: WorkListMessages
     allCategories: string
     categoryFilterLabel: string
+    applicationTypesLabel: string
+    fieldsLabel: string
+    applyFiltersButton: string
     searchButton: string
     resultCount: string
     noResults: string
+    noProjectsFound: string
     clearFilters: string
     paginationLabel: string
     previousPage: string

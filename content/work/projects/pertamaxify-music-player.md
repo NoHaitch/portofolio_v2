@@ -3,6 +3,8 @@ title: Pertamaxify Android Music Player
 category: academic
 date: 2025-05-25
 summary: Spotify Clone for Android, built with Kotlin and Jetpack Compose.
+applicationTypes: ['Mobile app']
+fields: ['Mobile Development', 'Software Engineering']
 tags: [Kotlin, Android, Mobile]
 cover: cover.png
 links:

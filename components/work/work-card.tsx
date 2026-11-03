@@ -15,6 +15,8 @@ export function WorkCard({
   viewDetails: string
   as?: 'h2' | 'h3'
 }) {
+  const tags = [...new Set([...card.applicationTypes, ...card.fields, ...card.tags])]
+
   return (
     <Link
       href={card.href}
@@ -46,7 +48,7 @@ export function WorkCard({
           </Heading>
           <p className="text-muted-foreground mt-3 text-sm leading-6">{card.summary}</p>
           <ul className="mt-5 flex flex-wrap gap-2">
-            {card.tags.slice(0, maxTags).map((tag) => (
+            {tags.slice(0, maxTags).map((tag) => (
               <li
                 key={tag}
                 className="bg-accent text-accent-foreground rounded-full px-3 py-1 text-xs"
@@ -54,10 +56,8 @@ export function WorkCard({
                 {tag}
               </li>
             ))}
-            {card.tags.length > maxTags ? (
-              <li className="text-muted-foreground px-1 py-1 text-xs">
-                +{card.tags.length - maxTags}
-              </li>
+            {tags.length > maxTags ? (
+              <li className="text-muted-foreground px-1 py-1 text-xs">+{tags.length - maxTags}</li>
             ) : null}
           </ul>
           <span className="text-primary mt-auto flex items-center gap-1 pt-6 text-sm font-medium group-hover:underline">

@@ -3,6 +3,8 @@ title: Pilkehi Hima Ilkom Unpad 2021
 category: freelance
 date: 2021-12-01
 summary: A web-based voting platform built for the 2021 Hima Ilkom Unpad student association chair election.
+applicationTypes: ['Web interface']
+fields: ['Software Engineering', 'Web Development']
 tags: [Sass, CSS, PHP, JavaScript, HTML, XAMPP, Figma, Bootstrap, Web, MariaDB]
 cover: cover.png
 links:

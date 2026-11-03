@@ -3,6 +3,8 @@ title: Intro To Machine Learning
 category: academic
 date: 2025-05-08
 summary: Making machine learning models using python for different purposes.
+applicationTypes: ['Jupyter Notebook', 'Script']
+fields: ['Artificial Intelligence', 'Data Science', 'Machine Learning']
 tags: [Python, scikit-learn, Seaborn, TensorFlow, Keras, pandas, NumPy, AI, Machine Learning]
 cover: cover.jpg
 links:

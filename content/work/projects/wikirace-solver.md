@@ -3,6 +3,8 @@ title: Wikirace Solver
 category: academic
 date: 2024-04-27
 summary: Wikirace Solver using combination of BFS and IDS
+applicationTypes: ['API', 'Web interface']
+fields: ['Algorithms', 'Computer Science', 'Web Development']
 tags: [JavaScript, Web, React, Tailwind CSS, Docker, Go]
 cover: cover.png
 links:

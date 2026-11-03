@@ -3,6 +3,8 @@ title: Perfect Magic Cube Solver
 category: academic
 date: 2024-11-04
 summary: Perfect Magic Cube Solver Using Local Search.
+applicationTypes: ['GUI']
+fields: ['Artificial Intelligence', 'Mathematics', 'Optimization']
 tags: [Python, GUI, AI]
 cover: cover.png
 links:
