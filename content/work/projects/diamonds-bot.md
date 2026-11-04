@@ -2,51 +2,49 @@
 title: Greedy Diamonds Bot
 category: academic
 date: 2024-03-09
-summary: Application of greedy algorithm in making a bot for Diamonds
+summary: A Python game-playing agent that applies greedy decision rules to collect gems in the Diamonds challenge.
 applicationTypes: ['Script']
 fields: ['Algorithms', 'Artificial Intelligence', 'Game Development']
 tags: [Python, Docker]
 cover: cover.png
-team: Team Sanss Kuy
 links:
   - label: Repository
     url: https://github.com/NoHaitch/Greedy-Diamonds-Bot
 ---
 
-Application of greedy algorithm in making a bot for Diamonds
+## Overview
 
-## Greedy Algorithm
+Greedy Diamonds Bot is a Python agent for the Diamonds challenge, where competing bots navigate a shared board and collect gems for points.
+The project adapts the provided game framework and adds a custom decision strategy alongside simpler bots for comparison.
 
-Greedy algorithm is an algorithm that chooses the best option in an instance without
-calculating if it is the best option to get the global optima.
+The command-line entry point connects the game API, board handler, bot handler, and selected logic.
+At each turn the agent receives the current game state and returns an action, rather than controlling the game engine directly.
 
-There are many ways of implementing the greedy algorithm, all of which only analyze the current state to get the best move.
+## Greedy decision-making
 
-## Diamonds
+The main bot applies a greedy strategy and moves directly toward an objective based on the current board state.
+It tracks inventory capacity, distance to base, nearby portals, and enemy positions, with state switches for varying a step, ignoring a portal, or chasing a nearby opponent.
+This keeps movement decisions responsive to the current turn instead of relying on an exhaustive multi-turn search.
 
-Diamonds is a game made by a random person (idk who) which is uncompleted.
-The IRK assistent then fix the game, altough there is many bugs and problems for the program.
-Diamonds takes a bot from the client to play the game of diamonds. Diamonds objective is to get the most points posible by taking diamonds on the board.
-There are blue diamonds(worth 1 point) and red diamonds(worth 2 points). There are also portals, a randomizer button, as well as other bots in the game.
+The repository includes comparison strategies based on gem points, chasing another bot, random moves, or staying at the base.
+Those alternatives make it possible to observe how different local rules change play in the same game environment.
 
-## Diamonds Bot
+```text
+Game observation
+       |
+       v
+Check board, inventory, portal, and opponent context
+       |
+       v
+Choose a greedy action
+       |
+       v
+Return action to game API
+```
 
-To make a diamonds bot we used the greedy algorithm, making the total of 5 versions:
+## What I learned
 
-- **MyBot** is our main bot which uses a modified Greedy by Path algorithm
+This project made the difference between a local heuristic and exhaustive search concrete.
+It also provided practice integrating a strategy with an existing game API and handling the effects of portals and opponents on movement.
 
-Other bots made:
-
-- Greedy By Points
-- Chase Enemy
-- Random Logic
-- Stay at Base
-
-Checkout the report (in Indonesian) in the link below:
-[https://github.com/NoHaitch/Greedy-Diamonds-Bot/blob/main/docs/SanssKuy.pdf](https://github.com/NoHaitch/Greedy-Diamonds-Bot/blob/main/docs/SanssKuy.pdf)
-
-By Team Sanss Kuy:
-
-- 13522091 Raden Francisco Trianto Bratadiningrat
-- 13522105 Fabian Radenta Bangun
-- 13522132 Hafizh Hananta Akbari
+The approach is intentionally heuristic, so a locally attractive route is not guaranteed to maximize the bot's eventual score.

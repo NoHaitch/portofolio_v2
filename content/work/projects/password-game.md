@@ -1,4 +1,4 @@
----
+﻿---
 title: Password Game
 category: personal
 date: 2024-09-03
@@ -12,10 +12,32 @@ links:
     url: https://github.com/NoHaitch/Password-Game
 ---
 
-Password Game Web Application using react tailwind and golang with firebase authentication.
-Inspired by the original [password game](https://neal.fun/password-game/), but modified by adding many additional features.
+## Overview
 
-Password game is a game where the user make a password that must fufill many rules as challenges. The goal is to create a password
-good enough that it fufill all rules within a short amount time. This project re-creates the password game with my own twist and other
-feature other than the game. Some of those features are: save and load game, cheat, history, and global leaderboard. From this project
-I am able to learn many things like authentication and maintaining an efficient api to be able to keep up with the frontend.
+Inspired by The Password Game, this web application challenges players to create a password that satisfies a growing set of rules.
+The game includes 20 rules, selectable difficulty, a timer, and features for saving and loading games, reviewing history, and viewing a leaderboard.
+A cheat command can also ask the backend to find a solution for the current rule state.
+
+## Rule engine and algorithms
+
+The React and Tailwind frontend sends a candidate password and rule-specific state to a Go API built with Gin.
+The backend evaluates the rules and returns an individual pass or fail result for each one, along with an overall accepted flag and progress values for some rules.
+Firebase handles authentication, while SQLite stores game-related data such as saves, history, and leaderboard records.
+
+```go
+allRulesMet := true
+for _, result := range results {
+    if !result {
+        allRulesMet = false
+        break
+    }
+}
+```
+
+The rule checks use different techniques where they fit the input: regular expressions extract numbers and Roman numerals, Boyer-Moore searches for individual patterns, and Aho-Corasick checks multiple patterns in one scan.
+Keeping the rule checks on the API side gives the browser a consistent response shape as the rule set changes.
+
+## Learning goals
+
+The project combined a stateful interactive game with account-based features and persistence.
+It provided practice designing an API for frequent validation requests, splitting frontend and backend responsibilities, and selecting text-search techniques for different rule checks.

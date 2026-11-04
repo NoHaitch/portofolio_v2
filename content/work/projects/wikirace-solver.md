@@ -2,38 +2,50 @@
 title: Wikirace Solver
 category: academic
 date: 2024-04-27
-summary: Wikirace Solver using combination of BFS and IDS
+summary: A web interface and Go service that search Wikipedia links with breadth-first or iterative-deepening search.
 applicationTypes: ['API', 'Web interface']
 fields: ['Algorithms', 'Computer Science', 'Web Development']
 tags: [JavaScript, Web, React, Tailwind CSS, Docker, Go]
 cover: cover.png
 links:
-  - label: Repository
+  - label: Frontend repository
     url: https://github.com/NoHaitch/Wikirace-Solver-FE
+  - label: Backend repository
+    url: https://github.com/NoHaitch/Wikirace-Solver-BE
 ---
 
-Wikirace Solver web application, using the combination of BFS and IDS to solve Wikirace
+## The search problem
 
-Frontend: [https://github.com/NoHaitch/Wikirace-Solver-FE](https://github.com/NoHaitch/Wikirace-Solver-FE)  
-Backend: [https://github.com/NoHaitch/Wikirace-Solver-BE](https://github.com/NoHaitch/Wikirace-Solver-BE)
+Wikirace asks a player to reach a target Wikipedia article from a starting article by following links.
+This project models each article as a node and each article link as an edge, then searches for a route between the selected pages.
 
-## Wikirace
+## Breadth-first and iterative deepening
 
-Wikirace is a game of finding the fastest way to get from a source Wikipedia page to a target page,
-where the number of links needed matters to the amount of time to reach the target page.
+The Go backend provides breadth-first search (BFS) and iterative deepening search (IDS).
+BFS processes a frontier one depth at a time and tracks visited pages, while IDS repeats depth-limited searches with gradually increasing limits.
+Both approaches scrape article links rather than relying on a Wikipedia API for graph traversal, so network latency, request limits, and the number of outgoing links all affect the search.
 
-To solve this problem we used both BFS and IDS to find the unkown solution. Turns out this process
-takes a very long time. Assuming that in each page there is around 50 links to another article. On
-the fourth level of depth there will be 50^4 or 6 milion links to check. Since we were scraping and
-not using wikipedia API, this become super hard to do fast.
+```text
+Choose start and target pages
+            |
+            v
+     Select BFS or IDS
+            |
+            v
+Scrape article links and search
+            |
+            v
+Return a route and search metrics
+            |
+            v
+Display the path in the React interface
+```
 
-We scrape since it was one of the condition given by the assistant. Don't do illegal scraping please!
+## Frontend and backend
 
-You can checkout the report(Indonesian) in the link below:
-[https://github.com/NoHaitch/Wikirace-Solver-FE/blob/main/doc/Chibye.pdf](https://github.com/NoHaitch/Wikirace-Solver-FE/blob/main/doc/Chibye.pdf)
+The React frontend accepts the two page titles, lets the user choose BFS or IDS, and draws the returned route as a graph.
+The Go backend uses Gin for its HTTP API and Colly for scraping pages, with separate search packages for the algorithms.
+The repositories are split between the [frontend](https://github.com/NoHaitch/Wikirace-Solver-FE) and [backend](https://github.com/NoHaitch/Wikirace-Solver-BE).
 
-By Kelompok Chibye:
-
-- 13522029 Ignatius Jhon Hezkiel Chan
-- 13522091 Raden Francisco Trianto Bratadiningrat
-- 13522098 Suthasoma Mahardhika Munthe
+The project helped me see how a graph-search algorithm behaves when the graph must be discovered through live requests.
+That made the cost of obtaining neighbors as important as the search strategy itself.

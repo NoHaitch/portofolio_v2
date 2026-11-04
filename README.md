@@ -75,6 +75,7 @@ The ESLint command currently fails to load because of an ESLint 10 and React plu
 
 - [docs/site-overview.md](./docs/site-overview.md) describes the current routes, structure, localization, and content.
 - [docs/adding-content.md](./docs/adding-content.md) explains how to add a project or activity.
+- [docs/content-structure.md](./docs/content-structure.md) explains how to structure the body of a project or activity article.
 - [docs/design-system.md](./docs/design-system.md) is the visual style guide.
 - [docs/testing.md](./docs/testing.md) explains the unit and end-to-end tests.
 - [docs/context.md](./docs/context.md) holds personal context, tone, and public profiles.

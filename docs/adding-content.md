@@ -98,6 +98,8 @@ if (moveIsAvailable)
 
 Keep excerpts focused on the concept being discussed and verify them against the project source.
 
+See [content-structure.md](./content-structure.md) for the recommended section order, privacy rules, and writing conventions.
+
 For project pages, explain what the project is for, what you contributed, how it was implemented, and relevant technical decisions or lessons.
 Keep claims specific to the project and avoid presenting assumptions about why a technology was selected as fact.
 Links such as a repository or design file are optional and should only be included when they are available.

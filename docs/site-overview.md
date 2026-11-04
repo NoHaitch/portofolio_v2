@@ -80,7 +80,7 @@ The Work section replaces the old Projects page, and the navigation label is "Wo
 The hub shows a hand-picked list of featured projects and the most recent activities, each with a button to its full list.
 Every card is a link to its detail page, and the Work navigation item stays highlighted on nested routes.
 
-Item content is English-only markdown, one file per item, documented in [adding-content.md](./adding-content.md).
+Item content is English-only markdown, one file per item, documented in [adding-content.md](./adding-content.md), with body structure guidance in [content-structure.md](./content-structure.md).
 Only the interface text is localized, in the `work` key of the locale dictionaries.
 To change what the hub shows, edit `featuredProjectSlugs` and `recentActivityCount` in [content/work/featured.ts](../content/work/featured.ts).
 
@@ -156,6 +156,7 @@ The [components/theme-provider.tsx](../components/theme-provider.tsx) persists t
 The homepage role text is animated by the small client component [components/rotating-text.tsx](../components/rotating-text.tsx).
 
 Reusable UI is in [components/ui/](../components/ui/), including Avatar, Card, and shadcn primitives for buttons, alerts, dialogs, dropdowns, pagination, selects, tabs, tooltips, and toasts.
+Base UI menu labels must be rendered inside `DropdownMenuGroup`, otherwise opening the menu throws.
 
 Button styling variants are defined in [components/ui/button-variants.ts](../components/ui/button-variants.ts) so server-rendered pages can use the same visual classes without importing the Button component.
 

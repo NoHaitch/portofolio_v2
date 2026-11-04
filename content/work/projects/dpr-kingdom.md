@@ -2,42 +2,44 @@
 title: DPR Kingdom
 category: academic
 date: 2024-04-16
-summary: DPR kingdom is a real life simulation of the kingdom of DPR using Object-Oriented Based C++ CLI Application
+summary: A turn-based C++ kingdom simulation that models player roles, production, trade, and taxation in a command-line game.
 applicationTypes: ['CLI']
 fields: ['Game Development', 'Software Engineering']
 tags: [C++, Make, CLI, OOP]
 cover: cover.jpg
-team: Nasi Cumi Hitam Madura Pak Bagas
 links:
   - label: Repository
     url: https://github.com/NoHaitch/DPR-Kingdom
 ---
 
-DPR kingdom is a real life simulation of the kingdom of DPR using Object-Oriented Based C++ CLI Application
+## Overview
 
-## Object Oriented C++
+DPR Kingdom is a turn-based command-line simulation organized around a small economy.
+The game models a Mayor, Farmers, and Cattlemen, with plants, animals, products, shops, storage, and buildings representing the resources and places those roles interact with.
+The Mayor can collect taxes from the farmer and cattleman groups, add players, and construct buildings.
 
-To fully learn about Object Oriented C++, we were task to make a program fully using OOP c++.
+## Game loop and object model
 
-## DPR Kingdom
+The entry point reads configuration, loads or initializes the game state, advances turns, and accepts player commands until an exit or win condition is reached.
+Game state is kept by a `Game` object, while domain classes separate shared player behavior from role-specific operations.
+For example, `Mayor` derives from `Player` and supplies its own buying, selling, and score-calculation methods.
 
-DPR Kingdom is a real life simulation of how the world looks (at the time of making the project). Where there 3 main roles: Mayor, Cattleman, and Farmer.
+```text
+Read configuration -> Load or initialize state -> Advance turn
+                              ^                         |
+                              |                         v
+                         Check outcome <- Process player commands
+```
 
-Cattleman raise animals, Farmer farm plants, and Mayor, well they take the money from Cattleman and Farmer from taxes.
+The simulation also uses C++ features such as inheritance, virtual methods, operator overloading, and domain-specific exceptions.
+Organizing the rules into related classes made it easier to reason about how player actions affect resources and the wider game state.
 
-Below is the Class Diagram for the OOP approach.
+## What I learned
 
-![Class-Diagram](./class-diagram.png)
-_Class Diagram for DPR Kingdom_
+This was an exercise in turning a set of game rules into a maintainable object model rather than placing all behavior in the command loop.
+It strengthened my understanding of class responsibilities, polymorphism, and the coordination required by a stateful turn-based program.
 
-You can also checkout the report(Indonesian) in the link below:
-[https://github.com/NoHaitch/DPR-Kingdom/blob/main/doc/IF2210_TB1_Laporan_JKW.docx.pdf](https://github.com/NoHaitch/DPR-Kingdom/blob/main/doc/IF2210_TB1_Laporan_JKW.docx.pdf)
+![Class diagram](./class-diagram.png)
+_Class diagram for DPR Kingdom._
 
-Made By Kelompok JKW: Nasi Cumi Hitam Madura Pak Bagas
-
-- 13522037 Farhan Nafis Rayhan
-- 13522071 Bagas Sambega Rosyada
-- 13522091 Raden Francisco Trianto Bratadiningrat
-- 13522105 Fabian Radenta Bangun
-
-_Cover image source: [Kingdom Background Stock photos by Vecteezy](https://www.vecteezy.com/free-photos/kingdom-background)_
+_Cover image source: [Kingdom background photos by Vecteezy](https://www.vecteezy.com/free-photos/kingdom-background)_

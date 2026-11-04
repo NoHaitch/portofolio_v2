@@ -1,51 +1,45 @@
 ---
-title: Linier Algebra Calculator and Image Scaling
+title: Linear Algebra Calculator and Image Scaling
 category: academic
 date: 2023-10-23
-summary: Linier Algebra Calculator and Image Scaling using Java CLI.
+summary: A Java command-line toolkit for linear algebra, interpolation, regression, and bicubic image scaling.
 applicationTypes: ['CLI']
 fields: ['Computer Science', 'Mathematics']
-tags: [Java, CLI]
+tags: [Java]
 cover: cover.png
 links:
   - label: Repository
     url: https://github.com/NoHaitch/Algeo01-22091-Linier-Algebra-Calculator-and-Image-Scaling
 ---
 
-Linier Algebra Calculator and Image Scaling using Java CLI.
+This Java command-line application was developed for an ITB Linear Algebra and Geometry course project.
+It brings together matrix methods and applications that use them, with interactive or text-file input and the option to save results.
 
-Contains programs on Systems of Linear Equations (SPL), Determinants, Polynomial Interpolation, Multi-Linear Regression, and
-Bicubic Spline Interpolation.
+## Linear algebra tools
 
-## SPL Calculator
+The calculator solves systems of linear equations using Gaussian elimination, Gauss-Jordan elimination, the inverse-matrix method, or Cramer's rule.
+It also computes determinants using cofactor expansion or row reduction and supports matrix inversion.
 
-To solve SPL, we implemented many methods to solve it:
+## Interpolation and regression
 
-1. Gauss Elimination Method
-2. Gauss-Jordan,
-3. Inverse Matrix
-4. Cramer's Rule.
+Polynomial interpolation constructs a polynomial through a set of input points.
+The multivariable linear regression feature uses matrix operations to calculate a model from sample data.
 
-## Polynomial Interpolation
+The project also implements bicubic spline interpolation.
+It estimates a value inside a 2D grid cell from the values and derivatives around that cell, using a 16-coefficient polynomial.
 
-Given a list of points, find the polinom Pn(x) such that it goes trhough all of the data points. Basicly getting a
-Polynomial equation to that represents an equation that connects all of the distinct points.
+## Bicubic image scaling
 
-## Multi-Linear Regression
+The image-scaling feature applies that interpolation to images.
+For each output pixel, the program maps its position back to the source image, takes a 4-by-4 neighborhood, and calculates bicubic coefficients for the alpha, red, green, and blue channels.
+It then evaluates the polynomial at the pixel's fractional position and combines the channel values into the output pixel.
+Repeating edge pixels provide a neighborhood at the image borders.
 
-Linier Regression is predicting the value using Polynomial Interpolation. We will implement the general equation for Multi-Linear Regression.
+The core evaluation follows the bicubic polynomial: each coefficient contributes according to the pixel's local x and y position.
 
-## Bicubic Spline Interpolation
+```java
+alpha += a[0].getElmt(idx, 0) * Math.pow(x, i) * Math.pow(y, j);
+red   += a[1].getElmt(idx, 0) * Math.pow(x, i) * Math.pow(y, j);
+```
 
-Bicubic Spline Interpolation is used to predict the function from points of data, making a service that is smooth and continous.
-
-## Image Scaling (Quality Increase/Decrease using Bicubic Spline Interpolation)
-
-Using the already implemented Bibucubic Spline Interpolation, we can apply it in increasing/decreasing an image quality. It improves
-the quality by adding more pixels to the image and using the pixel color resulted by the bicubic spline calculation.
-
-Made by K20 - Panci Bolong:
-
-- 13522091 Raden Francisco Trianto Bratadiningrat
-- 13522093 Matthew Vladimir Hutabarat
-- 13522098 Suthasoma Mahardhika Munthe
+This project connected the underlying linear algebra to practical features: solving and fitting data, estimating values between samples, and using those estimates to resize an image.

@@ -2,29 +2,42 @@
 title: 'Global Conquest: Battle for Supremacy'
 category: academic
 date: 2023-12-03
-summary: Game made using Prolog Language with GNU Prolog.
+summary: A turn-based strategy game built in GNU Prolog to practice logic programming and model game rules declaratively.
 applicationTypes: ['CLI']
 fields: ['Computer Science', 'Game Development']
 tags: [Prolog, CLI]
 cover: cover.png
-team: keturunan(X, Bagas)
 links:
   - label: Repository
     url: https://github.com/NoHaitch/Global-Conquest-Battle-for-Supremacy
 ---
 
-Global Conquest is game made basicly by combining Prolog Language and Risk Board Game.
+## Overview
 
-## Prolog (Programming Logic)
+Global Conquest: Battle for Supremacy is a command-line, turn-based strategy game inspired by Risk, implemented in GNU Prolog.
+The project was created to train logical reasoning and explore a programming paradigm different from the imperative languages I had used before: logic programming, a declarative paradigm.
 
-Making a game using logic paradigm programming langguage. This project is done to improve our understanding in logic paradigm. We are using SWI-Prolog.
+## Thinking in rules and relationships
 
-The Program's current state is not finished due to time constraints.
+Instead of describing every operation as a sequence of instructions, logic programming represents information as facts and relationships, then defines rules that Prolog can use to determine whether a query succeeds.
+This changed how I approached the game: the map, territory ownership, troop counts, players, and turn state were represented through predicates, while actions such as drafting troops, moving, and attacking were expressed as rules with conditions.
 
-By Keturunan(X, Bagas):
+For example, the attack module stores which territories are neighbors as facts and uses them to list territories that can be considered for attack:
 
-- 13522062 Salsabiila
-- 13522063 Shazya Audrea Taufik
-- 13522070 Marzuli Suhada M
-- 13522071 Bagas Sambega Rosyada
-- 13522091 Raden Francisco Trianto Bratadiningrat
+```prolog
+neighbors(na1, [na2, na3], ['na2', 'na3']).
+
+checkAttackableTerritory(X) :-
+    neighbors(X, List, ListString),
+    printList(ListString, 1).
+```
+
+The rule succeeds by matching `X` against a known `neighbors` fact, binding the neighboring-territory lists, and then displaying them.
+This small example illustrates the central shift in thinking: define relationships and rules, then let Prolog match facts to answer a query.
+
+## The game
+
+The game supports two to four players and includes game setup, troop placement, turn management, troop movement, territory attacks, and risk cards.
+Building these mechanics in GNU Prolog gave me hands-on experience expressing changing game state and rule constraints with predicates, rather than relying on a conventional step-by-step control flow.
+
+The project remained unfinished because of time constraints, but it gave me a practical introduction to logic programming and a different way to structure program behavior.

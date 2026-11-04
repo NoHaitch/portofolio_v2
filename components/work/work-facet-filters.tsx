@@ -7,6 +7,7 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
@@ -56,22 +57,24 @@ export function WorkFacetFilters({
             <ChevronDown aria-hidden="true" className="size-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="max-h-64 min-w-52 overflow-y-auto">
-            <DropdownMenuLabel>{applicationTypesLabel}</DropdownMenuLabel>
-            {applicationTypeOptions.map((option) => (
-              <DropdownMenuCheckboxItem
-                key={option.value}
-                aria-label={option.value}
-                checked={applicationTypes.includes(option.value)}
-                onCheckedChange={(checked) =>
-                  toggleValue(applicationTypes, setApplicationTypes, option.value, checked)
-                }
-              >
-                {option.value}
-                <span aria-hidden="true" className="text-muted-foreground ml-auto font-mono">
-                  {option.count}
-                </span>
-              </DropdownMenuCheckboxItem>
-            ))}
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>{applicationTypesLabel}</DropdownMenuLabel>
+              {applicationTypeOptions.map((option) => (
+                <DropdownMenuCheckboxItem
+                  key={option.value}
+                  aria-label={option.value}
+                  checked={applicationTypes.includes(option.value)}
+                  onCheckedChange={(checked) =>
+                    toggleValue(applicationTypes, setApplicationTypes, option.value, checked)
+                  }
+                >
+                  {option.value}
+                  <span aria-hidden="true" className="text-muted-foreground ml-auto font-mono">
+                    {option.count}
+                  </span>
+                </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : null}
@@ -85,20 +88,24 @@ export function WorkFacetFilters({
             <ChevronDown aria-hidden="true" className="size-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="max-h-64 min-w-52 overflow-y-auto">
-            <DropdownMenuLabel>{fieldsLabel}</DropdownMenuLabel>
-            {fieldOptions.map((option) => (
-              <DropdownMenuCheckboxItem
-                key={option.value}
-                aria-label={option.value}
-                checked={fields.includes(option.value)}
-                onCheckedChange={(checked) => toggleValue(fields, setFields, option.value, checked)}
-              >
-                {option.value}
-                <span aria-hidden="true" className="text-muted-foreground ml-auto font-mono">
-                  {option.count}
-                </span>
-              </DropdownMenuCheckboxItem>
-            ))}
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>{fieldsLabel}</DropdownMenuLabel>
+              {fieldOptions.map((option) => (
+                <DropdownMenuCheckboxItem
+                  key={option.value}
+                  aria-label={option.value}
+                  checked={fields.includes(option.value)}
+                  onCheckedChange={(checked) =>
+                    toggleValue(fields, setFields, option.value, checked)
+                  }
+                >
+                  {option.value}
+                  <span aria-hidden="true" className="text-muted-foreground ml-auto font-mono">
+                    {option.count}
+                  </span>
+                </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : null}

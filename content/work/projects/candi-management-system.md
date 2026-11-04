@@ -2,27 +2,21 @@
 title: Candi Management System CLI
 category: academic
 date: 2023-08-31
-summary: Candi Management System CLI using primitive python (most function are made from scratch).
+summary: A Python command-line program for practicing foundational programming concepts through a simple Candi management system.
 applicationTypes: ['CLI']
-fields: ['Software Engineering']
-tags: [Python, CLI]
+fields: ['Computer Science']
+tags: [Python]
 cover: cover.png
-links:
-  - label: Repository
-    url: https://github.com/NoHaitch/Managerial-Candi
 ---
 
-Candi Management System CLI using primitive python (limitation: not using already made functions; most function are made from scratch).
-The code is fully documented but is still using Indonesian Langguage.
+## Overview
 
-Candi Management System is simple program that simulates a software for managing Candi like ownership, employees, and simple currency.
-The objective is to learn programming from scratch without needing to rely on built-in python functions.
+Candi Management System is a Python command-line program for managing a fictional Candi business, including its ownership, employees, and a simple currency system.
+It was built as an introductory programming project, with the goal of practicing foundational concepts rather than relying on ready-made functionality.
 
-Checkout the [report (PDF)](https://github.com/NoHaitch/Managerial-Candi/blob/main/Documents/Laporan%20Tugas%20Besar%20Daspro%202023.pdf).
+## What I learned
 
-By K06 - Kelompok 10 IF1210 2023
+The project provided hands-on practice with basic data structures and control flow, including `if`/`else` conditions and loops.
+Most of the functionality was implemented from scratch, which helped me understand how these fundamentals work together to support common management tasks.
 
-- 16522024 Bagaswara
-- 19622024 Serenada Cinta Sunindyo
-- 19622150 Dedy Hofmanindo Saragih
-- 19622078 Raden Francisco Trianto Bratadiningrat
+Working on the system as a team assignment also gave me experience applying these concepts in a complete program rather than isolated exercises.
