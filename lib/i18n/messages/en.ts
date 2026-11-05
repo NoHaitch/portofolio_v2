@@ -27,13 +27,12 @@ const en = {
   },
   about: {
     eyebrow: 'About me',
-    title: 'Quiet by default, curious by nature.',
+    title: 'Building secure, reliable software.',
     introduction:
       'I am Francisco, a recent Informatics Engineering graduate from Bandung, Indonesia. I like building things that are secure, clear, and made to last.',
     story: [
       'I graduated from Institut Teknologi Bandung in 2026 with a cum laude degree in Informatics Engineering. Along the way I became drawn to security, systems, and AI, and to the space where they meet.',
       'I prefer clean, structured, and logical thinking, and I like a problem best when I can break it down until it is simple. I am also happy to follow my intuition when it fits, especially in creative areas like music.',
-      'I am an ambivert with a slight lean toward introversion. Quiet at first, more talkative with people I know well.',
     ],
     shibuyaPhotoAlt: 'Francisco Trianto leaning on the Hachiko statue in Shibuya, Tokyo',
     nameHeading: 'What to call me',

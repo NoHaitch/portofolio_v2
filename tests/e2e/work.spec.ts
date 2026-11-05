@@ -108,10 +108,12 @@ test.describe('work section', () => {
     await page.getByRole('menuitemcheckbox', { name: 'CLI' }).click()
     await page.getByRole('menuitemcheckbox', { name: 'GUI' }).click()
     await page.keyboard.press('Escape')
+    await expect(page.getByRole('menu')).toHaveCount(0)
     await page.getByRole('button', { name: 'Field' }).click()
     await page.getByRole('menuitemcheckbox', { name: 'Computer Science' }).click()
     await page.getByRole('menuitemcheckbox', { name: 'Game Development' }).click()
     await page.keyboard.press('Escape')
+    await expect(page.getByRole('menu')).toHaveCount(0)
     await page.getByRole('button', { name: 'Apply filters' }).click()
 
     await expect(page).toHaveURL(/applicationType=CLI/)
@@ -139,6 +141,7 @@ test.describe('work section', () => {
     await expect(page.getByRole('menuitemcheckbox', { name: 'CLI' })).toBeVisible()
     await expect(page.getByRole('menuitemcheckbox', { name: 'GUI' })).toHaveCount(0)
     await page.keyboard.press('Escape')
+    await expect(page.getByRole('menu')).toHaveCount(0)
 
     await page.getByRole('button', { name: 'Field' }).click()
     await expect(page.getByRole('menuitemcheckbox', { name: 'Game Development' })).toBeVisible()

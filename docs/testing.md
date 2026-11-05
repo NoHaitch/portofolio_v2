@@ -53,6 +53,7 @@ Current coverage:
 
 - `navigation.spec.ts` checks that each page returns 200 with its heading, unknown routes return 404, and no image on any page is broken.
 - `navigation.spec.ts` also covers header navigation, the footer email and archive quick links, language switching keeping the current route, the theme toggle, and the experience tabs.
+- `localized-pages.spec.ts` checks every static route and every project and activity detail route in English, Indonesian, Japanese, and Simplified Chinese.
 - `responsive.spec.ts` checks that no page has horizontal overflow at 320, 375, 768, and 1024 px.
 - `responsive.spec.ts` also covers the burger menu (open, Escape to close, navigate, language select inside the menu) and that the desktop nav shows no burger.
 - `work.spec.ts` checks that the homepage shows five recent projects and activities, eight-item archive pagination, search, category and multi-select project filters, unavailable filter options, the filtered empty state, unified project tag order and deduplication, date sorting in both directions, and the selected activity detail pages and timestamped graduation video embed.
@@ -99,6 +100,7 @@ Issues it has already caught: a skipped heading level on the experience timeline
 - Add an e2e test for any flow a visitor depends on, and a regression test first when fixing a bug.
 - Keep tests independent so they can run in parallel.
 - Do not hard-code English copy in tests that run on other locales.
+- Keep the locale page smoke test's content routes derived from `content/work/`, so new articles are checked in every locale automatically.
 
 ## Known gaps
 

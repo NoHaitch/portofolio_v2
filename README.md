@@ -45,19 +45,19 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command                | Description                         |
-| ---------------------- | ----------------------------------- |
-| `bun run dev`          | Start the development server        |
-| `bun run build`        | Build for production and type check |
-| `bun run start`        | Serve the production build          |
-| `bun run format`       | Format the project with Prettier    |
-| `bun run format:check` | Check formatting                    |
-| `bun run lint`         | Run ESLint                          |
-| `bun run typecheck`    | Type check with `tsc --noEmit`      |
-| `bun run test`         | Run the Vitest unit tests           |
-| `bun run test:e2e`     | Run the Playwright end-to-end tests |
-| `bun run test:audit`   | Run the Lighthouse audit            |
-| `bun run test:all`     | Typecheck, format check, and tests  |
+| Command                | Description                                               |
+| ---------------------- | --------------------------------------------------------- |
+| `bun run dev`          | Start the development server                              |
+| `bun run build`        | Build for production and type check                       |
+| `bun run start`        | Serve the production build                                |
+| `bun run format`       | Format the project with Prettier                          |
+| `bun run format:check` | Check formatting                                          |
+| `bun run lint`         | Run ESLint                                                |
+| `bun run typecheck`    | Type check with `tsc --noEmit`                            |
+| `bun run test`         | Run the Vitest unit tests                                 |
+| `bun run test:e2e`     | Run the Playwright end-to-end tests                       |
+| `bun run test:audit`   | Run the Lighthouse audit                                  |
+| `bun run test:all`     | Typecheck, format check, unit tests, and end-to-end tests |
 
 See [docs/testing.md](./docs/testing.md) for setup and what the tests cover.
 The ESLint command currently fails to load because of an ESLint 10 and React plugin incompatibility.

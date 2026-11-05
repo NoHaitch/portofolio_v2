@@ -2,13 +2,13 @@ import type { Messages } from '@/lib/i18n/types'
 
 const ja = {
   metadataDescription:
-    'セキュリティ、システム、AI、実用的なプロダクト開発に取り組むソフトウェアエンジニア、Francisco Triantoのポートフォリオです。',
+    'Francisco Triantoのポートフォリオです。セキュリティ、システム、AIを軸に、実用性を重視したプロダクト開発に取り組んでいます。',
   navigation: {
     label: 'メインナビゲーション',
-    work: '実績',
+    work: '実績・活動',
     home: 'ホーム',
     education: '学歴',
-    experience: '専門経験',
+    experience: '職務経験',
     about: '私について',
     openMenu: 'メニューを開く',
     closeMenu: 'メニューを閉じる',
@@ -19,37 +19,37 @@ const ja = {
   switchToDark: 'ダークモードに切り替え',
   footer: {
     copyright: '© 2026 Francisco Trianto',
-    tagline: 'セキュリティ、システム、AIに取り組むソフトウェアエンジニア。インドネシア在住。',
-    quickLinks: 'クイックリンク',
-    connect: 'つながる',
+    tagline: 'セキュリティ、システム、AIを軸に活動するソフトウェアエンジニア。インドネシア在住。',
+    quickLinks: 'ページ一覧',
+    connect: 'SNS・連絡先',
     backToTop: 'ページの先頭へ',
     aboutSite: 'このサイトについて',
   },
   about: {
     eyebrow: '私について',
-    title: '普段は静か、でも好奇心は旺盛。',
+    title: '好奇心を原動力に、丁寧なものづくりを。',
     introduction:
-      'インドネシア・バンドン出身で、情報工学を修めた新卒エンジニアのFranciscoです。安全で、分かりやすく、長く使えるものづくりが好きです。',
+      'インドネシア・バンドンで情報工学を学んだFranciscoです。安全でわかりやすく、長く使えるものをつくることを大切にしています。',
     story: [
-      '2026年にバンドン工科大学を情報工学で優等(cum laude)卒業しました。学ぶなかで、セキュリティ、システム、AI、そしてそれらが交わる領域に惹かれていきました。',
-      '整理された論理的な思考を好み、問題を単純になるまで分解していく過程が好きです。一方で、音楽のような創造的な分野では直感に従うことも大切にしています。',
-      '内向的寄りのアンビバートで、最初は物静かですが、親しい人の前では話し好きです。',
+      '2026年にバンドン工科大学の情報工学課程をcum laudeで卒業しました。学ぶ中で、セキュリティやシステム、AI、そしてそれらが交わる領域に関心を深めてきました。',
+      '筋道を立てて考え、問題をシンプルな要素に分けて捉えることを大切にしています。一方で、音楽のような創造的な分野では、直感も大切にしています。',
     ],
     shibuyaPhotoAlt: '東京・渋谷のハチ公像にもたれるFrancisco Trianto',
-    nameHeading: '呼び名について',
+    nameHeading: '名前について',
     names: [
-      { name: 'Francisco', note: '名前であり、仕事で使っている呼び名です。' },
-      { name: 'Ciko', note: 'ショートネームです。' },
+      { name: 'Francisco', note: 'ファーストネームで、仕事でもこの名前を使っています。' },
+      { name: 'Ciko', note: '普段使っている短い呼び名です。' },
       {
         name: 'NoHaitch',
-        note: 'オンラインでのハンドルネームです。Chikoと「H」付きで書かれることが多いため、Hを外しました。',
+        note: 'オンラインで使っているハンドルネームです。「Chiko」とHを付けて書かれることが多いため、NoHaitchにしました。',
       },
     ],
-    hobbiesHeading: '仕事以外では',
+    hobbiesHeading: '仕事以外の楽しみ',
     hobbies: [
       {
         title: '音楽',
-        description: 'ジャズが一番好きです。ピアノを弾き、ジャズフェスティバルにも足を運びます。',
+        description:
+          'ジャズが好きで、ピアノを弾いたり、ジャズフェスティバルに足を運んだりしています。',
       },
       {
         title: '旅行',
@@ -58,12 +58,12 @@ const ja = {
       },
       {
         title: 'スポーツ',
-        description: 'サッカーとバレーボールを楽しんでいます。',
+        description: 'バレーボールを楽しんでいます。以前はサッカーもしていました。',
       },
       { title: 'ゲーム', description: '気分転換にちょうど良い趣味です。' },
     ],
     singaporePhotoAlt: 'シンガポールのスカイラインを背に水辺に立つFrancisco Trianto',
-    interestsHeading: '関心のある分野',
+    interestsHeading: '関心分野',
     interests: [
       'サイバーセキュリティ',
       'AI・データサイエンス',
@@ -73,166 +73,168 @@ const ja = {
       'DevOps',
       '安全でスケーラブルなシステム設計',
     ],
-    contactHeading: 'お話ししましょう',
-    contactDescription: '気になることがあれば、ぜひご連絡ください。',
+    contactHeading: 'お気軽にご連絡ください',
+    contactDescription: '気になることや一緒に取り組みたいことがあれば、ぜひご連絡ください。',
     contactLink: 'お問い合わせ',
   },
   aboutSite: {
     eyebrow: 'このサイトについて',
-    title: '眺めるだけでなく、読んでもらうためのポートフォリオ。',
+    title: '仕事や経験を、丁寧に伝えるポートフォリオ。',
     introduction:
-      'このサイトはウェブ上の私の拠点です。作品、経験、学歴を、高速でアクセシブルな形で一か所にまとめ、4言語で提供しています。',
-    purposeHeading: '目的',
+      'このサイトは、ウェブ上で仕事や経験を紹介する拠点です。プロジェクト、職務経験、学歴を一か所にまとめ、表示速度やアクセシビリティにも配慮しながら、4言語で公開しています。',
+    purposeHeading: 'このサイトで伝えたいこと',
     purposeItems: [
-      'ソフトウェア開発からAI、サイバーセキュリティまで、私が何者で何ができるかを伝えること。',
-      'プロジェクト、経験、学歴を構造化して記録すること。',
-      '採用担当者や協力者、チームメイトが気軽に連絡できるようにすること。',
+      'ソフトウェア開発、AI、サイバーセキュリティなど、自分の専門分野や取り組みを紹介すること。',
+      'プロジェクト、職務経験、学歴を整理して記録すること。',
+      '採用担当者や協業相手、チームメンバーが気軽に連絡できるようにすること。',
     ],
-    workflowHeading: '作り方',
+    workflowHeading: '制作の進め方',
     workflowIntroduction:
-      'このサイトはエージェント型コーディングで作りました。重要な部分は人が判断し、エージェントが見落としがちな点は手作業で仕上げています。',
+      'AIエージェントを活用して制作しました。重要な判断は自分で行い、エージェントが見落としやすい細部は手作業で仕上げています。',
     workflowSteps: [
       {
-        title: '手動でのプロジェクト構築',
+        title: '開発環境のセットアップ',
         description:
-          'Next.js、Bun、Tailwind CSS、shadcn/ui、Prettier、ESLintなどの土台は自分で整え、以降の変更がすべて意図した選択の上に積み上がるようにしました。',
+          'Next.js、Bun、Tailwind CSS、shadcn/ui、Prettier、ESLintなどの開発環境は自分で整え、その後の変更も意図した設計に沿って進められるようにしました。',
       },
       {
-        title: 'エージェントの準備',
+        title: 'AIエージェントの活用準備',
         description:
-          'エージェント用のスキル、自分についてのコンテキストファイル、技術スタック、コンテンツ構造、テスト、文体を定めたプロジェクトルールを追加しました。',
+          'エージェント用のスキルや自分についてのコンテキストファイルを用意し、技術スタック、コンテンツ構造、テスト、文体に関するルールを整えました。',
       },
       {
-        title: '全体像の設計',
+        title: 'サイト全体の設計',
         description:
-          '何かを生成する前に、ページ構成、トーン、言語、全体の雰囲気など、サイトの見た目と内容の方向性を決めました。',
+          '制作を始める前に、ページ構成やトーン、対応言語、サイト全体の雰囲気など、見た目と内容の方向性を定めました。',
       },
       {
-        title: '小さな単位でのエージェント型コーディング',
+        title: '小さな単位でのAI開発',
         description:
-          '上記のコンテキストとルールをもとに、エージェントが範囲を絞った依頼ごとに、ページ、コンポーネント、翻訳の大部分を作ります。',
+          '設定したコンテキストとルールに沿って、作業範囲を明確にしながら、ページやコンポーネント、翻訳の多くをAIエージェントと段階的に作成しています。',
       },
       {
-        title: '検証とレビュー',
+        title: '動作確認とレビュー',
         description:
-          'すべての変更をビルド、型チェック、実際のブラウザでの動作確認で検証し、結果を自分で確認してから次へ進みます。',
+          '変更のたびにビルドと型チェックを行い、ブラウザーでも動作を確認しています。結果を自分でレビューしてから次に進みます。',
       },
       {
-        title: '微調整とドキュメント化',
+        title: '仕上げとドキュメント化',
         description:
-          'アクセシビリティ、余白、文言、細かな操作感など、エージェントが見落とした点を修正し、次の変更でも一貫性が保てるよう規約を記録します。',
+          'アクセシビリティや余白、文言、細かな操作感など、エージェントが見落とした点を整えています。今後も一貫性を保てるよう、開発ルールも記録しています。',
       },
     ],
-    stackHeading: '技術スタックとツール',
+    stackHeading: '技術スタック・ツール',
     stack: [
       { label: 'フレームワーク', items: ['Next.js', 'React', 'TypeScript'] },
-      { label: 'スタイルとUI', items: ['Tailwind CSS', 'shadcn/ui', 'Base UI', 'Lucide'] },
-      { label: 'ツール', items: ['Bun', 'Prettier', 'ESLint'] },
+      { label: 'UI・スタイリング', items: ['Tailwind CSS', 'shadcn/ui', 'Base UI', 'Lucide'] },
+      { label: '開発ツール', items: ['Bun', 'Prettier', 'ESLint'] },
     ],
     sourceHeading: 'ソースコード',
-    sourceDescription: 'このサイトのコードはすべて公開しています。ぜひご覧ください。',
+    sourceDescription: 'このサイトのソースコードはすべて公開しています。ぜひご覧ください。',
     sourceLink: 'GitHubで見る',
   },
   home: {
-    eyebrow: 'Informatics · インドネシア',
+    eyebrow: '情報工学 · インドネシア',
     roles: ['Systems engineering', 'AI & Data Science', 'Cyber security', 'Software Engineer'],
     introduction:
-      'バンドン工科大学で情報工学を学び、セキュリティ、信頼性の高いシステム、有用なデータを大切にした実践的なソフトウェアを開発しています。',
+      'Franciscoです。情報工学を学び、セキュリティや信頼性の高いシステム、データ活用を大切にしながら、実用的なソフトウェアを開発しています。',
     portraitAlt: '紺のブレザーを着たFrancisco Triantoのポートレート',
     work: '実績を見る',
     contact: 'お問い合わせ',
     scrollHint: 'スクロールして詳しく見る',
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
-    expertiseLabel: '専門分野',
+    expertiseLabel: '得意分野',
     recentProjectsHeading: '最近のプロジェクト',
     recentActivitiesHeading: '最近の活動',
     viewAllProjects: 'すべてのプロジェクトを見る',
     viewAllActivities: '活動をもっと見る',
     expertiseAreas: [
       {
-        title: 'ソフトウェアエンジニアリング',
+        title: 'ソフトウェア開発',
         description:
-          'ソフトウェアを一から構築することも、既存のシステムを拡張することもできます。アジャイルやウォーターフォールにも慣れ、AI支援のコーディングで素早くフィードバックを得ています。',
+          'ソフトウェアを一貫して開発するほか、既存システムの拡張にも取り組んでいます。AgileとWaterfallの両方に慣れており、AI支援コーディングも活用して素早く改善を重ねています。',
       },
       {
         title: 'サイバーセキュリティ',
         description:
-          '従来型の脆弱性からプロンプトインジェクションのような新しいものまで、脅威の全体像を理解しています。AIが防御だけでなく攻撃も加速させている点も把握しています。',
+          '従来の脆弱性に加え、プロンプトインジェクションなど新たな脅威についても学んでいます。AIが防御だけでなく攻撃にも利用される動向にも注目しています。',
       },
       {
         title: 'システムエンジニアリング',
         description:
-          'システムを幅広く理解しているため、シンプルなモノリスから多層のマイクロサービスまで、各設計の長所と短所を比べ、課題に合った設計を選べます。',
+          '設計ごとのトレードオフを見極め、シンプルなモノリスから多層構成のマイクロサービスまで、課題に合った構成を検討します。',
       },
       {
         title: '組み込みシステム',
         description:
-          '組み込みシステムの進化、とりわけハードウェア上で動くエッジAIと、より高機能で知的なロボティクスの未来に強い関心があります。',
+          '組み込みシステムの進化、特にハードウェア上で動くEdge AIや、より高機能で知的なロボティクスの未来に関心があります。',
       },
       {
         title: 'Operations & DevOps',
         description:
-          '運用はパイプラインから自動化まで、優れたサービスの核です。データ、システム、AIにわたり、新しいモデルのパイプラインも含めて、モニタリングとオブザーバビリティを強く保ちます。',
+          'パイプラインから自動化まで、運用は優れたサービスを支える基盤です。データ、システム、AIの各領域で、モデルパイプラインも含めたモニタリングとオブザーバビリティを重視しています。',
       },
       {
-        title: 'Agentic coding',
+        title: 'AIエージェントを活用した開発',
         description:
-          'エージェント型モデルは、日常的な作業を速く片付けてくれる、この時代を代表するツールです。ターミナル型もIDE統合型も使い、最新モデルとそのスキルやコンテキストを追っています。',
+          'AIエージェントは日々の作業を効率化するツールです。ターミナルやIDEで活用しながら、最新のモデルやスキル、コンテキストの動向を追っています。',
       },
       {
         title: 'AI・データサイエンス',
         description:
-          'AIはビジネスの意思決定を、大まかな推測から根拠のある計画へと変えました。データに基づく予測と分析で、計画を成功させる要因を見つけ出します。',
+          'AIによって、勘に頼りがちだった事業判断もデータに基づいて行えるようになりました。予測や分析を通じて、計画の成果を左右する要因を探ります。',
       },
       {
-        title: 'Machine Learning',
+        title: '機械学習',
         description:
-          '従来のMLから、NLPやビジョンのディープラーニングまで、AIのモデル開発側に取り組んできました。RAGやMCPを追い、モデルを比較するための評価も設計した経験があります。',
+          '従来型のMachine Learningから、NLPやComputer VisionのDeep Learningまで、AIモデルの開発に取り組んできました。RAGやMCPの動向を追い、モデルを比較する評価設計も経験しています。',
       },
       {
         title: 'コンピュータサイエンス・研究',
         description:
-          'AIやMLをはじめ、コンピューティング全般の新しいブレークスルーに熱中し、いつか未来になるかもしれないアイデアを常に考えています。',
+          'AIやMachine Learningをはじめ、コンピューティング分野の新たな進展に関心があります。将来につながるかもしれないアイデアを考えるのも好きです。',
       },
     ],
   },
   work: {
-    eyebrow: '制作物と活動',
+    eyebrow: 'プロジェクト・活動',
     title: 'プロジェクト・活動',
-    introduction: 'これまでに作ったものや、学びを得たコンペ、ウェビナー、イベントを紹介します。',
-    featuredHeading: '注目のプロジェクト',
-    featuredIntroduction: '特に思い入れのあるプロジェクトを厳選しました。',
+    introduction:
+      'これまでに手がけたプロジェクトと、コンペティションやウェビナー、イベントなどの活動を紹介します。',
+    featuredHeading: '主なプロジェクト',
+    featuredIntroduction: '特に力を入れて取り組んだプロジェクトを紹介します。',
     viewAllProjects: 'すべてのプロジェクトを見る',
     recentHeading: '最近の活動',
-    recentIntroduction: '最近参加したコンペ、ウェビナー、ワークショップ、イベントです。',
-    viewAllActivities: '活動の一部を見る',
+    recentIntroduction:
+      '最近参加したコンペティションやウェビナー、ワークショップ、イベントを紹介します。',
+    viewAllActivities: '活動一覧を見る',
     projectsPage: {
       eyebrow: 'プロジェクト',
       title: 'すべてのプロジェクト',
       introduction:
-        '授業の課題からフリーランスの仕事、個人の実験まで、公開できるプロジェクトを紹介します。NDA（秘密保持契約）のため掲載できない仕事もあります。',
+        '授業の課題からフリーランスの仕事、個人の実験まで、公開可能なプロジェクトを紹介します。NDA（秘密保持契約）により掲載できない案件もあります。',
       searchLabel: 'プロジェクトを検索',
       searchPlaceholder: '名前、タグ、キーワードで検索',
       backLabel: 'プロジェクト一覧に戻る',
     },
     activitiesPage: {
-      eyebrow: '最近の主な活動',
-      title: '最近の活動の一部',
+      eyebrow: '主な活動',
+      title: '最近の活動',
       introduction:
-        'ソフトウェア開発以外で最近参加した委員会活動、スポーツ、イベント、節目の一部を紹介します。すべての活動を網羅した一覧ではありません。名前、テーマ、カテゴリで検索できます。',
+        'ソフトウェア開発以外で参加した委員会活動、スポーツ、イベント、節目となる出来事の一部を紹介します。すべての活動を網羅した一覧ではありません。名前、テーマ、カテゴリで検索できます。',
       searchLabel: '活動を検索',
       searchPlaceholder: '名前、タグ、キーワードで検索',
-      backLabel: '活動に戻る',
+      backLabel: '活動一覧に戻る',
     },
     allCategories: 'すべて',
     categoryFilterLabel: 'カテゴリで絞り込む',
-    applicationTypesLabel: 'アプリケーションの種類',
+    applicationTypesLabel: 'アプリケーション種別',
     fieldsLabel: '分野',
     applyFiltersButton: '絞り込む',
     searchButton: '検索',
     resultCount: '{total}件中{start}～{end}件を表示',
-    noResults: '検索に一致する項目はまだありません。',
+    noResults: '条件に一致する項目はありません。',
     noProjectsFound:
       '選択した条件に一致するプロジェクトはありません。条件を変更するか解除してください。',
     clearFilters: '絞り込みを解除',
@@ -244,28 +246,28 @@ const ja = {
     linksHeading: 'リンク',
     teamLabel: 'チーム',
     categories: {
-      academic: '学術',
+      academic: '学業',
       personal: '個人',
       organization: '団体',
       freelance: 'フリーランス',
       committee: '委員会',
       sports: 'スポーツ',
       event: 'イベント',
-      milestone: '節目',
+      milestone: 'マイルストーン',
     },
   },
   education: {
-    eyebrow: 'プロフィール',
+    eyebrow: '学びの歩み',
     title: '学歴',
-    introduction: 'ソフトウェア、システム、セキュリティへの関心を育んだ学びの歩みです。',
-    universityDegree: '情報学／コンピュータサイエンス理学士',
+    introduction: 'ソフトウェア、システム、セキュリティへの関心を育んできた学びを紹介します。',
+    universityDegree: '情報工学／コンピュータサイエンス学士号',
     universityPeriod: '2022年7月 - 2026年8月',
-    universityGrade: 'GPA：3.57 / 4.00 · 優等卒業',
-    universityDetailsLabel: '学業の実績',
+    universityGrade: 'GPA：3.57 / 4.00 · cum laude',
+    universityDetailsLabel: '主な実績',
     universityDetails: [
-      '144単位の修了要件を上回る151単位を取得し、優等で卒業。',
-      'サイバーセキュリティとシステムソフトウェア工学の選択専門科目群を修了。',
-      '主な履修科目：人工知能、ディープラーニング、サイバーセキュリティ、システムソフトウェア工学、分散システム、データ構造とアルゴリズム。',
+      '卒業要件の144単位に対して151単位を取得し、cum laudeで卒業。',
+      'サイバーセキュリティとシステムソフトウェア工学の専門選択科目群を修了。',
+      '主な履修科目：人工知能、Deep Learning、サイバーセキュリティ、システムソフトウェア工学、分散システム、データ構造とアルゴリズム。',
     ],
     universityActivitiesLabel: '課外活動・所属団体',
     universityActivities: [
@@ -287,20 +289,20 @@ const ja = {
     highSchoolDegree: '高校卒業 · 自然科学（STEM）コース',
     highSchoolPeriod: '2019年7月 - 2022年7月',
     highSchoolActivitiesLabel: '課外活動・所属団体',
-    highSchoolActivities: ['Five Cyber Community（FCC）', 'バンドン市レベルの数学OSKに2回参加'],
+    highSchoolActivities: ['Five Cyber Community（FCC）', 'バンドン市大会の数学OSKに2回出場'],
     highSchoolHonorsLabel: '学業表彰',
-    highSchoolHonors: ['優等生。クラス1位、学校全体で上位3位以内。'],
+    highSchoolHonors: ['成績優秀者。クラス1位、学校全体で上位3位以内。'],
     certificate: '学位証明書を見る',
     certificateLabel: '大学の学位証明書を見る',
     photoAlt: '卒業式のFrancisco Trianto',
   },
   experience: {
-    eyebrow: '専門分野と活動',
-    title: '職務・専門経験',
+    eyebrow: '職務経験・活動',
+    title: '職務経験・活動',
     introduction:
-      'ソフトウェア開発、AI・データサイエンス、教育、リーダーシップに関する職務・学業・コミュニティ活動を紹介します。',
+      'ソフトウェア開発、AI・データサイエンス、教育、リーダーシップなど、仕事や大学・コミュニティでの経験を紹介します。',
     tabsLabel: '経験分野',
-    parallelNote: '分野を選ぶと、その分野に絞って表示できます。',
+    parallelNote: '分野を選ぶと、該当する経験に絞り込めます。',
     sortOldestFirst: '古い順に表示',
     sortNewestFirst: '新しい順に表示',
     certificateLinkLabel: '修了証を見る',
@@ -314,147 +316,147 @@ const ja = {
       {
         id: 'gci-world-training',
         branch: 'aiData',
-        title: 'AI・データサイエンス研修',
+        title: 'AI & Data Science Trainee',
         organization: 'GCI World、東京大学 松尾研究室',
         period: '2026年4月 - 8月',
         startDate: '2026-04',
         arrangement: '専門研修',
         summary:
-          'Pythonの基礎とData Scienceにおける主要なMachine Learningを学ぶ全14回の週次講義を修了しました。Data Scienceコンペティションに参加し、提示されたシナリオとデータをもとにデータ活用型の事業提案を作成する最終課題に取り組みました。',
+          'Pythonの基礎とデータサイエンスの主要な機械学習手法を学ぶ週次講義（全14回）を修了しました。コンペティションにも参加し、提示されたシナリオとデータをもとに事業提案を作成する最終課題に取り組みました。',
         proofUrl:
           '/certificates/GCI%20World%20April%20MatsuoLab%20TokyoU%20-%20Raden%20Francisco%20Trianto%20Bratadiningrat.pdf',
       },
       {
         id: 'data-annotation',
         branch: 'aiData',
-        title: 'AIアノテーション',
+        title: 'AI Annotation',
         organization: 'データアノテーションプラットフォーム',
         period: '2026年9月',
         startDate: '2026-09',
         arrangement: 'フリーランス',
         summary:
-          'AIモデルのプロンプトと出力をアノテーションし、2つのモデルを比較・評価しました。また、プロンプトと評価ルーブリックを作成し、中規模のコードベースでHarborとOpenCodeを使ってエージェント型モデルを実行・指示しました。',
+          'AIモデルのプロンプトと出力をアノテーションし、2つのモデルを比較・評価しました。評価用プロンプトとルーブリックも作成しました。また、中規模のコードベースでHarborとOpenCodeを使い、エージェント型モデルを実行してタスクを指示しました。',
       },
       {
         id: 'sinerdigi',
         branch: 'engineering',
-        title: 'フルスタック開発者（フリーランス）',
+        title: 'Full-Stack Developer (Freelance)',
         organization: 'PT Sinerdigi Teknologi Indonesia',
         period: '2025年4月 - 2026年3月',
         startDate: '2025-04',
         arrangement: 'リモート',
         summary:
-          '5つのコンポーネントからなる分散型待ち行列管理システムを構築し、窓口端末と表示端末間のリアルタイム更新を実現しました。',
+          '5つのコンポーネントからなる分散型の順番待ち管理システムを構築し、窓口端末と表示端末の間でリアルタイムに情報を同期しました。',
       },
       {
         id: 'akhdani',
         branch: 'engineering',
-        title: 'ソフトウェアエンジニアインターン',
+        title: 'Software Engineer Intern',
         organization: 'PT Akhdani Reka Solusi',
         period: '2025年6月 - 2025年9月',
         startDate: '2025-06',
         arrangement: '出社',
         summary:
-          '.NETデスクトップシェルとLaravel・Vue.jsアプリを連携し、決済やルームキー機器をシミュレートする多言語ホテルチェックイン端末を試作しました。',
+          '.NETデスクトップシェルとLaravel・Vue.jsアプリを連携させ、決済やルームキー機器をシミュレートする多言語対応のホテルチェックイン端末を試作しました。',
       },
       {
         id: 'hmif-election',
         branch: 'engineering',
-        title: 'フロントエンド開発者',
+        title: 'Frontend Developer',
         organization: 'Pemilu HMIF 2025',
         period: '2024年10月 - 2025年2月',
         startDate: '2024-10',
         arrangement: '出社',
         summary:
-          '700人以上の学生が利用するレスポンシブな選挙プラットフォームを開発し、3人の後輩開発者とUIパターンやレビュー手法を整えました。',
+          '700人以上の学生が利用するレスポンシブな選挙プラットフォームを開発しました。後輩開発者3人と連携し、UIパターンやコードレビューの進め方を整えました。',
       },
       {
         id: 'hima-ilkom-election',
         branch: 'engineering',
-        title: 'フルスタック開発者（フリーランス）',
+        title: 'Full-Stack Developer (Freelance)',
         organization: 'Pemilu HIMA ILKOM 2021',
         period: '2021年10月 - 2021年12月',
         startDate: '2021-10',
         arrangement: 'リモート',
         summary:
-          '1,000件以上の有効票を処理するオンライン投票システムを共同開発し、3日間の選挙期間中に100%の稼働率を達成しました。',
+          '1,000票を超える有効票を処理するオンライン投票システムを共同開発し、3日間の選挙期間を通じて稼働率100%を維持しました。',
       },
       {
         id: 'cse-lab',
         branch: 'academic',
-        title: '計算科学・工学研究室アシスタント',
+        title: 'Computational Science and Engineering Laboratory Assistant',
         organization: 'STEI ITB',
         period: '2024年8月 - 2026年8月',
         startDate: '2024-08',
         arrangement: '出社',
         summary:
-          '研究室運営と授業を支援し、新しいアシスタントの採用・評価にも携わりました。50人以上の応募者から選ばれた12人の一人です。',
+          '研究室の運営と授業を支援し、次期アシスタントの選考・評価にも携わりました。50人以上の応募者から選ばれた12人の一人です。',
       },
       {
         id: 'if2224',
         branch: 'academic',
-        title: 'IF2224形式言語とオートマトン理論 ティーチングアシスタント',
+        title: 'Course Assistant, IF2224 Formal Language and Automata Theory',
         organization: 'STEI ITB',
         period: '2025年8月 - 2026年7月',
         startDate: '2025-08',
         arrangement: '出社',
         summary:
-          '4段階のコンパイラ・インタプリタ最終課題を設計し、技術資料の作成、コードレビュー、デバッグ支援を行いました。',
+          'コンパイラとインタプリタを題材にした最終課題を設計し、4つのマイルストーンに分けて進行しました。技術ガイドの作成、コードレビュー、デバッグ支援も担当しました。',
       },
       {
         id: 'if2211',
         branch: 'academic',
-        title: 'IF2211アルゴリズム戦略 ティーチングアシスタント',
+        title: 'Course Assistant, IF2211 Algorithm Strategies',
         organization: 'STEI ITB',
         period: '2025年1月 - 2025年7月',
         startDate: '2025-01',
         arrangement: '出社',
         summary:
-          'アルゴリズム戦略に関する6つの課題を作成し、効率性、計算量、境界ケースを評価しました。',
+          'アルゴリズムの主要な戦略を扱う課題を6つ作成し、実装の効率性、計算量、境界ケースを評価しました。',
       },
       {
         id: 'if1220',
         branch: 'academic',
-        title: 'IF1220離散数学 コーディネーター／主任アシスタント',
+        title: 'Coordinator / Head Assistant, IF1220 Discrete Mathematics',
         organization: 'STEI ITB',
         period: '2024年8月 - 2025年1月',
         startDate: '2024-08',
         arrangement: '出社',
         summary:
-          '5人のティーチングアシスタントを率い、3クラス172人の学生向けに試験問題と解答の資料を整備しました。',
+          '5人のTeaching Assistantをまとめ、3クラス計172人の学生に向けて試験問題と解答集を整備しました。',
       },
       {
         id: 'character-trainer',
         branch: 'academic',
-        title: '人間形成プログラムトレーナー',
+        title: 'Character Development Trainer',
         organization: 'Institut Teknologi Bandung',
         period: '2023年7月 - 2024年3月',
         startDate: '2023-07',
         arrangement: '出社',
         summary:
-          '4日間のイベントを通じて、50人の新入生向けに人間形成ワークショップと振り返りの場を進行しました。',
+          '4日間にわたり、新入生50人を対象に人間力を育むワークショップと振り返りを進行しました。',
       },
       {
         id: 'hmif-academic',
         branch: 'leadership',
-        title: '学術部門スタッフ',
+        title: 'Academic Division Staff',
         organization: 'HMIF ITB',
         period: '2024年7月 - 2025年6月',
         startDate: '2024-07',
         arrangement: '出社',
         summary:
-          '700人以上の学生コミュニティ向けに講義資料を整理し、試験対策ガイドと学習シートを作成しました。',
+          '700人以上が所属する学生コミュニティ向けに講義資料を整理し、試験対策ガイドや学習シートを作成しました。',
       },
       {
         id: 'arka-vidia',
         branch: 'leadership',
-        title: 'コンテンツストラテジスト',
+        title: 'Content Strategist',
         organization: 'ARKA VIDIA 9.0',
         period: '2024年11月 - 2025年5月',
         startDate: '2024-11',
         arrangement: '出社',
         summary:
-          '全国規模のテクノロジーイベントに向けたプロモーション企画とライブ報道を、デザイン・マーケティングチームと連携して行いました。',
+          '全国規模のテクノロジーイベントに向けたプロモーション企画と当日の情報発信を担当し、デザイン・マーケティングチームと連携しました。',
       },
       {
         id: 'sparta-hmif',
@@ -465,7 +467,7 @@ const ja = {
         startDate: '2024-06',
         arrangement: '出社',
         summary:
-          '300人以上の入会希望者向けにオリエンテーションやワークショップを企画し、候補者の評価も行いました。',
+          '300人以上の入会希望者を対象としたオリエンテーションやワークショップを企画し、候補者の評価も担当しました。',
       },
       {
         id: 'wisokto',
@@ -476,7 +478,7 @@ const ja = {
         startDate: '2023-09',
         arrangement: 'ハイブリッド',
         summary:
-          '卒業式イベントを担当する8人のチームを調整し、委員会メンバー183人の人員データを管理しました。',
+          '卒業式イベントを担当する8人のチームを調整し、委員会メンバー183人の人事情報を管理しました。',
       },
       {
         id: 'pab-ubv',
@@ -487,7 +489,7 @@ const ja = {
         startDate: '2023-08',
         arrangement: '出社',
         summary:
-          'バレーボールクラブに入る100人以上の新入生向けに、人間形成とオリエンテーション活動を企画しました。',
+          'バレーボールクラブに加入する100人以上の新入生を対象に、人間形成とオリエンテーションの企画を担当しました。',
       },
       {
         id: 'regeneration-ubv',
@@ -498,7 +500,7 @@ const ja = {
         startDate: '2023-05',
         arrangement: '出社',
         summary:
-          '候補者の選考や面接を通じてリーダー継承を支援し、年次メンバー受け入れの運営を見守りました。',
+          '候補者の選考・面接を通じてリーダーの引き継ぎを支援し、各年度のメンバー受け入れを運営しました。',
       },
       {
         id: 'tpb-cup',
@@ -520,7 +522,7 @@ const ja = {
         startDate: '2022-08',
         arrangement: '出社',
         summary:
-          'オリエンテーションや式典を撮影し、共有メディア資料を整理してイベントのダイジェスト動画を制作しました。',
+          'オリエンテーションや式典を撮影し、撮影素材を整理してイベントのダイジェスト動画を制作しました。',
       },
       {
         id: 'fcc-programming',
@@ -537,9 +539,9 @@ const ja = {
   },
   contact: {
     eyebrow: 'お問い合わせ',
-    title: 'お気軽にご連絡ください。',
+    title: 'お気軽にご連絡ください',
     introduction:
-      'ソフトウェア開発、セキュリティ、データ、または興味深いプロジェクトについてご連絡ください。',
+      'ソフトウェア開発、セキュリティ、データ、関心のあるプロジェクトについて、ぜひお気軽にご連絡ください。',
     professional: '仕事関連',
     community: '執筆・コミュニティ',
   },
