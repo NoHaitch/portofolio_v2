@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useTheme } from '@/components/theme-provider'
 import {
   Select,
@@ -158,19 +159,37 @@ export default function Header({ locale }: { locale: Locale }) {
           ))}
         </ul>
 
-        <LanguageSelect locale={locale} className="hidden lg:flex" />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger render={<span className="hidden lg:flex" />}>
+              <LanguageSelect locale={locale} />
+            </TooltipTrigger>
+            <TooltipContent>{messages.languageLabel}</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
-          <Button
-            type="button"
-            onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            variant="ghost"
-            size="icon"
-            className="size-10"
-            aria-label={isDark ? messages.switchToLight : messages.switchToDark}
-          >
-            {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    type="button"
+                    onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                    variant="ghost"
+                    size="icon"
+                    className="size-10"
+                    aria-label={isDark ? messages.switchToLight : messages.switchToDark}
+                  />
+                }
+              >
+                {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+              </TooltipTrigger>
+              <TooltipContent>
+                {isDark ? messages.switchToLight : messages.switchToDark}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <Button
             type="button"
             onClick={() => setOpenFor(menuOpen ? null : pathname)}
