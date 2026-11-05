@@ -1,5 +1,11 @@
 import { ExperienceTimeline } from '@/components/experience-timeline'
 import { getMessages, type Locale } from '@/lib/i18n'
+import { pageMetadata } from '@/lib/i18n/metadata'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params
+  return pageMetadata(locale, getMessages(locale).experience.title)
+}
 
 export default async function ExperiencePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params

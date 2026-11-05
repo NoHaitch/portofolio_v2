@@ -2,6 +2,12 @@ import { ArrowUpRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { buttonVariants } from '@/components/ui/button-variants'
 import { getMessages, type Locale } from '@/lib/i18n'
+import { pageMetadata } from '@/lib/i18n/metadata'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params
+  return pageMetadata(locale, getMessages(locale).aboutSite.title)
+}
 
 const repositoryUrl = 'https://github.com/NoHaitch/portofolio_v2'
 

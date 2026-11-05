@@ -30,7 +30,10 @@ export async function generateMetadata({
   const locale: Locale = isLocale(value) ? value : 'en'
 
   return {
-    title: 'Francisco Trianto | Portfolio',
+    title: {
+      default: 'Francisco Trianto | Portfolio',
+      template: '%s',
+    },
     description: getMessages(locale).metadataDescription,
   }
 }

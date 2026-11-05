@@ -3,6 +3,12 @@ import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button-variants'
 import { getLocalePath, getMessages, type Locale } from '@/lib/i18n'
+import { pageMetadata } from '@/lib/i18n/metadata'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params
+  return pageMetadata(locale, getMessages(locale).about.title)
+}
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params

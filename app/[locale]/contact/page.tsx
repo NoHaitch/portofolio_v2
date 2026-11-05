@@ -10,6 +10,12 @@ import {
 import { SiKaggle, SiLeetcode } from 'react-icons/si'
 import { Card, CardContent } from '@/components/ui/card'
 import { getMessages, type Locale } from '@/lib/i18n'
+import { pageMetadata } from '@/lib/i18n/metadata'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params
+  return pageMetadata(locale, getMessages(locale).contact.title)
+}
 
 const professionalLinks = [
   {

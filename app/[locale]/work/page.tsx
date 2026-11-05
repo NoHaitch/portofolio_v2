@@ -4,6 +4,12 @@ import { WorkCard } from '@/components/work/work-card'
 import { buttonVariants } from '@/components/ui/button-variants'
 import { getLocalePath, getMessages, type Locale } from '@/lib/i18n'
 import { getFeaturedProjects, getRecentActivities, toCardData } from '@/lib/work'
+import { pageMetadata } from '@/lib/i18n/metadata'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params
+  return pageMetadata(locale, getMessages(locale).work.title)
+}
 
 export default async function WorkPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params
