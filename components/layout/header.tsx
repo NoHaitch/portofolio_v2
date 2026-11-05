@@ -137,7 +137,7 @@ export default function Header({ locale }: { locale: Locale }) {
           className="flex min-w-0 shrink-0 items-center gap-2 text-sm font-semibold tracking-tight sm:gap-3"
         >
           <Avatar className="border-border size-8 border sm:size-9">
-            <AvatarImage src="/Avatar512.jpg" alt="Francisco Trianto avatar" />
+            <AvatarImage src="/portfolio-mark.jpg" alt="" />
             <AvatarFallback>FT</AvatarFallback>
           </Avatar>
           <span>Francisco Trianto</span>
