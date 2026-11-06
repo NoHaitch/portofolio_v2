@@ -53,6 +53,9 @@ Current coverage:
 
 - `navigation.spec.ts` checks that each page returns 200 with its heading, unknown routes return 404, and no image on any page is broken.
 - `navigation.spec.ts` also covers header navigation, the footer email and archive quick links, language switching keeping the current route, the theme toggle, and the experience tabs.
+- `light-theme.spec.ts` explicitly selects the light theme, checks theme switching, and verifies the footer's colors on ten routes at mobile width and on the homepage at desktop width.
+- The light-theme test checks the specific palette values rather than calculating contrast ratios.
+  Update its expectations when the palette changes, and verify that the new colors still meet WCAG contrast requirements.
 - `localized-pages.spec.ts` checks every static route and every project and activity detail route in English, Indonesian, Japanese, and Simplified Chinese.
 - `responsive.spec.ts` checks that no page has horizontal overflow at 320, 375, 768, and 1024 px.
 - `responsive.spec.ts` also covers the burger menu (open, Escape to close, navigate, language select inside the menu) and that the desktop nav shows no burger.
@@ -87,6 +90,8 @@ Notes:
 - Performance uses Lighthouse's simulated mobile throttling, so it varies between runs and machines.
   Individual pages swing by about 10 points, so the 70 threshold only catches real regressions.
 - The audit runs with reduced motion forced, so the rotating hero text is not sampled mid-fade by the contrast check.
+- The audit does not explicitly select a theme.
+  Check both light and dark themes separately when investigating theme-specific accessibility issues.
 - HTML and JSON reports are written to `reports/lighthouse/`, which is git-ignored.
 - The audit is not part of `test:all` because it adds a build and several slow runs.
   Run it before releases and after large UI changes.

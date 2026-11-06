@@ -15,8 +15,8 @@ Avoid adding one-off color utilities such as `text-emerald-600` or `bg-slate-900
 | Background     | `#F3F7F6` | `#10191D` |
 | Foreground     | `#172729` | `#E8F0EF` |
 | Card surface   | `#FFFFFF` | `#172328` |
-| Primary accent | `#087E78` | `#5BC4B7` |
-| Muted text     | `#607477` | `#A0B2B1` |
+| Primary accent | `#006E68` | `#5BC4B7` |
+| Muted text     | `#586B6E` | `#A0B2B1` |
 | Border         | `#D6E1DF` | `#2B3A3D` |
 
 Use `primary` for important actions and small identity cues.
@@ -31,7 +31,7 @@ The work experience timeline uses three additional theme-aware accents to distin
 
 | Experience area       | Light     | Dark      |
 | --------------------- | --------- | --------- |
-| Software engineering  | `#087E78` | `#5BC4B7` |
+| Software engineering  | `#006E68` | `#5BC4B7` |
 | Teaching and academia | `#4D59A8` | `#B1B8FF` |
 | Campus and community  | `#A14A2A` | `#FFAD8A` |
 
