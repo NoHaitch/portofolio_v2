@@ -145,7 +145,7 @@ The App Router also includes [app/robots.txt](../app/robots.txt), which should b
 
 [app/[locale]/layout.tsx](../app/%5Blocale%5D/layout.tsx) defines locale metadata, document language, font variables, the theme provider, and shared page shell.
 
-The shared page shell renders [components/layout/header.tsx](../components/layout/header.tsx), route content, [components/layout/footer.tsx](../components/layout/footer.tsx), and the Sonner toaster.
+The shared page shell renders [components/layout/header.tsx](../components/layout/header.tsx), route content, and [components/layout/footer.tsx](../components/layout/footer.tsx).
 
 The header contains primary navigation, a flag-bearing shadcn Select for language switching, and a light/dark theme control.
 Below the `lg` breakpoint the navigation and language select move into a burger menu panel.

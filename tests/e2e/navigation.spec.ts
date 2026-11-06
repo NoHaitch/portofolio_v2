@@ -65,6 +65,7 @@ test.describe('navigation', () => {
   test('footer shows the contact email', async ({ page }) => {
     await page.goto('/')
     const footer = page.getByRole('contentinfo')
+    await expect(footer).toHaveCount(1)
     await expect(footer.getByRole('link', { name: 'franciscotrianto@gmail.com' })).toHaveAttribute(
       'href',
       'mailto:franciscotrianto@gmail.com',

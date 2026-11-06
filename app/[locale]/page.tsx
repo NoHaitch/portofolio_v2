@@ -38,7 +38,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                 height={800}
                 className="aspect-[4/5] w-full rounded-[1.1rem] object-cover"
                 sizes="(min-width: 1024px) 480px, (min-width: 640px) 384px, 320px"
-                priority
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
           </div>

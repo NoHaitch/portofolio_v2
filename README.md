@@ -4,6 +4,20 @@ Personal portfolio for Francisco Trianto (NoHaitch), presenting software enginee
 
 The site is static-first, accessible, and available in English, Indonesian, Japanese, and Simplified Chinese.
 
+## Screenshots
+
+| Homepage                                               | Work                                      |
+| ------------------------------------------------------ | ----------------------------------------- |
+| ![Portfolio homepage](./docs/screenshots/homepage.png) | ![Work page](./docs/screenshots/work.png) |
+
+| Experience page                                       | DBMS project detail                                           |
+| ----------------------------------------------------- | ------------------------------------------------------------- |
+| ![Experience page](./docs/screenshots/experience.png) | ![DBMS project detail](./docs/screenshots/project-detail.png) |
+
+| Lighthouse report                                                            |
+| ---------------------------------------------------------------------------- |
+| ![Lighthouse report for the landing page](./docs/screenshots/lighthouse.png) |
+
 ## Pages
 
 | Route                                | Purpose                                                           |

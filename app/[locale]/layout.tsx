@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Toaster } from '@/components/ui/sonner'
 import { getMessages, isLocale, locales, type Locale } from '@/lib/i18n'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-body' })
@@ -47,6 +46,7 @@ export default async function RootLayout({
 }>) {
   const { locale: value } = await params
   const locale: Locale = isLocale(value) ? value : 'en'
+  const { navigation, languageLabel, switchToLight, switchToDark } = getMessages(locale)
 
   return (
     <html
@@ -55,12 +55,13 @@ export default async function RootLayout({
     >
       <body id="top" className="flex min-h-screen flex-col">
         <ThemeProvider>
-          <Header locale={locale} />
+          <Header
+            locale={locale}
+            messages={{ navigation, languageLabel, switchToLight, switchToDark }}
+          />
 
           {children}
-
           <Footer locale={locale} />
-          <Toaster position="bottom-right" />
         </ThemeProvider>
       </body>
     </html>

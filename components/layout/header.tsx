@@ -16,14 +16,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { getLocalePath, getMessages, isLocale, languageOptions, type Locale } from '@/lib/i18n'
+import { getLocalePath, isLocale, languageOptions } from '@/lib/i18n/shared'
+import type { Locale, Messages } from '@/lib/i18n/types'
 
 const flags: Record<Locale, typeof US> = { en: US, id: ID, ja: JP, zh: CN }
 
-function LanguageSelect({ locale, className }: { locale: Locale; className?: string }) {
+function LanguageSelect({
+  locale,
+  label,
+  className,
+}: {
+  locale: Locale
+  label: string
+  className?: string
+}) {
   const pathname = usePathname()
   const router = useRouter()
-  const messages = getMessages(locale)
 
   return (
     <Select
@@ -34,7 +42,7 @@ function LanguageSelect({ locale, className }: { locale: Locale; className?: str
       }}
     >
       <SelectTrigger
-        aria-label={messages.languageLabel}
+        aria-label={label}
         className={`border-border bg-background hover:bg-accent h-9 w-[84px] rounded-full px-2 text-sm data-[size=default]:h-9 ${className ?? ''}`}
       >
         <SelectValue>
@@ -70,14 +78,19 @@ function LanguageSelect({ locale, className }: { locale: Locale; className?: str
   )
 }
 
-export default function Header({ locale }: { locale: Locale }) {
+export default function Header({
+  locale,
+  messages,
+}: {
+  locale: Locale
+  messages: Pick<Messages, 'navigation' | 'languageLabel' | 'switchToLight' | 'switchToDark'>
+}) {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   // The menu is open only for the path it was opened on, so navigating closes it.
   const [openFor, setOpenFor] = useState<string | null>(null)
   const headerRef = useRef<HTMLElement>(null)
-  const messages = getMessages(locale)
   const navItems = [
     { href: '/', label: messages.navigation.home },
     { href: '/about', label: messages.navigation.about },
@@ -162,7 +175,7 @@ export default function Header({ locale }: { locale: Locale }) {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger render={<span className="hidden lg:flex" />}>
-              <LanguageSelect locale={locale} />
+              <LanguageSelect locale={locale} label={messages.languageLabel} />
             </TooltipTrigger>
             <TooltipContent>{messages.languageLabel}</TooltipContent>
           </Tooltip>
@@ -227,7 +240,7 @@ export default function Header({ locale }: { locale: Locale }) {
             ))}
             <div className="border-border mt-2 flex items-center justify-between border-t px-4 pt-4">
               <span className="text-muted-foreground text-sm">{messages.languageLabel}</span>
-              <LanguageSelect locale={locale} />
+              <LanguageSelect locale={locale} label={messages.languageLabel} />
             </div>
           </div>
         </div>
