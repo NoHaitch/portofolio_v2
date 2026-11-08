@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == 'REPLACE_WITH_ADMIN_UID';
+    }
+    function isGuest(data) {
+      return request.auth != null &&
+        request.auth.token.firebase.sign_in_provider == 'anonymous' &&
+        request.auth.uid == data.guestId;
+    }
+    function validText(text) {
+      return text is string && text.size() > 0 && text.size() <= 2000;
+    }
+    match /conversations/{id} {
+      allow get: if isAdmin() ||
+        (request.auth != null && request.auth.token.firebase.sign_in_provider == 'anonymous'
+          && !exists(/databases/$(database)/documents/conversations/$(id))) || isGuest(resource.data);
+      allow list: if isAdmin();
+      allow create: if isGuest(request.resource.data)
+        && request.resource.data.keys().hasOnly(['guestId', 'status', 'createdAt', 'updatedAt', 'lastMessage', 'lastSender', 'unreadByAdmin', 'unreadByGuest'])
+        && request.resource.data.keys().hasAll(['guestId', 'status', 'createdAt', 'updatedAt', 'lastMessage', 'lastSender', 'unreadByAdmin', 'unreadByGuest'])
+        && request.resource.data.status == 'open'
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.lastSender == 'guest'
+        && validText(request.resource.data.lastMessage)
+        && request.resource.data.unreadByAdmin == true
+        && request.resource.data.unreadByGuest == false;
+      allow update: if
+        (isGuest(resource.data) && (
+          (resource.data.status == 'open'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['updatedAt', 'lastMessage', 'lastSender', 'unreadByAdmin'])
+            && request.resource.data.updatedAt == request.time
+            && validText(request.resource.data.lastMessage)
+            && request.resource.data.lastSender == 'guest'
+            && request.resource.data.unreadByAdmin == true)
+          || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['unreadByGuest'])
+            && request.resource.data.unreadByGuest == false)
+        ))
+        || (isAdmin()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt', 'lastMessage', 'lastSender', 'unreadByAdmin', 'unreadByGuest'])
+          && request.resource.data.status in ['open', 'closed']
+          && request.resource.data.unreadByAdmin is bool
+          && request.resource.data.unreadByGuest is bool);
+      allow delete: if isAdmin();
+      match /messages/{messageId} {
+        function chat() {
+          return getAfter(/databases/$(database)/documents/conversations/$(id)).data;
+        }
+        allow read: if isAdmin() || isGuest(get(/databases/$(database)/documents/conversations/$(id)).data);
+        allow create: if chat().status == 'open'
+          && chat().updatedAt == request.time
+          && chat().lastMessage == request.resource.data.text
+          && chat().lastSender == request.resource.data.sender
+          && request.resource.data.keys().hasOnly(['text', 'sender', 'createdAt', 'replyTo'])
+          && request.resource.data.keys().hasAll(['text', 'sender', 'createdAt'])
+          && (!('replyTo' in request.resource.data)
+            || (request.resource.data.replyTo is string
+              && request.resource.data.replyTo.matches('^[a-zA-Z0-9]{20}$')
+              && exists(/databases/$(database)/documents/conversations/$(id)/messages/$(request.resource.data.replyTo))))
+          && validText(request.resource.data.text)
+          && request.resource.data.createdAt == request.time
+          && ((isAdmin() && request.resource.data.sender == 'admin')
+            || (isGuest(chat()) && request.resource.data.sender == 'guest'));
+        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read'])
+          && request.resource.data.read == true
+          && ((isAdmin() && resource.data.sender == 'guest')
+            || (resource.data.sender == 'admin'
+              && isGuest(get(/databases/$(database)/documents/conversations/$(id)).data)));
+        allow delete: if isAdmin();
+      }
+    }
+  }
+}

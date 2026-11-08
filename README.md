@@ -30,7 +30,8 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 | `/education`                         | Education timeline with coursework, honors, and certificates      |
 | `/contact`                           | Professional and community links                                  |
 | `/about-site`                        | What the site is for, how it is built, and the source code link   |
-| `/admin/login`                       | Unlisted, noindex Google sign-in page for the site owner          |
+| `/admin/login`                       | Unlisted, noindex owner sign-in                                   |
+| `/admin`, `/admin/messages`          | Owner dashboard and conversation inbox                            |
 
 English uses unprefixed URLs.
 Other languages use the `/id`, `/ja`, and `/zh` prefixes.
@@ -64,6 +65,10 @@ The `.env` file is git-ignored.
 Add the same variables to the Vercel project environment for production builds.
 These Firebase Web app values are public client configuration, not admin credentials.
 Set `NEXT_PUBLIC_FIREBASE_ADMIN_EMAIL` to the Google account allowed by the unlisted admin sign-in page.
+Set `NEXT_PUBLIC_FIREBASE_ADMIN_UID` to that Firebase Authentication account's UID.
+Both values are public client configuration, not authorization secrets.
+Before using chat, enable anonymous authentication and deploy the restrictive Firestore rules as described in [docs/chat.md](./docs/chat.md).
+The admin UI check alone does not protect conversations.
 
 ## Scripts
 
@@ -101,6 +106,7 @@ The ESLint command currently fails to load because of an ESLint 10 and React plu
 - [docs/design-system.md](./docs/design-system.md) is the visual style guide.
 - [docs/testing.md](./docs/testing.md) explains the unit and end-to-end tests.
 - [docs/context.md](./docs/context.md) holds personal context, tone, and public profiles.
+- [docs/chat.md](./docs/chat.md) explains Firebase setup, conversation access, and operational limitations.
 
 ## Adding a route
 

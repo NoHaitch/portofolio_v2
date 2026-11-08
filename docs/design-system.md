@@ -73,6 +73,13 @@ Use the shared `Button` component from `components/ui/button.tsx` for primary, s
 
 Use shadcn components for common interactive patterns instead of creating parallel custom controls.
 
+The support widget uses a compact fixed launcher and a contained conversation panel in the lower-right corner.
+The owner workspace uses a narrow icon rail and a split conversation list, keeping the same semantic colors and rounded surfaces as the public site.
+Chat messages share a compact grouped layout across the owner inbox and guest widget.
+Sender labels and read receipts appear once per consecutive sender group, while each bubble shows its local send time and an accessible reply action.
+Message groups are capped at 36rem and reserve space for the reply action so hovering does not shift bubbles.
+Quoted reply previews are limited to 100 characters and two lines without changing the original message.
+
 Add new primitives with `bunx shadcn add <component>` and adapt their imports or styles to the existing tokens only when needed.
 
 The shared component set currently includes Alert, Alert Dialog, Button, Dialog, Dropdown Menu, Pagination, Select, Tabs, Tooltip, and Sonner.

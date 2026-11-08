@@ -4,10 +4,12 @@ import { getApp, getApps, initializeApp, type FirebaseApp } from 'firebase/app'
 import { getAuth, type Auth } from 'firebase/auth'
 import { getFirestore, type Firestore } from 'firebase/firestore'
 
-let services: { app: FirebaseApp; auth: Auth; db: Firestore } | undefined
+type Services = { app: FirebaseApp; auth: Auth; db: Firestore }
+const services = new Map<string, Services>()
 
-export function getFirebaseServices() {
-  if (services) return services
+export function getFirebaseServices(name = '[DEFAULT]') {
+  const existing = services.get(name)
+  if (existing) return existing
 
   const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -26,7 +28,12 @@ export function getFirebaseServices() {
     throw new Error(`Missing Firebase environment variables: ${missingValues.join(', ')}`)
   }
 
-  const app = getApps().length > 0 ? getApp() : initializeApp(config)
-  services = { app, auth: getAuth(app), db: getFirestore(app) }
-  return services
+  const app = getApps().some((item) => item.name === name)
+    ? getApp(name)
+    : name === '[DEFAULT]'
+      ? initializeApp(config)
+      : initializeApp(config, name)
+  const result = { app, auth: getAuth(app), db: getFirestore(app) }
+  services.set(name, result)
+  return result
 }

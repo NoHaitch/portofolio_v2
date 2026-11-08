@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { ThemeProvider } from '@/components/theme-provider'
+import { SiteShell } from '@/components/layout/site-shell'
 import { getMessages, isLocale, locales, type Locale } from '@/lib/i18n'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-body' })
@@ -60,13 +61,18 @@ export default async function RootLayout({
     >
       <body id="top" className="flex min-h-screen flex-col">
         <ThemeProvider initialTheme={initialTheme}>
-          <Header
+          <SiteShell
             locale={locale}
-            messages={{ navigation, languageLabel, switchToLight, switchToDark }}
-          />
-
-          {children}
-          <Footer locale={locale} />
+            header={
+              <Header
+                locale={locale}
+                messages={{ navigation, languageLabel, switchToLight, switchToDark }}
+              />
+            }
+            footer={<Footer locale={locale} />}
+          >
+            {children}
+          </SiteShell>
         </ThemeProvider>
       </body>
     </html>

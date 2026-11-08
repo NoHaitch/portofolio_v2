@@ -11,12 +11,17 @@ import {
 } from 'firebase/auth'
 import { Eye, EyeOff } from 'lucide-react'
 import { FcGoogle } from 'react-icons/fc'
+import { usePathname, useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { getFirebaseServices } from '@/lib/firebase/client'
+import { getLocalePath, isLocale } from '@/lib/i18n/shared'
 
 export function AdminLogin() {
+  const router = useRouter()
+  const firstSegment = usePathname().split('/')[1]
+  const locale = isLocale(firstSegment) ? firstSegment : 'en'
   const [services, setServices] = useState<ReturnType<typeof getFirebaseServices> | null>(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -25,28 +30,55 @@ export function AdminLogin() {
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState<'error' | 'success'>('error')
   const authorizedEmail = process.env.NEXT_PUBLIC_FIREBASE_ADMIN_EMAIL?.trim().toLowerCase()
+  const authorizedUid = process.env.NEXT_PUBLIC_FIREBASE_ADMIN_UID?.trim()
 
   useEffect(() => {
+    let active = true
+    let unsubscribe: (() => void) | undefined
     try {
-      setServices(getFirebaseServices())
+      const firebase = getFirebaseServices()
+      setServices(firebase)
+      unsubscribe = firebase.auth.onAuthStateChanged((user) => {
+        if (
+          active &&
+          user &&
+          authorizedEmail &&
+          authorizedUid &&
+          user.uid === authorizedUid &&
+          user.email?.toLowerCase() === authorizedEmail
+        ) {
+          router.replace(getLocalePath(locale, '/admin'))
+        }
+      })
     } catch (error) {
-      setMessage(
-        error instanceof Error
-          ? error.message
-          : 'Firebase could not be initialized. Check the app configuration.',
-      )
+      if (active) {
+        setMessage(
+          error instanceof Error
+            ? error.message
+            : 'Firebase could not be initialized. Check the app configuration.',
+        )
+      }
     }
-  }, [])
+    return () => {
+      active = false
+      unsubscribe?.()
+    }
+  }, [authorizedEmail, authorizedUid, locale, router])
 
   async function verifyAdmin(user: User) {
     if (!services) throw new Error('Firebase is still initializing. Try again in a moment.')
 
-    if (!authorizedEmail || user.email?.toLowerCase() !== authorizedEmail) {
+    if (
+      !authorizedEmail ||
+      !authorizedUid ||
+      user.uid !== authorizedUid ||
+      user.email?.toLowerCase() !== authorizedEmail
+    ) {
       await signOut(services.auth)
       throw new Error(
-        authorizedEmail
+        authorizedEmail && authorizedUid
           ? 'This account is not authorized to access the admin area.'
-          : 'Admin sign-in is not configured. Set the admin email in the deployment environment.',
+          : 'Admin sign-in is not configured. Set the admin email and UID in the deployment environment.',
       )
     }
   }
@@ -59,10 +91,7 @@ export function AdminLogin() {
     try {
       const credential = await signInWithPopup(services.auth, new GoogleAuthProvider())
       await verifyAdmin(credential.user)
-      setMessageType('success')
-      setMessage(
-        'Signed in successfully. The admin inbox will be available here when chat is enabled.',
-      )
+      router.push(getLocalePath(locale, '/admin'))
     } catch (error) {
       setMessageType('error')
       setMessage(getAuthErrorMessage(error))
@@ -80,10 +109,7 @@ export function AdminLogin() {
     try {
       const credential = await signInWithEmailAndPassword(services.auth, email.trim(), password)
       await verifyAdmin(credential.user)
-      setMessageType('success')
-      setMessage(
-        'Signed in successfully. The admin inbox will be available here when chat is enabled.',
-      )
+      router.push(getLocalePath(locale, '/admin'))
     } catch (error) {
       setMessageType('error')
       setMessage(getAuthErrorMessage(error))
