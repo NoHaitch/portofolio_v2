@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { cookies } from 'next/headers'
 import { Geist_Mono, Figtree } from 'next/font/google'
 import '../globals.css'
 import { cn } from '@/lib/utils'
@@ -47,14 +48,18 @@ export default async function RootLayout({
   const { locale: value } = await params
   const locale: Locale = isLocale(value) ? value : 'en'
   const { navigation, languageLabel, switchToLight, switchToDark } = getMessages(locale)
+  const savedTheme = (await cookies()).get('theme')?.value
+  const initialTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : null
+  const themeClass = initialTheme === 'dark' ? 'dark' : initialTheme === 'light' ? 'light' : ''
 
   return (
     <html
       lang={locale}
-      className={cn('h-full', 'antialiased', geistMono.variable, figtree.variable)}
+      className={cn('h-full', 'antialiased', geistMono.variable, figtree.variable, themeClass)}
+      suppressHydrationWarning
     >
       <body id="top" className="flex min-h-screen flex-col">
-        <ThemeProvider>
+        <ThemeProvider initialTheme={initialTheme}>
           <Header
             locale={locale}
             messages={{ navigation, languageLabel, switchToLight, switchToDark }}

@@ -30,6 +30,7 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 | `/education`                         | Education timeline with coursework, honors, and certificates      |
 | `/contact`                           | Professional and community links                                  |
 | `/about-site`                        | What the site is for, how it is built, and the source code link   |
+| `/admin/login`                       | Unlisted, noindex Google sign-in page for the site owner          |
 
 English uses unprefixed URLs.
 Other languages use the `/id`, `/ja`, and `/zh` prefixes.
@@ -56,6 +57,13 @@ bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+Firebase client configuration is read from `NEXT_PUBLIC_FIREBASE_*` environment variables.
+Copy `.env.example` to `.env` and fill in the Firebase Web app values before using Firebase features.
+The `.env` file is git-ignored.
+Add the same variables to the Vercel project environment for production builds.
+These Firebase Web app values are public client configuration, not admin credentials.
+Set `NEXT_PUBLIC_FIREBASE_ADMIN_EMAIL` to the Google account allowed by the unlisted admin sign-in page.
 
 ## Scripts
 

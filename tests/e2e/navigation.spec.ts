@@ -12,6 +12,21 @@ const pages = [
 ]
 
 test.describe('pages', () => {
+  test('admin login is available but marked noindex', async ({ page }) => {
+    const response = await page.goto('/admin/login')
+    expect(response?.status()).toBe(200)
+    await expect(page.getByRole('heading', { name: 'Welcome back' })).toBeVisible()
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      /noindex.*nofollow|nofollow.*noindex/,
+    )
+    const loginCard = page.locator('main [data-slot="card"]')
+    await expect(loginCard.getByRole('button', { name: /google/i })).toBeVisible()
+    await expect(loginCard.getByRole('textbox', { name: 'Email address' })).toBeVisible()
+    await expect(loginCard.getByRole('textbox', { name: 'Password' })).toBeVisible()
+    await expect(loginCard.getByRole('button', { name: 'Sign in', exact: true })).toBeVisible()
+  })
+
   for (const { path, heading } of pages) {
     test(`${path} renders its heading`, async ({ page }) => {
       const response = await page.goto(path)

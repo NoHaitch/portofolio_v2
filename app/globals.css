@@ -127,6 +127,47 @@
   --sidebar-ring: #5bc4b7;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    color-scheme: dark;
+    --background: #10191d;
+    --glow-strength: 9%;
+    --foreground: #e8f0ef;
+    --card: #172328;
+    --card-foreground: #e8f0ef;
+    --popover: #172328;
+    --popover-foreground: #e8f0ef;
+    --primary: #5bc4b7;
+    --primary-foreground: #10201f;
+    --secondary: #202f33;
+    --secondary-foreground: #e1ecea;
+    --muted: #202f33;
+    --muted-foreground: #a0b2b1;
+    --accent: #203b3a;
+    --accent-foreground: #a7e4dc;
+    --destructive: #ef7777;
+    --border: #2b3a3d;
+    --input: #344649;
+    --ring: #5bc4b7;
+    --chart-1: #5bc4b7;
+    --chart-2: #86d4c9;
+    --chart-3: #80aeb1;
+    --chart-4: #64878e;
+    --chart-5: #405d63;
+    --experience-engineering: #5bc4b7;
+    --experience-academic: #b1b8ff;
+    --experience-leadership: #ffad8a;
+    --sidebar: #141f23;
+    --sidebar-foreground: #e8f0ef;
+    --sidebar-primary: #5bc4b7;
+    --sidebar-primary-foreground: #10201f;
+    --sidebar-accent: #203b3a;
+    --sidebar-accent-foreground: #a7e4dc;
+    --sidebar-border: #2b3a3d;
+    --sidebar-ring: #5bc4b7;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

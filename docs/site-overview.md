@@ -95,6 +95,10 @@ Facet options and result counts respond to active filters, and options with no m
 Search, category filters, project facets, sort order, and page selection are represented in the URL query string and rendered by the server, so the browser receives only the current page of cards.
 The footer quick links include direct links to both archives.
 
+The unlisted `/admin/login` route provides Google sign-in through FirebaseUI and is marked `noindex`.
+The route is not linked in navigation, but an obscure URL is not access control.
+Do not expose protected admin data or mutations until server-side authorization and Firestore Security Rules are in place.
+
 ### `/education` and localized education routes
 
 The education timeline is implemented in [app/[locale]/education/page.tsx](../app/%5Blocale%5D/education/page.tsx).

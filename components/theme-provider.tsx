@@ -9,25 +9,40 @@ const ThemeContext = createContext<{
   setTheme: (theme: Theme) => void
 } | null>(null)
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setCurrentTheme] = useState<Theme>('light')
+export function ThemeProvider({
+  children,
+  initialTheme,
+}: {
+  children: ReactNode
+  initialTheme: Theme | null
+}) {
+  const [theme, setCurrentTheme] = useState<Theme>(initialTheme ?? 'light')
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem('theme')
-    const resolvedTheme =
-      storedTheme === 'light' || storedTheme === 'dark'
-        ? storedTheme
-        : window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light'
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const hasSavedTheme = document.cookie
+      .split('; ')
+      .some((cookie) => cookie === 'theme=light' || cookie === 'theme=dark')
 
-    document.documentElement.classList.toggle('dark', resolvedTheme === 'dark')
-    setCurrentTheme(resolvedTheme)
+    if (!hasSavedTheme) {
+      setCurrentTheme(mediaQuery.matches ? 'dark' : 'light')
+    }
+
+    const syncSystemTheme = (event: MediaQueryListEvent) => {
+      if (hasSavedTheme) return
+      document.documentElement.classList.toggle('dark', event.matches)
+      setCurrentTheme(event.matches ? 'dark' : 'light')
+    }
+
+    mediaQuery.addEventListener('change', syncSystemTheme)
+    return () => mediaQuery.removeEventListener('change', syncSystemTheme)
   }, [])
 
   function setTheme(nextTheme: Theme) {
     document.documentElement.classList.toggle('dark', nextTheme === 'dark')
+    document.documentElement.classList.toggle('light', nextTheme === 'light')
     window.localStorage.setItem('theme', nextTheme)
+    document.cookie = `theme=${nextTheme}; path=/; max-age=31536000; samesite=lax${window.location.protocol === 'https:' ? '; secure' : ''}`
     setCurrentTheme(nextTheme)
   }
 

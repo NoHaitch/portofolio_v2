@@ -26,6 +26,10 @@ Use `accent` for selected navigation, subtle highlights, and icon backplates.
 Use `muted` for secondary surfaces and supporting information.
 
 Both themes should use the same semantic roles, with their values defined in the root theme and `.dark` theme blocks.
+When there is no saved preference, the `prefers-color-scheme: dark` media query applies the dark tokens without adding a class, so the system theme is correct on the first paint.
+Explicit light or dark selections are stored in a `theme` cookie and rendered as a class on `<html>` by the locale layout, avoiding a post-hydration theme change after refresh.
+The layout reads this cookie on the server, so localized pages render dynamically to provide the correct initial theme.
+The provider keeps the in-memory preference synchronized with system changes only when no explicit theme cookie is present.
 
 The work experience timeline uses three additional theme-aware accents to distinguish its tabs and timeline cards:
 
