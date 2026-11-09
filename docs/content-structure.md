@@ -8,7 +8,7 @@ For file layout, front matter keys, and validation, see [adding-content.md](./ad
 - Explain the work, not the course or the team.
 - Be specific and honest. Describe what the project does and how it works, and mark approximate recollections as such.
 - Prefer "supports" or "provides evidence" over "proves" unless it is a proof.
-- Keep the tone direct and clean, as described in [context.md](./context.md).
+- Keep the tone direct and clean, as described in the [assistant profile](../content/assistant/profile.md).
 - Never use the em dash.
 - Put each full sentence on its own line, so diffs stay readable.
 - Use `##` and `###` headings only. The page title is the `h1`.

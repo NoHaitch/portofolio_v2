@@ -1,14 +1,12 @@
 'use client'
 
 import { CN, ID, JP, US } from 'country-flag-icons/react/3x2'
-import { Menu, Moon, Sun, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useTheme } from '@/components/theme-provider'
 import {
   Select,
   SelectContent,
@@ -16,8 +14,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { getLocalePath, isLocale, languageOptions } from '@/lib/i18n/shared'
 import type { Locale, Messages } from '@/lib/i18n/types'
+import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 const flags: Record<Locale, typeof US> = { en: US, id: ID, ja: JP, zh: CN }
 
@@ -86,8 +86,6 @@ export default function Header({
   messages: Pick<Messages, 'navigation' | 'languageLabel' | 'switchToLight' | 'switchToDark'>
 }) {
   const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
   // The menu is open only for the path it was opened on, so navigating closes it.
   const [openFor, setOpenFor] = useState<string | null>(null)
   const headerRef = useRef<HTMLElement>(null)
@@ -104,12 +102,7 @@ export default function Header({
     currentPath === href || (href !== '/' && currentPath.startsWith(`${href}/`))
   const ariaCurrent = (href: string) =>
     currentPath === href ? ('page' as const) : isActive(href) ? ('true' as const) : undefined
-  const isDark = mounted && theme === 'dark'
   const menuOpen = openFor === pathname
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -182,27 +175,10 @@ export default function Header({
         </TooltipProvider>
 
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <Button
-                    type="button"
-                    onClick={() => setTheme(isDark ? 'light' : 'dark')}
-                    variant="ghost"
-                    size="icon"
-                    className="size-10"
-                    aria-label={isDark ? messages.switchToLight : messages.switchToDark}
-                  />
-                }
-              >
-                {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
-              </TooltipTrigger>
-              <TooltipContent>
-                {isDark ? messages.switchToLight : messages.switchToDark}
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <ThemeToggle
+            switchToLight={messages.switchToLight}
+            switchToDark={messages.switchToDark}
+          />
           <Button
             type="button"
             onClick={() => setOpenFor(menuOpen ? null : pathname)}

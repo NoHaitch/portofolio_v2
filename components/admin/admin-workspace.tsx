@@ -11,16 +11,7 @@ import {
   query,
   updateDoc,
 } from 'firebase/firestore'
-import {
-  LayoutDashboard,
-  LogOut,
-  MessageCircle,
-  Search,
-  Send,
-  Trash2,
-  ArrowLeft,
-  ExternalLink,
-} from 'lucide-react'
+import { MessageCircle, Search, Send, Trash2, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useDeferredValue, useEffect, useRef, useState, type FormEvent } from 'react'
@@ -34,6 +25,7 @@ import { MAX_MESSAGE_LENGTH, type ChatMessage, type Conversation } from '@/lib/c
 import { matchesConversationSearch } from '@/lib/chat/search'
 import { getFirebaseServices } from '@/lib/firebase/client'
 import { getLocalePath, isLocale } from '@/lib/i18n/shared'
+import { AdminSidebar } from '@/components/admin/admin-sidebar'
 
 const threadLabels: ThreadLabels = {
   you: 'You',
@@ -291,72 +283,20 @@ export function AdminWorkspace({ page }: { page: 'dashboard' | 'messages' }) {
 
   const active = chats.filter((chat) => chat.status === 'open').length
   const unread = chats.filter((chat) => chat.unreadByAdmin).length
-  const nav = [
-    { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, active: page === 'dashboard' },
-    {
-      href: '/admin/messages',
-      label: 'Messages',
-      icon: MessageCircle,
-      active: page === 'messages',
-    },
-  ]
-
   return (
     <main className="bg-background flex min-h-dvh flex-1">
-      <nav
-        aria-label="Admin navigation"
-        className="border-border bg-card flex w-16 shrink-0 flex-col items-center gap-2 border-r py-5 sm:w-20"
-      >
-        <Link
-          href={getLocalePath(locale, '/admin')}
-          className="bg-primary text-primary-foreground mb-8 flex size-10 items-center justify-center rounded-xl font-mono text-sm font-bold"
-          aria-label="Admin dashboard"
-        >
-          FT
-        </Link>
-        {nav.map(({ href, label, icon: Icon, active: current }) => (
-          <Link
-            key={href}
-            href={getLocalePath(locale, href)}
-            aria-label={label}
-            aria-current={current ? 'page' : undefined}
-            title={label}
-            className={
-              current
-                ? 'bg-accent text-accent-foreground flex size-11 items-center justify-center rounded-xl'
-                : 'text-muted-foreground hover:bg-muted hover:text-foreground flex size-11 items-center justify-center rounded-xl'
-            }
-          >
-            <Icon className="size-5" />
-          </Link>
-        ))}
-        <div className="mt-auto flex flex-col gap-2">
-          <Link
-            href={getLocalePath(locale, '/')}
-            aria-label="View website"
-            title="View website"
-            className="text-muted-foreground hover:bg-muted flex size-11 items-center justify-center rounded-xl"
-          >
-            <ExternalLink className="size-5" />
-          </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Sign out"
-            title="Sign out"
-            onClick={() => {
-              void signOut(getFirebaseServices().auth)
-                .then(() => router.push(getLocalePath(locale, '/admin/login')))
-                .catch((cause) => {
-                  console.error('Sign out failed:', cause)
-                  setError('Could not sign out. Try again.')
-                })
-            }}
-          >
-            <LogOut className="size-5" />
-          </Button>
-        </div>
-      </nav>
+      <AdminSidebar
+        locale={locale}
+        activePage={page}
+        onSignOut={() => {
+          void signOut(getFirebaseServices().auth)
+            .then(() => router.push(getLocalePath(locale, '/admin/login')))
+            .catch((cause) => {
+              console.error('Sign out failed:', cause)
+              setError('Could not sign out. Try again.')
+            })
+        }}
+      />
       <div className="min-w-0 flex-1">
         {page === 'dashboard' ? (
           <div className="mx-auto max-w-5xl px-5 py-10 sm:px-10 sm:py-14">

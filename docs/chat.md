@@ -25,6 +25,7 @@ The UID and Firebase Web app configuration are public identifiers, not credentia
 Never put passwords, service-account keys, or other secrets in `NEXT_PUBLIC_` variables.
 The rules file deliberately contains a placeholder to prevent accidental access before the owner UID is configured.
 The admin email and UID in the environment must describe the same account as the UID in the published rules.
+The client-side owner check controls the admin interface, while Firestore Security Rules enforce access to conversation data.
 
 ## Behavior and limitations
 
@@ -52,28 +53,15 @@ If deletion fails, retry it from the inbox.
 The widget warns visitors not to share sensitive information.
 Backups, Firebase logs, or other configured retention mechanisms may retain copies separately.
 
-No email, push notifications, spam prevention, AI responses, ratings, or visit analytics are included.
+The visitor support widget does not yet have AI responses, RAG, email notifications, browser push notifications, ratings, or visit analytics.
+The separate `/admin/ai-test` page is an owner-checked Gemini chat playground and is not connected to visitor conversations.
 Firebase's free quotas are limited, and anonymous users can create accounts and send messages, so monitor usage and configure budget or quota alerts before making the feature public.
 Security Rules enforce ownership and message size, but do not by themselves provide robust rate limiting or protect against deliberate quota exhaustion.
 The inbox currently loads all conversations and all messages in the selected conversation; add pagination and abuse controls before scaling beyond small personal use.
 The inbox search matches the visitor code, latest-message preview, and message content.
 Content search checks the 200 most recent messages in each conversation and requires read access to those messages under the published Firestore rules.
 
-## Firebase AI connectivity test
+## AI assistant
 
-The owner-only `/admin/ai-test` page makes a single short request to Gemini through Firebase AI Logic.
-It does not save the test prompt or response and is separate from the guest chat.
-
-Enable Firebase AI Logic with the Gemini Developer API in the Firebase console, register the web app with the reCAPTCHA Enterprise App Check provider, and enforce App Check for Firebase AI Logic.
-Set `NEXT_PUBLIC_FIREBASE_APP_CHECK_RECAPTCHA_SITE_KEY` to the public site key from the reCAPTCHA Enterprise web key's setup instructions.
-The key is a public site identifier, not a secret.
-For local testing, the key must allow the local development hostname, or use a separately registered App Check debug token; do not put localhost on the production key.
-Restart the development server after adding the environment variable, then sign in as the configured admin and open `/admin/ai-test`.
-
-For local development with App Check enforcement enabled, register a debug token for the Firebase web app, then put it in `.env.local` as `FIREBASE_APPCHECK_DEBUG_TOKEN`.
-The development-only test page passes it to the Firebase client before App Check initializes.
-Keep this token private and never add it to source control, production environment variables, or production builds.
-If the token has been shared publicly, delete it from the Firebase Console and create a replacement.
-
-The test uses `gemini-3.5-flash-lite` with a small output limit.
-Model availability, free quotas, and billing requirements can change; monitor usage in Firebase and Google Cloud before enabling AI for public visitors.
+The owner-only AI playground at `/admin/ai-test` is separate from guest conversations.
+Its architecture, retrieval, setup, and App Check configuration are documented in [ai-assistant.md](./ai-assistant.md).

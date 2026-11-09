@@ -2,7 +2,7 @@
 
 This document describes the portfolio as it currently exists and records implementation details that should guide future changes.
 
-For personal identity, background, tone, and verified profile details, refer to [context.md](./context.md).
+For personal identity, background, tone, and verified profile details, refer to [the assistant profile](../content/assistant/profile.md).
 
 For visual styling rules and semantic color tokens, refer to [design-system.md](./design-system.md).
 
@@ -62,8 +62,8 @@ The page is implemented in [app/[locale]/about/page.tsx](../app/%5Blocale%5D/abo
 It opens with a short story beside a portrait, then covers what to call him (Francisco, Ciko, and NoHaitch), hobbies beside a second photo, interests as tags, and a link to the contact page.
 The photos are stored in `public/self/`.
 
-About is part of the main navigation at every width.
-On smaller screens it is hidden because six items do not fit one row in every language, so it stays reachable from the footer.
+About is part of the main navigation.
+On smaller screens, all navigation links are available from the burger menu.
 
 ### `/work` and localized work routes
 
@@ -95,9 +95,24 @@ Facet options and result counts respond to active filters, and options with no m
 Search, category filters, project facets, sort order, and page selection are represented in the URL query string and rendered by the server, so the browser receives only the current page of cards.
 The footer quick links include direct links to both archives.
 
-The unlisted `/admin/login` route provides Google sign-in through FirebaseUI and is marked `noindex`.
-The route is not linked in navigation, but an obscure URL is not access control.
-Do not expose protected admin data or mutations until server-side authorization and Firestore Security Rules are in place.
+The unlisted `/admin/login` route provides Google popup and email/password sign-in and is marked `noindex`.
+The admin pages check the configured owner UID and email in the client before showing the workspace.
+Firestore Security Rules remain the authorization boundary for conversation data; an unlinked route or client-side check is not sufficient protection by itself.
+The `/admin/ai-test` page provides an owner-checked chat playground using Gemini through Firebase AI Logic.
+Its conversation history exists only in the current page session.
+It can ground answers in portfolio content through simple keyword retrieval.
+User messages show their local send time, and citations appear as compact superscript source icons that preview the source title on hover or keyboard focus.
+App Check protects Firebase AI Logic requests, but the playground is not a visitor-facing assistant or a rate-limited server endpoint.
+The shared admin icon rail is viewport-height and remains fixed at the top while longer pages scroll.
+
+### Public chat widget
+
+The shared [site shell](../components/layout/site-shell.tsx) displays the support widget on public pages and hides it on admin routes.
+Visitors can start an anonymous Firebase Auth session and message the site owner through Firestore.
+The widget supports grouped messages, reply previews, read receipts, and unread indicators when minimized or closed while the site remains open.
+It does not provide browser push notifications.
+Chat setup, Firestore rules, and retention are documented in [chat.md](./chat.md).
+The AI assistant architecture, App Check, and retrieval are documented in [ai-assistant.md](./ai-assistant.md).
 
 ### `/education` and localized education routes
 
@@ -115,7 +130,7 @@ The official university degree certificate is available through a separate link 
 
 The work history timeline is implemented in [app/[locale]/experience/page.tsx](../app/%5Blocale%5D/experience/page.tsx).
 
-It groups software engineering, teaching and academic support, and campus and community work into selectable tabs.
+It groups software engineering, teaching and academic support, campus and community work, and AI and data science into selectable tabs.
 
 Each tab presents its roles along one timeline, with cards alternating around a shared center line on larger screens.
 
@@ -143,26 +158,26 @@ It is linked from the footer rather than the header navigation.
 
 There are no blog or research routes yet.
 
-The App Router also includes [app/robots.txt](../app/robots.txt), which should be updated from its placeholder sitemap host before deployment.
+The App Router also includes [app/robots.txt](../app/robots.txt), which currently allows crawling and does not declare a sitemap URL.
 
 ## Shared application structure
 
 [app/[locale]/layout.tsx](../app/%5Blocale%5D/layout.tsx) defines locale metadata, document language, font variables, the theme provider, and shared page shell.
 
-The shared page shell renders [components/layout/header.tsx](../components/layout/header.tsx), route content, and [components/layout/footer.tsx](../components/layout/footer.tsx).
+The shared page shell renders [components/layout/header.tsx](../components/layout/header.tsx), route content, [components/layout/footer.tsx](../components/layout/footer.tsx), and the public chat widget.
+Admin routes omit the public header, footer, and widget.
 
 The header contains primary navigation, a flag-bearing shadcn Select for language switching, and a light/dark theme control.
-Below the `lg` breakpoint the navigation and language select move into a burger menu panel.
+Below the `lg` breakpoint the navigation and language select are available in a burger menu panel.
 The panel closes on Escape, outside click, route change, and resize past `lg`.
-Navigation links (Home, Work, Experience, Education, Contact) are always visible for accessibility.
-On small screens they move to a second full-width row below the logo and controls.
+The menu contains Home, About, Work, Experience, Education, and Contact.
 The footer holds a brand tagline, quick links to every route including About this site, social links, the copyright, and a back-to-top link that targets the `top` id on the body.
 
 The [components/theme-provider.tsx](../components/theme-provider.tsx) persists the selected theme and follows the system preference when no preference has been saved.
 
 The homepage role text is animated by the small client component [components/rotating-text.tsx](../components/rotating-text.tsx).
 
-Reusable UI is in [components/ui/](../components/ui/), including Avatar, Card, and shadcn primitives for buttons, alerts, dialogs, dropdowns, pagination, selects, tabs, tooltips, and toasts.
+Reusable UI is in [components/ui/](../components/ui/), including Avatar, Card, Input, and shadcn primitives for buttons, alerts, dialogs, dropdowns, pagination, selects, tabs, tooltips, and toasts.
 Base UI menu labels must be rendered inside `DropdownMenuGroup`, otherwise opening the menu throws.
 
 Button styling variants are defined in [components/ui/button-variants.ts](../components/ui/button-variants.ts) so server-rendered pages can use the same visual classes without importing the Button component.
@@ -191,7 +206,7 @@ The homepage portrait is the primary visual signature.
 
 ## Content and assets
 
-[docs/context.md](./context.md) is the source of truth for personal context, tone, interests, and public social identities.
+[content/assistant/profile.md](../content/assistant/profile.md) is the source of truth for personal context, tone, interests, and public social identities.
 
 The education logos and official degree PDF are stored in `public/education/`.
 
@@ -227,9 +242,10 @@ Locale dictionaries are typed by [lib/i18n/types.ts](../lib/i18n/types.ts) and l
 
 The header language selector preserves the current route when switching languages.
 
-The homepage, projects, education, experience, contact, and about pages, shared navigation, footer, theme control labels, and metadata are translated.
-
-All 24 combinations of the six pages and four locales are statically generated from the locale route segment.
+The homepage, About, Work, Education, Experience, Contact, and About this site pages, shared navigation, footer, theme control labels, and metadata are translated.
+Admin tools use the localized route structure but currently present their interface in English.
+The locale root layout generates route parameters for all four locales.
+It reads the saved theme cookie on the server, so pages using that layout are rendered dynamically to avoid a theme flash.
 
 When adding a route, add its translations to every locale dictionary and verify its navigation and metadata for each locale.
 
@@ -245,3 +261,8 @@ Projects and activities live under the `/work` routes, imported from the previou
 Prefer structured content with consistent titles, dates, categories, tags, summaries, links, and optional media.
 
 Keep routes and content data static-first until dynamic publishing or editing is explicitly needed.
+
+The assistant knowledge source lives in [content/assistant/](../content/assistant/).
+It is loaded by `lib/assistant/corpus.ts` together with projects, activities, experience, and education, and retrieved by BM25-style keyword scoring in the admin AI playground.
+There are no embeddings or vector index, and no AI-powered guest chat is connected.
+Project and activity Markdown files remain the canonical content and are not duplicated.

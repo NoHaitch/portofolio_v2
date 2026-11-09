@@ -35,9 +35,13 @@ Current coverage:
 - `i18n.test.ts` checks `isLocale` and `getLocalePath`, including swapping an existing locale prefix and not stripping paths such as `/identity`.
 - `i18n.test.ts` also checks that every locale has exactly the same message structure as English, contains no empty strings, and never uses the em dash.
 - `utils.test.ts` checks the `cn` class merging helper.
+- `ai-markdown.test.ts` checks that assistant Markdown renders headings, emphasis, code, and lists.
+- `work.test.ts` validates project and activity content, unique slugs, image references, and featured project slugs.
+- `chat.test.ts`, `chat-thread.test.ts`, and `chat-receipts.test.ts` cover message validation, grouping, replies, inbox search, and read receipts.
 
 The message structure check is the main guard for translations.
 Adding a key to `lib/i18n/types.ts` and one locale but forgetting another will fail the suite.
+Adding invalid project or activity Markdown also fails the content tests.
 
 ## End-to-end tests
 
@@ -60,6 +64,10 @@ Current coverage:
 - `responsive.spec.ts` checks that no page has horizontal overflow at 320, 375, 768, and 1024 px.
 - `responsive.spec.ts` also covers the burger menu (open, Escape to close, navigate, language select inside the menu) and that the desktop nav shows no burger.
 - `work.spec.ts` checks that the homepage shows five recent projects and activities, eight-item archive pagination, search, category and multi-select project filters, unavailable filter options, the filtered empty state, unified project tag order and deduplication, date sorting in both directions, and the selected activity detail pages and timestamped graduation video embed.
+- Retrieval ranking, chunking, and grounded prompt formatting are unit tested in `tests/unit/assistant-retrieval.test.ts`.
+- `assistant-knowledge.test.ts` checks that career-role, favorite-food, and language questions retrieve the matching profile passage.
+- `ai-markdown.test.ts` covers formatted AI output; live tooltip behavior and chat timestamps still require browser testing with an authenticated admin session.
+- The Firebase AI playground and Firebase-backed guest/admin chat are not covered by automated end-to-end tests because they require Firebase project configuration and live authentication.
 
 Reports and traces are written to `playwright-report/` and `test-results/`.
 Both are git-ignored.

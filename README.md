@@ -1,8 +1,9 @@
 # Francisco Trianto portfolio
 
-Personal portfolio for Francisco Trianto (NoHaitch), presenting software engineering work, projects, experience, education, and ways to get in touch.
+Personal portfolio for Francisco Trianto (NoHaitch), presenting his professional background, software engineering work, education, projects, activities, and ways to get in touch.
 
 The site is static-first, accessible, and available in English, Indonesian, Japanese, and Simplified Chinese.
+Its public pages are built around curated Markdown content and localized interface copy, with Firebase used only for the support inbox and the private AI playground.
 
 ## Screenshots
 
@@ -32,6 +33,7 @@ The site is static-first, accessible, and available in English, Indonesian, Japa
 | `/about-site`                        | What the site is for, how it is built, and the source code link   |
 | `/admin/login`                       | Unlisted, noindex owner sign-in                                   |
 | `/admin`, `/admin/messages`          | Owner dashboard and conversation inbox                            |
+| `/admin/ai-test`                     | Owner-checked Gemini chat playground                              |
 
 English uses unprefixed URLs.
 Other languages use the `/id`, `/ja`, and `/zh` prefixes.
@@ -40,6 +42,11 @@ The homepage shows the five most recent projects and five most recent activities
 The activities collection is a curated selection, not a complete record of every activity.
 Project and activity archives display eight entries per page and support search, category filters, and oldest-first or newest-first date sorting.
 The archive state is stored in the URL, and both archive pages are available from the footer quick links.
+
+The public support widget lets visitors contact the owner through anonymous Firebase Authentication and Firestore.
+The owner reviews conversations and replies in the admin inbox.
+The private AI playground is a separate tool for testing Gemini responses grounded in approved public portfolio content; it is not connected to visitor conversations.
+Its retrieval uses keyword scoring over the profile, projects, activities, experience, and education, and shows compact source references with answers.
 
 ## Stack
 
@@ -60,15 +67,20 @@ bun run dev
 Open [http://localhost:3000](http://localhost:3000).
 
 Firebase client configuration is read from `NEXT_PUBLIC_FIREBASE_*` environment variables.
-Copy `.env.example` to `.env` and fill in the Firebase Web app values before using Firebase features.
-The `.env` file is git-ignored.
+Copy `.env.example` to `.env.local` and fill in the Firebase Web app values before using Firebase features.
+Environment files are git-ignored.
 Add the same variables to the Vercel project environment for production builds.
 These Firebase Web app values are public client configuration, not admin credentials.
 Set `NEXT_PUBLIC_FIREBASE_ADMIN_EMAIL` to the Google account allowed by the unlisted admin sign-in page.
 Set `NEXT_PUBLIC_FIREBASE_ADMIN_UID` to that Firebase Authentication account's UID.
 Both values are public client configuration, not authorization secrets.
 Before using chat, enable anonymous authentication and deploy the restrictive Firestore rules as described in [docs/chat.md](./docs/chat.md).
-The admin UI check alone does not protect conversations.
+The Firestore rules, not the admin UI check, protect conversations.
+For local Firebase AI testing, configure App Check as described in [docs/ai-assistant.md](./docs/ai-assistant.md).
+The admin AI page is a private chat playground for trying the current Gemini model.
+Its chat history is temporary.
+A "Use portfolio knowledge" toggle enables simple retrieval over the assistant profile, projects, activities, experience, and education, and shows the retrieved sources under each answer.
+A visitor-facing AI assistant is not implemented.
 
 ## Scripts
 
@@ -97,6 +109,10 @@ The ESLint command currently fails to load because of an ESLint 10 and React plu
 - `proxy.ts` rewrites unprefixed URLs to the internal English routes.
 - `public/` holds static assets such as the portrait, education logos, and documents.
 - `content/work/` holds one Markdown file per project or activity, with item media stored under `public/work/`.
+- `content/assistant/` holds the manually curated assistant profile and authoring guidance; it is part of the playground retrieval corpus.
+- `lib/assistant/` loads the approved knowledge corpus, splits it into passages, retrieves relevant passages, and formats the grounded prompt.
+- `components/admin/` contains the owner dashboard, chat inbox, fixed navigation rail, and private AI playground.
+- `lib/firebase/` and `lib/chat/` contain Firebase clients, AI setup, and support-chat helpers.
 
 ## Documentation
 
@@ -105,8 +121,11 @@ The ESLint command currently fails to load because of an ESLint 10 and React plu
 - [docs/content-structure.md](./docs/content-structure.md) explains how to structure the body of a project or activity article.
 - [docs/design-system.md](./docs/design-system.md) is the visual style guide.
 - [docs/testing.md](./docs/testing.md) explains the unit and end-to-end tests.
-- [docs/context.md](./docs/context.md) holds personal context, tone, and public profiles.
+- [content/assistant/profile.md](./content/assistant/profile.md) holds personal context, tone, and public profiles for the assistant and portfolio writing.
+- [content/assistant/README.md](./content/assistant/README.md) explains how to maintain the assistant's approved knowledge source.
 - [docs/chat.md](./docs/chat.md) explains Firebase setup, conversation access, and operational limitations.
+- [docs/ai-assistant.md](./docs/ai-assistant.md) explains the AI assistant architecture, retrieval, model setup, and testing.
+- [docs/site-overview.md](./docs/site-overview.md) is the detailed guide to the current routes, architecture, localization, and content sources.
 
 ## Adding a route
 

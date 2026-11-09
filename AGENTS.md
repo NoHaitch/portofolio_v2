@@ -44,7 +44,7 @@ The content system should support more than simple blog posts.
 
 ## 2) Project context
 
-Read `docs/context.md` for identity, background, naming, tone, and portfolio goals.
+Read `content/assistant/profile.md` for identity, background, naming, tone, and portfolio goals.
 
 Use that file when writing bio text, homepage copy, section labels, social links, or content that depends on personal identity.
 
