@@ -70,5 +70,10 @@ The key is a public site identifier, not a secret.
 For local testing, the key must allow the local development hostname, or use a separately registered App Check debug token; do not put localhost on the production key.
 Restart the development server after adding the environment variable, then sign in as the configured admin and open `/admin/ai-test`.
 
-The test uses `gemini-3.8-flash` with a small output limit.
+For local development with App Check enforcement enabled, register a debug token for the Firebase web app, then put it in `.env.local` as `FIREBASE_APPCHECK_DEBUG_TOKEN`.
+The development-only test page passes it to the Firebase client before App Check initializes.
+Keep this token private and never add it to source control, production environment variables, or production builds.
+If the token has been shared publicly, delete it from the Firebase Console and create a replacement.
+
+The test uses `gemini-3.5-flash-lite` with a small output limit.
 Model availability, free quotas, and billing requirements can change; monitor usage in Firebase and Google Cloud before enabling AI for public visitors.

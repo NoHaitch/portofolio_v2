@@ -4,11 +4,12 @@ import { onAuthStateChanged, type User } from 'firebase/auth'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { getFirebaseAiModel } from '@/lib/firebase/ai'
+import { getToken } from 'firebase/app-check'
+import { getFirebaseAiClient } from '@/lib/firebase/ai'
 import { getFirebaseServices } from '@/lib/firebase/client'
 import { getLocalePath, isLocale } from '@/lib/i18n/shared'
 
-export function FirebaseAiTest() {
+export function FirebaseAiTest({ debugAppCheckToken }: { debugAppCheckToken?: string }) {
   const pathname = usePathname()
   const router = useRouter()
   const segment = pathname.split('/')[1]
@@ -16,6 +17,7 @@ export function FirebaseAiTest() {
   const [user, setUser] = useState<User | null>(null)
   const [checking, setChecking] = useState(true)
   const [running, setRunning] = useState(false)
+  const [stage, setStage] = useState('')
   const [result, setResult] = useState('')
   const [error, setError] = useState('')
 
@@ -51,9 +53,28 @@ export function FirebaseAiTest() {
     setRunning(true)
     setError('')
     setResult('')
+    let currentStage = 'Initializing Firebase AI'
 
     try {
-      const model = getFirebaseAiModel()
+      currentStage = 'Checking App Check'
+      setStage('Checking App Check...')
+      const { appCheck, model } = getFirebaseAiClient(debugAppCheckToken)
+      let timeoutId: number | undefined
+      try {
+        await Promise.race([
+          getToken(appCheck),
+          new Promise<never>((_, reject) => {
+            timeoutId = window.setTimeout(
+              () => reject(new Error('App Check did not respond within 30 seconds.')),
+              30_000,
+            )
+          }),
+        ])
+      } finally {
+        if (timeoutId !== undefined) window.clearTimeout(timeoutId)
+      }
+      currentStage = 'Sending prompt to Gemini'
+      setStage('Sending prompt to Gemini...')
       const response = await model.generateContent(
         'Reply with exactly this sentence and nothing else: Firebase AI is connected.',
       )
@@ -62,9 +83,11 @@ export function FirebaseAiTest() {
       setResult(text)
     } catch (cause) {
       console.error('Firebase AI connectivity test failed:', cause)
-      setError(cause instanceof Error ? cause.message : 'Firebase AI request failed.')
+      const message = cause instanceof Error ? cause.message : 'Request failed unexpectedly.'
+      setError(`${currentStage}: ${message}`)
     } finally {
       setRunning(false)
+      setStage('')
     }
   }
 
@@ -83,7 +106,7 @@ export function FirebaseAiTest() {
         </p>
       </div>
       <Button onClick={runTest} disabled={running}>
-        {running ? 'Testing connection...' : 'Send test prompt'}
+        {running ? stage : 'Send test prompt'}
       </Button>
       {result && (
         <p role="status" className="rounded-lg border p-4 text-sm">
