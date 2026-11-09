@@ -58,3 +58,17 @@ Security Rules enforce ownership and message size, but do not by themselves prov
 The inbox currently loads all conversations and all messages in the selected conversation; add pagination and abuse controls before scaling beyond small personal use.
 The inbox search matches the visitor code, latest-message preview, and message content.
 Content search checks the 200 most recent messages in each conversation and requires read access to those messages under the published Firestore rules.
+
+## Firebase AI connectivity test
+
+The owner-only `/admin/ai-test` page makes a single short request to Gemini through Firebase AI Logic.
+It does not save the test prompt or response and is separate from the guest chat.
+
+Enable Firebase AI Logic with the Gemini Developer API in the Firebase console, register the web app with the reCAPTCHA Enterprise App Check provider, and enforce App Check for Firebase AI Logic.
+Set `NEXT_PUBLIC_FIREBASE_APP_CHECK_RECAPTCHA_SITE_KEY` to the public site key from the reCAPTCHA Enterprise web key's setup instructions.
+The key is a public site identifier, not a secret.
+For local testing, the key must allow the local development hostname, or use a separately registered App Check debug token; do not put localhost on the production key.
+Restart the development server after adding the environment variable, then sign in as the configured admin and open `/admin/ai-test`.
+
+The test uses `gemini-3.8-flash` with a small output limit.
+Model availability, free quotas, and billing requirements can change; monitor usage in Firebase and Google Cloud before enabling AI for public visitors.
