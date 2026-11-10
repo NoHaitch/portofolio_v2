@@ -64,4 +64,4 @@ Content search checks the 200 most recent messages in each conversation and requ
 ## AI assistant
 
 The owner-only AI playground at `/admin/ai-test` is separate from guest conversations.
-Its architecture, retrieval, setup, and App Check configuration are documented in [ai-assistant.md](./ai-assistant.md).
+Its architecture, retrieval, server-side guardrails, and setup are documented in [ai-assistant.md](./ai-assistant.md).

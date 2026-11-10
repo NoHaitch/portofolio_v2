@@ -76,10 +76,12 @@ Set `NEXT_PUBLIC_FIREBASE_ADMIN_UID` to that Firebase Authentication account's U
 Both values are public client configuration, not authorization secrets.
 Before using chat, enable anonymous authentication and deploy the restrictive Firestore rules as described in [docs/chat.md](./docs/chat.md).
 The Firestore rules, not the admin UI check, protect conversations.
-For local Firebase AI testing, configure App Check as described in [docs/ai-assistant.md](./docs/ai-assistant.md).
-The admin AI page is a private chat playground for trying the current Gemini model.
+For AI testing, configure the server-side Gemini API key and Firestore server credentials as described in [docs/ai-assistant.md](./docs/ai-assistant.md).
+The admin AI page is an owner-only chat playground for trying the current Gemini model.
 Its chat history is temporary.
-A "Use portfolio knowledge" toggle enables simple retrieval over the assistant profile, projects, activities, experience, and education, and shows the retrieved sources under each answer.
+It retrieves relevant portfolio content and applies input, context, and output checks on the server.
+An owner-wide Firestore-backed limit allows 10 requests per rolling hour and requires server Firestore credentials.
+These model-based checks are not foolproof, and any previously enabled direct Firebase AI Logic access must be restricted separately.
 A visitor-facing AI assistant is not implemented.
 
 ## Scripts
@@ -112,7 +114,7 @@ The ESLint command currently fails to load because of an ESLint 10 and React plu
 - `content/assistant/` holds the manually curated assistant profile and authoring guidance; it is part of the playground retrieval corpus.
 - `lib/assistant/` loads the approved knowledge corpus, splits it into passages, retrieves relevant passages, and formats the grounded prompt.
 - `components/admin/` contains the owner dashboard, chat inbox, fixed navigation rail, and private AI playground.
-- `lib/firebase/` and `lib/chat/` contain Firebase clients, AI setup, and support-chat helpers.
+- `lib/firebase/` and `lib/chat/` contain Firebase clients and support-chat helpers.
 
 ## Documentation
 

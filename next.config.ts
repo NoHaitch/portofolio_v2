@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  transpilePackages: ['firebase-admin'],
   // Lets e2e builds use a separate output folder so they never clobber a running dev server.
   distDir: process.env.NEXT_DIST_DIR || '.next',
 }

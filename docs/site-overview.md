@@ -98,11 +98,14 @@ The footer quick links include direct links to both archives.
 The unlisted `/admin/login` route provides Google popup and email/password sign-in and is marked `noindex`.
 The admin pages check the configured owner UID and email in the client before showing the workspace.
 Firestore Security Rules remain the authorization boundary for conversation data; an unlinked route or client-side check is not sufficient protection by itself.
-The `/admin/ai-test` page provides an owner-checked chat playground using Gemini through Firebase AI Logic.
+The `/admin/ai-test` page provides an owner-checked chat playground using the Gemini Developer API through an authenticated server route.
 Its conversation history exists only in the current page session.
 It can ground answers in portfolio content through simple keyword retrieval.
 User messages show their local send time, and citations appear as compact superscript source icons that preview the source title on hover or keyboard focus.
-App Check protects Firebase AI Logic requests, but the playground is not a visitor-facing assistant or a rate-limited server endpoint.
+Input, context, and output guardrails are applied server-side, but model-based checks are not foolproof.
+The owner-only server route enforces a Firestore-backed limit of 10 requests per rolling hour.
+The playground is not a visitor-facing assistant, and the limit is not a complete abuse or spending control.
+Previously enabled direct Firebase AI Logic access must be restricted separately to prevent bypassing the route.
 The shared admin icon rail is viewport-height and remains fixed at the top while longer pages scroll.
 
 ### Public chat widget
@@ -112,7 +115,7 @@ Visitors can start an anonymous Firebase Auth session and message the site owner
 The widget supports grouped messages, reply previews, read receipts, and unread indicators when minimized or closed while the site remains open.
 It does not provide browser push notifications.
 Chat setup, Firestore rules, and retention are documented in [chat.md](./chat.md).
-The AI assistant architecture, App Check, and retrieval are documented in [ai-assistant.md](./ai-assistant.md).
+The AI assistant architecture, guardrails, setup, and retrieval are documented in [ai-assistant.md](./ai-assistant.md).
 
 ### `/education` and localized education routes
 

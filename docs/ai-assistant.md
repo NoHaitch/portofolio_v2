@@ -1,194 +1,134 @@
-# AI assistant
+# AI assistant and guardrails
 
-This page explains how the portfolio AI assistant works, what each layer does, and how to set it up.
-Today the assistant exists only as a private playground at `/admin/ai-test`.
-It is not connected to visitors or to the support chat described in [chat.md](./chat.md).
-
-## At a glance
-
-| Question                          | Answer                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------- |
-| Which model?                      | `gemini-3.5-flash-lite` (Google Gemini)                                   |
-| How is it called?                 | From the browser through Firebase AI Logic (Gemini Developer API)         |
-| How does it know about me?        | RAG: keyword retrieval over public site content, injected into the prompt |
-| Is the model trained on my data?  | No. There is no fine-tuning and no embeddings                             |
-| Who can use it?                   | Only the owner, in the admin playground                                   |
-| What protects the model calls?    | Firebase App Check (reCAPTCHA Enterprise)                                 |
-| Is chat history saved?            | No. It lives in memory until the page is refreshed                        |
-| Are source passages shown inline? | No. A small superscript reference opens a short source-title tooltip      |
+The AI playground at `/admin/ai-test` is an owner-only tool for testing answers about Francisco.
+It is separate from the public support chat described in [chat.md](./chat.md).
+The playground does not offer general-purpose assistance, code generation, web search, or an ungrounded comparison mode.
 
 ## Architecture
 
 ```text
-                        BUILD / SERVER (Next.js server component)
-  +------------------------------------------------------------------+
-  |  content/assistant/profile.md                                    |
-  |  content/work/projects/*.md        --> lib/assistant/corpus.ts   |
-  |  content/work/activities/*.md          (load + split into chunks)|
-  |  lib/i18n/messages/en.ts (experience, education)                 |
-  +-----------------------------------+------------------------------+
-                                      | KnowledgeChunk[] (props)
-                                      v
-                        BROWSER (client component)
-  +------------------------------------------------------------------+
-  |  components/admin/firebase-ai-playground.tsx                     |
-  |                                                                  |
-  |  1. Owner check (UID and email)                                  |
-  |  2. retrieve(question)        lib/assistant/retrieval.ts         |
-  |  3. buildGroundedPrompt()     sources + question                 |
-  |  4. App Check token           lib/firebase/ai.ts                 |
-  |  5. chat.sendMessage()  ------------------+                      |
-  |  6. Render Markdown + sources             |                      |
-  +-------------------------------------------|----------------------+
-                                              v
-                      Firebase AI Logic  -->  Gemini model
-                      (App Check enforced)    (system instruction +
-                                               grounded prompt)
+Admin browser
+  -> Firebase Auth ID token and question
+  -> POST /api/admin/assistant
+      -> verify Firebase token and owner UID/email
+      -> reserve a request in the Firestore rate limit
+      -> input guard: classify scope and resolve follow-up
+      -> retrieve public portfolio passages
+      -> context guard: check relevance
+      -> Gemini generates a sourced answer
+      -> output guard: check scope and grounding
+  <- answer and source references, or refusal
 ```
 
-## Layers
+The server calls the Gemini Developer API with `gemini-3.5-flash-lite`.
+The browser does not receive the Gemini API key or the complete retrieval corpus.
+No searches, code execution, or other tools are enabled for the model.
+Answers are not streamed, so the output check happens before an answer is shown.
 
-Each layer has one job, so you can change one without touching the others.
+## Guardrail layers
 
-| Layer             | Responsibility                                                                  | Files                                                                              |
-| ----------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| 1. Content        | The approved facts the assistant may use                                        | `content/assistant/`, `content/work/`, `lib/i18n/messages/en.ts`                   |
-| 2. Corpus         | Load content on the server and split it into chunks                             | `lib/assistant/corpus.ts`                                                          |
-| 3. Retrieval      | Rank chunks against the question and pick the top few                           | `lib/assistant/retrieval.ts`                                                       |
-| 4. Prompt         | Combine the sources and question, add the grounding rules                       | `buildGroundedPrompt`, `groundedSystemInstruction` in `lib/assistant/retrieval.ts` |
-| 5. Model client   | Initialize Firebase, App Check, and the Gemini model                            | `lib/firebase/ai.ts`                                                               |
-| 6. Chat UI        | Multi-turn chat, compact source references, timestamps, Markdown, theme, toggle | `components/admin/firebase-ai-playground.tsx`, `components/admin/ai-markdown.tsx`  |
-| 7. Access control | Keep the page owner-only and the model calls attested                           | Owner check in the playground, Firebase App Check                                  |
+| Layer          | Behavior                                                                                                   |
+| -------------- | ---------------------------------------------------------------------------------------------------------- |
+| Authentication | Firebase Admin verifies the ID token and matches the configured owner UID and email before model calls.    |
+| Rate limit     | Firestore transactions enforce 10 requests per owner in a rolling hour across server instances.            |
+| Input          | A model classifies the question and refuses off-topic, mixed, and instruction-changing requests.           |
+| Context        | Keyword retrieval selects portfolio passages, then a model checks their relevance.                         |
+| Generation     | The model is instructed to answer only from the provided passages and cite them.                           |
+| Output         | Citation numbers are checked, then a model reviews scope and factual support before an answer is returned. |
 
-## What happens when you ask a question
+Questions and retrieved passages are treated as untrusted data rather than instructions.
+If there are no relevant passages, the assistant says it does not have enough information.
+If an output is rejected, the assistant returns a fixed response rather than the generated text.
+Invalid guard responses, provider failures, and timeouts return an error instead of an unchecked answer.
+These checks use the same model family and are probabilistic, not a guarantee against prompt injection, off-topic answers, or hallucinations.
+They can also reject legitimate questions or fail to find relevant content.
 
-1. The server page builds the knowledge base once per request and passes it to the client.
-2. You type a question.
-   The client checks App Check, then runs `retrieve` on the knowledge base.
-3. `retrieve` scores every chunk and keeps the top 5 above a minimum score.
-4. `buildGroundedPrompt` formats them as numbered sources followed by your question.
-   If nothing matched, it sends `(none found)`.
-5. The message is sent through a Gemini chat session, so earlier turns stay in context.
-6. Gemini replies using the system instruction as its rules.
-7. The reply is rendered as Markdown.
-   A small superscript link icon marks each citation.
-   Hovering or keyboard-focusing it shows the source title, limited to 64 characters, and its content type; selecting the title opens the referenced page.
-   The full passage is not shown in the tooltip.
-8. Each user prompt shows its local send time beneath the message.
+The playground sends up to three prior accepted user questions to help interpret follow-ups.
+These are untrusted client-provided context, not an authenticated transcript.
+The history and displayed chat exist only in the current page session.
+Starting a new chat or refreshing clears them.
 
-## Knowledge base
+## Knowledge and retrieval
 
-| Source            | Content used                                                 | Link target               |
-| ----------------- | ------------------------------------------------------------ | ------------------------- |
-| Assistant profile | `content/assistant/profile.md`                               | `/about`                  |
-| Projects          | Summary, tags, fields, date, links, and body                 | `/work/projects/[slug]`   |
-| Activities        | Summary, tags, date, links, and body                         | `/work/activities/[slug]` |
-| Experience        | Title, organization, period, and summary (English)           | `/experience`             |
-| Education         | Degree, grades, highlights, activities, and skills (English) | `/education`              |
+The corpus is built on the server from the public assistant profile, project and activity Markdown, and English experience and education entries.
+See [assistant knowledge](../content/assistant/README.md) for authoring guidance.
+Content is split into passages and ranked by BM25-style keyword scoring, without embeddings or a vector database.
+The top five matching passages are used when they pass the relevance check.
+Matching is based on English-oriented keywords, so synonyms, other languages, and short follow-ups may not retrieve the right information.
+Source text is sent to Gemini as part of the request and must contain only approved public information.
 
-- Long content is split on paragraph boundaries into chunks of about 900 characters.
-- Each chunk keeps its title, type, and link so answers can cite it.
-- Only English content is used.
-- The knowledge base is sent to the browser, so it must contain public information only.
-
-To change what the assistant knows, edit those files.
-Do not duplicate project facts into the profile, because the Markdown files stay the single source of truth.
-See [content/assistant/README.md](../content/assistant/README.md) for authoring guidance.
-
-## Retrieval
-
-Retrieval is a BM25-style keyword search with no embeddings and no vector database.
-
-- Questions and chunks are lowercased and split into words, and common words such as "the" and "what" are ignored.
-- The chunk title counts double, so title matches outrank body matches.
-- Rare words weigh more than common ones, and very long chunks are slightly penalized.
-- Results below the minimum score are dropped, which makes unrelated questions return no sources.
-
-This is simple, fast, and easy to debug, which suits a corpus of about 50 documents.
-Its weakness is vocabulary: asking about "school" will not match a chunk that only says "university".
-If that becomes a problem, add embeddings later behind the same `retrieve` function.
-
-## Prompt and system instruction
-
-The system instruction sets the assistant's rules.
-It tells Gemini to:
-
-- speak about Francisco in the third person,
-- answer only from the numbered sources,
-- never invent facts, dates, employers, or links,
-- say it does not have the information when the sources are silent,
-- cite sources such as `[1]` in the model response, and stay concise.
-
-The numeric source labels are internal to the model prompt.
-The chat UI renders them as small superscript reference icons rather than visible numbers.
-
-The user message has this shape:
-
-```text
-Sources:
-[1] Raft Consensus Algorithm (project)
-<passage text>
-
-[2] Education (education)
-<passage text>
-
-Question: <what the visitor asked>
-```
-
-With "Use portfolio knowledge" off, the playground uses a generic instruction and sends the plain question.
-Use this to compare grounded and ungrounded answers.
-
-## Model configuration
-
-| Setting           | Value                                                                    |
-| ----------------- | ------------------------------------------------------------------------ |
-| Model             | `gemini-3.5-flash-lite`                                                  |
-| Backend           | Gemini Developer API through Firebase AI Logic                           |
-| Max output tokens | 1,024                                                                    |
-| Request timeout   | 60 seconds                                                               |
-| Sampling settings | Not set, because Gemini 3 models deprecate temperature, top-p, and top-k |
+Answers can include source icons.
+Hover or focus an icon to preview the truncated source title, or open its linked portfolio page.
+The links point to related portfolio pages and do not necessarily display every detail of the assistant profile.
 
 ## Setup
 
-1. In the Firebase console, enable Firebase AI Logic with the Gemini Developer API.
-2. Register the web app with the reCAPTCHA Enterprise App Check provider and enforce App Check for Firebase AI Logic.
-3. Set `NEXT_PUBLIC_FIREBASE_APP_CHECK_RECAPTCHA_SITE_KEY` to the public site key.
-   It is an identifier, not a secret, and is required even when using a local debug token.
-4. For local development, register an App Check debug token for the web app and put it in `.env.local` as `FIREBASE_APPCHECK_DEBUG_TOKEN`.
-   The server page passes it to the browser only when `NODE_ENV` is `development`.
-5. Restart the development server, sign in as the configured admin, and open `/admin/ai-test`.
+1. Configure Firebase Authentication and the owner UID, email, and project ID as described in [chat.md](./chat.md).
+2. Create a Gemini Developer API key for server-side use using [Google's API key instructions](https://ai.google.dev/gemini-api/docs/api-key).
+3. Set `GEMINI_API_KEY` in `.env.local` for local development and in the server deployment environment for production.
+   Never use a `NEXT_PUBLIC_` prefix, commit this key, or share it in chat.
+4. Restart the server after changing environment variables, sign in as the configured owner, and open `/admin/ai-test`.
+5. Before relying on these guardrails, disable or otherwise restrict the previously enabled direct Firebase AI Logic access in the Firebase/Google Cloud project, after checking whether other applications depend on it.
+   Changing this repository alone does not disable that external API.
+6. Configure appropriate Gemini API quotas and budget alerts.
+7. Give the server Firestore access using Application Default Credentials or set `FIREBASE_SERVICE_ACCOUNT_JSON` to the complete service account JSON in the server environment.
+   The service account must belong to the configured Firebase project and have access to Firestore.
+   Store credentials only in `.env.local` or your hosting provider's secret environment configuration, never in source control or chat.
+   Without working server credentials and Firestore access, the assistant returns an error rather than bypassing the limit.
 
-Keep the debug token private and never commit it or add it to production environment variables.
-If it has been shared, delete it in the Firebase console and create a new one.
+For local development without Application Default Credentials, create a service account key in Firebase project settings under **Service accounts**.
+Keep the downloaded JSON file outside the repository and set `GOOGLE_APPLICATION_CREDENTIALS` in `.env.local` to its absolute path.
+Alternatively, store the complete JSON object on one line as `FIREBASE_SERVICE_ACCOUNT_JSON='{"...":"..."}'` in `.env.local`, keeping escaped newline characters intact.
+Do not share the key file.
+Use a service account with only the permissions needed for Firestore, and restart the server after changing credentials.
+For production, configure the same value as a server-only secret or use the hosting platform's supported Application Default Credentials.
 
-## Testing the assistant
+### Vercel deployment
 
-Ask questions that you know the answer to and questions that the content cannot answer.
+Set `GEMINI_API_KEY` and `FIREBASE_SERVICE_ACCOUNT_JSON` as server-only environment variables in the Vercel project settings.
+For `FIREBASE_SERVICE_ACCOUNT_JSON`, paste the complete service account JSON as the value, including its escaped private-key newlines.
+Do not use a `NEXT_PUBLIC_` prefix for either secret or upload the JSON file into the repository.
+The local `GOOGLE_APPLICATION_CREDENTIALS` file path will not exist in Vercel and should not be used there.
 
-| Try                                           | Expected behavior                                     |
-| --------------------------------------------- | ----------------------------------------------------- |
-| "Who is Francisco?"                           | Summary from the profile, with a source               |
-| "What projects has he built with TypeScript?" | Several projects, each cited                          |
-| "Where did he study and what was his GPA?"    | Education details, cited                              |
-| "What is his favorite food?"                  | Says his current favorite is carbonara, with a source |
+The existing Firebase web configuration variables and `NEXT_PUBLIC_FIREBASE_ADMIN_UID` and `NEXT_PUBLIC_FIREBASE_ADMIN_EMAIL` must also be set for each Vercel environment where the playground is used.
+The UID, email, project ID, Firestore database, and service account must refer to the intended Firebase project.
+Redeploy after updating environment variables so the new deployment picks them up.
+Keep preview and production configuration scoped to the deployments that need it.
 
-Hover or focus each superscript source icon to confirm the referenced title.
-If an answer is wrong, check retrieval first (missing or low-ranked source), then the content, then the instruction.
-Unit tests for ranking, chunking, and prompt formatting live in `tests/unit/assistant-retrieval.test.ts`.
-The corpus-specific role, language, and profile retrieval checks live in `tests/unit/assistant-knowledge.test.ts`.
+The rate limit stores only timestamps under `_assistant_rate_limits` in Firestore.
+Every valid authenticated request consumes one slot, including refusals and requests that later fail.
+The eleventh request in a rolling hour receives HTTP 429 and a `Retry-After` header.
+The server SDK bypasses Firestore Security Rules, so its credentials must be protected and appropriately scoped.
+The provided rules deny client access to the rate-limit collection; preserve that denial when merging rules.
+The limit does not cover requests sent directly to Gemini or Firebase AI Logic outside this route.
 
-## Limits and security
+The earlier browser-side App Check debug token and reCAPTCHA key are not used by this server route.
+Revoke any debug token that was previously shared.
+The server route verifies Firebase ID tokens; the browser's UI check alone is not an authorization boundary.
+Firebase token verification here does not check token revocation.
 
-- Calls go from the browser to Firebase AI Logic, so there is no server endpoint to rate limit.
-- App Check proves the request comes from this app, but it is not a rate limiter or a per-user quota.
-- The owner check in the page is a UI control, not a security boundary.
-- Do not expose this chat to visitors until you add server-side limits, abuse controls, and budget alerts.
-- Model availability, free quotas, and billing can change, so monitor usage in Firebase and Google Cloud.
-- The model can still make mistakes, so keep answers cited and the content accurate.
+## Testing
 
-## Possible next steps
+Try a known question such as "What roles is Francisco looking for?", a follow-up such as "What about his education?", an unknown fact, a general coding request, and a mixed request that combines a profile question with a coding task.
+The first two should be answered when relevant sources are found; the other requests should be refused or identified as unknown as appropriate.
+Also try instruction overrides and unsupported claims.
+Review answers and source titles manually because unit tests with mocked model responses cannot establish real-model guardrail accuracy.
 
-- Show the assistant to visitors behind a server route with rate limiting.
-- Add embeddings for meaning-based retrieval when keyword matching misses too often.
-- Support the other site languages in the knowledge base.
-- Add a small set of evaluation questions that run automatically.
+`tests/unit/assistant-guardrails.test.ts` exercises the stages and fail-closed paths with mocked model responses.
+`tests/unit/assistant-route.test.ts` checks authentication, input validation, refusal, and failure handling.
+`tests/unit/assistant-rate-limit.test.ts` exercises the ten-request boundary with a mocked transaction.
+`tests/e2e/assistant-auth.spec.ts` verifies unauthenticated access over HTTP.
+Live model evaluation requires a configured server API key and a signed-in owner.
+On November 10, 2026, a local signed-in test returned a sourced profile answer and refused several instruction overrides, mixed requests, and off-topic tasks.
+A live Firestore test accepted ten requests in the rolling window and returned HTTP 429 with `Retry-After` on the next request.
+These checks do not establish that the guards cannot be bypassed or that all legitimate questions will work.
+
+## Security and operational limits
+
+- The route is owner-only and is not ready for public visitors.
+- The Firestore rate limit applies to this route only and is not a complete spending or abuse control.
+- Firebase and Gemini quotas and hosting costs still apply, and a Gemini free tier depends on the project's billing setup and model availability.
+- Direct Firebase AI Logic access is a separate bypass until it is restricted in the cloud project.
+- Each answered question may require four sequential model calls, increasing latency and cost.
+- Model output and guard decisions can be wrong, so monitor usage and evaluate adversarial cases before expanding access.
+- Do not add a public endpoint until authentication, rate limiting, abuse controls, privacy, and budget limits have been designed for that use.

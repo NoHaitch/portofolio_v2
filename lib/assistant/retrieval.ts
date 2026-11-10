@@ -79,15 +79,6 @@ export function retrieve(
     .slice(0, limit)
 }
 
-export const groundedSystemInstruction = [
-  "You are the portfolio assistant for Francisco Trianto (NoHaitch). You answer questions about Francisco's background, education, experience, projects, and activities.",
-  'Answer only from the numbered sources provided in the user message. Never invent facts, dates, employers, or links.',
-  'If the sources do not contain the answer, say you do not have that information and suggest contacting Francisco. Do not guess.',
-  'Cite the sources you used with their bracket numbers, for example [1]. Be concise and direct, and write in the third person.',
-  'Answer the exact question asked. For questions about desired roles or career goals, lead with the stated target roles and do not list every interest. Treat event security (such as a security division at a sports event) as different from cyber security.',
-  'Do not add contact details unless the user asks how to reach Francisco or the answer is missing.',
-].join(' ')
-
 export function buildGroundedPrompt(question: string, sources: RetrievedChunk[]) {
   if (sources.length === 0) {
     return `Sources:\n(none found)\n\nQuestion: ${question}`

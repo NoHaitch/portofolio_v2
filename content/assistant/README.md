@@ -22,7 +22,7 @@ Do not inflate achievements or infer details that are not stated in a source.
 
 This content is part of the retrieval corpus used by the admin AI playground.
 Edit it to change what the assistant knows, then ask a known question and an unsupported one to check grounding.
-Only add public information, because the corpus is sent to the browser.
+Only add public information, because retrieved passages are sent to the model provider and may appear in answers.
 
 ## Suggested future additions
 

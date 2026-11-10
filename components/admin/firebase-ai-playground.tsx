@@ -1,7 +1,5 @@
 'use client'
 
-import { getToken } from 'firebase/app-check'
-import type { ChatSession } from 'firebase/ai'
 import { onAuthStateChanged, type User } from 'firebase/auth'
 import { Bot, RotateCcw, Send, UserRound } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
@@ -11,14 +9,8 @@ import { AiMarkdown } from '@/components/admin/ai-markdown'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { ThemeToggle } from '@/components/layout/theme-toggle'
-import {
-  buildGroundedPrompt,
-  groundedSystemInstruction,
-  retrieve,
-  type KnowledgeChunk,
-  type RetrievedChunk,
-} from '@/lib/assistant/retrieval'
-import { getFirebaseAiClient } from '@/lib/firebase/ai'
+import { MAX_HISTORY, MAX_QUESTION_LENGTH, type GuardResult } from '@/lib/assistant/guardrails'
+import type { RetrievedChunk } from '@/lib/assistant/retrieval'
 import { getFirebaseServices } from '@/lib/firebase/client'
 import { getLocalePath, isLocale } from '@/lib/i18n/shared'
 
@@ -36,14 +28,7 @@ const suggestedPrompts = [
   'What is his favorite food?',
 ]
 
-export function FirebaseAiPlayground({
-  debugAppCheckToken,
-  knowledge,
-}: {
-  debugAppCheckToken?: string
-  knowledge: KnowledgeChunk[]
-}) {
-  const [useRag, setUseRag] = useState(true)
+export function FirebaseAiPlayground() {
   const pathname = usePathname()
   const router = useRouter()
   const segment = pathname.split('/')[1]
@@ -55,7 +40,7 @@ export function FirebaseAiPlayground({
   const [busy, setBusy] = useState(false)
   const [stage, setStage] = useState('')
   const [error, setError] = useState('')
-  const chatRef = useRef<ChatSession | null>(null)
+  const historyRef = useRef<string[]>([])
   const transcriptRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -90,7 +75,7 @@ export function FirebaseAiPlayground({
   }, [messages, busy])
 
   function startNewChat() {
-    chatRef.current = null
+    historyRef.current = []
     setMessages([])
     setInput('')
     setError('')
@@ -105,40 +90,30 @@ export function FirebaseAiPlayground({
     setError('')
     setInput('')
     setMessages((current) => [...current, { role: 'user', text: prompt, sentAt: Date.now() }])
-    let currentStage = 'Initializing Firebase AI'
+    let currentStage = 'Checking your session'
 
     try {
-      currentStage = 'Checking App Check'
-      setStage('Checking App Check...')
-      const { appCheck, model } = getFirebaseAiClient(
-        debugAppCheckToken,
-        useRag ? groundedSystemInstruction : undefined,
-      )
-      let timeoutId: number | undefined
-      try {
-        await Promise.race([
-          getToken(appCheck),
-          new Promise<never>((_, reject) => {
-            timeoutId = window.setTimeout(
-              () => reject(new Error('App Check did not respond within 30 seconds.')),
-              30_000,
-            )
-          }),
-        ])
-      } finally {
-        if (timeoutId !== undefined) window.clearTimeout(timeoutId)
+      setStage('Checking your session...')
+      const token = await user.getIdToken()
+      currentStage = 'Checking the question and sources'
+      setStage('Checking and preparing an answer...')
+      const response = await fetch('/api/admin/assistant', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ question: prompt, history: historyRef.current }),
+      })
+      const result: GuardResult & { error?: string } = await response.json()
+      if (!response.ok) throw new Error(result.error ?? 'Assistant request failed.')
+      if (!result.text || !Array.isArray(result.sources) || typeof result.accepted !== 'boolean') {
+        throw new Error('Assistant returned an invalid response.')
       }
-
-      currentStage = 'Waiting for Gemini'
-      setStage('Thinking...')
-      chatRef.current ??= model.startChat()
-      const sources = useRag ? retrieve(knowledge, prompt) : undefined
-      const response = await chatRef.current.sendMessage(
-        sources ? buildGroundedPrompt(prompt, sources) : prompt,
-      )
-      const text = response.response.text().trim()
-      if (!text) throw new Error('Gemini returned an empty response.')
-      setMessages((current) => [...current, { role: 'assistant', text, sources }])
+      if (result.accepted) {
+        historyRef.current = [...historyRef.current, prompt].slice(-MAX_HISTORY)
+      }
+      setMessages((current) => [
+        ...current,
+        { role: 'assistant', text: result.text, sources: result.sources },
+      ])
     } catch (cause) {
       console.error('Firebase AI playground request failed:', cause)
       const message = cause instanceof Error ? cause.message : 'Request failed unexpectedly.'
@@ -181,19 +156,6 @@ export function FirebaseAiPlayground({
             </p>
           </div>
           <div className="flex items-center gap-1">
-            <label className="text-muted-foreground mr-2 flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={useRag}
-                disabled={busy}
-                onChange={(event) => {
-                  setUseRag(event.target.checked)
-                  startNewChat()
-                }}
-                className="accent-primary size-4"
-              />
-              Use portfolio knowledge
-            </label>
             <ThemeToggle switchToLight="Switch to light mode" switchToDark="Switch to dark mode" />
             <Button variant="outline" onClick={startNewChat} disabled={busy}>
               <RotateCcw className="size-4" />
@@ -217,9 +179,8 @@ export function FirebaseAiPlayground({
                 <div className="space-y-2">
                   <h2 className="text-2xl font-semibold tracking-tight">Try a conversation</h2>
                   <p className="text-muted-foreground mx-auto max-w-lg text-sm leading-6">
-                    {useRag
-                      ? 'Answers are grounded in the assistant profile, projects, activities, experience, and education. Each reply lists the sources retrieved.'
-                      : 'Knowledge is off, so Gemini answers from its own training only. Use this to compare against grounded answers.'}
+                    Ask about Francisco's background, projects, experience, and interests. Answers
+                    are checked against his portfolio sources.
                   </p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2">
@@ -329,7 +290,7 @@ export function FirebaseAiPlayground({
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 placeholder="Ask Gemini something..."
-                maxLength={4000}
+                maxLength={MAX_QUESTION_LENGTH}
                 rows={3}
                 disabled={busy}
                 className="border-input bg-input/20 placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/30 min-h-20 w-full resize-y rounded-xl border px-3 py-2 text-sm outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
@@ -347,6 +308,10 @@ export function FirebaseAiPlayground({
             <p className="text-muted-foreground text-center text-xs">
               Responses use the current Gemini model and may be inaccurate. Chat history is not
               saved.
+            </p>
+            <p className="text-muted-foreground text-center text-xs">
+              Intended for Gemini free-tier use, subject to your project&apos;s billing and quota.
+              Guardrails limit misuse but are not foolproof. Limit: 10 questions per hour.
             </p>
           </div>
         </div>
