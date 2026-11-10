@@ -12,6 +12,11 @@ export const chatMessages: Record<
     minimize: string
     close: string
     start: string
+    newChat: string
+    newChatTitle: string
+    newChatDescription: string
+    cancelNewChat: string
+    confirmNewChat: string
     closed: string
     loading: string
     error: string
@@ -53,6 +58,12 @@ export const chatMessages: Record<
     minimize: 'Minimize chat',
     close: 'Close chat',
     start: 'Start a new conversation',
+    newChat: 'New chat',
+    newChatTitle: 'Start a new chat?',
+    newChatDescription:
+      'Your current conversation will be closed and cleared from this window. Francisco can still see the previous messages in his inbox.',
+    cancelNewChat: 'Keep current chat',
+    confirmNewChat: 'Close chat and start new',
     closed: 'This conversation is closed.',
     loading: 'Connecting to chat...',
     error: 'Chat could not connect. Please try again later.',
@@ -104,6 +115,12 @@ export const chatMessages: Record<
     minimize: 'Minimalkan chat',
     close: 'Tutup chat',
     start: 'Mulai percakapan baru',
+    newChat: 'Chat baru',
+    newChatTitle: 'Mulai chat baru?',
+    newChatDescription:
+      'Percakapan saat ini akan ditutup dan dihapus dari jendela ini. Francisco tetap dapat melihat pesan sebelumnya di kotak masuknya.',
+    cancelNewChat: 'Lanjutkan chat ini',
+    confirmNewChat: 'Tutup dan mulai baru',
     closed: 'Percakapan ini ditutup.',
     loading: 'Menghubungkan chat...',
     error: 'Chat tidak dapat terhubung. Silakan coba lagi nanti.',
@@ -150,6 +167,12 @@ export const chatMessages: Record<
     minimize: 'チャットを最小化',
     close: 'チャットを閉じる',
     start: '新しい会話を始める',
+    newChat: '新しいチャット',
+    newChatTitle: '新しいチャットを始めますか？',
+    newChatDescription:
+      '現在の会話を終了し、このウィンドウから消去します。以前のメッセージはFranciscoの受信箱に残ります。',
+    cancelNewChat: '現在のチャットを続ける',
+    confirmNewChat: '終了して新しいチャットを始める',
     closed: 'この会話は終了しました。',
     loading: 'チャットに接続中...',
     error: 'チャットに接続できません。後でもう一度お試しください。',
@@ -198,6 +221,11 @@ export const chatMessages: Record<
     minimize: '最小化聊天',
     close: '关闭聊天',
     start: '开始新对话',
+    newChat: '新建聊天',
+    newChatTitle: '要开始新的聊天吗？',
+    newChatDescription: '当前对话将被关闭并从此窗口清除。Francisco 仍可在收件箱中查看之前的消息。',
+    cancelNewChat: '继续当前聊天',
+    confirmNewChat: '关闭并开始新聊天',
     closed: '此对话已关闭。',
     loading: '正在连接聊天...',
     error: '无法连接聊天，请稍后重试。',

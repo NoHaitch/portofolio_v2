@@ -145,6 +145,10 @@ const id = {
     work: 'Lihat karya',
     contact: 'Hubungi saya',
     scrollHint: 'Jelajahi lebih lanjut',
+    focusLabel: 'Fokus utama',
+    focusTitle: 'Software Engineering dan AI & Data Science',
+    focusDescription:
+      'Keduanya adalah minat utama saya, berbekal latar belakang di bidang software engineering. Saya juga senang menangani tantangan di bidang sistem, keamanan, dan bidang lainnya.',
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: 'Bidang keahlian',

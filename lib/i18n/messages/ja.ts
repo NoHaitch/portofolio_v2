@@ -142,6 +142,10 @@ const ja = {
     work: '実績を見る',
     contact: 'お問い合わせ',
     scrollHint: 'スクロールして詳しく見る',
+    focusLabel: '主な関心分野',
+    focusTitle: 'ソフトウェアエンジニアリングとAI・データサイエンス',
+    focusDescription:
+      'ソフトウェアエンジニアリングを基盤に、特に関心を持っている分野です。システムやセキュリティをはじめ、幅広い分野の課題にも取り組んでいます。',
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: '得意分野',

@@ -131,6 +131,10 @@ const zh = {
     work: '查看我的作品',
     contact: '联系我',
     scrollHint: '向下滚动，继续了解',
+    focusLabel: '主要兴趣方向',
+    focusTitle: '软件工程与 AI 和数据科学',
+    focusDescription:
+      '这是我最主要的兴趣方向，也建立在我的软件工程背景之上。我也乐于处理系统、安全及其他领域的问题。',
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: '专业领域',

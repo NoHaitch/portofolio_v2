@@ -48,6 +48,7 @@ The effects use no animation library, and both the bobbing and the snap are disa
 The quote and rotating role labels stay in English across all locales to preserve their original phrasing.
 
 The quote introduces his generalist approach, followed by nine cards ordered so related areas sit together: software engineering, cybersecurity, systems engineering, embedded systems, Operations & DevOps, agentic coding, AI & Data Science (framed around business decisions), Machine Learning (the model side, including Deep Learning, RAG, MCP, and model evaluation), and computer science & research, each with a concise description of his foundations.
+Before the quote, a concise focus statement highlights software engineering and AI & Data Science as his main interests while noting his breadth across systems, security, and other fields.
 
 The work action links to the localized `/work` route.
 

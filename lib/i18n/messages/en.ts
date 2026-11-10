@@ -141,6 +141,10 @@ const en = {
     work: 'See my work',
     contact: 'Get in touch',
     scrollHint: 'Scroll to explore',
+    focusLabel: 'Where I focus',
+    focusTitle: 'Software engineering and AI & Data Science',
+    focusDescription:
+      'These are my main interests, grounded in a software engineering background. I also enjoy taking on problems across systems, security, and other fields.',
     philosophyQuote:
       'Jack of all trades, master of none, but oftentimes better than master of one.',
     expertiseLabel: 'Areas of expertise',

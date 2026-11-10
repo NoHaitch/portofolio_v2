@@ -37,8 +37,8 @@ Current coverage:
 - `utils.test.ts` checks the `cn` class merging helper.
 - `ai-markdown.test.ts` checks that assistant Markdown renders headings, emphasis, code, and lists.
 - `assistant-retrieval.test.ts` covers retrieval ranking, chunking, and grounded prompt formatting.
-- `assistant-knowledge.test.ts` checks retrieval of profile facts, ITB education, specializations, individual courses, and GCI training, as well as approved transcript exclusions.
-- `assistant-guardrails.test.ts` exercises input, context, and output checks with mocked model responses.
+- `assistant-knowledge.test.ts` checks retrieval of profile facts, ITB education, specializations, individual courses, GCI training, broad project questions, and the portfolio page guide, as well as approved transcript exclusions.
+- `assistant-guardrails.test.ts` exercises input, context, and output checks with mocked model responses, plus the assistant's deterministic greeting and capability replies.
 - `assistant-route.test.ts` checks owner authentication, request validation, and fail-closed behavior.
 - `assistant-rate-limit.test.ts` checks the rolling hourly boundary with a mocked Firestore transaction.
 - `public-assistant.test.ts` covers ownership, duplicate requests, both public caps, rollover, provider failure, human handoff, and late responses using a mocked Firestore transaction.

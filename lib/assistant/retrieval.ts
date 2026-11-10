@@ -59,10 +59,14 @@ export function retrieve(
 
   const k1 = 1.4
   const b = 0.75
+  const projectQuestion = /\b(projects?|built|created|developed)\b/i.test(query)
+  const pageQuestion = /\b(pages?|website|site|navigate)\b/i.test(query)
   return chunks
     .map((chunk, index) => {
       const doc = documents[index]
-      let score = 0
+      let score =
+        (projectQuestion && chunk.id === 'project-catalog' ? 2 : 0) +
+        (pageQuestion && chunk.id === 'site-index' ? 2 : 0)
       for (const term of terms) {
         const frequency = doc.filter((word) => word === term).length
         if (frequency === 0) continue

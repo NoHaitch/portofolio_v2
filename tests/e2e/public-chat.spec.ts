@@ -1,5 +1,17 @@
 import { expect, test } from '@playwright/test'
 
+test("homepage states Francisco's main interests before the broader expertise quote", async ({
+  page,
+}) => {
+  await page.goto('/')
+  const focus = page.getByRole('heading', { name: 'Software engineering and AI & Data Science' })
+  await expect(focus).toBeVisible()
+  await expect(page.getByText(/main interests/, { exact: false })).toBeVisible()
+  const headings = await page.locator('#expertise').getByRole('heading').allTextContents()
+  expect(headings[0]).toContain('Software engineering and AI & Data Science')
+  expect(headings[1]).toContain('Jack of all trades, master of none')
+})
+
 test('public chat explains the assistant and offers suggested questions and human help', async ({
   page,
 }) => {

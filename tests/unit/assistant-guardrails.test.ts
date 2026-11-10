@@ -46,6 +46,19 @@ describe('assistant guardrails', () => {
     expect(model).toHaveBeenCalledTimes(1)
   })
 
+  it('answers greetings and capability questions without calling the model', async () => {
+    const model = modelReturning()
+
+    const greeting = await answerWithGuardrails('Hi!', [], knowledge, model)
+    expect(greeting.text).toContain("I'm Francisco's portfolio assistant")
+    expect(greeting.outcome).toBe('answered')
+    expect(greeting.sources).toEqual([])
+
+    const capabilities = await answerWithGuardrails('What can you do?', [], knowledge, model)
+    expect(capabilities.text).toContain("Francisco's projects")
+    expect(model).not.toHaveBeenCalled()
+  })
+
   it('stops when there are no matching passages', async () => {
     const model = modelReturning('{"allowed":true,"retrievalQuery":"favorite pizza"}')
     const result = await answerWithGuardrails('What is his favorite pizza?', [], knowledge, model)

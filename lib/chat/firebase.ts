@@ -117,5 +117,13 @@ export async function deleteConversation(db: Firestore, id: string) {
     snapshot.docs.forEach((message) => batch.delete(message.ref))
     await batch.commit()
   }
+
   await deleteDoc(conversation)
+}
+
+export async function closeGuestConversation(db: Firestore, id: string) {
+  await updateDoc(doc(db, 'conversations', id), {
+    status: 'closed',
+    updatedAt: serverTimestamp(),
+  })
 }

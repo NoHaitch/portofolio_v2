@@ -74,6 +74,39 @@ export function buildKnowledgeBase(): KnowledgeChunk[] {
     }
   }
 
+  const projects = getItems('projects')
+  chunks.push({
+    id: 'project-catalog',
+    title: "Francisco's project catalog",
+    kind: 'project',
+    href: '/work/projects',
+    text: [
+      `Complete catalog of ${projects.length} projects published on Francisco's portfolio. Browse the project archive at /work/projects.`,
+      ...projects.map(
+        (project) =>
+          `${project.title}: ${project.summary} Categories: ${project.category}. Technologies: ${project.tags.join(', ') || 'not listed'}.`,
+      ),
+    ].join('\n\n'),
+  })
+
+  chunks.push({
+    id: 'site-index',
+    title: "Francisco's portfolio page guide",
+    kind: 'profile',
+    href: '/',
+    text: [
+      'Homepage: introduction, areas of expertise, and recent projects and activities.',
+      'About: personal story, interests, and hobbies. Route: /about.',
+      'Work: featured projects and recent activities. Route: /work.',
+      'Projects archive: searchable and filterable project list with project detail pages. Route: /work/projects.',
+      'Activities archive: searchable activity list with activity detail pages. Route: /work/activities.',
+      'Experience: engineering, teaching, academic support, campus, community, and data science roles. Route: /experience.',
+      'Education: university and high-school education, coursework, honors, and certificates. Route: /education.',
+      'Contact: professional and community links. Route: /contact.',
+      'About this site: its purpose and implementation. Route: /about-site.',
+    ].join('\n'),
+  })
+
   for (const entry of en.experience.entries) {
     chunks.push({
       id: `experience-${entry.id}`,

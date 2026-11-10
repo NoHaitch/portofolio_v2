@@ -21,6 +21,26 @@ export type GuardResult = {
   outcome: 'answered' | 'unknown' | 'out-of-scope' | 'blocked'
 }
 
+function getSmallTalkResponse(question: string): string | undefined {
+  const normalized = question
+    .trim()
+    .toLowerCase()
+    .replace(/[.!?]+$/g, '')
+    .replace(/[,]/g, '')
+
+  if (/^(hi|hello|hey|hiya|good morning|good afternoon|good evening)$/.test(normalized)) {
+    return "Hi! I'm Francisco's portfolio assistant. I can answer questions about Francisco and help you find your way around this site. I'm an AI, so I may get some details wrong. What would you like to know?"
+  }
+  if (/^(what are you|who are you|what is this chatbot|what is this assistant)$/.test(normalized)) {
+    return "I'm an AI assistant for Francisco Trianto's portfolio. I can help you explore his background, projects, experience, education, and interests. I may not always be right, so please check the linked sources for details."
+  }
+  if (/^(what can you do|how can you help|what do you know)$/.test(normalized)) {
+    return "I can answer questions about Francisco's projects, background, education, experience, and interests, and help you find the relevant pages on this site. I can't help with general-purpose tasks. What would you like to explore?"
+  }
+
+  return undefined
+}
+
 function parseDecision(value: string): Record<string, unknown> {
   const parsed: unknown = JSON.parse(value)
   if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
@@ -35,6 +55,11 @@ export async function answerWithGuardrails(
   knowledge: KnowledgeChunk[],
   model: GuardModel,
 ): Promise<GuardResult> {
+  const smallTalk = getSmallTalkResponse(question)
+  if (smallTalk) {
+    return { text: smallTalk, sources: [], accepted: true, outcome: 'answered' }
+  }
+
   const input = parseDecision(
     await model(
       [

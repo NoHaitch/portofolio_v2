@@ -93,7 +93,18 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         className="mx-auto w-full max-w-6xl scroll-mt-24 px-5 pb-16 sm:px-8 sm:pb-24"
       >
         <div id="expertise" className="border-primary/30 border-t pt-12 sm:pt-16">
-          <h2 className="mx-auto max-w-5xl text-center text-4xl leading-[1.08] font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <div className="mx-auto mb-10 max-w-4xl text-center sm:mb-14">
+            <p className="text-primary mb-4 font-mono text-sm font-medium tracking-[0.16em] uppercase">
+              {messages.focusLabel}
+            </p>
+            <h2 className="text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
+              {messages.focusTitle}
+            </h2>
+            <p className="text-muted-foreground mx-auto mt-4 max-w-3xl text-base leading-7 sm:text-lg sm:leading-8">
+              {messages.focusDescription}
+            </p>
+          </div>
+          <h2 className="mx-auto max-w-5xl text-center text-3xl leading-[1.12] font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             <span className="text-primary" aria-hidden="true">
               “
             </span>

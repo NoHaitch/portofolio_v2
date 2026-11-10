@@ -10,6 +10,8 @@ Do not copy private notes or credentials into this folder.
 - `profile.md` contains stable profile facts that do not belong to one specific project.
 - `education.md` contains approved ITB program, training, and transcript details.
   Its `###` headings define individually retrievable sections.
+- Portfolio project summaries and a page guide are assembled from the published site content when the retrieval corpus is built.
+  Update the source work entries and routes rather than maintaining a duplicate project list.
 - Project and activity details should come from `content/work/projects/` and `content/work/activities/`.
 - Add facts from GitHub or LinkedIn here only after verifying them and recording the public source URL.
 - Prefer the portfolio's published content when it already covers the same fact.

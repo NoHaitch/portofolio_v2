@@ -81,11 +81,14 @@ Starting a new chat or refreshing clears them.
 
 The corpus is built on the server from the public assistant profile and approved education knowledge, project and activity Markdown, and English experience and education entries.
 The education knowledge includes approved transcript details as individually retrievable sections; the original transcript is not published.
+The corpus also builds a project catalog from every published project summary and a concise guide to the site's main pages.
+These indexes are derived from the site's source content so project descriptions are not maintained twice.
 See [assistant knowledge](../content/assistant/README.md) for authoring guidance.
 Content is split into passages and ranked by BM25-style keyword scoring, without embeddings or a vector database.
 The top five matching passages are used when they pass the relevance check.
 Matching is based on English-oriented keywords, so synonyms, other languages, and short follow-ups may not retrieve the right information.
 Source text is sent to Gemini as part of the request and must contain only approved public information.
+Common greetings and basic questions about the assistant's identity or capabilities receive a short predefined response without a Gemini request.
 
 Answers can include source icons.
 Hover or focus an icon to preview the truncated source title, or open its linked portfolio page.

@@ -91,6 +91,9 @@ export type Messages = {
     work: string
     contact: string
     scrollHint: string
+    focusLabel: string
+    focusTitle: string
+    focusDescription: string
     philosophyQuote: string
     expertiseLabel: string
     expertiseAreas: {

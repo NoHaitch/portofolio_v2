@@ -2,10 +2,18 @@
 
 import { collection, doc, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
-import { Send } from 'lucide-react'
+import { MessageSquarePlus, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { sendMessage } from '@/lib/chat/firebase'
+import { closeGuestConversation, sendMessage } from '@/lib/chat/firebase'
 import { CHAT_STORAGE_KEY } from '@/lib/chat/browser'
 import { chatMessages } from '@/lib/chat/messages'
 import { MAX_MESSAGE_LENGTH, type ChatMessage, type Conversation } from '@/lib/chat/types'
@@ -58,6 +66,9 @@ export default function ChatContent({
   const [notice, setNotice] = useState('')
   const [thinking, setThinking] = useState(false)
   const [pending, setPending] = useState<PendingRequest | null>(null)
+  const [newChatOpen, setNewChatOpen] = useState(false)
+  const [closingChat, setClosingChat] = useState(false)
+  const [newChatError, setNewChatError] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
   const scroll = useThreadScroll(chatId, messages[messages.length - 1]?.id, active)
   const [messagesFor, setMessagesFor] = useState<string | null>(null)
@@ -256,8 +267,75 @@ export default function ChatContent({
     void send(text, 'assistant')
   }
 
+  function clearCurrentChat() {
+    localStorage.removeItem(CHAT_STORAGE_KEY)
+    onUnreadChange(false)
+    setChatId(null)
+    setChat(null)
+    setMessages([])
+    setReplyTo(null)
+    setPending(null)
+    setMessagesFor(null)
+    setText('')
+    setError('')
+    setNotice('')
+  }
+
+  async function startNewChat() {
+    if (!chatId || closingChat || sending) return
+    setClosingChat(true)
+    setNewChatError('')
+    try {
+      if (chat?.status === 'open') {
+        const { db } = getFirebaseServices('guest')
+        await closeGuestConversation(db, chatId)
+      }
+      clearCurrentChat()
+      setNewChatOpen(false)
+    } catch (cause) {
+      console.error('Could not close the current chat:', cause)
+      setNewChatError(copy.error)
+    } finally {
+      setClosingChat(false)
+    }
+  }
+
   return (
     <>
+      <Dialog
+        open={newChatOpen}
+        onOpenChange={(open) => {
+          if (!closingChat) {
+            setNewChatOpen(open)
+            if (!open) setNewChatError('')
+          }
+        }}
+      >
+        <DialogContent className="max-w-sm p-5 text-sm/relaxed">
+          <DialogHeader>
+            <DialogTitle className="text-base">{copy.newChatTitle}</DialogTitle>
+            <DialogDescription className="text-sm">{copy.newChatDescription}</DialogDescription>
+          </DialogHeader>
+          {newChatError && (
+            <p role="alert" className="text-destructive text-sm">
+              {newChatError}
+            </p>
+          )}
+          <DialogFooter className="gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              disabled={closingChat}
+              onClick={() => setNewChatOpen(false)}
+            >
+              {copy.cancelNewChat}
+            </Button>
+            <Button type="button" disabled={closingChat} onClick={() => void startNewChat()}>
+              {copy.confirmNewChat}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <div
         ref={scroll.containerRef}
         onScroll={scroll.onScroll}
@@ -347,15 +425,29 @@ export default function ChatContent({
         </div>
       ) : (
         <form onSubmit={submit} className="border-border space-y-2 border-t p-3">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            disabled={!user || sending || (!!chatId && chat?.id !== chatId)}
-            onClick={() => void send(copy.humanRequest, 'human')}
-          >
-            {copy.askOwner}
-          </Button>
+          <div className="flex flex-wrap items-center justify-between gap-1">
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              disabled={!user || sending || (!!chatId && chat?.id !== chatId)}
+              onClick={() => void send(copy.humanRequest, 'human')}
+            >
+              {copy.askOwner}
+            </Button>
+            {chatId && chat?.status === 'open' && (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                disabled={sending || closingChat || chat.id !== chatId}
+                onClick={() => setNewChatOpen(true)}
+              >
+                <MessageSquarePlus aria-hidden="true" className="size-4" />
+                {copy.newChat}
+              </Button>
+            )}
+          </div>
           {replyTo && (
             <ReplyPreview
               message={replyTo}

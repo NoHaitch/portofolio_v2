@@ -33,6 +33,19 @@ describe('knowledge base retrieval', () => {
     expect(sources.some((source) => source.text.includes('Informatics Engineering'))).toBe(true)
   })
 
+  it('retrieves the full project catalog for broad project questions', () => {
+    const sources = retrieve(knowledge, 'What projects has Francisco built?')
+    const catalog = sources.find((source) => source.id === 'project-catalog')
+    expect(catalog).toBeDefined()
+    expect(catalog?.text).toContain('Raft Consensus Algorithm')
+    expect(catalog?.text).toContain('portfolio')
+  })
+
+  it('retrieves a guide to the portfolio pages', () => {
+    const sources = retrieve(knowledge, 'What pages are on this website?')
+    expect(sources.some((source) => source.id === 'site-index')).toBe(true)
+  })
+
   it('retrieves individual course grades and specialization details', () => {
     const course = retrieve(knowledge, 'IF4031-24 distributed application architecture grade')
     expect(course[0].text).toContain('3 credits, grade A')

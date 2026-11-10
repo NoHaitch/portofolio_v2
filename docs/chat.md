@@ -37,6 +37,10 @@ This is an in-site indicator, not a browser push notification, and does not work
 An anonymous guest can return to the current conversation in the same browser while its Firebase authentication state and local site data remain available.
 Clearing browser data or switching browsers or devices loses that access.
 Once an owner closes a conversation, the visitor can start another one.
+Visitors can also choose **New chat** in an open conversation and confirm that the current conversation should be closed.
+The prior conversation remains in the owner's inbox, while the visitor's browser starts with a clean thread.
+The confirmation can be canceled without changing the existing conversation.
+The published Firestore rules must include the guest-owned conversation close update for this action to work.
 An active chat means one that has not been closed, not a visitor who is currently online.
 Unread counts represent conversations with unread messages, not the number of messages.
 Sent messages show whether the recipient has read them.
