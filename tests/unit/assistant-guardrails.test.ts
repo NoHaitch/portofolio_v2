@@ -37,14 +37,19 @@ describe('assistant guardrails', () => {
   it('refuses off-topic and mixed requests before retrieval or generation', async () => {
     const model = modelReturning('{"allowed":false,"retrievalQuery":""}')
     const result = await answerWithGuardrails('Write Python code for me', [], knowledge, model)
-    expect(result).toEqual({ text: OUT_OF_SCOPE, sources: [], accepted: false })
+    expect(result).toEqual({
+      text: OUT_OF_SCOPE,
+      sources: [],
+      accepted: false,
+      outcome: 'out-of-scope',
+    })
     expect(model).toHaveBeenCalledTimes(1)
   })
 
   it('stops when there are no matching passages', async () => {
     const model = modelReturning('{"allowed":true,"retrievalQuery":"favorite pizza"}')
     const result = await answerWithGuardrails('What is his favorite pizza?', [], knowledge, model)
-    expect(result).toEqual({ text: UNKNOWN, sources: [], accepted: true })
+    expect(result).toEqual({ text: UNKNOWN, sources: [], accepted: true, outcome: 'unknown' })
     expect(model).toHaveBeenCalledTimes(1)
   })
 
@@ -59,11 +64,12 @@ describe('assistant guardrails', () => {
       '{"allowed":true,"retrievalQuery":"raft"}',
       '{"relevant":true}',
       'Francisco built a Raft implementation. [1]',
-      '{"approved":true}',
+      '{"approved":true,"answered":true}',
     )
     const result = await answerWithGuardrails('What did he build?', [], knowledge, model)
     expect(result.text).toBe('Francisco built a Raft implementation. [1]')
     expect(result.sources[0].id).toBe('raft')
+    expect(result.outcome).toBe('answered')
     expect(model).toHaveBeenCalledTimes(4)
   })
 
@@ -72,10 +78,37 @@ describe('assistant guardrails', () => {
       '{"allowed":true,"retrievalQuery":"raft"}',
       '{"relevant":true}',
       'He invented Raft. [1]',
-      '{"approved":false}',
+      '{"approved":false,"answered":true}',
     )
     expect((await answerWithGuardrails('Tell me about Raft', [], knowledge, model)).text).toBe(
       BLOCKED_RESPONSE,
+    )
+  })
+
+  it('distinguishes an unanswered question from a verified answer', async () => {
+    const model = modelReturning(
+      '{"allowed":true,"retrievalQuery":"raft"}',
+      '{"relevant":true}',
+      "I don't have enough information about that. [1]",
+      '{"approved":true,"answered":false}',
+    )
+    expect(await answerWithGuardrails('What else did he build?', [], knowledge, model)).toEqual({
+      text: UNKNOWN,
+      sources: [],
+      accepted: true,
+      outcome: 'unknown',
+    })
+  })
+
+  it('fails closed when the output guard omits whether the question was answered', async () => {
+    const model = modelReturning(
+      '{"allowed":true,"retrievalQuery":"raft"}',
+      '{"relevant":true}',
+      'Francisco built a Raft implementation. [1]',
+      '{"approved":true}',
+    )
+    await expect(answerWithGuardrails('What did he build?', [], knowledge, model)).rejects.toThrow(
+      'Output guard returned an invalid decision.',
     )
   })
 

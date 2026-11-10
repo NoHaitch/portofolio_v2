@@ -7,18 +7,21 @@ export type Conversation = {
   createdAt: Timestamp | null
   updatedAt: Timestamp | null
   lastMessage: string
-  lastSender: 'guest' | 'admin'
+  lastSender: 'guest' | 'admin' | 'assistant'
   unreadByAdmin: boolean
   unreadByGuest: boolean
+  needsHuman?: boolean
 }
 
 export type ChatMessage = {
   id: string
   text: string
-  sender: 'guest' | 'admin'
+  sender: 'guest' | 'admin' | 'assistant'
   createdAt: Timestamp | null
   read?: boolean
   replyTo?: string
+  sources?: { title: string; href: string; kind: string }[]
+  assistantState?: 'processing' | 'done'
 }
 
 export const MAX_MESSAGE_LENGTH = 2000

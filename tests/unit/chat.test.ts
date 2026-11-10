@@ -16,6 +16,7 @@ describe('chat message validation', () => {
       { id: 'admin', sender: 'admin', text: 'reply', createdAt: Timestamp.now() },
       { id: 'read', sender: 'admin', text: 'seen', createdAt: Timestamp.now(), read: true },
       { id: 'pending', sender: 'admin', text: 'pending', createdAt: null },
+      { id: 'assistant', sender: 'assistant', text: 'AI reply', createdAt: Timestamp.now() },
     ]
 
     it('only marks confirmed incoming unread messages for the recipient', () => {

@@ -104,7 +104,7 @@ It can ground answers in portfolio content through simple keyword retrieval.
 User messages show their local send time, and citations appear as compact superscript source icons that preview the source title on hover or keyboard focus.
 Input, context, and output guardrails are applied server-side, but model-based checks are not foolproof.
 The owner-only server route enforces a Firestore-backed limit of 10 requests per rolling hour.
-The playground is not a visitor-facing assistant, and the limit is not a complete abuse or spending control.
+The playground is separate from the public chat assistant, and its limit is not a complete abuse or spending control.
 Previously enabled direct Firebase AI Logic access must be restricted separately to prevent bypassing the route.
 The shared admin icon rail is viewport-height and remains fixed at the top while longer pages scroll.
 
@@ -112,6 +112,8 @@ The shared admin icon rail is viewport-height and remains fixed at the top while
 
 The shared [site shell](../components/layout/site-shell.tsx) displays the support widget on public pages and hides it on admin routes.
 Visitors can start an anonymous Firebase Auth session and message the site owner through Firestore.
+The widget offers an AI assistant with suggested questions, clear AI labeling, and a direct request for Francisco's help.
+Assistant failures and unanswered questions are flagged for human follow-up in the same inbox.
 The widget supports grouped messages, reply previews, read receipts, and unread indicators when minimized or closed while the site remains open.
 It does not provide browser push notifications.
 Chat setup, Firestore rules, and retention are documented in [chat.md](./chat.md).
@@ -266,6 +268,6 @@ Prefer structured content with consistent titles, dates, categories, tags, summa
 Keep routes and content data static-first until dynamic publishing or editing is explicitly needed.
 
 The assistant knowledge source lives in [content/assistant/](../content/assistant/).
-It is loaded by `lib/assistant/corpus.ts` together with projects, activities, experience, and education, and retrieved by BM25-style keyword scoring in the admin AI playground.
-There are no embeddings or vector index, and no AI-powered guest chat is connected.
+It is loaded by `lib/assistant/corpus.ts` together with projects, activities, experience, and education, and retrieved by BM25-style keyword scoring for both assistants.
+There are no embeddings or vector index.
 Project and activity Markdown files remain the canonical content and are not duplicated.

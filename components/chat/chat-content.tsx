@@ -17,6 +17,7 @@ import { MessageThread, ReplyPreview } from './message-thread'
 import { useThreadScroll } from './use-thread-scroll'
 
 let guestPromise: Promise<User> | null = null
+type PendingRequest = { conversationId: string; messageId: string; mode: 'assistant' | 'human' }
 
 function getGuest() {
   if (!guestPromise) {
@@ -54,6 +55,9 @@ export default function ChatContent({
   const [replyTo, setReplyTo] = useState<ChatMessage | null>(null)
   const [error, setError] = useState('')
   const [sending, setSending] = useState(false)
+  const [notice, setNotice] = useState('')
+  const [thinking, setThinking] = useState(false)
+  const [pending, setPending] = useState<PendingRequest | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const scroll = useThreadScroll(chatId, messages[messages.length - 1]?.id, active)
   const [messagesFor, setMessagesFor] = useState<string | null>(null)
@@ -95,7 +99,7 @@ export default function ChatContent({
       setChat(null)
       setMessages([])
       setReplyTo(null)
-      setReplyTo(null)
+      setPending(null)
       setMessagesFor(null)
       onUnreadChange(false)
     }
@@ -147,11 +151,42 @@ export default function ChatContent({
     )
   }, [user, chatId, chat?.id, copy.error])
 
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  async function requestAssistant(guest: User, request: PendingRequest) {
+    setThinking(request.mode === 'assistant')
+    const token = await guest.getIdToken()
+    const response = await fetch('/api/chat/assistant', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ ...request, locale }),
+    })
+    if (!response.ok) throw new Error(`Assistant request failed with HTTP ${response.status}.`)
+    const result: unknown = await response.json()
+    if (!result || typeof result !== 'object' || !('status' in result)) {
+      throw new Error('Assistant returned an invalid response.')
+    }
+    if (result.status === 'processing') {
+      setPending(request)
+      setNotice(copy.aiPending)
+    } else if (result.status !== 'complete') {
+      throw new Error('Assistant could not process the message.')
+    } else {
+      setPending(null)
+      if (request.mode === 'human') {
+        setNotice(copy.humanSent)
+      } else if (
+        'remaining' in result &&
+        typeof result.remaining === 'number' &&
+        result.remaining === 1
+      ) {
+        setNotice(copy.aiWarning)
+      }
+    }
+  }
+
+  async function send(textToSend: string, mode: 'assistant' | 'human') {
     if (
       !user ||
-      !text.trim() ||
+      !textToSend.trim() ||
       sending ||
       (chatId && chat?.id !== chatId) ||
       chat?.status === 'closed'
@@ -159,20 +194,66 @@ export default function ChatContent({
       return
     setSending(true)
     setError('')
+    setNotice('')
+    let saved = false
     try {
       const { db } = getFirebaseServices('guest')
       const id = chatId ?? doc(collection(db, 'conversations')).id
+      const messageId = await sendMessage(
+        db,
+        id,
+        user.uid,
+        'guest',
+        textToSend,
+        !chatId,
+        replyTo?.id,
+      )
+      saved = true
       if (!chatId) localStorage.setItem(CHAT_STORAGE_KEY, id)
-      await sendMessage(db, id, user.uid, 'guest', text, !chatId, replyTo?.id)
       setChatId(id)
       setText('')
       setReplyTo(null)
+      const request = { conversationId: id, messageId, mode }
+      setPending(request)
+      await requestAssistant(user, request)
     } catch (cause) {
       console.error('Could not send message:', cause)
-      setError(copy.error)
+      setError(saved ? copy.aiError : copy.error)
     } finally {
+      setThinking(false)
       setSending(false)
     }
+  }
+
+  const interrupted = messages.find(
+    (message) => message.sender === 'guest' && message.assistantState === 'processing',
+  )
+  const retry =
+    pending ??
+    (chatId && interrupted
+      ? { conversationId: chatId, messageId: interrupted.id, mode: 'assistant' as const }
+      : null)
+
+  async function checkResponse() {
+    if (!user || !retry || sending) return
+    setSending(true)
+    setError('')
+    setNotice('')
+    try {
+      await requestAssistant(user, retry)
+    } catch (cause) {
+      console.error('Could not check assistant response:', cause)
+      setPending(retry)
+      setError(copy.aiError)
+    } finally {
+      setThinking(false)
+      setSending(false)
+    }
+  }
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    void send(text, 'assistant')
   }
 
   return (
@@ -187,6 +268,26 @@ export default function ChatContent({
         <p className="bg-muted text-muted-foreground rounded-xl p-3 text-xs leading-5">
           {copy.privacy}
         </p>
+        <p className="border-primary/30 text-muted-foreground rounded-xl border p-3 text-xs leading-5">
+          {copy.aiNotice}
+        </p>
+        {messages.length === 0 && (
+          <div className="flex flex-wrap gap-2">
+            {copy.suggestions.map((suggestion) => (
+              <Button
+                key={suggestion}
+                type="button"
+                variant="outline"
+                size="sm"
+                className="h-auto min-h-8 py-1.5 text-left whitespace-normal"
+                disabled={!user || sending || (!!chatId && chat?.id !== chatId)}
+                onClick={() => void send(suggestion, 'assistant')}
+              >
+                {suggestion}
+              </Button>
+            ))}
+          </div>
+        )}
         {!user && !error && <p className="text-muted-foreground text-sm">{copy.loading}</p>}
         <MessageThread
           messages={messages}
@@ -201,6 +302,23 @@ export default function ChatContent({
         />
         {chat?.status === 'closed' && (
           <p className="text-muted-foreground text-center text-xs">{copy.closed}</p>
+        )}
+        {thinking && <p className="text-muted-foreground text-xs">{copy.aiThinking}</p>}
+        {notice && (
+          <p role="status" className="text-muted-foreground text-xs">
+            {notice}
+          </p>
+        )}
+        {retry && chat?.status !== 'closed' && (
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            disabled={sending}
+            onClick={checkResponse}
+          >
+            {copy.aiCheck}
+          </Button>
         )}
         {error && (
           <p role="alert" className="text-destructive text-sm">
@@ -220,6 +338,7 @@ export default function ChatContent({
               setChat(null)
               setMessages([])
               setReplyTo(null)
+              setPending(null)
               setError('')
             }}
           >
@@ -228,6 +347,15 @@ export default function ChatContent({
         </div>
       ) : (
         <form onSubmit={submit} className="border-border space-y-2 border-t p-3">
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            disabled={!user || sending || (!!chatId && chat?.id !== chatId)}
+            onClick={() => void send(copy.humanRequest, 'human')}
+          >
+            {copy.askOwner}
+          </Button>
           {replyTo && (
             <ReplyPreview
               message={replyTo}

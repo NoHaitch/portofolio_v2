@@ -30,7 +30,7 @@ He lives in Indonesia.
 
 ## Education
 
-Francisco graduated from Institut Teknologi Bandung with an engineering degree in Informatics Engineering in August 2026.
+Francisco completed his Informatics Engineering degree at Institut Teknologi Bandung in July 2026 and attended the graduation ceremony in August 2026.
 He completed the degree with a 3.57 GPA and cum laude honors.
 He attended SMAN 5 Bandung from 2019 to 2022 and was an honor student.
 He attended SMP Santo Aloysius Bandung from 2016 to 2019.

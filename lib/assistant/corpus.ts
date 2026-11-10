@@ -6,6 +6,7 @@ import { getItems } from '@/lib/work'
 import { chunkMarkdown, type KnowledgeChunk } from './retrieval'
 
 const profilePath = path.join(process.cwd(), 'content', 'assistant', 'profile.md')
+const educationPath = path.join(process.cwd(), 'content', 'assistant', 'education.md')
 
 function pushChunks(
   chunks: KnowledgeChunk[],
@@ -29,6 +30,25 @@ export function buildKnowledgeBase(): KnowledgeChunk[] {
     'profile',
     profile.content,
   )
+
+  const educationKnowledge = matter(fs.readFileSync(educationPath, 'utf8'))
+  const educationSections = educationKnowledge.content.split(/^### /m).slice(1)
+  if (educationSections.length === 0) {
+    throw new Error('Assistant education knowledge must contain at least one section.')
+  }
+  for (const [index, section] of educationSections.entries()) {
+    const newline = section.indexOf('\n')
+    if (newline < 0 || !section.slice(0, newline).trim() || !section.slice(newline).trim()) {
+      throw new Error(`Invalid assistant education section ${index + 1}.`)
+    }
+    const title = section.slice(0, newline).trim()
+    pushChunks(
+      chunks,
+      { title, kind: 'education', href: '/education' },
+      `itb-education-${index}`,
+      section.slice(newline).trim(),
+    )
+  }
 
   for (const kind of ['projects', 'activities'] as const) {
     for (const item of getItems(kind)) {

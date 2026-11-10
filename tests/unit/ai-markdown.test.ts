@@ -18,4 +18,27 @@ describe('AiMarkdown', () => {
     expect(markup).toContain('<ol')
     expect(markup).not.toContain('**Bold**')
   })
+
+  it('uses the shared citation link and leaves missing references as text', () => {
+    const markup = renderToStaticMarkup(
+      createElement(AiMarkdown, {
+        content: 'Francisco builds software. [1] Missing source [2]',
+        locale: 'id',
+        sources: [
+          {
+            id: 'profile',
+            title: 'Francisco profile',
+            href: '/about',
+            kind: 'profile',
+            text: 'Public profile',
+            score: 1,
+          },
+        ],
+      }),
+    )
+    expect(markup).toContain('href="/id/about"')
+    expect(markup).toContain('aria-label="View source: Francisco profile"')
+    expect(markup).toContain('lucide-external-link')
+    expect(markup).toContain('Missing source 2')
+  })
 })

@@ -1,8 +1,6 @@
 import ReactMarkdown, { type Components } from 'react-markdown'
-import { ExternalLink } from 'lucide-react'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { SourceCitation } from '@/components/chat/source-citation'
 import type { RetrievedChunk } from '@/lib/assistant/retrieval'
-import { getLocalePath } from '@/lib/i18n/shared'
 import type { Locale } from '@/lib/i18n/types'
 
 function renderLink(href: string | undefined, children: React.ReactNode) {
@@ -76,32 +74,7 @@ export function AiMarkdown({
         const source = sources[Number(citationIndex[1]) - 1]
         if (!source) return <>{children}</>
 
-        return (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger
-                className="text-primary relative mx-0.5 inline-block h-0 w-3 cursor-help align-super leading-none"
-                aria-label={`View source: ${source.title}`}
-              >
-                <ExternalLink aria-hidden="true" className="absolute bottom-0 left-0 size-3" />
-              </TooltipTrigger>
-              <TooltipContent className="max-w-64 whitespace-normal">
-                <a
-                  href={getLocalePath(locale, source.href)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={source.title}
-                  className="line-clamp-2 block font-medium underline underline-offset-2"
-                >
-                  {source.title.length > 64 ? `${source.title.slice(0, 61)}...` : source.title}
-                </a>
-                <span className="mt-1 block text-[10px] capitalize opacity-70">
-                  {source.kind} reference
-                </span>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        )
+        return <SourceCitation source={source} locale={locale} />
       }
 
       return renderLink(href, children)

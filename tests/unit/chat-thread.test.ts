@@ -18,6 +18,7 @@ const labels: ThreadLabels = {
   cancelReply: 'Cancel reply',
   unavailable: 'Message unavailable',
   sending: 'Sending',
+  assistant: 'AI assistant',
 }
 
 function message(id: string, sender: 'admin' | 'guest', seconds: number): ChatMessage {
@@ -128,5 +129,31 @@ describe('chat message grouping', () => {
     expect(markup.match(/>Read<\/p>/g)).toHaveLength(1)
     expect(markup).toContain('>original</p>')
     expect(markup).toContain('aria-label="Reply: original"')
+  })
+
+  it('identifies AI messages and renders compact source links without a human read receipt', () => {
+    const ai: ChatMessage = {
+      id: 'ai',
+      sender: 'assistant',
+      text: 'Francisco builds software. [1]',
+      createdAt: new Timestamp(200, 0),
+      sources: [{ title: 'Profile', href: '/about', kind: 'profile' }],
+    }
+    const markup = renderToStaticMarkup(
+      createElement(MessageThread, {
+        messages: [ai],
+        role: 'guest',
+        locale: 'en',
+        labels,
+        canReply: true,
+        onReply: vi.fn(),
+      }),
+    )
+    expect(markup).toContain('AI assistant')
+    expect(markup).toContain('href="/about"')
+    expect(markup).toContain('aria-label="View source: Profile"')
+    expect(markup).toContain('lucide-external-link')
+    expect(markup).not.toContain('>Unread</p>')
+    expect(markup).not.toContain('>[1]<')
   })
 })

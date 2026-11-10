@@ -37,10 +37,12 @@ Current coverage:
 - `utils.test.ts` checks the `cn` class merging helper.
 - `ai-markdown.test.ts` checks that assistant Markdown renders headings, emphasis, code, and lists.
 - `assistant-retrieval.test.ts` covers retrieval ranking, chunking, and grounded prompt formatting.
-- `assistant-knowledge.test.ts` checks that career-role, favorite-food, and language questions retrieve the matching profile passage.
+- `assistant-knowledge.test.ts` checks retrieval of profile facts, ITB education, specializations, individual courses, and GCI training, as well as approved transcript exclusions.
 - `assistant-guardrails.test.ts` exercises input, context, and output checks with mocked model responses.
 - `assistant-route.test.ts` checks owner authentication, request validation, and fail-closed behavior.
 - `assistant-rate-limit.test.ts` checks the rolling hourly boundary with a mocked Firestore transaction.
+- `public-assistant.test.ts` covers ownership, duplicate requests, both public caps, rollover, provider failure, human handoff, and late responses using a mocked Firestore transaction.
+- `public-assistant-route.test.ts` covers public authentication, input validation, ownership failures, and fail-closed store errors.
 - `work.test.ts` validates project and activity content, unique slugs, image references, and featured project slugs.
 - `chat.test.ts`, `chat-thread.test.ts`, and `chat-receipts.test.ts` cover message validation, grouping, replies, inbox search, and read receipts.
 
@@ -70,7 +72,10 @@ Current coverage:
 - `responsive.spec.ts` also covers the burger menu (open, Escape to close, navigate, language select inside the menu) and that the desktop nav shows no burger.
 - `work.spec.ts` checks that the homepage shows five recent projects and activities, eight-item archive pagination, search, category and multi-select project filters, unavailable filter options, the filtered empty state, unified project tag order and deduplication, date sorting in both directions, and the selected activity detail pages and timestamped graduation video embed.
 - Live AI responses, tooltip behavior, chat timestamps, and Firebase-backed guest/admin chat are not covered by automated end-to-end tests because they require Firebase project configuration and live authentication.
+- The public assistant transaction tests use a mock, not the Firestore emulator or deployed rules.
+  Before release, test visitor ownership, spoofed assistant messages, read receipts, owner replies, human handoff, and limits against an isolated Firebase project with the published rules.
 - `assistant-auth.spec.ts` verifies that the AI server route rejects unauthenticated requests.
+- `public-chat.spec.ts` checks the public widget's disclosure, suggested questions, and human handoff control, and verifies that the public AI route rejects unauthenticated requests.
 
 Reports and traces are written to `playwright-report/` and `test-results/`.
 Both are git-ignored.

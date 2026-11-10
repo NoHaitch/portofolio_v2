@@ -110,6 +110,15 @@ describe('marking chat messages read', () => {
     })
   })
 
+  it('clears the human follow-up flag when the owner replies to a flagged conversation', async () => {
+    await sendMessage(db, 'chat', 'guest', 'admin', 'response', false, undefined, true)
+    expect(mocks.updates[0].data).toMatchObject({
+      lastSender: 'admin',
+      needsHuman: false,
+      unreadByGuest: true,
+    })
+  })
+
   it('rejects replies when starting a new conversation', async () => {
     await expect(
       sendMessage(db, 'chat', 'guest', 'guest', 'hello', true, 'target'),

@@ -18,6 +18,7 @@ Firestore rules protect the data even if someone bypasses the UI.
 5. Review the rules before publishing them.
    The provided rules deny all collections other than `conversations`, so merge them carefully if the Firebase project contains other data.
 6. Publish the rules and redeploy the site after setting production environment variables.
+   The current rules allow the owner to clear a human-follow-up flag when replying; deploy them before the updated public chat.
 7. Test with two separate browser sessions: send a guest message, sign in as the owner, reply, close the conversation, and delete it.
    Confirm an unrelated authenticated user cannot read or modify the conversations.
 
@@ -53,8 +54,15 @@ If deletion fails, retry it from the inbox.
 The widget warns visitors not to share sensitive information.
 Backups, Firebase logs, or other configured retention mechanisms may retain copies separately.
 
-The visitor support widget does not yet have AI responses, RAG, email notifications, browser push notifications, ratings, or visit analytics.
-The separate `/admin/ai-test` page is an owner-checked Gemini chat playground and is not connected to visitor conversations.
+The widget offers suggested questions and identifies AI replies separately from Francisco's replies.
+The conversation and questions remain visible in the owner inbox.
+Visitors can explicitly ask Francisco to respond.
+If the assistant cannot safely answer, the provider fails, or an AI limit is reached, the conversation is flagged as needing a human reply.
+Francisco is not assumed to be online, and sending his reply clears the flag.
+The assistant continues answering later questions even while a conversation is flagged.
+The AI receives the current question and up to three prior accepted visitor questions, but not Francisco's replies.
+The widget does not provide email notifications, browser push notifications, ratings, or visit analytics.
+The separate `/admin/ai-test` page is an owner-checked Gemini chat playground and does not share its transcript with visitor conversations.
 Firebase's free quotas are limited, and anonymous users can create accounts and send messages, so monitor usage and configure budget or quota alerts before making the feature public.
 Security Rules enforce ownership and message size, but do not by themselves provide robust rate limiting or protect against deliberate quota exhaustion.
 The inbox currently loads all conversations and all messages in the selected conversation; add pagination and abuse controls before scaling beyond small personal use.
@@ -63,5 +71,5 @@ Content search checks the 200 most recent messages in each conversation and requ
 
 ## AI assistant
 
-The owner-only AI playground at `/admin/ai-test` is separate from guest conversations.
-Its architecture, retrieval, server-side guardrails, and setup are documented in [ai-assistant.md](./ai-assistant.md).
+The public assistant and owner-only playground use server-side guardrails.
+Their architecture, retrieval, server-side credentials, limits, and setup are documented in [ai-assistant.md](./ai-assistant.md).

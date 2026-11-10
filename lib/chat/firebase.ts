@@ -32,6 +32,7 @@ export async function sendMessage(
   text: string,
   isNew = false,
   replyTo?: string,
+  clearHumanRequest = false,
 ) {
   const message = validateMessage(text)
   if (isNew && replyTo) throw new Error('A new conversation cannot reply to a message.')
@@ -41,7 +42,9 @@ export async function sendMessage(
     updatedAt: serverTimestamp(),
     lastMessage: message,
     lastSender: sender,
-    ...(sender === 'guest' ? { unreadByAdmin: true } : { unreadByGuest: true }),
+    ...(sender === 'guest'
+      ? { unreadByAdmin: true }
+      : { unreadByGuest: true, ...(clearHumanRequest ? { needsHuman: false } : {}) }),
   }
   if (isNew) {
     if (sender !== 'guest') throw new Error('Only visitors can start a conversation.')
@@ -55,13 +58,15 @@ export async function sendMessage(
   } else {
     batch.update(conversation, summary)
   }
-  batch.set(doc(collection(conversation, 'messages')), {
+  const messageRef = doc(collection(conversation, 'messages'))
+  batch.set(messageRef, {
     text: message,
     sender,
     createdAt: serverTimestamp(),
     ...(replyTo ? { replyTo } : {}),
   })
   await batch.commit()
+  return messageRef.id
 }
 
 export async function markRead(db: Firestore, chat: Conversation, role: 'guest' | 'admin') {

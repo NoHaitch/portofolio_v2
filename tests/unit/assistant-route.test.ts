@@ -69,7 +69,7 @@ describe('admin assistant route', () => {
       .mockResolvedValueOnce('{"allowed":true,"retrievalQuery":"favorite food carbonara"}')
       .mockResolvedValueOnce('{"relevant":true}')
       .mockResolvedValueOnce('His current favorite food is carbonara. [1]')
-      .mockResolvedValueOnce('{"approved":true}')
+      .mockResolvedValueOnce('{"approved":true,"answered":true}')
     const response = await POST(
       request({ question: 'What is his favorite food?', history: [] }, 'token'),
     )

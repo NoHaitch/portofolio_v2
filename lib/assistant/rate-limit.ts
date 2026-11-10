@@ -6,7 +6,7 @@ import { getFirestore } from 'firebase-admin/firestore'
 export const ASSISTANT_RATE_LIMIT = 10
 export const ASSISTANT_RATE_WINDOW_MS = 60 * 60 * 1000
 
-export async function consumeAssistantRateLimit(projectId: string, uid: string) {
+export function getAssistantFirestore(projectId: string) {
   let app = getApps().find((item) => item.name === 'assistant-rate-limit')
   if (!app) {
     const raw = process.env.FIREBASE_SERVICE_ACCOUNT_JSON?.trim()
@@ -38,7 +38,11 @@ export async function consumeAssistantRateLimit(projectId: string, uid: string) 
     )
   }
 
-  const db = getFirestore(app)
+  return getFirestore(app)
+}
+
+export async function consumeAssistantRateLimit(projectId: string, uid: string) {
+  const db = getAssistantFirestore(projectId)
   const id = createHash('sha256').update(uid).digest('hex')
   const ref = db.collection('_assistant_rate_limits').doc(id)
   return db.runTransaction(async (transaction) => {

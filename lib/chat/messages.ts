@@ -25,6 +25,21 @@ export const chatMessages: Record<
     cancelReply: string
     unavailable: string
     sending: string
+    assistant: string
+    aiNotice: string
+    suggestions: string[]
+    askOwner: string
+    humanRequest: string
+    humanSent: string
+    aiThinking: string
+    aiCheck: string
+    aiPending: string
+    aiError: string
+    aiLimit: string
+    aiWarning: string
+    aiUnavailable: string
+    aiUnknown: string
+    aiOutOfScope: string
   }
 > = {
   en: {
@@ -51,6 +66,32 @@ export const chatMessages: Record<
     cancelReply: 'Cancel reply',
     unavailable: 'Message unavailable',
     sending: 'Sending',
+    assistant: 'AI assistant',
+    aiNotice:
+      'An AI assistant answers questions about Francisco and may make mistakes. Messages are visible to Francisco and questions are sent to Gemini. Free-tier limits apply; please avoid repeating questions already answered.',
+    suggestions: [
+      'Who is Francisco?',
+      'What projects has he built?',
+      'What are his career interests?',
+    ],
+    askOwner: 'Ask Francisco directly',
+    humanRequest: 'I would like Francisco to respond to this conversation.',
+    humanSent: 'Your message is in Francisco’s inbox. He may respond later.',
+    aiThinking: 'The AI assistant is preparing a response...',
+    aiCheck: 'Check the response',
+    aiPending: 'The response is still being processed. Check again later.',
+    aiError:
+      'Your message was saved, but the AI assistant could not respond. Francisco can read it in his inbox.',
+    aiLimit:
+      'The AI question limit has been reached. Please avoid repeating answered questions and try again later. Francisco can read your message in his inbox.',
+    aiWarning:
+      'You are close to the hourly AI limit. Please avoid repeating questions already answered.',
+    aiUnavailable:
+      'The AI assistant is unavailable right now. Francisco can read your question in his inbox and may respond later.',
+    aiUnknown:
+      'I cannot confidently answer that from the available information. Francisco can read your question in his inbox and may respond later.',
+    aiOutOfScope:
+      'I can only answer questions about Francisco, his work, interests, and portfolio.',
   },
   id: {
     open: 'Buka chat',
@@ -76,6 +117,27 @@ export const chatMessages: Record<
     cancelReply: 'Batalkan balasan',
     unavailable: 'Pesan tidak tersedia',
     sending: 'Mengirim',
+    assistant: 'Asisten AI',
+    aiNotice:
+      'Asisten AI menjawab pertanyaan tentang Francisco dan bisa salah. Francisco dapat melihat pesan Anda dan pertanyaan dikirim ke Gemini. Batas gratis berlaku; hindari mengulang pertanyaan yang sudah dijawab.',
+    suggestions: ['Siapa Francisco?', 'Proyek apa yang pernah ia buat?', 'Apa minat kariernya?'],
+    askOwner: 'Tanya Francisco langsung',
+    humanRequest: 'Saya ingin Francisco membalas percakapan ini.',
+    humanSent: 'Pesan Anda ada di kotak masuk Francisco. Ia mungkin membalas nanti.',
+    aiThinking: 'Asisten AI sedang menyiapkan jawaban...',
+    aiCheck: 'Periksa jawaban',
+    aiPending: 'Jawaban masih diproses. Periksa lagi nanti.',
+    aiError:
+      'Pesan tersimpan, tetapi asisten AI tidak dapat menjawab. Francisco dapat membacanya di kotak masuk.',
+    aiLimit:
+      'Batas pertanyaan AI telah tercapai. Hindari mengulang pertanyaan yang sudah dijawab dan coba lagi nanti. Francisco dapat membaca pesan Anda.',
+    aiWarning: 'Anda mendekati batas AI per jam. Hindari mengulang pertanyaan yang sudah dijawab.',
+    aiUnavailable:
+      'Asisten AI sedang tidak tersedia. Francisco dapat membaca pertanyaan Anda dan mungkin membalas nanti.',
+    aiUnknown:
+      'Saya tidak dapat menjawab dengan yakin dari informasi yang tersedia. Francisco dapat membaca pertanyaan Anda dan mungkin membalas nanti.',
+    aiOutOfScope:
+      'Saya hanya dapat menjawab pertanyaan tentang Francisco, karya, minat, dan portofolionya.',
   },
   ja: {
     open: 'チャットを開く',
@@ -101,6 +163,30 @@ export const chatMessages: Record<
     cancelReply: '返信をキャンセル',
     unavailable: 'メッセージを表示できません',
     sending: '送信中',
+    assistant: 'AIアシスタント',
+    aiNotice:
+      'AIアシスタントがFranciscoについての質問に答えます。回答が間違っている場合があります。Franciscoはメッセージを確認でき、質問はGeminiに送信されます。無料枠には制限があるため、同じ質問の繰り返しはお控えください。',
+    suggestions: [
+      'Franciscoはどんな人ですか？',
+      'どんなプロジェクトを作りましたか？',
+      '希望する仕事は何ですか？',
+    ],
+    askOwner: 'Franciscoに直接質問',
+    humanRequest: 'この会話にFranciscoからの返信を希望します。',
+    humanSent: 'メッセージはFranciscoの受信箱に届きました。後ほど返信する場合があります。',
+    aiThinking: 'AIアシスタントが回答を準備しています...',
+    aiCheck: '回答を確認',
+    aiPending: '回答を処理しています。後ほどもう一度確認してください。',
+    aiError:
+      'メッセージは保存されましたが、AIは回答できませんでした。Franciscoは受信箱で確認できます。',
+    aiLimit:
+      'AIへの質問の上限に達しました。回答済みの質問の繰り返しを避け、後ほどお試しください。Franciscoはメッセージを確認できます。',
+    aiWarning: 'AIの1時間あたりの上限が近づいています。回答済みの質問の繰り返しはお控えください。',
+    aiUnavailable:
+      'AIアシスタントを現在利用できません。Franciscoは質問を確認し、後ほど返信する場合があります。',
+    aiUnknown:
+      '利用可能な情報からは確実に回答できません。Franciscoは質問を確認し、後ほど返信する場合があります。',
+    aiOutOfScope: 'Franciscoの経歴、作品、関心、ポートフォリオについてのみ回答できます。',
   },
   zh: {
     open: '打开聊天',
@@ -125,5 +211,21 @@ export const chatMessages: Record<
     cancelReply: '取消回复',
     unavailable: '消息不可用',
     sending: '发送中',
+    assistant: 'AI 助手',
+    aiNotice:
+      'AI 助手回答有关 Francisco 的问题，回答可能有误。Francisco 可以查看消息，问题会发送给 Gemini。免费额度有限，请避免重复已回答的问题。',
+    suggestions: ['Francisco 是谁？', '他做过哪些项目？', '他的职业兴趣是什么？'],
+    askOwner: '直接询问 Francisco',
+    humanRequest: '我希望 Francisco 回复这段对话。',
+    humanSent: '您的消息已进入 Francisco 的收件箱，他可能稍后回复。',
+    aiThinking: 'AI 助手正在准备回答...',
+    aiCheck: '查看回复',
+    aiPending: '回复仍在处理中，请稍后再次查看。',
+    aiError: '消息已保存，但 AI 助手无法回复。Francisco 可以在收件箱中查看。',
+    aiLimit: '已达到 AI 问题上限。请避免重复已回答的问题，稍后再试。Francisco 可以查看您的消息。',
+    aiWarning: '您即将达到每小时 AI 使用上限。请避免重复已回答的问题。',
+    aiUnavailable: 'AI 助手暂时不可用。Francisco 可以查看您的问题，并可能稍后回复。',
+    aiUnknown: '根据现有信息，我无法有把握地回答。Francisco 可以查看您的问题，并可能稍后回复。',
+    aiOutOfScope: '我只能回答有关 Francisco、他的作品、兴趣和作品集的问题。',
   },
 }

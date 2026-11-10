@@ -37,6 +37,7 @@ const threadLabels: ThreadLabels = {
   cancelReply: 'Cancel reply',
   unavailable: 'Message unavailable',
   sending: 'Sending',
+  assistant: 'AI assistant',
 }
 
 export function AdminWorkspace({ page }: { page: 'dashboard' | 'messages' }) {
@@ -219,12 +220,15 @@ export function AdminWorkspace({ page }: { page: 'dashboard' | 'messages' }) {
         text,
         false,
         replyTo?.id,
+        selected.needsHuman === true,
       )
       setText('')
       setReplyTo(null)
     } catch (cause) {
       console.error('Could not send reply:', cause)
-      setError('Could not send your reply. Check your connection and try again.')
+      setError(
+        'Could not send your reply. Check your connection and Firestore rules, then try again.',
+      )
     } finally {
       setBusy(false)
     }
@@ -432,7 +436,13 @@ export function AdminWorkspace({ page }: { page: 'dashboard' | 'messages' }) {
                       <span className="flex items-center justify-between gap-2">
                         <span className="text-sm font-semibold">Visitor {chat.id.slice(0, 6)}</span>
                         <span className="text-muted-foreground text-xs">
-                          {chat.unreadByAdmin ? 'Unread' : chat.status === 'closed' ? 'Closed' : ''}
+                          {chat.needsHuman
+                            ? 'Needs reply'
+                            : chat.unreadByAdmin
+                              ? 'Unread'
+                              : chat.status === 'closed'
+                                ? 'Closed'
+                                : ''}
                         </span>
                       </span>
                       <span className="text-muted-foreground mt-1 block truncate text-sm">
@@ -466,6 +476,7 @@ export function AdminWorkspace({ page }: { page: 'dashboard' | 'messages' }) {
                         <h2 className="text-sm font-semibold">Visitor {selected.id.slice(0, 6)}</h2>
                         <p className="text-muted-foreground text-xs">
                           {selected.status === 'open' ? 'Open conversation' : 'Closed conversation'}
+                          {selected.needsHuman ? ' · Needs your reply' : ''}
                         </p>
                       </div>
                       {selected.status === 'open' && (

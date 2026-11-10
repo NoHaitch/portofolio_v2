@@ -2,6 +2,7 @@
 
 import { Reply, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { SourceCitation } from '@/components/chat/source-citation'
 import { groupMessages } from '@/lib/chat/group-messages'
 import { getReplyPreview } from '@/lib/chat/reply-preview'
 import type { ChatMessage } from '@/lib/chat/types'
@@ -17,10 +18,26 @@ export type ThreadLabels = {
   cancelReply: string
   unavailable: string
   sending: string
+  assistant: string
 }
 
 function senderName(message: ChatMessage, role: 'guest' | 'admin', labels: ThreadLabels) {
+  if (message.sender === 'assistant') return labels.assistant
   return message.sender === role ? labels.you : labels.other
+}
+
+function AssistantText({ message, locale }: { message: ChatMessage; locale: Locale }) {
+  const parts = message.text.split(/(\[\d+\])/g)
+  return (
+    <p className="text-left text-sm break-words whitespace-pre-wrap">
+      {parts.map((part, index) => {
+        const citation = /^\[(\d+)\]$/.exec(part)
+        const source = citation ? message.sources?.[Number(citation[1]) - 1] : undefined
+        if (!source) return part
+        return <SourceCitation key={index} source={source} locale={locale} />
+      })}
+    </p>
+  )
 }
 
 export function ReplyPreview({
@@ -146,9 +163,13 @@ export function MessageThread({
                             )}
                           </div>
                         )}
-                        <p className="text-left text-sm break-words whitespace-pre-wrap">
-                          {message.text}
-                        </p>
+                        {message.sender === 'assistant' ? (
+                          <AssistantText message={message} locale={locale} />
+                        ) : (
+                          <p className="text-left text-sm break-words whitespace-pre-wrap">
+                            {message.text}
+                          </p>
+                        )}
                         <p className="mt-1 text-right text-[10px] leading-none opacity-75">
                           {sentAt ? (
                             <time dateTime={sentAt.toISOString()}>
