@@ -1,2 +1,4 @@
 User-Agent: *
 Allow: /
+
+Sitemap: https://francisco-trianto.vercel.app/sitemap.xml
