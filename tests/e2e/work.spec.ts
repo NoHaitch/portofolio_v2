@@ -53,6 +53,35 @@ test.describe('work section', () => {
     ).toHaveCount(4)
   })
 
+  test('Smart Posture Corrector detail includes its paper and project figures', async ({
+    page,
+  }) => {
+    const response = await page.goto('/work/projects/smart-posture-corrector')
+    expect(response?.status()).toBe(200)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Smart Posture Corrector')
+    await expect(
+      page.getByRole('img', {
+        name: 'System architecture diagram reproduced from the project paper',
+      }),
+    ).toBeVisible()
+    await expect(
+      page.getByRole('img', { name: 'LightGBM feature importance from the regularized model' }),
+    ).toBeVisible()
+    await expect(page.getByRole('link', { name: 'GitHub repository' })).toHaveAttribute(
+      'href',
+      'https://github.com/NoHaitch/SmartPostureCorrector',
+    )
+
+    const paperPath = '/work/projects/smart-posture-corrector/smart-posture-corrector-paper.pdf'
+    await expect(page.getByRole('link', { name: /full research paper/ })).toHaveAttribute(
+      'href',
+      paperPath,
+    )
+    const paperResponse = await page.request.get(new URL(paperPath, page.url()).toString())
+    expect(paperResponse.status()).toBe(200)
+    expect(paperResponse.headers()['content-type']).toContain('application/pdf')
+  })
+
   test('view all buttons lead to the list pages', async ({ page }) => {
     await page.goto('/work')
     await page.getByRole('link', { name: 'View all projects', exact: true }).click()
