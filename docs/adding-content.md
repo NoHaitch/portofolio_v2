@@ -112,10 +112,10 @@ Embed a timestamped YouTube video with image syntax, using the video's watch URL
 
 The renderer turns timestamped YouTube watch URLs into a privacy-enhanced embed that starts at that time.
 
-## Featured projects
+## Recent projects
 
-Edit `featuredProjectSlugs` in `content/work/featured.ts`.
-The hub shows the newest `recentActivityCount` activities automatically.
+The `/work` hub shows the four newest projects automatically, sorted by their front matter dates.
+The number of activities shown there is controlled by `recentActivityCount` in `content/work/featured.ts`.
 The project and activity archive pages show eight items per page and can be sorted by date in either direction.
 Search, category filters, project facets, sort order, and pagination are kept in the URL, so list links can be shared or bookmarked.
 The project archive places search above a consistent filter row with category, application type, and field controls, plus Apply and Clear actions.

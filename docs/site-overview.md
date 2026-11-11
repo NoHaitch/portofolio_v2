@@ -78,7 +78,7 @@ The Work section replaces the old Projects page, and the navigation label is "Wo
 | `/work/activities`        | Same searchable, category-filtered, paginated list for activities                       |
 | `/work/activities/[slug]` | Same detail page for activities                                                         |
 
-The hub shows a hand-picked list of featured projects and the most recent activities, each with a button to its full list.
+The hub shows the four most recent projects and the most recent activities, each with a button to its full list.
 Every card is a link to its detail page, and the Work navigation item stays highlighted on nested routes.
 
 Item content is English-only markdown, one file per item, documented in [adding-content.md](./adding-content.md), with body structure guidance in [content-structure.md](./content-structure.md).
@@ -86,7 +86,7 @@ Interface copy is localized in the locale dictionaries for English, Indonesian, 
 Project and activity articles remain English-only.
 Write each locale's interface copy naturally for its audience instead of translating English sentence by sentence.
 Keep standard technical terms, product names, and professional roles in English when localized alternatives sound unnatural or unfamiliar.
-To change what the hub shows, edit `featuredProjectSlugs` and `recentActivityCount` in [content/work/featured.ts](../content/work/featured.ts).
+The hub derives its project list from project dates and uses `recentActivityCount` in [content/work/featured.ts](../content/work/featured.ts) to control how many activities it displays.
 
 Project and activity lists show eight cards per page and can be sorted oldest-first or newest-first by date.
 Project cards and detail pages show application types, subject fields, and other tags together in that order, with duplicates removed.

@@ -42,13 +42,13 @@ test.describe('work section', () => {
     )
   })
 
-  test('hub shows featured projects and recent activities', async ({ page }) => {
+  test('hub shows recent projects and activities', async ({ page }) => {
     await page.goto('/work')
-    await expect(page.getByRole('link', { name: /DBMS from scratch/ })).toBeVisible()
+    await expect(page.getByRole('link', { name: /Portfolio Website v2/ })).toBeVisible()
     await expect(page.getByRole('region', { name: 'Recent activities' })).toBeVisible()
     await expect(
       page
-        .getByRole('region', { name: 'Featured projects' })
+        .getByRole('region', { name: 'Recent projects' })
         .getByRole('link', { name: /View details/ }),
     ).toHaveCount(4)
   })

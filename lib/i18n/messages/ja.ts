@@ -206,8 +206,8 @@ const ja = {
     title: 'プロジェクト・活動',
     introduction:
       'これまでに手がけたプロジェクトと、コンペティションやウェビナー、イベントなどの活動を紹介します。',
-    featuredHeading: '主なプロジェクト',
-    featuredIntroduction: '特に力を入れて取り組んだプロジェクトを紹介します。',
+    recentProjectsHeading: '最近のプロジェクト',
+    recentProjectsIntroduction: '最近制作し、内容をまとめたプロジェクトを紹介します。',
     viewAllProjects: 'すべてのプロジェクトを見る',
     recentHeading: '最近の活動',
     recentIntroduction:

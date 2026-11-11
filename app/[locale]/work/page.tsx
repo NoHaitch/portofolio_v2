@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { WorkCard } from '@/components/work/work-card'
 import { buttonVariants } from '@/components/ui/button-variants'
 import { getLocalePath, getMessages, type Locale } from '@/lib/i18n'
-import { getFeaturedProjects, getRecentActivities, toCardData } from '@/lib/work'
+import { getRecentActivities, getRecentProjects, toCardData } from '@/lib/work'
 import { pageMetadata } from '@/lib/i18n/metadata'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
@@ -15,15 +15,15 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: L
   const { locale } = await params
   const messages = getMessages(locale)
   const work = messages.work
-  const featured = getFeaturedProjects().map((item) => toCardData(item, locale, messages))
+  const recentProjects = getRecentProjects(4).map((item) => toCardData(item, locale, messages))
   const recent = getRecentActivities().map((item) => toCardData(item, locale, messages))
 
   const sections = [
     {
-      id: 'featured',
-      heading: work.featuredHeading,
-      introduction: work.featuredIntroduction,
-      cards: featured,
+      id: 'recent-projects',
+      heading: work.recentProjectsHeading,
+      introduction: work.recentProjectsIntroduction,
+      cards: recentProjects,
       href: getLocalePath(locale, '/work/projects'),
       cta: work.viewAllProjects,
     },

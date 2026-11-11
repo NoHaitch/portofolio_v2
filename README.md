@@ -11,13 +11,13 @@ Its public pages are built around curated Markdown content and localized interfa
 | ------------------------------------------------------ | ----------------------------------------- |
 | ![Portfolio homepage](./docs/screenshots/homepage.png) | ![Work page](./docs/screenshots/work.png) |
 
-| Experience page                                       | DBMS project detail                                           |
-| ----------------------------------------------------- | ------------------------------------------------------------- |
-| ![Experience page](./docs/screenshots/experience.png) | ![DBMS project detail](./docs/screenshots/project-detail.png) |
+| Experience page                                       | Portfolio Website v2 project page                                         |
+| ----------------------------------------------------- | ------------------------------------------------------------------------- |
+| ![Experience page](./docs/screenshots/experience.png) | ![Portfolio Website v2 project page](./docs/screenshots/portfolio-v2.png) |
 
-| Lighthouse report                                                            |
-| ---------------------------------------------------------------------------- |
-| ![Lighthouse report for the landing page](./docs/screenshots/lighthouse.png) |
+| DBMS project detail                                           | Lighthouse report                                                            |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| ![DBMS project detail](./docs/screenshots/project-detail.png) | ![Lighthouse report for the landing page](./docs/screenshots/lighthouse.png) |
 
 ## Pages
 
@@ -25,7 +25,7 @@ Its public pages are built around curated Markdown content and localized interfa
 | ------------------------------------ | ----------------------------------------------------------------- |
 | `/`                                  | Hero, areas of expertise, and five recent projects and activities |
 | `/about`                             | Personal story, names, interests, hobbies, and photos             |
-| `/work`                              | Featured projects and recent activities, with links to full lists |
+| `/work`                              | Recent projects and activities, with links to full lists          |
 | `/work/projects`, `/work/activities` | Searchable, filterable, sortable lists with pagination            |
 | `/experience`                        | Sortable timeline of engineering, teaching, and campus roles      |
 | `/education`                         | Education timeline with coursework, honors, and certificates      |

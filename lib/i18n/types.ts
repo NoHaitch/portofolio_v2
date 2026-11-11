@@ -109,8 +109,8 @@ export type Messages = {
     eyebrow: string
     title: string
     introduction: string
-    featuredHeading: string
-    featuredIntroduction: string
+    recentProjectsHeading: string
+    recentProjectsIntroduction: string
     viewAllProjects: string
     recentHeading: string
     recentIntroduction: string

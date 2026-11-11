@@ -209,8 +209,8 @@ const id = {
     title: 'Proyek dan aktivitas',
     introduction:
       'Jelajahi proyek yang pernah saya bangun, serta kompetisi, webinar, dan acara yang memberi saya banyak pelajaran.',
-    featuredHeading: 'Proyek unggulan',
-    featuredIntroduction: 'Pilihan proyek yang paling saya banggakan.',
+    recentProjectsHeading: 'Proyek terbaru',
+    recentProjectsIntroduction: 'Proyek terbaru yang telah saya buat dan dokumentasikan.',
     viewAllProjects: 'Lihat semua proyek',
     recentHeading: 'Aktivitas terbaru',
     recentIntroduction: 'Kompetisi, webinar, lokakarya, dan acara terbaru yang saya ikuti.',

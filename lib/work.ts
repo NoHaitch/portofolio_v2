@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
-import { featuredProjectSlugs, recentActivityCount } from '@/content/work/featured'
+import { recentActivityCount } from '@/content/work/featured'
 import { getLocalePath, type Locale, type Messages } from '@/lib/i18n'
 import {
   categoriesByKind,
@@ -153,13 +153,6 @@ export function getItems(kind: WorkKind): WorkItem[] {
 
 export function getItem(kind: WorkKind, slug: string) {
   return getItems(kind).find((item) => item.slug === slug)
-}
-
-export function getFeaturedProjects() {
-  return featuredProjectSlugs.flatMap((slug) => {
-    const project = getItem('projects', slug)
-    return project ? [project] : []
-  })
 }
 
 export function sortByDateDesc<T extends { date: string }>(items: T[]) {

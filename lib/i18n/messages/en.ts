@@ -205,8 +205,8 @@ const en = {
     title: 'Projects and activities',
     introduction:
       'A hands-on look at the things I have built and the competitions, webinars, and events I have learned from.',
-    featuredHeading: 'Featured projects',
-    featuredIntroduction: 'A hand-picked selection of the projects I am proudest of.',
+    recentProjectsHeading: 'Recent projects',
+    recentProjectsIntroduction: 'The latest projects I have built and documented.',
     viewAllProjects: 'View all projects',
     recentHeading: 'Recent activities',
     recentIntroduction: 'The latest competitions, webinars, workshops, and events I took part in.',

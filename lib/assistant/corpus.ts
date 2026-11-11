@@ -97,7 +97,7 @@ export function buildKnowledgeBase(): KnowledgeChunk[] {
     text: [
       'Homepage: introduction, areas of expertise, and recent projects and activities.',
       'About: personal story, interests, and hobbies. Route: /about.',
-      'Work: featured projects and recent activities. Route: /work.',
+      'Work: recent projects and activities. Route: /work.',
       'Projects archive: searchable and filterable project list with project detail pages. Route: /work/projects.',
       'Activities archive: searchable activity list with activity detail pages. Route: /work/activities.',
       'Experience: engineering, teaching, academic support, campus, community, and data science roles. Route: /experience.',

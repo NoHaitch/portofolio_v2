@@ -1,12 +1,11 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { featuredProjectSlugs } from '@/content/work/featured'
 import {
   getAssetBase,
-  getFeaturedProjects,
   getItems,
   getRecentActivities,
+  getRecentProjects,
   sortByDateAsc,
   sortByDateDesc,
 } from '@/lib/work'
@@ -57,8 +56,11 @@ describe('work content', () => {
     }
   })
 
-  it('only features projects that exist', () => {
-    expect(getFeaturedProjects().map((item) => item.slug)).toEqual([...featuredProjectSlugs])
+  it('returns recent projects newest first', () => {
+    const projects = getRecentProjects()
+    const dates = projects.map((item) => item.date)
+    expect(projects).toHaveLength(5)
+    expect(dates).toEqual([...dates].sort().reverse())
   })
 
   it('returns recent activities newest first', () => {
