@@ -36,15 +36,16 @@ Current coverage:
 - `i18n.test.ts` also checks that every locale has exactly the same message structure as English, contains no empty strings, and never uses the em dash.
 - `utils.test.ts` checks the `cn` class merging helper.
 - `ai-markdown.test.ts` checks that assistant Markdown renders headings, emphasis, code, and lists.
-- `assistant-retrieval.test.ts` covers retrieval ranking, chunking, and grounded prompt formatting.
+- `assistant-retrieval.test.ts` covers retrieval ranking, broad project catalog priority, chunking, and grounded prompt formatting.
 - `assistant-knowledge.test.ts` checks retrieval of profile facts, ITB education, specializations, individual courses, GCI training, broad project questions, and the portfolio page guide, as well as approved transcript exclusions.
 - `assistant-guardrails.test.ts` exercises input, context, and output checks with mocked model responses, plus the assistant's deterministic greeting and capability replies.
 - `assistant-route.test.ts` checks owner authentication, request validation, and fail-closed behavior.
 - `assistant-rate-limit.test.ts` checks the rolling hourly boundary with a mocked Firestore transaction.
 - `public-assistant.test.ts` covers ownership, duplicate requests, both public caps, rollover, provider failure, human handoff, and late responses using a mocked Firestore transaction.
 - `public-assistant-route.test.ts` covers public authentication, input validation, ownership failures, and fail-closed store errors.
-- `work.test.ts` validates project and activity content, unique slugs, image references, and featured project slugs.
+- `work.test.ts` validates project and activity content, unique slugs, and image references.
 - `chat.test.ts`, `chat-thread.test.ts`, and `chat-receipts.test.ts` cover message validation, grouping, replies, inbox search, and read receipts.
+- `chat-close-route.test.ts` covers guest authentication, conversation ownership, successful retries, and Firestore errors for the New chat close endpoint.
 
 The message structure check is the main guard for translations.
 Adding a key to `lib/i18n/types.ts` and one locale but forgetting another will fail the suite.
@@ -70,7 +71,7 @@ Current coverage:
 - `localized-pages.spec.ts` checks every static route and every project and activity detail route in English, Indonesian, Japanese, and Simplified Chinese.
 - `responsive.spec.ts` checks that no page has horizontal overflow at 320, 375, 768, and 1024 px.
 - `responsive.spec.ts` also covers the burger menu (open, Escape to close, navigate, language select inside the menu) and that the desktop nav shows no burger.
-- `work.spec.ts` checks that the homepage shows five recent projects and activities, eight-item archive pagination, search, category and multi-select project filters, unavailable filter options, the filtered empty state, unified project tag order and deduplication, date sorting in both directions, and the selected activity detail pages and timestamped graduation video embed.
+- `work.spec.ts` checks the recent homepage lists, eight-item archive pagination, search, category and multi-select project filters, unavailable filter options, the filtered empty state, unified project tag order and deduplication, date sorting, selected detail pages, the timestamped graduation video embed, and the Smart Posture Corrector tables.
 - Live AI responses, tooltip behavior, chat timestamps, and Firebase-backed guest/admin chat are not covered by automated end-to-end tests because they require Firebase project configuration and live authentication.
 - The public assistant transaction tests use a mock, not the Firestore emulator or deployed rules.
   Before release, test visitor ownership, spoofed assistant messages, read receipts, owner replies, human handoff, and limits against an isolated Firebase project with the published rules.

@@ -7,7 +7,7 @@ Nothing else needs to change, because the routes, cards, search, and tests all r
 
 ```
 content/work/
-  featured.ts                 projects highlighted on /work
+  featured.ts                 recent activity count for /work and the homepage
   projects/<slug>.md
   activities/<slug>.md
 public/work/
@@ -73,7 +73,8 @@ Options with no matching projects are hidden unless they are already selected, s
 
 ## Body
 
-The body is standard markdown.
+The body is Markdown with GitHub Flavored Markdown support, including tables.
+Tables use semantic headers and cells and scroll horizontally when wider than the article.
 Reference the item's own images with a relative path:
 
 ```md
@@ -125,7 +126,7 @@ Changing the sort order returns to the first page while preserving the current s
 ## Validation
 
 The loader in `lib/work.ts` fails the build with a message naming the file when it finds an unknown key, an invalid category or date, or a malformed slug.
-The unit test additionally checks that slugs are unique, covers and body images exist, and featured slugs exist.
+The unit test additionally checks that slugs are unique and that covers and body images exist.
 
 ## Image size
 

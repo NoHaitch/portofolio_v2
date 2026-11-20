@@ -121,9 +121,17 @@ export async function deleteConversation(db: Firestore, id: string) {
   await deleteDoc(conversation)
 }
 
-export async function closeGuestConversation(db: Firestore, id: string) {
-  await updateDoc(doc(db, 'conversations', id), {
-    status: 'closed',
-    updatedAt: serverTimestamp(),
+export async function closeGuestConversation(id: string, token: string) {
+  const response = await fetch('/api/chat/close', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ conversationId: id }),
+    cache: 'no-store',
   })
+  if (!response.ok) {
+    throw new Error(`Could not close conversation. API returned HTTP ${response.status}.`)
+  }
 }

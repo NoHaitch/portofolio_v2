@@ -5,6 +5,7 @@ import {
   retrieve,
   type KnowledgeChunk,
 } from '@/lib/assistant/retrieval'
+import { buildKnowledgeBase } from '@/lib/assistant/corpus'
 
 const chunks: KnowledgeChunk[] = [
   {
@@ -33,6 +34,11 @@ describe('retrieve', () => {
   it('ranks the matching chunk first', () => {
     const results = retrieve(chunks, 'Tell me about the distributed raft project')
     expect(results[0].id).toBe('a')
+  })
+
+  it('retrieves the complete catalog for broad project-list queries', () => {
+    const results = retrieve(buildKnowledgeBase(), 'Francisco projects')
+    expect(results[0].id).toBe('project-catalog')
   })
 
   it('returns nothing when no term matches', () => {

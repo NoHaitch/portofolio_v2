@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { MarkdownAsync, type Components } from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { getPublicImageSize } from '@/lib/work-images'
 
 const sizes = '(min-width: 768px) 768px, 100vw'
@@ -30,6 +31,19 @@ function createComponents(assetBase: string): Components {
     ol: ({ children }) => (
       <ol className="marker:text-primary mt-4 list-decimal space-y-1 pl-5 leading-7">{children}</ol>
     ),
+    table: ({ children }) => (
+      <div className="border-border my-6 overflow-x-auto rounded-lg border">
+        <table className="w-full min-w-[36rem] border-collapse text-left text-sm">{children}</table>
+      </div>
+    ),
+    thead: ({ children }) => <thead className="bg-muted/50">{children}</thead>,
+    tr: ({ children }) => <tr className="border-border border-b last:border-0">{children}</tr>,
+    th: ({ children }) => (
+      <th className="text-foreground px-4 py-3 text-left font-semibold whitespace-nowrap">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => <td className="text-muted-foreground px-4 py-3 align-top">{children}</td>,
     blockquote: ({ children }) => (
       <blockquote className="border-border text-muted-foreground mt-4 border-l-2 pl-4">
         {children}
@@ -131,5 +145,9 @@ function parseYouTubeVideo(src: string) {
 }
 
 export function WorkMarkdown({ source, assetBase }: { source: string; assetBase: string }) {
-  return <MarkdownAsync components={createComponents(assetBase)}>{source}</MarkdownAsync>
+  return (
+    <MarkdownAsync remarkPlugins={[remarkGfm]} components={createComponents(assetBase)}>
+      {source}
+    </MarkdownAsync>
+  )
 }

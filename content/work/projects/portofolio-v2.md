@@ -15,7 +15,7 @@ tags:
     Firebase,
     Firestore,
     Gemini,
-    MDX,
+    Markdown,
     Bun,
     Vercel,
   ]
@@ -39,6 +39,7 @@ The site uses the Next.js App Router, React, and TypeScript.
 Route layouts provide the shared navigation, footer, theme, and locale-aware interface, while project and activity content lives in individual Markdown files under `content/work/`.
 Typed front matter supplies each entry's title, summary, category, date, fields, technologies, and links.
 Shared loaders validate the content and use it to build project and activity archives and detail pages.
+The shared article renderer supports GitHub Flavored Markdown tables and lets wide tables scroll on smaller screens.
 
 ```text
 Markdown work entries -> validated content loader -> archive and detail routes
@@ -49,6 +50,7 @@ URL query parameters -> archive filters        -> shareable search results
 The project and activity archives support search, filters, date sorting, and pagination.
 Their state is represented in the URL, and the static content model avoids requiring a database for portfolio pages.
 Reusable components handle the shared cards, filters, navigation, and article layouts.
+A generated sitemap lists localized public routes and work articles, and `robots.txt` points crawlers to it.
 
 ## Screenshots
 
@@ -78,12 +80,14 @@ Visitor widget -> anonymous Firebase Auth -> Firestore conversation
 
 Visitors can ask the assistant or explicitly request a response from me.
 They can start a fresh chat after confirming that the current conversation should be closed; the prior conversation remains available in the owner inbox.
+The server-side close endpoint verifies the anonymous visitor's token and ownership before closing the conversation with Firebase Admin.
 
 ## Portfolio-grounded AI assistant
 
 The public assistant and owner-only AI playground call server-side routes rather than exposing the Gemini API key to the browser.
 The server builds its knowledge corpus from approved profile and education information, published project and activity Markdown, and English experience content.
 It retrieves relevant passages using BM25-style keyword scoring, without embeddings or a vector database.
+For broad project-list questions, the retriever prioritizes a catalog assembled from the published project summaries.
 
 ```text
 Persisted visitor question -> authenticated server route -> verify chat ownership

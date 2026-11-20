@@ -52,7 +52,7 @@ Before the quote, a concise focus statement highlights software engineering and 
 
 The work action links to the localized `/work` route.
 
-Below the expertise cards, the homepage displays the five most recent projects and five most recent activities in two columns.
+Below the expertise cards, the homepage displays the five most recent projects and four most recent activities in two columns.
 Each list links to item details and to its corresponding full list.
 The activities collection is intentionally a selection of recent activities, not an exhaustive archive.
 
@@ -84,6 +84,7 @@ Every card is a link to its detail page, and the Work navigation item stays high
 Item content is English-only markdown, one file per item, documented in [adding-content.md](./adding-content.md), with body structure guidance in [content-structure.md](./content-structure.md).
 Interface copy is localized in the locale dictionaries for English, Indonesian, Japanese, and Simplified Chinese.
 Project and activity articles remain English-only.
+The shared article renderer supports GitHub Flavored Markdown tables, with horizontal scrolling for wide tables on small screens.
 Write each locale's interface copy naturally for its audience instead of translating English sentence by sentence.
 Keep standard technical terms, product names, and professional roles in English when localized alternatives sound unnatural or unfamiliar.
 The hub derives its project list from project dates and uses `recentActivityCount` in [content/work/featured.ts](../content/work/featured.ts) to control how many activities it displays.
@@ -164,7 +165,9 @@ It is linked from the footer rather than the header navigation.
 
 There are no blog or research routes yet.
 
-The App Router also includes [app/robots.txt](../app/robots.txt), which currently allows crawling and does not declare a sitemap URL.
+The [app/robots.txt](../app/robots.txt) file allows crawling and points to `/sitemap.xml`.
+The generated [sitemap](../app/sitemap.ts) lists localized public pages and project and activity detail pages, but not admin or API routes.
+Exclusion from the sitemap does not itself block crawling or protect a route.
 
 ## Shared application structure
 

@@ -287,14 +287,14 @@ export default function ChatContent({
     setNewChatError('')
     try {
       if (chat?.status === 'open') {
-        const { db } = getFirebaseServices('guest')
-        await closeGuestConversation(db, chatId)
+        if (!user) throw new Error('Guest authentication is not ready.')
+        await closeGuestConversation(chatId, await user.getIdToken())
       }
       clearCurrentChat()
       setNewChatOpen(false)
     } catch (cause) {
       console.error('Could not close the current chat:', cause)
-      setNewChatError(copy.error)
+      setNewChatError(copy.closeError)
     } finally {
       setClosingChat(false)
     }

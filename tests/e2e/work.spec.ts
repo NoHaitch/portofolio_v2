@@ -80,6 +80,17 @@ test.describe('work section', () => {
     const paperResponse = await page.request.get(new URL(paperPath, page.url()).toString())
     expect(paperResponse.status()).toBe(200)
     expect(paperResponse.headers()['content-type']).toContain('application/pdf')
+
+    const tables = page.getByRole('table')
+    await expect(tables).toHaveCount(2)
+    await expect(tables.nth(0).getByRole('columnheader')).toHaveText(['Component', 'Role'])
+    await expect(tables.nth(0).getByRole('row')).toHaveCount(5)
+    await expect(tables.nth(1).getByRole('columnheader')).toHaveText([
+      'Candidate',
+      'Test macro F1',
+      'Serialized size',
+    ])
+    await expect(tables.nth(1).getByRole('row')).toHaveCount(5)
   })
 
   test('view all buttons lead to the list pages', async ({ page }) => {

@@ -60,6 +60,7 @@ export function retrieve(
   const k1 = 1.4
   const b = 0.75
   const projectQuestion = /\b(projects?|built|created|developed)\b/i.test(query)
+  const projectCatalogQuestion = /\bprojects\b|\b(?:list|all)\s+projects?\b/i.test(query)
   const pageQuestion = /\b(pages?|website|site|navigate)\b/i.test(query)
   return chunks
     .map((chunk, index) => {
@@ -79,7 +80,12 @@ export function retrieve(
       return { ...chunk, score }
     })
     .filter((chunk) => chunk.score >= minScore)
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => {
+      const aIsCatalog = projectCatalogQuestion && a.id === 'project-catalog'
+      const bIsCatalog = projectCatalogQuestion && b.id === 'project-catalog'
+      if (aIsCatalog !== bIsCatalog) return aIsCatalog ? -1 : 1
+      return b.score - a.score
+    })
     .slice(0, limit)
 }
 

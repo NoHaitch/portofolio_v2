@@ -17,8 +17,10 @@ Firestore rules protect the data even if someone bypasses the UI.
 4. Open [firestore.rules](../firestore.rules), copy its contents into the Firestore Rules editor, and replace `REPLACE_WITH_ADMIN_UID` with the exact owner UID in the editor.
 5. Review the rules before publishing them.
    The provided rules deny all collections other than `conversations`, so merge them carefully if the Firebase project contains other data.
-6. Publish the rules and redeploy the site after setting production environment variables.
-   The current rules allow the owner to clear a human-follow-up flag when replying; deploy them before the updated public chat.
+6. Publish the rules to the same Firebase project used by the production site's `NEXT_PUBLIC_FIREBASE_PROJECT_ID`.
+   Firestore rules are deployed separately from the Vercel site, so redeploying the website does not publish them.
+   The current rules allow the owner to clear a human-follow-up flag when replying.
+   Publish them before using updated chat features that write directly from the browser.
 7. Test with two separate browser sessions: send a guest message, sign in as the owner, reply, close the conversation, and delete it.
    Confirm an unrelated authenticated user cannot read or modify the conversations.
 
@@ -40,7 +42,9 @@ Once an owner closes a conversation, the visitor can start another one.
 Visitors can also choose **New chat** in an open conversation and confirm that the current conversation should be closed.
 The prior conversation remains in the owner's inbox, while the visitor's browser starts with a clean thread.
 The confirmation can be canceled without changing the existing conversation.
-The published Firestore rules must include the guest-owned conversation close update for this action to work.
+The close request is sent to `/api/chat/close`, which verifies the visitor's anonymous Firebase token and checks conversation ownership before updating it with the Admin SDK.
+This uses the project-matched server credentials configured for the public assistant.
+It does not rely on browser Firestore rules to close the conversation.
 An active chat means one that has not been closed, not a visitor who is currently online.
 Unread counts represent conversations with unread messages, not the number of messages.
 Sent messages show whether the recipient has read them.

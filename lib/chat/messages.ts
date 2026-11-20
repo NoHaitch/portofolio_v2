@@ -20,6 +20,7 @@ export const chatMessages: Record<
     closed: string
     loading: string
     error: string
+    closeError: string
     you: string
     owner: string
     read: string
@@ -67,6 +68,7 @@ export const chatMessages: Record<
     closed: 'This conversation is closed.',
     loading: 'Connecting to chat...',
     error: 'Chat could not connect. Please try again later.',
+    closeError: 'Could not finish closing this chat. Check your connection and try again.',
     you: 'You',
     owner: 'Francisco',
     read: 'Read',
@@ -124,6 +126,7 @@ export const chatMessages: Record<
     closed: 'Percakapan ini ditutup.',
     loading: 'Menghubungkan chat...',
     error: 'Chat tidak dapat terhubung. Silakan coba lagi nanti.',
+    closeError: 'Chat tidak dapat ditutup. Periksa koneksi Anda lalu coba lagi.',
     you: 'Anda',
     owner: 'Francisco',
     read: 'Dibaca',
@@ -176,6 +179,7 @@ export const chatMessages: Record<
     closed: 'この会話は終了しました。',
     loading: 'チャットに接続中...',
     error: 'チャットに接続できません。後でもう一度お試しください。',
+    closeError: 'チャットを終了できませんでした。接続を確認して、もう一度お試しください。',
     you: 'あなた',
     owner: 'Francisco',
     read: '既読',
@@ -229,6 +233,7 @@ export const chatMessages: Record<
     closed: '此对话已关闭。',
     loading: '正在连接聊天...',
     error: '无法连接聊天，请稍后重试。',
+    closeError: '无法关闭此聊天。请检查网络连接后重试。',
     you: '你',
     owner: 'Francisco',
     read: '已读',

@@ -85,6 +85,7 @@ The corpus also builds a project catalog from every published project summary an
 These indexes are derived from the site's source content so project descriptions are not maintained twice.
 See [assistant knowledge](../content/assistant/README.md) for authoring guidance.
 Content is split into passages and ranked by BM25-style keyword scoring, without embeddings or a vector database.
+Broad project-list queries prioritize the derived project catalog so individual coursework matches do not displace it.
 The top five matching passages are used when they pass the relevance check.
 Matching is based on English-oriented keywords, so synonyms, other languages, and short follow-ups may not retrieve the right information.
 Source text is sent to Gemini as part of the request and must contain only approved public information.
@@ -149,7 +150,7 @@ Firebase token verification here does not check token revocation.
 
 ## Testing
 
-Try a known question such as "What roles is Francisco looking for?", a follow-up such as "What about his education?", an unknown fact, a general coding request, and a mixed request that combines a profile question with a coding task.
+Try a known question such as "What roles is Francisco looking for?", a broad project question such as "What projects has he built?", a follow-up such as "What about his education?", an unknown fact, a general coding request, and a mixed request that combines a profile question with a coding task.
 The first two should be answered when relevant sources are found; the other requests should be refused or identified as unknown as appropriate.
 Also try instruction overrides and unsupported claims.
 Review answers and source titles manually because unit tests with mocked model responses cannot establish real-model guardrail accuracy.

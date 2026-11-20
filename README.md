@@ -21,24 +21,25 @@ Its public pages are built around curated Markdown content and localized interfa
 
 ## Pages
 
-| Route                                | Purpose                                                           |
-| ------------------------------------ | ----------------------------------------------------------------- |
-| `/`                                  | Hero, areas of expertise, and five recent projects and activities |
-| `/about`                             | Personal story, names, interests, hobbies, and photos             |
-| `/work`                              | Recent projects and activities, with links to full lists          |
-| `/work/projects`, `/work/activities` | Searchable, filterable, sortable lists with pagination            |
-| `/experience`                        | Sortable timeline of engineering, teaching, and campus roles      |
-| `/education`                         | Education timeline with coursework, honors, and certificates      |
-| `/contact`                           | Professional and community links                                  |
-| `/about-site`                        | What the site is for, how it is built, and the source code link   |
-| `/admin/login`                       | Unlisted, noindex owner sign-in                                   |
-| `/admin`, `/admin/messages`          | Owner dashboard and conversation inbox                            |
-| `/admin/ai-test`                     | Owner-checked Gemini chat playground                              |
+| Route                                | Purpose                                                             |
+| ------------------------------------ | ------------------------------------------------------------------- |
+| `/`                                  | Hero, areas of expertise, five recent projects, and four activities |
+| `/about`                             | Personal story, names, interests, hobbies, and photos               |
+| `/work`                              | Recent projects and activities, with links to full lists            |
+| `/work/projects`, `/work/activities` | Searchable, filterable, sortable lists with pagination              |
+| `/experience`                        | Sortable timeline of engineering, teaching, and campus roles        |
+| `/education`                         | Education timeline with coursework, honors, and certificates        |
+| `/contact`                           | Professional and community links                                    |
+| `/about-site`                        | What the site is for, how it is built, and the source code link     |
+| `/admin/login`                       | Unlisted, noindex owner sign-in                                     |
+| `/admin`, `/admin/messages`          | Owner dashboard and conversation inbox                              |
+| `/admin/ai-test`                     | Owner-checked Gemini chat playground                                |
 
 English uses unprefixed URLs.
 Other languages use the `/id`, `/ja`, and `/zh` prefixes.
 
-The homepage shows the five most recent projects and five most recent activities in side-by-side lists below the expertise section.
+The homepage shows the five most recent projects and four most recent activities in side-by-side lists below the expertise section.
+The Work hub shows four recent projects and four recent activities.
 The activities collection is a curated selection, not a complete record of every activity.
 Project and activity archives display eight entries per page and support search, category filters, and oldest-first or newest-first date sorting.
 The archive state is stored in the URL, and both archive pages are available from the footer quick links.
@@ -48,6 +49,8 @@ A server-side Gemini assistant answers questions about Francisco using approved 
 AI answers are identified, may be inaccurate, and include compact source references when available.
 Unanswered questions and service failures are flagged for human follow-up, and Francisco can reply in the same conversation.
 The separate owner-only AI playground tests the same retrieval and guardrail pipeline.
+The Work article renderer supports GitHub Flavored Markdown tables and keeps wide tables horizontally scrollable.
+`robots.txt` links to a sitemap of public localized pages and work detail pages.
 
 ## Stack
 
